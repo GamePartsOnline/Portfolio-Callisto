@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio de Callisto - Frédérique Charton, artiste designer digitale spécialisée en digital painting, animation et demoscene">
+    <meta name="keywords" content="Callisto Arts, Frédérique Charton, digital painting, demoscene, animation, graphics, portfolio artiste">
+    <meta name="author" content="Callisto - Frédérique Charton">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://callistoarts.com/">
+    <meta property="og:title" content="Callisto Arts - Portfolio 2026">
+    <meta property="og:description" content="Portfolio de Callisto - Artiste designer digitale spécialisée en digital painting, animation et demoscene">
+    <meta property="og:image" content="https://callistoarts.com/assets/images/og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://callistoarts.com/">
+    <meta property="twitter:title" content="Callisto Arts - Portfolio 2026">
+    <meta property="twitter:description" content="Portfolio de Callisto - Artiste designer digitale spécialisée en digital painting, animation et demoscene">
+    <meta property="twitter:image" content="https://callistoarts.com/assets/images/og-image.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <title>Callisto Arts - Portfolio 2026</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-background" aria-hidden="true">
+        <div class="bg-gradient"></div>
+        <div class="bg-mesh"></div>
+        <div class="bg-particles" id="bgParticles"></div>
+        <div class="bg-orbs">
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+            <div class="orb orb-3"></div>
+        </div>
+        <div class="bg-grid"></div>
+    </div>
+    
+    <!-- Navigation -->
+    <nav class="nav" role="navigation" aria-label="Navigation principale">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo" aria-label="Retour à l'accueil">
+                <img src="assets/images/logo-cllisto.png" alt="Callisto Arts Logo" class="logo-img">
+                <span class="logo-text">Callisto Arts</span>
+            </a>
+            <button class="nav-toggle" aria-label="Menu mobile" aria-expanded="false" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link">Accueil</a></li>
+                <li><a href="#about" class="nav-link">À propos</a></li>
+                <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+                <li><a href="#awards" class="nav-link">Récompenses</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero" role="banner">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="hero-greeting">Welcome to my world</span>
+                <span class="hero-name">Callisto Arts</span>
+            </h1>
+            <p class="hero-subtitle">Digital Drawing Artist & Demoscene Creator</p>
+            <div class="hero-scroll" aria-label="Défiler vers le contenu">
+                <span>Scroll</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main id="main-content">
+    <!-- About Section -->
+    <section id="about" class="about section" aria-labelledby="about-title">
+        <div class="container">
+            <h2 id="about-title" class="section-title">À propos</h2>
+            <div class="about-content">
+                <div class="card glass-card">
+                    <div class="card-content">
+                        <h3>Frédérique Charton</h3>
+                        <p class="about-text">
+                            Je suis Callisto, 42 ans, basée à Châlons-en-Champagne. 
+                            Propriétaire de GPO SARL & Artiste Digital Drawing.
+                        </p>
+                        <p class="about-text">
+                            Membre du groupe demoscene : <strong>Flush ^ Vital-Motion!</strong>
+                        </p>
+                        <div class="about-timeline">
+                            <div class="timeline-item">
+                                <span class="timeline-year">2011</span>
+                                <p>Reprise du dessin avec différentes techniques</p>
+                            </div>
+                            <div class="timeline-item">
+                                <span class="timeline-year">2012</span>
+                                <p>Création de GPO SARL - Réparation et restauration de jeux automatiques</p>
+                            </div>
+                            <div class="timeline-item">
+                                <span class="timeline-year">2015</span>
+                                <p>Première participation à une demoparty - Découverte de la demoscene</p>
+                            </div>
+                            <div class="timeline-item">
+                                <span class="timeline-year">2021</span>
+                                <p>Certification TOSA Illustrator - Pinacothèque du Luxembourg</p>
+                            </div>
+                            <div class="timeline-item">
+                                <span class="timeline-year">2024-2025</span>
+                                <p>Multiples récompenses dans les compétitions demoscene internationales</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio section" aria-labelledby="portfolio-title">
+        <div class="container">
+            <h2 id="portfolio-title" class="section-title">Portfolio</h2>
+            <div class="portfolio-filters" role="tablist" aria-label="Filtres du portfolio">
+                <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">Tous</button>
+                <button class="filter-btn" data-filter="digital" role="tab" aria-selected="false">Digital Painting</button>
+                <button class="filter-btn" data-filter="animation" role="tab" aria-selected="false">Animation/Video</button>
+                <button class="filter-btn" data-filter="graphics" role="tab" aria-selected="false">Graphics</button>
+                <button class="filter-btn" data-filter="photo" role="tab" aria-selected="false">Photos</button>
+            </div>
+            <div class="portfolio-grid" id="portfolioGrid">
+                <!-- Les images seront chargées automatiquement depuis portfolio_images.json -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Awards Section -->
+    <section id="awards" class="awards section" aria-labelledby="awards-title">
+        <div class="container">
+            <h2 id="awards-title" class="section-title">Récompenses</h2>
+            <div class="awards-grid" id="awardsGrid">
+                <!-- Les récompenses seront chargées automatiquement depuis portfolio_images.json -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section" aria-labelledby="contact-title">
+        <div class="container">
+            <h2 id="contact-title" class="section-title">Contact</h2>
+            <div class="contact-content">
+                <div class="card glass-card">
+                    <div class="card-content">
+                        <h3>Réseaux sociaux</h3>
+                        <div class="social-links">
+                            <a href="#" class="social-link" aria-label="Behance" target="_blank" rel="noopener noreferrer">
+                                <span>Behance</span>
+                            </a>
+                            <a href="#" class="social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+                                <span>Instagram</span>
+                            </a>
+                            <a href="#" class="social-link" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+                                <span>LinkedIn</span>
+                            </a>
+                        </div>
+                        <div class="contact-info">
+                            <p><strong>GPO SARL</strong></p>
+                            <p>Châlons-en-Champagne, France</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <img src="assets/images/logo-cllisto.png" alt="Callisto Arts Logo" class="footer-logo">
+                <div class="footer-text">
+                    <p>&copy; 2026 Callisto - Charton Frédérique / GPO</p>
+                    <p class="footer-subtitle">My fun is DRAWING !!! ALWAYS... end for ever.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightbox-title" aria-hidden="true">
+        <button class="lightbox-close" aria-label="Fermer la lumière">×</button>
+        <div class="lightbox-content">
+            <img id="lightbox-image" src="" alt="">
+            <div class="lightbox-info">
+                <h3 id="lightbox-title"></h3>
+                <p id="lightbox-description"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
