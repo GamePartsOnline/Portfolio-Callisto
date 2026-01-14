@@ -236,3 +236,6 @@ L'image apparaîtra automatiquement dans le portfolio avec ses métadonnées !
 
 **My fun is DRAWING !!! ALWAYS... end for ever.**
 # Portfolio-Callisto
+
+
+#proposition de modification , j'suis trop contente merci 
