@@ -9,13 +9,19 @@ function initParticles() {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion) {
         // Créer quelques particules statiques seulement
-        const staticParticles = window.innerWidth < 768 ? 10 : 20;
+        const staticParticles = window.innerWidth < 768 ? 20 : 40; // More static particles
         for (let i = 0; i < staticParticles; i++) {
             const particle = document.createElement('div');
             particle.className = 'particle';
             particle.style.left = Math.random() * 100 + '%';
             particle.style.top = Math.random() * 100 + '%';
-            particle.style.opacity = '0.3';
+
+            // Large & bright for visibility even without motion
+            const size = Math.random() * 3 + 2; // 2-5px
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            particle.style.opacity = Math.random() * 0.4 + 0.4; // 0.4-0.8
+
             particlesContainer.appendChild(particle);
         }
         return;
