@@ -5,6 +5,13 @@ function initParticles() {
     const particlesContainer = document.getElementById('bgParticles');
     if (!particlesContainer) return;
 
+    // Verify container existence and set heavy z-index to ensure visibility
+    // DO THIS FIRST to ensure it applies even if reduced motion is on
+    if (particlesContainer) {
+        particlesContainer.style.zIndex = '10'; // Force visibility above other layers
+        console.log('Particles container found and z-index set to 10');
+    }
+
     // Vérifier si l'utilisateur préfère réduire les animations
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion) {
@@ -27,11 +34,7 @@ function initParticles() {
         return;
     }
 
-    // Verify container existence and set heavy z-index to ensure visibility
-    if (particlesContainer) {
-        particlesContainer.style.zIndex = '10'; // Force visibility above other layers
-        console.log('Particles container found and z-index set to 10');
-    }
+
 
     const particleCount = window.innerWidth < 768 ? 40 : 80; // More particles
     const particles = [];
