@@ -35,13 +35,13 @@ function initParticles() {
         const particle = document.createElement('div');
         particle.className = 'particle';
 
-        // Tailles plus grandes pour plus de visibilité
-        const size = Math.random() * 4 + 2; // 2-6px (was 1-3px)
+        // Tailles équilibrées (visibles mais pas trop grosses)
+        const size = Math.random() * 2.5 + 1.5; // 1.5-4px
         particle.style.width = size + 'px';
         particle.style.height = size + 'px';
 
-        // Opacité plus forte
-        const opacity = Math.random() * 0.5 + 0.5; // 0.5-1.0 (was 0.4-0.8)
+        // Opacité équilibrée
+        const opacity = Math.random() * 0.4 + 0.4; // 0.4-0.8
         particle.style.opacity = opacity;
 
         particlesContainer.appendChild(particle);
