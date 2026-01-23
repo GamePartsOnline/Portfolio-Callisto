@@ -36,7 +36,7 @@ function initParticles() {
 
 
 
-    const particleCount = window.innerWidth < 768 ? 40 : 80; // More particles
+    const particleCount = window.innerWidth < 768 ? 80 : 200; // Debug Level: High Count
     const particles = [];
 
     // Créer les particules avec différentes tailles
@@ -44,13 +44,13 @@ function initParticles() {
         const particle = document.createElement('div');
         particle.className = 'particle';
 
-        // Tailles équilibrées (visibles mais pas trop grosses)
-        const size = Math.random() * 2.5 + 1.5; // 1.5-4px
+        // Tailles debug (très visibles)
+        const size = Math.random() * 4 + 4; // 4-8px (Huge)
         particle.style.width = size + 'px';
         particle.style.height = size + 'px';
 
-        // Opacité équilibrée
-        const opacity = Math.random() * 0.4 + 0.4; // 0.4-0.8
+        // Opacité debug (quasi maximale)
+        const opacity = Math.random() * 0.2 + 0.8; // 0.8-1.0
         particle.style.opacity = opacity;
 
         particlesContainer.appendChild(particle);
