@@ -96,10 +96,12 @@ function initParticles() {
 
                 particle.style.transform = `translate(${x + driftX}px, ${y + driftY}px)`;
 
-                // Variation d'opacité
-                const baseOpacity = parseFloat(particle.style.opacity);
+                // Variation d'opacité plus stable
+                const baseOpacity = particle.dataset.baseOpacity ? parseFloat(particle.dataset.baseOpacity) : 0.5;
+                if (!particle.dataset.baseOpacity) particle.dataset.baseOpacity = baseOpacity;
+
                 const opacityVariation = Math.sin(elapsed * Math.PI * 4) * 0.2;
-                particle.style.opacity = Math.max(0.2, Math.min(0.8, baseOpacity + opacityVariation));
+                particle.style.opacity = Math.max(0.3, Math.min(1.0, baseOpacity + opacityVariation));
 
                 requestAnimationFrame(animate);
             }

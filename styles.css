@@ -680,9 +680,7 @@ a:focus-visible {
     justify-content: center;
     padding: var(--spacing-lg) var(--spacing-md);
     position: relative;
-    background: linear-gradient(135deg,
-            var(--color-bg-primary) 0%,
-            var(--color-bg-secondary) 100%);
+    /* Background removed to show particles */
 }
 
 .hero-content {
