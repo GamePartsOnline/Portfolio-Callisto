@@ -21,7 +21,13 @@ function initParticles() {
         return;
     }
 
-    const particleCount = window.innerWidth < 768 ? 30 : 50;
+    // Verify container existence and set heavy z-index to ensure visibility
+    if (particlesContainer) {
+        particlesContainer.style.zIndex = '10'; // Force visibility above other layers
+        console.log('Particles container found and z-index set to 10');
+    }
+
+    const particleCount = window.innerWidth < 768 ? 40 : 80; // More particles
     const particles = [];
 
     // Créer les particules avec différentes tailles
@@ -29,13 +35,13 @@ function initParticles() {
         const particle = document.createElement('div');
         particle.className = 'particle';
 
-        // Tailles variées pour plus de profondeur
-        const size = Math.random() * 2 + 1; // 1-3px
+        // Tailles plus grandes pour plus de visibilité
+        const size = Math.random() * 4 + 2; // 2-6px (was 1-3px)
         particle.style.width = size + 'px';
         particle.style.height = size + 'px';
 
-        // Opacité variée
-        const opacity = Math.random() * 0.4 + 0.4; // 0.4-0.8
+        // Opacité plus forte
+        const opacity = Math.random() * 0.5 + 0.5; // 0.5-1.0 (was 0.4-0.8)
         particle.style.opacity = opacity;
 
         particlesContainer.appendChild(particle);
