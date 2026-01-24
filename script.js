@@ -229,125 +229,119 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 const portfolioData = {
     "images": [
         {
-            "filename": "Chromatic-Resonance.jpg",
-            "category": "graphics",
-            "title": "Chromatique résonance",
-            "award": "1ère place @ Rsync 2024",
-            "year": 2024
+            "filename": "sky_code.jpg",
+            "category": "digital",
+            "title": "Sky code",
+            "year": 2026,
+            "award": "INERCIA - PORTUGAL"
         },
         {
             "filename": "Callisto_Pascals-lemur-leap_step-finale-2048x1152.jpg",
-            "category": "graphics",
+            "category": "digital",
             "title": "Pascal's lemur leap",
-            "award": "10ème place @ Revision 2025",
-            "year": 2025
+            "award": "10ème place @ Revision - Saarbrucken - Allemagne",
+            "year": 2025,
         },
         {
-            "filename": "cropped-elevation-finale-scaled-1.jpg",
-            "category": "graphics",
-            "title": "Elevation 2079",
-            "award": "1ère place @ Inercia 2022",
-            "year": 2022
-        },
-        {
-            "filename": "paintover2024_callisto_refresh_step05.jpg",
-            "category": "graphics",
-            "title": "Refresh",
-            "award": "12ème place @ Revision 2024",
-            "year": 2024
-        },
-        {
-            "filename": "Luna-fly-by-callisto-finale-1-scaled.jpg",
-            "category": "animation",
-            "title": "Luna Fly",
-            "award": "5ème place @ Session 2023",
-            "year": 2023
-        },
-        {
-            "filename": "IMG_0899-scaled.jpg",
+            "filename": "Chromatic.jpg",
             "category": "digital",
-            "title": "Sky code",
-            "award": "Participation @ Inercia 2025",
-            "year": 2025
+            "title": "Chromatique résonance",
+            "award": "1ère place @ Rsync",
+            "year": 2024,
         },
         {
-            "filename": "339435602_905924634051246_6940335715669469411_n.jpg",
-            "category": "animation",
-            "title": "Animation Demoscene",
-            "year": 2023
-        },
-        {
-            "filename": "344736827_755458082626458_6207407694818355725_n.jpg",
-            "category": "animation",
-            "title": "Animation Demoscene",
-            "year": 2023
-        },
-        {
-            "filename": "407845946_398297489188178_8033467046376857047_n.jpg",
-            "category": "animation",
-            "title": "Animation Demoscene",
-            "year": 2024
-        },
-        {
-            "filename": "Callisto_photo_revision2023-1024x547.jpg",
-            "category": "photo",
-            "title": "Photo @ Revision 2023",
-            "year": 2023
-        },
-        {
-            "filename": "Callisto_convergence-1024x510.jpg",
-            "category": "digital",
-            "title": "Convergence",
-            "year": 2023
-        },
-        {
-            "filename": "PresentationCallisto2022-5.jpg",
-            "category": "digital",
-            "title": "Présentation 2022",
-            "year": 2022
-        },
-        {
-            "filename": "Callisto_finale-6.jpg",
-            "category": "digital",
-            "title": "Digital Painting",
-            "year": 2022
+            "filename": "IAinercia.jpg",
+            "category": "IA",
+            "title": "IA Inercia 2975",
+            "award": "Graphics IA Showcase - INERCIA - PORTUGAL",
+            "year": 2025,
         },
         {
             "filename": "2fb0.356160_ori-2048x1910.jpg",
-            "category": "graphics",
+            "category": "digital",
             "title": "Symphony of the abyss",
             "year": 2025,
             "award": "2ème place @ Rsync 2025"
         },
         {
-            "filename": "eb9a.315530-2048x1150.jpg",
-            "category": "digital",
-            "title": "Digital Painting",
-            "year": 2023
+            "filename": "paintover2024_callisto_refresh_step05.jpg",
+            "category": "paintover",
+            "title": "Refresh",
+            "award": "12ème place paintover @ Revision",
+            "year": 2024,
         },
         {
-            "filename": "376688281_353500107001250_6102064824076954240_n.jpg",
+            "filename": "407845946_398297489188178_8033467046376857047_n.jpg",
             "category": "digital",
-            "title": "Digital Painting",
-            "year": 2023
+            "title": "Aerolia Harmonia",
+            "award": "Graphics Showcase - Inercia - Portugal",
+            "year": 2023,
+        },
+        {
+            "filename": "Luna-fly-by-callisto-finale-1-scaled.jpg",
+            "category": "digital",
+            "title": "Luna Fly",
+            "award": "5ème place @ Session",
+            "year": 2023,
+        },
+        {
+            "filename": "cropped-elevation-finale-scaled-1.jpg",
+            "category": "digital",
+            "title": "Elevation 2079",
+            "award": "1ère place @ Inercia",
+            "year": 2022,
+        },
+        {
+            "filename": "339435602_905924634051246_6940335715669469411_n.jpg",
+            "category": "digital",
+            "title": "Howl Of The Forest",
+            "award": "11th revision - saarbrucken - Allemagne",
+            "year": 2023,
+        },
+        {
+            "filename": "PresentationCallisto2022-5.jpg",
+            "category": "digital",
+            "title": "You Seem So Delicious",
+            "year": 2022,
+            "award": "1st Assembly - Finlande",
+        },
+        {
+            "filename": "rift.jpg",
+            "category": "digital",
+            "title": "The rift",
+            "year": 2021,
+            "award": "11th  revision - saarbrucken - Allemagne",
+        },
+        {
+            "filename": "Callisto_finale-6.jpg",
+            "category": "digital",
+            "title": "Sharko",
+            "year": 2021,
+            "award": "5TH SESSION, JAPON, TOKYO",
+        },
+        {
+            "filename": "dino.jpg",
+            "category": "photo",
+            "title": "Dino sort",
+            "year": 2025,
+            "award": "The Shadow Party 2025 Photo competition",
         },
         {
             "filename": "74410909_1244316935752931_2378795365198462976_n.jpg",
             "category": "digital",
-            "title": "Digital Painting",
-            "year": 2022
+            "award": "Digital Painting just for fun",
+            "title": "Eagle",
         },
         {
             "filename": "312518226_10228185642768590_4918581913671770871_n-1024x652.jpg",
-            "category": "digital",
-            "title": "Digital Painting",
-            "year": 2023
+            "category": "photo",
+            "title": "Flowers",
+            "award": "Flower photography",
         },
         {
             "filename": "94688130_1733793336752338_604221269126152192_n.jpg",
             "category": "gaming",
-            "title": "Gaming Artwork",
-            "year": 2020
+            "title": "Plateau de flipper",
         },
         {
             "filename": "183407402_10225214914982252_8102507980517360390_n-1024x768.jpg",
@@ -418,15 +412,24 @@ async function loadPortfolioImages() {
             category.className = 'portfolio-category';
             const categoryNames = {
                 'digital': 'Digital Painting',
-                'animation': 'Animation/Video',
-                'graphics': 'Graphics',
+                'paintover': 'Paintover',
+                'IA': 'IA Art',
                 'photo': 'Photo',
                 'gaming': 'Gaming Artwork',
-                'traditional': 'Traditional Arts'
+                'tradi': 'Traditional Arts'
             };
             category.textContent = categoryNames[image.category] || image.category;
 
             overlay.appendChild(title);
+
+            // Ajouter l'année si présente
+            if (image.year) {
+                const yearSpan = document.createElement('span');
+                yearSpan.className = 'portfolio-year';
+                yearSpan.textContent = image.year;
+                overlay.appendChild(yearSpan);
+            }
+
             overlay.appendChild(category);
 
             // Ajouter le badge de récompense si présent
@@ -513,11 +516,17 @@ function loadAwards(images) {
 // ============================================
 function initPortfolioFilters() {
     const filterButtons = document.querySelectorAll('.filter-btn');
-    const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+    console.log('Initializing filters, buttons found:', filterButtons.length);
 
     filterButtons.forEach(button => {
         button.addEventListener('click', () => {
-            // Mettre à jour les états actifs
+            console.log('Filter clicked:', button.getAttribute('data-filter'));
+
+            // Re-query items dynamically to handle updates
+            const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+            // Update active states
             filterButtons.forEach(btn => {
                 btn.classList.remove('active');
                 btn.setAttribute('aria-selected', 'false');
@@ -526,28 +535,32 @@ function initPortfolioFilters() {
             button.classList.add('active');
             button.setAttribute('aria-selected', 'true');
 
-            // Filtrer les items
+            // Filter items
             const filter = button.getAttribute('data-filter');
 
             portfolioItems.forEach(item => {
                 if (filter === 'all' || item.getAttribute('data-category') === filter) {
                     item.style.display = 'block';
-                    setTimeout(() => {
+                    // Small delay to allow display:block to apply before opacity transition
+                    requestAnimationFrame(() => {
                         item.style.opacity = '1';
                         item.style.transform = 'scale(1)';
-                    }, 10);
+                    });
                 } else {
                     item.style.opacity = '0';
                     item.style.transform = 'scale(0.8)';
                     setTimeout(() => {
-                        item.style.display = 'none';
+                        if (item.style.opacity === '0') { // Check if still hidden
+                            item.style.display = 'none';
+                        }
                     }, 300);
                 }
             });
         });
     });
 
-    // Initialiser les styles de transition
+    // Initialize transition styles
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
     portfolioItems.forEach(item => {
         item.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
     });
@@ -594,11 +607,11 @@ function openLightbox(item) {
     if (lightboxDescription) {
         const categoryNames = {
             'digital': 'Digital Painting',
-            'animation': 'Animation/Video',
-            'graphics': 'Graphics',
+            'paintover': 'Paintover',
+            'IA': 'IA Art',
             'photo': 'Photo',
             'gaming': 'Gaming Artwork',
-            'traditional': 'Traditional Arts'
+            'tradi': 'Traditional Arts'
         };
         const categoryText = categoryNames[category] || category;
         lightboxDescription.textContent = `${categoryText}${badge ? ' • ' + badge : ''}`;
