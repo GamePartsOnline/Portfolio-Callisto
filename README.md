@@ -1,4 +1,4 @@
-# Callisto Arts - Portfolio 2026
+# Callisto Arts - Portfolio 2026 - CALLISTO - avec florian !!!! 
 
 Portfolio moderne et minimaliste pour Callisto (Frédérique Charton), artiste designer digitale spécialisée en digital painting, animation et demoscene.
 
