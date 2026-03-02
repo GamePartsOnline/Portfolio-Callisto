@@ -1,6 +1,67 @@
-# Callisto Arts - Portfolio 2026 - CALLISTO - avec florian !!!! 
+# Callisto Arts - Portfolio 2026
 
 Portfolio moderne et minimaliste pour Callisto (Frédérique Charton), artiste designer digitale spécialisée en digital painting, animation et demoscene.
+
+**Dépôt GitHub :** [https://github.com/GamePartsOnline/Portfolio-Callisto](https://github.com/GamePartsOnline/Portfolio-Callisto)
+
+---
+
+## 🚀 Lancer le site en local
+
+Le site doit être servi par un serveur HTTP (pas en ouvrant `index.html` directement), sinon le JavaScript et les ressources ne fonctionnent pas correctement.
+
+### Étape 1 — Récupérer le projet depuis GitHub
+
+**Si tu n'as pas encore le projet :**
+
+1. Ouvre un terminal.
+2. Va dans le dossier où tu veux placer le projet (par ex. `Documents` ou `Projets`).
+3. Clone le dépôt :
+   ```bash
+   git clone https://github.com/GamePartsOnline/Portfolio-Callisto.git
+   ```
+4. Entre dans le dossier du projet :
+   ```bash
+   cd Portfolio-Callisto
+   ```
+
+**Si le projet est déjà cloné :** ouvre un terminal et va dans le dossier du projet :
+```bash
+cd chemin/vers/Portfolio-Callisto
+```
+
+### Étape 2 — Démarrer le serveur
+
+**Option A – Script (recommandé)**
+
+```bash
+chmod +x start-server.sh
+./start-server.sh
+```
+
+**Option B – Python (sans script)**
+
+```bash
+python3 -m http.server 8765 --bind 0.0.0.0
+```
+
+*Sur Windows, si `python3` ne fonctionne pas, essaie `python` à la place.*
+
+**Option C – Extension Live Server (Cursor / VS Code)**
+
+1. Installe l'extension **Live Server** (Ritwick Dey).
+2. Clic droit sur `index.html` → **Open with Live Server**.  
+   Le site s'ouvre dans le navigateur (souvent sur le port 5500).
+
+### Étape 3 — Ouvrir le site dans le navigateur
+
+- **Avec le script ou Python :** ouvre ton navigateur et va sur :  
+  **http://127.0.0.1:8765**
+- **Avec Live Server :** le navigateur s'ouvre en général automatiquement.
+
+> ⚠️ Utilise toujours une adresse **http://** (serveur local). N'ouvre pas le fichier en **file://** (double-clic sur `index.html`), sinon le site ne fonctionnera pas correctement.
+
+---
 
 ## 🎨 Caractéristiques
 
@@ -27,8 +88,9 @@ Portfolio moderne et minimaliste pour Callisto (Frédérique Charton), artiste d
 ```
 Portfolio/
 ├── index.html                    # Structure HTML principale
-├── styles.css                    # Styles CSS avec effet liquid glass et background animé
+├── styles.css                    # Styles CSS (liquid glass, background animé, timeline)
 ├── script.js                     # Interactions, animations et chargement automatique
+├── start-server.sh               # Script pour lancer le serveur local
 ├── README.md                     # Documentation principale
 ├── GUIDE.md                      # Guide d'utilisation détaillé
 ├── BACKGROUND.md                 # Documentation du système de background animé
@@ -43,14 +105,16 @@ Portfolio/
 ## 🎯 Sections
 
 1. **Hero** : Section d'accueil avec animation et background animé
-2. **À propos** : Timeline et présentation de l'artiste
-3. **Portfolio** : Grille d'images avec filtres par catégorie (chargement automatique depuis JSON)
-4. **Récompenses** : Cards des prix obtenus (génération automatique depuis les images primées)
-5. **Contact** : Liens sociaux et informations de contact
+2. **À propos** : Présentation de l'artiste + lien vers la timeline
+3. **Timeline (Mon parcours)** : Parcours chronologique (neon) avec événements, prix et milestones
+4. **Portfolio** : Grille d'images avec filtres par catégorie (chargement automatique depuis JSON)
+5. **Récompenses** : Cards des prix obtenus (génération automatique depuis les images primées)
+6. **Contact** : Liens sociaux et informations de contact
 
 ## 🎨 Effet Liquid Glass 2026
 
 L'effet liquid glass est réalisé avec :
+
 - `backdrop-filter: blur(20px)` pour l'effet de flou
 - Bordures semi-transparentes
 - Ombres multiples pour la profondeur
@@ -143,18 +207,10 @@ Le logo Callisto Arts est intégré stratégiquement :
 
 ## 🔧 Installation
 
-1. Cloner ou télécharger le projet
-2. Placer les images dans `assets/images/`
-3. Configurer `assets/images/portfolio_images.json` avec vos images
-4. Ouvrir `index.html` dans un navigateur moderne
-5. Pour le développement local, utiliser un serveur HTTP :
-   ```bash
-   # Python
-   python -m http.server 8000
-   
-   # Node.js
-   npx serve
-   ```
+1. **Récupérer le projet** : voir [Lancer le site en local](#-lancer-le-site-en-local) (clone depuis GitHub).
+2. Placer les images dans `assets/images/`.
+3. Configurer les métadonnées (données dans `script.js` ou JSON) avec tes images.
+4. **Lancer le site** : suivre les étapes 2 et 3 de la section « Lancer le site en local » (serveur HTTP obligatoire).
 
 ## 📝 Ajouter des Images
 
@@ -167,8 +223,8 @@ Le logo Callisto Arts est intégré stratégiquement :
      "filename": "mon-image.jpg",
      "category": "digital",
      "title": "Titre de l'œuvre",
-     "award": "1ère place @ Événement 2024",  // Optionnel
-     "year": 2024  // Optionnel si award présent
+     "award": "1ère place @ Événement 2024", // Optionnel
+     "year": 2024 // Optionnel si award présent
    }
    ```
 
@@ -177,11 +233,12 @@ L'image apparaîtra automatiquement dans le portfolio avec ses métadonnées !
 ### Modifier les couleurs
 
 Éditer les variables CSS dans `styles.css` :
+
 ```css
 :root {
-    --color-bg-primary: #1a1a1a;
-    --color-text-primary: #ffffff;
-    /* ... */
+  --color-bg-primary: #1a1a1a;
+  --color-text-primary: #ffffff;
+  /* ... */
 }
 ```
 
@@ -228,14 +285,16 @@ L'image apparaîtra automatiquement dans le portfolio avec ses métadonnées !
 - Syntax
 - Tokyo Demo Fest
 - Atascii
+- Shadow Party
 - Inercia
+- Rsync
 - Sessions
 - Tous les demosceners
 
 ---
 
 **My fun is DRAWING !!! ALWAYS... end for ever.**
+
 # Portfolio-Callisto
 
-
-#proposition de modification , j'suis trop contente merci 
+#proposition de modification , j'suis trop contente merci

@@ -375,8 +375,14 @@ const portfolioData = {
 // ============================================
 async function loadPortfolioImages() {
     try {
-        // En local, on utilise les données statiques
-        const data = portfolioData;
+        let data = portfolioData;
+        try {
+            const res = await fetch('assets/images/portfolio_images.json');
+            if (res.ok) {
+                const json = await res.json();
+                if (json && json.images && json.images.length) data = json;
+            }
+        } catch (_) { /* garde portfolioData en secours */ }
         const portfolioGrid = document.getElementById('portfolioGrid');
 
         if (!portfolioGrid) return;
@@ -406,7 +412,7 @@ async function loadPortfolioImages() {
 
             const title = document.createElement('h3');
             title.className = 'portfolio-title';
-            title.textContent = image.title || 'Œuvre';
+            title.textContent = image.title || 'Artwork';
 
             const category = document.createElement('p');
             category.className = 'portfolio-category';
@@ -416,7 +422,9 @@ async function loadPortfolioImages() {
                 'IA': 'IA Art',
                 'photo': 'Photo',
                 'gaming': 'Gaming Artwork',
-                'tradi': 'Traditional Arts'
+                'tradi': 'Traditional Arts',
+                'graphics': 'Graphics',
+                'animation': 'Animation'
             };
             category.textContent = categoryNames[image.category] || image.category;
 
@@ -452,63 +460,9 @@ async function loadPortfolioImages() {
         // Attacher les événements lightbox
         attachLightboxEvents();
 
-        // Charger les récompenses
-        loadAwards(data.images);
-
     } catch (error) {
         console.error('Erreur lors du chargement des images:', error);
     }
-}
-
-// ============================================
-// LOAD AWARDS FROM JSON
-// ============================================
-function loadAwards(images) {
-    const awardsGrid = document.getElementById('awardsGrid');
-    if (!awardsGrid) return;
-
-    // Filtrer seulement les images avec des récompenses
-    const awardedImages = images.filter(img => img.award && img.year);
-
-    // Trier par année (plus récent en premier)
-    awardedImages.sort((a, b) => (b.year || 0) - (a.year || 0));
-
-    awardedImages.forEach(image => {
-        const card = document.createElement('div');
-        card.className = 'award-card glass-card';
-
-        const year = document.createElement('div');
-        year.className = 'award-year';
-        year.textContent = image.year || '';
-
-        const title = document.createElement('h3');
-        title.className = 'award-title';
-        title.textContent = image.title || 'Œuvre';
-
-        // Extraire l'événement depuis l'award
-        const awardText = image.award || '';
-        const eventMatch = awardText.match(/@\s*(.+?)(?:\s+\d{4})?$/);
-        const event = eventMatch ? eventMatch[1] : 'Demoscene';
-
-        const eventP = document.createElement('p');
-        eventP.className = 'award-event';
-        eventP.textContent = event;
-
-        // Extraire le rang depuis l'award
-        const rankMatch = awardText.match(/(\d+(?:ère|ème|er|e))\s+place/);
-        const rank = rankMatch ? rankMatch[1] + ' place' : awardText;
-
-        const rankSpan = document.createElement('span');
-        rankSpan.className = 'award-rank';
-        rankSpan.textContent = rank;
-
-        card.appendChild(year);
-        card.appendChild(title);
-        card.appendChild(eventP);
-        card.appendChild(rankSpan);
-
-        awardsGrid.appendChild(card);
-    });
 }
 
 // ============================================
@@ -738,6 +692,74 @@ if (heroScroll) {
 }
 
 // ============================================
+// HERO SLIDE — images aléatoires du portfolio
+// ============================================
+function shuffleArray(arr) {
+    const a = [...arr];
+    for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+}
+
+function buildHeroSlidesFromPortfolio(data) {
+    const container = document.getElementById('heroSlides');
+    if (!container || !data || !data.images) return;
+    const images = data.images.filter(img => img.category !== 'logo');
+    if (!images.length) return;
+    const count = Math.min(5, images.length);
+    const picked = shuffleArray(images).slice(0, count);
+    container.innerHTML = '';
+    picked.forEach((img, i) => {
+        const slide = document.createElement('div');
+        slide.className = 'hero-slide' + (i === 0 ? ' active' : '');
+        slide.setAttribute('data-slide', String(i));
+        const caption = [img.title, img.award, img.year].filter(Boolean).join(' — ') || img.title || img.filename;
+        slide.innerHTML = '<img src="assets/images/' + img.filename + '" alt="' + (img.title || img.filename).replace(/"/g, '&quot;') + '" class="hero-image-3d">' +
+            '<div class="hero-image-caption">' + caption.replace(/</g, '&lt;') + '</div>';
+        container.appendChild(slide);
+    });
+}
+
+function initHeroSlide() {
+    const wrapper = document.querySelector('.hero-slide-wrapper');
+    if (!wrapper) return;
+    const slides = wrapper.querySelectorAll('.hero-slide');
+    const prevBtn = wrapper.querySelector('.hero-slide-prev');
+    const nextBtn = wrapper.querySelector('.hero-slide-next');
+    const dotsContainer = wrapper.querySelector('.hero-slide-dots');
+    if (!slides.length || !dotsContainer) return;
+
+    let current = 0;
+    const total = slides.length;
+
+    function goToSlide(i) {
+        current = (i + total) % total;
+        slides.forEach((s, k) => s.classList.toggle('active', k === current));
+        dotsContainer.querySelectorAll('.hero-slide-dot').forEach((d, k) => d.classList.toggle('active', k === current));
+    }
+
+    dotsContainer.innerHTML = '';
+    for (let i = 0; i < total; i++) {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'hero-slide-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', 'Image ' + (i + 1));
+        dot.addEventListener('click', () => goToSlide(i));
+        dotsContainer.appendChild(dot);
+    }
+
+    if (prevBtn) prevBtn.addEventListener('click', () => goToSlide(current - 1));
+    if (nextBtn) nextBtn.addEventListener('click', () => goToSlide(current + 1));
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!prefersReducedMotion) {
+        setInterval(() => goToSlide(current + 1), 5000);
+    }
+}
+
+// ============================================
 // LAZY LOADING IMAGES (si pas déjà géré par le navigateur)
 // ============================================
 if ('loading' in HTMLImageElement.prototype) {
@@ -771,7 +793,7 @@ if ('loading' in HTMLImageElement.prototype) {
 const skipLink = document.createElement('a');
 skipLink.href = '#main-content';
 skipLink.className = 'skip-link';
-skipLink.textContent = 'Aller au contenu principal';
+skipLink.textContent = 'Skip to main content';
 document.body.insertBefore(skipLink, document.body.firstChild);
 
 // Ajouter un id au main content si nécessaire
@@ -804,6 +826,10 @@ const optimizedScrollHandler = debounce(() => {
 // INITIALISATION
 // ============================================
 document.addEventListener('DOMContentLoaded', () => {
+    // Hero : images aléatoires du portfolio (puis init du carrousel)
+    buildHeroSlidesFromPortfolio(portfolioData);
+    initHeroSlide();
+
     // Vérifier la préférence de réduction de mouvement
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -812,6 +838,9 @@ document.addEventListener('DOMContentLoaded', () => {
         document.documentElement.style.setProperty('--transition-base', '0s');
         document.documentElement.style.setProperty('--transition-slow', '0s');
     }
+
+    // Timeline "Journey" (neon) reveal on scroll
+    initJourneyTimeline();
 
     // Initialiser les particules du background
     initParticles();
@@ -822,5 +851,62 @@ document.addEventListener('DOMContentLoaded', () => {
     // Charger les images du portfolio depuis le JSON
     loadPortfolioImages();
 
+    // Charger les textes éditables (About / Contact) depuis content.json si présent
+    loadContentJson();
+
     console.log('Portfolio Callisto Arts - Initialisé avec background animé');
 });
+
+// ============================================
+// CONTENT.JSON (textes About / Contact éditables)
+// ============================================
+async function loadContentJson() {
+    try {
+        const res = await fetch('content.json');
+        if (!res.ok) return;
+        const data = await res.json();
+        if (!data) return;
+        const aboutIntro = document.getElementById('about-intro');
+        if (aboutIntro && data.about && data.about.intro) {
+            aboutIntro.innerHTML = data.about.intro.replace(/\n/g, '<br>');
+        }
+        const contactCompany = document.getElementById('contact-company');
+        if (contactCompany && data.contact && data.contact.company) {
+            contactCompany.innerHTML = '<strong>' + escapeHtmlContent(data.contact.company) + '</strong>';
+        }
+        const contactAddress = document.getElementById('contact-address');
+        if (contactAddress && data.contact && data.contact.address) {
+            contactAddress.textContent = data.contact.address;
+        }
+    } catch (_) { /* pas de content.json = garde le HTML par défaut */ }
+}
+
+function escapeHtmlContent(s) {
+    const div = document.createElement('div');
+    div.textContent = s;
+    return div.innerHTML;
+}
+
+// ============================================
+// JOURNEY TIMELINE (Reveal on scroll)
+// ============================================
+function initJourneyTimeline() {
+    const items = document.querySelectorAll('.journey-tl-item');
+    if (!items.length) return;
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) {
+        items.forEach(el => el.classList.add('is-visible'));
+        return;
+    }
+
+    const journeyObserver = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('is-visible');
+            obs.unobserve(entry.target);
+        });
+    }, { threshold: 0.15 });
+
+    items.forEach(el => journeyObserver.observe(el));
+}

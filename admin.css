@@ -1,0 +1,374 @@
+/* Administration Callisto Arts */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    background: #1a1a1a;
+    color: #e0e0e0;
+    min-height: 100vh;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* --- Login --- */
+#login-screen {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.login-box {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(0, 255, 224, 0.2);
+    border-radius: 16px;
+    padding: 2rem;
+    width: 100%;
+    max-width: 360px;
+    box-shadow: 0 0 24px rgba(0, 255, 224, 0.08);
+}
+
+.login-box h1 {
+    margin: 0 0 0.25rem;
+    font-size: 1.5rem;
+    color: #00ffe0;
+}
+
+.login-subtitle {
+    margin: 0 0 1.5rem;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+#login-form label {
+    display: block;
+    margin-bottom: 0.35rem;
+    font-size: 0.9rem;
+}
+
+#login-form input {
+    width: 100%;
+    padding: 0.6rem 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.3);
+    color: #fff;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+#login-form input:focus {
+    outline: none;
+    border-color: #00ffe0;
+    box-shadow: 0 0 0 2px rgba(0, 255, 224, 0.2);
+}
+
+#login-form button {
+    width: 100%;
+    padding: 0.7rem;
+    background: #00ffe0;
+    color: #0d1520;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+#login-form button:hover {
+    background: #00e6c9;
+}
+
+.error {
+    margin-top: 1rem;
+    color: #f472b6;
+    font-size: 0.9rem;
+}
+
+/* --- Admin layout --- */
+.admin-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.admin-header h1 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: #00ffe0;
+}
+
+.admin-main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.admin-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.tab {
+    padding: 0.6rem 1rem;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: #e0e0e0;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+.tab:hover {
+    border-color: rgba(0, 255, 224, 0.4);
+    color: #00ffe0;
+}
+
+.tab.active {
+    border-color: #00ffe0;
+    color: #00ffe0;
+    box-shadow: 0 0 12px rgba(0, 255, 224, 0.15);
+}
+
+.panel {
+    display: none;
+}
+
+.panel.active {
+    display: block;
+}
+
+.panel h2 {
+    margin: 0 0 0.5rem;
+    font-size: 1.25rem;
+    color: #fff;
+}
+
+.help {
+    margin: 0 0 1rem;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.help code {
+    background: rgba(0, 0, 0, 0.4);
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.85em;
+}
+
+/* --- Buttons --- */
+.btn {
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+.btn-primary {
+    background: #00ffe0;
+    color: #0d1520;
+    font-weight: 600;
+}
+
+.btn-primary:hover {
+    background: #00e6c9;
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.08);
+    color: #e0e0e0;
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.btn-secondary:hover {
+    border-color: rgba(0, 255, 224, 0.4);
+    color: #00ffe0;
+}
+
+.btn-outline {
+    background: transparent;
+    color: #00ffe0;
+    border-color: #00ffe0;
+}
+
+.btn-outline:hover {
+    background: rgba(0, 255, 224, 0.1);
+}
+
+.btn-small {
+    padding: 0.35rem 0.6rem;
+    font-size: 0.8rem;
+}
+
+.toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+/* --- Portfolio list --- */
+.portfolio-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.portfolio-row {
+    display: grid;
+    grid-template-columns: 48px 1fr 90px 1fr 60px auto;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 0.75rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+}
+
+.portfolio-row .thumb {
+    width: 48px;
+    height: 48px;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #333;
+}
+
+.portfolio-row .thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.portfolio-row .filename {
+    font-family: monospace;
+    font-size: 0.85rem;
+    word-break: break-all;
+}
+
+.portfolio-row .category {
+    font-size: 0.8rem;
+    color: #00ffe0;
+}
+
+.portfolio-row .title {
+    font-size: 0.9rem;
+}
+
+.portfolio-row .year {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.portfolio-row .actions {
+    display: flex;
+    gap: 0.35rem;
+}
+
+@media (max-width: 768px) {
+    .portfolio-row {
+        grid-template-columns: 40px 1fr;
+        grid-template-rows: auto auto auto;
+    }
+    .portfolio-row .filename { grid-column: 2; }
+    .portfolio-row .category,
+    .portfolio-row .title,
+    .portfolio-row .year {
+        grid-column: 1 / -1;
+        font-size: 0.85rem;
+    }
+    .portfolio-row .actions {
+        grid-column: 1 / -1;
+    }
+}
+
+/* --- Form groups (textes + modal) --- */
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.35rem;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 0.6rem 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.3);
+    color: #fff;
+    font-size: 1rem;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #00ffe0;
+}
+
+.form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* --- Modal --- */
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 1rem;
+}
+
+.modal-content {
+    background: #1e1e1e;
+    border: 1px solid rgba(0, 255, 224, 0.2);
+    border-radius: 12px;
+    padding: 1.5rem;
+    width: 100%;
+    max-width: 440px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-content h2 {
+    margin: 0 0 1rem;
+    font-size: 1.2rem;
+    color: #00ffe0;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-end;
+    margin-top: 1.25rem;
+}
+
+input[type="file"].hidden {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+}

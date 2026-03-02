@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Timeline Callisto Arts</title>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --neon: #00ffe0;
+    --neon2: #ff2df7;
+    --gold: #ffd700;
+    --dark: #060a10;
+    --dark2: #0d1520;
+    --text: #c8d8e8;
+    --line: rgba(0,255,224,0.25);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--dark);
+    color: var(--text);
+    font-family: 'Share Tech Mono', monospace;
+    overflow-x: hidden;
+  }
+
+  /* ─── HERO TITLE ─── */
+  .timeline-header {
+    text-align: center;
+    padding: 80px 20px 60px;
+    position: relative;
+  }
+  .timeline-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(0,255,224,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .timeline-header h2 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    color: white;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    position: relative;
+  }
+  .timeline-header h2 span {
+    color: var(--neon);
+    text-shadow: 0 0 20px var(--neon), 0 0 60px rgba(0,255,224,0.4);
+  }
+  .timeline-header p {
+    margin-top: 16px;
+    color: rgba(200,216,232,0.55);
+    letter-spacing: 0.15em;
+    font-size: 0.85rem;
+  }
+  .header-line {
+    width: 120px;
+    height: 2px;
+    margin: 24px auto 0;
+    background: linear-gradient(90deg, transparent, var(--neon), transparent);
+    box-shadow: 0 0 12px var(--neon);
+  }
+
+  /* ─── TIMELINE WRAPPER ─── */
+  .timeline {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 24px 100px;
+  }
+
+  /* Vertical glowing line */
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0; bottom: 0;
+    width: 2px;
+    transform: translateX(-50%);
+    background: linear-gradient(180deg,
+      transparent 0%,
+      var(--neon) 10%,
+      var(--neon) 90%,
+      transparent 100%
+    );
+    box-shadow: 0 0 12px var(--neon), 0 0 30px rgba(0,255,224,0.2);
+  }
+
+  /* ─── ITEM ─── */
+  .tl-item {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: calc(50% + 40px);
+    margin-bottom: 60px;
+    position: relative;
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .tl-item.right {
+    justify-content: flex-start;
+    padding-right: 0;
+    padding-left: calc(50% + 40px);
+    transform: translateX(40px);
+  }
+  .tl-item.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* Dot on the line */
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 22px;
+    transform: translateX(-50%);
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--dark);
+    border: 2px solid var(--neon);
+    box-shadow: 0 0 10px var(--neon), 0 0 20px rgba(0,255,224,0.5);
+    z-index: 2;
+    transition: background 0.3s, box-shadow 0.3s;
+  }
+  .tl-item.prize::before {
+    background: var(--gold);
+    border-color: var(--gold);
+    box-shadow: 0 0 12px var(--gold), 0 0 25px rgba(255,215,0,0.5);
+    width: 18px;
+    height: 18px;
+    top: 19px;
+  }
+  .tl-item.milestone::before {
+    background: var(--neon2);
+    border-color: var(--neon2);
+    box-shadow: 0 0 12px var(--neon2), 0 0 25px rgba(255,45,247,0.5);
+  }
+
+  /* Card */
+  .tl-card {
+    background: var(--dark2);
+    border: 1px solid rgba(0,255,224,0.15);
+    border-radius: 4px;
+    padding: 20px 24px;
+    max-width: 340px;
+    position: relative;
+    cursor: default;
+    transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+  }
+  .tl-card:hover {
+    border-color: var(--neon);
+    box-shadow: 0 0 20px rgba(0,255,224,0.12), inset 0 0 20px rgba(0,255,224,0.03);
+    transform: translateY(-3px);
+  }
+  .tl-item.prize .tl-card:hover {
+    border-color: var(--gold);
+    box-shadow: 0 0 20px rgba(255,215,0,0.15);
+  }
+
+  /* Arrow connector */
+  .tl-card::after {
+    content: '';
+    position: absolute;
+    top: 24px;
+    right: -9px;
+    width: 8px; height: 8px;
+    border-top: 1px solid rgba(0,255,224,0.3);
+    border-right: 1px solid rgba(0,255,224,0.3);
+    transform: rotate(45deg);
+    background: var(--dark2);
+  }
+  .tl-item.right .tl-card::after {
+    right: auto;
+    left: -9px;
+    border-top: 1px solid rgba(0,255,224,0.3);
+    border-right: none;
+    border-left: 1px solid rgba(0,255,224,0.3);
+    transform: rotate(-45deg);
+  }
+
+  .tl-year {
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--neon);
+    text-shadow: 0 0 12px rgba(0,255,224,0.6);
+    margin-bottom: 4px;
+    line-height: 1;
+  }
+  .tl-item.prize .tl-year { color: var(--gold); text-shadow: 0 0 12px rgba(255,215,0,0.6); }
+  .tl-item.milestone .tl-year { color: var(--neon2); text-shadow: 0 0 12px rgba(255,45,247,0.6); }
+
+  .tl-tag {
+    display: inline-block;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    padding: 2px 8px;
+    border-radius: 2px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    background: rgba(0,255,224,0.08);
+    color: var(--neon);
+    border: 1px solid rgba(0,255,224,0.2);
+  }
+  .tl-item.prize .tl-tag {
+    background: rgba(255,215,0,0.1);
+    color: var(--gold);
+    border-color: rgba(255,215,0,0.25);
+  }
+  .tl-item.milestone .tl-tag {
+    background: rgba(255,45,247,0.08);
+    color: var(--neon2);
+    border-color: rgba(255,45,247,0.2);
+  }
+
+  .tl-content {
+    font-size: 0.82rem;
+    line-height: 1.7;
+    color: rgba(200,216,232,0.75);
+  }
+  .tl-content strong {
+    color: white;
+    font-weight: normal;
+  }
+
+  /* Prize list */
+  .prize-list {
+    list-style: none;
+    margin-top: 8px;
+  }
+  .prize-list li {
+    padding: 3px 0;
+    font-size: 0.8rem;
+    color: rgba(200,216,232,0.8);
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+  }
+  .prize-list li::before {
+    content: '▸';
+    color: var(--gold);
+    font-size: 0.65rem;
+    flex-shrink: 0;
+  }
+  .place-1 { color: #ffd700 !important; font-weight: bold; }
+  .place-2 { color: #c0c0c0 !important; }
+  .place-3 { color: #cd7f32 !important; }
+
+  /* Scanline overlay */
+  .scanlines {
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      180deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.03) 2px,
+      rgba(0,0,0,0.03) 4px
+    );
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* Legend */
+  .legend {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    padding: 0 0 48px;
+    flex-wrap: wrap;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    color: rgba(200,216,232,0.5);
+  }
+  .legend-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    border: 2px solid currentColor;
+  }
+  .legend-item.l-neon { color: var(--neon); }
+  .legend-item.l-gold { color: var(--gold); }
+  .legend-item.l-pink { color: var(--neon2); }
+
+  @media (max-width: 640px) {
+    .timeline::before { left: 20px; }
+    .tl-item, .tl-item.right {
+      justify-content: flex-start;
+      padding-left: 50px;
+      padding-right: 0;
+      transform: translateX(-30px);
+    }
+    .tl-item::before, .tl-item.right::before { left: 20px; }
+    .tl-card { max-width: 100%; }
+    .tl-card::after, .tl-item.right .tl-card::after {
+      left: -9px; right: auto;
+      border-top: 1px solid rgba(0,255,224,0.3);
+      border-left: 1px solid rgba(0,255,224,0.3);
+      border-right: none;
+      transform: rotate(-45deg);
+    }
+  }
+</style>
+</head>
+<body>
+<div class="scanlines"></div>
+
+<div class="timeline-header">
+  <h2>My <span>Journey</span></h2>
+  <p>// CALLISTO — CHARTON FRÉDÉRIQUE — DIGITAL ARTIST & DEMOSCENER</p>
+  <div class="header-line"></div>
+</div>
+
+<div class="legend">
+  <div class="legend-item l-neon"><div class="legend-dot"></div>Événement</div>
+  <div class="legend-item l-gold"><div class="legend-dot"></div>Prix & Awards</div>
+  <div class="legend-item l-pink"><div class="legend-dot"></div>Milestone</div>
+</div>
+
+<div class="timeline">
+
+  <div class="tl-item milestone">
+    <div class="tl-card">
+      <div class="tl-year">2026</div>
+      <span class="tl-tag">In progress</span>
+      <div class="tl-content">
+        Formation <strong>Full-Stack (THP)</strong> en cours.<br>
+        À venir en avril : <strong>Revision 2026</strong><br>
+        5ème place @ Rsync (Belgique)
+      </div>
+    </div>
+  </div>
+
+  <div class="tl-item prize right">
+    <div class="tl-card">
+      <div class="tl-year">2025</div>
+      <span class="tl-tag">Awards</span>
+      <ul class="prize-list">
+        <li class="place-2">2ème @ Rsync — "Symphony of the Abyss"</li>
+        <li>10ème @ Revision — "Pascal's Lemur Leap"</li>
+        <li>9ème @ Revision — "Invitation SHADOW PARTY 2025"</li>
+        <li>Participation Inercia — "Sky Code"</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tl-item prize">
+    <div class="tl-card">
+      <div class="tl-year">2024</div>
+      <span class="tl-tag">Awards</span>
+      <ul class="prize-list">
+        <li class="place-1">1ère @ Rsync — "Chromatique Résonance" (Graphics)</li>
+        <li>7ème @ Revision — "The Pixel Mouse Love Story"</li>
+        <li>12ème @ Revision — "REFRESH"</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tl-item prize right">
+    <div class="tl-card">
+      <div class="tl-year">2023</div>
+      <span class="tl-tag">Awards</span>
+      <ul class="prize-list">
+        <li>9ème Animation/Video @ Revision — "Cyberpin"</li>
+        <li>11ème Modern Graphics @ Revision — "Howl at the Forest"</li>
+        <li>16ème Photo @ Revision — "Ball of Steel"</li>
+      </ul>
+      <div class="tl-content" style="margin-top:10px">
+        Certification <strong>InDesign</strong> (MJM). Découverte de l'IA.
+      </div>
+    </div>
+  </div>
+
+  <div class="tl-item prize">
+    <div class="tl-card">
+      <div class="tl-year">2022</div>
+      <span class="tl-tag">Awards</span>
+      <ul class="prize-list">
+        <li class="place-1">1ère Freestyle Graphics — "Elevation 2079" @ Inercia</li>
+        <li class="place-3">3ème Nuskool Graphics @ Syntax</li>
+      </ul>
+      <div class="tl-content" style="margin-top:10px">Challenges Inktober & Adobe Live.</div>
+    </div>
+  </div>
+
+  <div class="tl-item milestone right">
+    <div class="tl-card">
+      <div class="tl-year">2021</div>
+      <span class="tl-tag">Milestone</span>
+      <div class="tl-content">
+        Certification <strong>TOSA Illustrator</strong>.<br>
+        Certificat Pinacothèque du Luxembourg — 3 digital paintings.<br>
+        Logo, t-shirts et trophées <strong>Tokyo Demo Fest 2021</strong>.<br>
+        Apprentissage montage vidéo — Shadow Party.
+      </div>
+    </div>
+  </div>
+
+  <div class="tl-item">
+    <div class="tl-card">
+      <div class="tl-year">2020</div>
+      <span class="tl-tag">Organisation</span>
+      <div class="tl-content">
+        Année COVID : demoparties en ligne.<br>
+        Rejoint l'administration de <strong>demoscene.fr</strong> et de la <strong>Shadow Party</strong>.
+      </div>
+    </div>
+  </div>
+
+  <div class="tl-item prize right">
+    <div class="tl-card">
+      <div class="tl-year">2016</div>
+      <span class="tl-tag">Percée internationale</span>
+      <ul class="prize-list">
+        <li>5ème — "Tiger Eyes" @ Revision (Allemagne)</li>
+        <li class="place-1">1ère — "You Are So Delicious" @ Assembly (Finlande)</li>
+        <li>5ème — "Sharko" @ Tokyo Demo Fest (Japon)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tl-item milestone">
+    <div class="tl-card">
+      <div class="tl-year">2015</div>
+      <span class="tl-tag">Naissance</span>
+      <div class="tl-content">
+        Première demoparty — une découverte incroyable qui devient une vraie passion.<br>
+        Premier <strong>paintover</strong> sur un coin de table.
+      </div>
+    </div>
+  </div>
+
+  <div class="tl-item milestone right">
+    <div class="tl-card">
+      <div class="tl-year">2012</div>
+      <span class="tl-tag">Fondation</span>
+      <div class="tl-content">
+        Création de <strong>GPO SARL</strong> — réparation, vente, location de jeux automatiques.<br>
+        Formation Illustrator & Versaworks (Roland VS 640).<br>
+        Apprentissage intensif Adobe via Franck Payen.
+      </div>
+    </div>
+  </div>
+
+  <div class="tl-item">
+    <div class="tl-card">
+      <div class="tl-year">2011</div>
+      <span class="tl-tag">Origines</span>
+      <div class="tl-content">
+        Reprise du dessin après une longue pause.<br>
+        Exploration : crayon, aquarelle, acrylique, pastels secs…
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.tl-item').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
