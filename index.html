@@ -16,7 +16,7 @@
     <meta property="og:title" content="Callisto Arts - Portfolio 2026">
     <meta property="og:description"
         content="Callisto Portfolio - Manager at GPO SARL, Digital Drawing artist and AI Builder">
-    <meta property="og:image" content="https://callistoarts.com/assets/images/og-image.jpg">
+    <meta property="og:image" content="https://callistoarts.com/assets/images/graphics/Chromatic.jpg">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
@@ -24,7 +24,7 @@
     <meta property="twitter:title" content="Callisto Arts - Portfolio 2026">
     <meta property="twitter:description"
         content="Callisto Portfolio - Manager at GPO SARL, Digital Drawing artist and AI Builder">
-    <meta property="twitter:image" content="https://callistoarts.com/assets/images/og-image.jpg">
+    <meta property="twitter:image" content="https://callistoarts.com/assets/images/graphics/Chromatic.jpg">
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -57,7 +57,7 @@
     <nav class="nav" role="navigation" aria-label="Main navigation">
         <div class="nav-container">
             <a href="#home" class="nav-logo" aria-label="Back to home">
-                <img src="assets/images/logo-cllisto.png" alt="Callisto Arts Logo" class="logo-img">
+                <img src="assets/images/logo/logo-cllisto.png" alt="Callisto Arts Logo" class="logo-img">
                 <span class="logo-text">Callisto Arts</span>
             </a>
             <button class="nav-toggle" aria-label="Mobile menu" aria-expanded="false" id="navToggle">
@@ -112,19 +112,11 @@
         <!-- Portfolio Section (sous l'image hero aléatoire) -->
         <section id="portfolio" class="portfolio section" aria-labelledby="portfolio-title">
             <div class="container">
-                <h2 id="portfolio-title" class="section-title">Portfolio</h2>
-                <div class="portfolio-filters" role="tablist" aria-label="Portfolio filters">
-                    <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">All</button>
-                    <button class="filter-btn" data-filter="digital" role="tab" aria-selected="false">Digital
-                        Painting</button>
-                    <button class="filter-btn" data-filter="paintover" role="tab"
-                        aria-selected="false">Paintover</button>
-                    <button class="filter-btn" data-filter="IA" role="tab" aria-selected="false">IA Art</button>
-                    <button class="filter-btn" data-filter="photo" role="tab" aria-selected="false">Photos</button>
-                    <button class="filter-btn" data-filter="gaming" role="tab" aria-selected="false">Gaming
-                        Artwork</button>
-                    <button class="filter-btn" data-filter="tradi" role="tab" aria-selected="false">Traditional
-                        Arts</button>
+                <div class="section-title-wrap">
+                    <h2 id="portfolio-title" class="section-title">Portfolio</h2>
+                </div>
+                <div class="portfolio-filters" id="portfolioFilters" role="tablist" aria-label="Filtres portfolio">
+                    <!-- Boutons de filtre générés par script.js à partir des catégories du JSON -->
                 </div>
                 <div class="portfolio-grid" id="portfolioGrid">
                     <!-- Images are loaded automatically from script.js data -->
@@ -135,7 +127,9 @@
         <!-- About Section -->
         <section id="about" class="about section" aria-labelledby="about-title">
             <div class="container">
-                <h2 id="about-title" class="section-title">About</h2>
+                <div class="section-title-wrap">
+                    <h2 id="about-title" class="section-title">About</h2>
+                </div>
                 <div class="about-content">
                     <div class="card glass-card">
                         <div class="card-content">
@@ -151,6 +145,50 @@
                             <p class="about-text" style="display:none" aria-hidden="true" id="remove-me">
                                 My full timeline (version “neon”) is available just below.
                             </p>
+                        </div>
+                    </div>
+                    <div class="about-cards" aria-label="Présentation par domaines">
+                        <div class="about-card glass-card">
+                            <span class="about-card-icon" aria-hidden="true">🎨</span>
+                            <h3>Digital Drawing</h3>
+                            <p>Artiste digital depuis 2011, compétitions internationales, et passionnée !</p>
+                            <span class="about-card-tag">Portfolio</span>
+                        </div>
+                        <div class="about-card glass-card">
+                            <span class="about-card-icon" aria-hidden="true">🎰</span>
+                            <h3>GPO SARL</h3>
+                            <p>Réparation, vente, locations et fabrications de jeux automatiques — flippers, babyfoot, bornes d'arcade… Nombreux customs et rénovations à l'origine.</p>
+                            <span class="about-card-tag">GPO SARL</span>
+                        </div>
+                        <div class="about-card glass-card">
+                            <span class="about-card-icon" aria-hidden="true">🌌</span>
+                            <h3>Demoscene</h3>
+                            <p>Membre active depuis 2015 — Shadow Party, Revision, Rsync, Inercia, Assembly, Tokyo Demo Fest…</p>
+                            <span class="about-card-tag">Scener</span>
+                        </div>
+                    </div>
+                    <blockquote class="about-quote" cite="https://callistoarts.com">
+                        <p>"My fun is DRAWING !!! ALWAYS… end for ever."</p>
+                        <cite>— CALLISTO, Charton Frédérique</cite>
+                    </blockquote>
+                    <div class="about-cards" aria-label="Présentation par domaines (suite)">
+                        <div class="about-card glass-card">
+                            <span class="about-card-icon" aria-hidden="true">🤖</span>
+                            <h3>AI Prompt</h3>
+                            <p>ChatGPT, Perplexity, Gemini, Claude. Exploration et intégration des outils IA dans le workflow créatif.</p>
+                            <span class="about-card-tag">AI Builder</span>
+                        </div>
+                        <div class="about-card glass-card">
+                            <span class="about-card-icon" aria-hidden="true">💻</span>
+                            <h3>Dev en formation</h3>
+                            <p>The Hacking Project — Full Stack : HTML, CSS, JS, vibe coding assisté par IA, Ruby…</p>
+                            <span class="about-card-tag">THP 2026</span>
+                        </div>
+                        <div class="about-card glass-card">
+                            <span class="about-card-icon" aria-hidden="true">✏️</span>
+                            <h3>UI Design / Graphiste</h3>
+                            <p>Interfaces et ergonomie, accessibilité, sites internet et gaming.<br>Illustrator, Photoshop, Indesign, Fresco, Procreate …</p>
+                            <span class="about-card-tag">UX/UI</span>
                         </div>
                     </div>
                 </div>
@@ -179,6 +217,8 @@
                         <div class="journey-legend-dot" aria-hidden="true"></div>Certificates & diplomas
                     </div>
                 </div>
+
+                <div class="journey-horizontal-bar" aria-hidden="true"></div>
 
                 <div class="journey-timeline" role="list">
                     <div class="journey-tl-item" role="listitem">
@@ -324,7 +364,9 @@
         <!-- Contact Section -->
         <section id="contact" class="contact section" aria-labelledby="contact-title">
             <div class="container">
-                <h2 id="contact-title" class="section-title">Contact</h2>
+                <div class="section-title-wrap">
+                    <h2 id="contact-title" class="section-title">Contact</h2>
+                </div>
                 <div class="contact-content">
                     <div class="card glass-card">
                         <div class="card-content">
@@ -366,18 +408,33 @@
     <footer class="footer" role="contentinfo">
         <div class="container">
             <div class="footer-content">
-                <img src="assets/images/logo-cllisto.png" alt="Callisto Arts Logo" class="footer-logo">
+                <img src="assets/images/logo/logo-cllisto.png" alt="Callisto Arts Logo" class="footer-logo">
                 <div class="footer-text">
                     <p>&copy; 2026 Callisto - Charton Frédérique / GPO</p>
                     <p class="footer-subtitle">My fun is DRAWING !!! ALWAYS... end for ever.</p>
-                    <p class="footer-extra">
-                        <a href="assets/docs%20a%20utliser/cursor-callisto.html" target="_blank" rel="noopener noreferrer">Pixel Cursor demo</a>
-                        · <a href="admin.html">Administration</a>
-                    </p>
                 </div>
             </div>
         </div>
     </footer>
+
+    <!-- Mode Nuit d'Atelier (overlays + toggle) -->
+    <div id="vignette" class="atelier-overlay" aria-hidden="true"></div>
+    <div id="candle-light" class="atelier-overlay" aria-hidden="true"></div>
+    <div id="grain" class="atelier-overlay" aria-hidden="true"></div>
+    <canvas id="stars-overlay" class="atelier-overlay" aria-hidden="true"></canvas>
+    <canvas id="atelier-cursor" class="atelier-cursor" aria-hidden="true"></canvas>
+
+    <div class="atelier-toggle" aria-label="Mode Nuit d'Atelier">
+        <button type="button" class="toggle-btn atelier-toggle-btn" id="atelier-toggle-btn" onclick="toggleNightAtelier()" aria-pressed="false" aria-label="Activer le mode nuit atelier">
+            <span class="toggle-icon">🕯️</span>
+        </button>
+        <span class="toggle-label">Mode Atelier</span>
+    </div>
+
+    <div class="night-banner" id="atelier-banner" aria-live="polite">
+        <strong>🕯️ Nuit d'Atelier</strong>
+        <p>Lumière douce activée. Ambiance bougie.</p>
+    </div>
 
     <!-- Lightbox Modal -->
     <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightbox-title"

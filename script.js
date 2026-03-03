@@ -227,6 +227,16 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // PORTFOLIO DATA (Embedded to fix local CORS issues)
 // ============================================
 const portfolioData = {
+    "categories": [
+        { "id": "digital", "label": "Digital Painting" },
+        { "id": "graphics", "label": "Graphics" },
+        { "id": "paintover", "label": "Paintover" },
+        { "id": "IA", "label": "IA Art" },
+        { "id": "photo", "label": "Photos" },
+        { "id": "gaming", "label": "Gaming Artwork" },
+        { "id": "tradi", "label": "Traditional Arts" },
+        { "id": "logo", "label": "Logo (masqué du portfolio)" }
+    ],
     "images": [
         {
             "filename": "sky_code.jpg",
@@ -370,6 +380,87 @@ const portfolioData = {
     ]
 };
 
+// Catégories chargées depuis le JSON (id -> label), utilisé pour les libellés et la lightbox
+let portfolioCategoryNames = {};
+
+function getCategoryNamesFromData(data) {
+    const map = {};
+    if (data.categories && Array.isArray(data.categories)) {
+        data.categories.forEach(c => { map[c.id] = c.label || c.id; });
+    }
+    if (Object.keys(map).length === 0) {
+        Object.assign(map, {
+            digital: 'Digital Painting', graphics: 'Graphics', paintover: 'Paintover', IA: 'IA Art',
+            photo: 'Photos', gaming: 'Gaming Artwork', tradi: 'Traditional Arts', logo: 'Logo (masqué du portfolio)',
+            'pastel-sec': 'Pastel sec', acrylique: 'Acrylique', animation: 'Animation'
+        });
+    }
+    return map;
+}
+
+/** Libellé par défaut pour un id de catégorie (ex: "pastel-sec" -> "Pastel sec"). */
+function humanizeCategoryId(id) {
+    if (!id) return 'Other';
+    if (id === 'IA') return 'IA Art';
+    const str = id.replace(/-/g, ' ').replace(/_/g, ' ');
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+/**
+ * Construit la liste des catégories à afficher : toutes celles du JSON (hors logo)
+ * + éventuelles catégories présentes dans les images mais pas dans la liste.
+ */
+function getCategoriesFromImages(data) {
+    const labelMap = getCategoryNamesFromData(data);
+    const byId = new Map();
+    (data.categories || []).forEach(c => {
+        if (c.id && c.id !== 'logo') byId.set(c.id, { id: c.id, label: c.label || labelMap[c.id] || humanizeCategoryId(c.id) });
+    });
+    (data.images || []).forEach(img => {
+        if (img.category && img.category !== 'logo' && !byId.has(img.category))
+            byId.set(img.category, { id: img.category, label: labelMap[img.category] || humanizeCategoryId(img.category) });
+        if (img.filename && img.filename.includes('/')) {
+            const folder = img.filename.split('/')[0];
+            if (folder && folder !== 'logo' && !byId.has(folder))
+                byId.set(folder, { id: folder, label: labelMap[folder] || humanizeCategoryId(folder) });
+        }
+    });
+    return Array.from(byId.values())
+        .sort((a, b) => a.label.localeCompare(b.label, undefined, { sensitivity: 'base' }));
+}
+
+function buildPortfolioFilterButtons(categories) {
+    const container = document.getElementById('portfolioFilters');
+    if (!container) return;
+    const list = Array.isArray(categories) && categories.length > 0
+        ? categories
+        : [
+            { id: 'digital', label: 'Digital Painting' }, { id: 'graphics', label: 'Graphics' },
+            { id: 'paintover', label: 'Paintover' }, { id: 'IA', label: 'IA Art' }, { id: 'photo', label: 'Photos' },
+            { id: 'gaming', label: 'Gaming Artwork' }, { id: 'tradi', label: 'Traditional Arts' },
+            { id: 'pastel-sec', label: 'Pastel sec' }, { id: 'acrylique', label: 'Acrylique' }, { id: 'animation', label: 'Animation' }
+        ];
+    container.innerHTML = '';
+    const allBtn = document.createElement('button');
+    allBtn.type = 'button';
+    allBtn.className = 'filter-btn active';
+    allBtn.setAttribute('data-filter', 'all');
+    allBtn.setAttribute('role', 'tab');
+    allBtn.setAttribute('aria-selected', 'true');
+    allBtn.textContent = 'All';
+    container.appendChild(allBtn);
+    list.forEach(cat => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'filter-btn';
+        btn.setAttribute('data-filter', cat.id);
+        btn.setAttribute('role', 'tab');
+        btn.setAttribute('aria-selected', 'false');
+        btn.textContent = cat.label;
+        container.appendChild(btn);
+    });
+}
+
 // ============================================
 // PORTFOLIO LOAD (Simulated fetch)
 // ============================================
@@ -377,24 +468,29 @@ async function loadPortfolioImages() {
     try {
         let data = portfolioData;
         try {
-            const res = await fetch('assets/images/portfolio_images.json');
+            const res = await fetch('assets/images/portfolio_images.json?t=' + Date.now(), { cache: 'no-store' });
             if (res.ok) {
                 const json = await res.json();
-                if (json && json.images && json.images.length) data = json;
+                if (json && json.images) data = json;
             }
         } catch (_) { /* garde portfolioData en secours */ }
         const portfolioGrid = document.getElementById('portfolioGrid');
 
         if (!portfolioGrid) return;
 
-        // Filtrer les images (exclure les logos)
-        const images = data.images.filter(img => img.category !== 'logo');
+        portfolioCategoryNames = getCategoryNamesFromData(data);
+        const categoriesFromImages = getCategoriesFromImages(data);
+        buildPortfolioFilterButtons(categoriesFromImages);
+
+        const allImages = data.images || [];
 
         // Créer les éléments portfolio
-        images.forEach(image => {
+        allImages.forEach((image) => {
+            if (image.category === 'logo') return;
+            const category = image.category || (image.filename && image.filename.includes('/') ? image.filename.split('/')[0] : 'other');
             const item = document.createElement('div');
             item.className = 'portfolio-item glass-card';
-            item.setAttribute('data-category', image.category);
+            item.setAttribute('data-category', category);
             item.setAttribute('tabindex', '0');
             item.setAttribute('role', 'button');
             item.setAttribute('data-image-data', JSON.stringify(image));
@@ -406,6 +502,13 @@ async function loadPortfolioImages() {
             img.src = `assets/images/${image.filename}`;
             img.alt = image.title || image.filename;
             img.loading = 'lazy';
+            img.decoding = 'async';
+            img.onerror = function () {
+                this.onerror = null;
+                this.src = 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>');
+                this.alt = (this.getAttribute('alt') || '') + ' (image non disponible)';
+                this.classList.add('img-error');
+            };
 
             const overlay = document.createElement('div');
             overlay.className = 'portfolio-overlay';
@@ -414,19 +517,9 @@ async function loadPortfolioImages() {
             title.className = 'portfolio-title';
             title.textContent = image.title || 'Artwork';
 
-            const category = document.createElement('p');
-            category.className = 'portfolio-category';
-            const categoryNames = {
-                'digital': 'Digital Painting',
-                'paintover': 'Paintover',
-                'IA': 'IA Art',
-                'photo': 'Photo',
-                'gaming': 'Gaming Artwork',
-                'tradi': 'Traditional Arts',
-                'graphics': 'Graphics',
-                'animation': 'Animation'
-            };
-            category.textContent = categoryNames[image.category] || image.category;
+            const categoryEl = document.createElement('p');
+            categoryEl.className = 'portfolio-category';
+            categoryEl.textContent = portfolioCategoryNames[category] || humanizeCategoryId(category);
 
             overlay.appendChild(title);
 
@@ -438,7 +531,7 @@ async function loadPortfolioImages() {
                 overlay.appendChild(yearSpan);
             }
 
-            overlay.appendChild(category);
+            overlay.appendChild(categoryEl);
 
             // Ajouter le badge de récompense si présent
             if (image.award) {
@@ -460,6 +553,9 @@ async function loadPortfolioImages() {
         // Attacher les événements lightbox
         attachLightboxEvents();
 
+        // Hero : reconstruire avec les mêmes données que la grille (cohérence)
+        buildHeroSlidesFromPortfolio(data);
+        initHeroSlide();
     } catch (error) {
         console.error('Erreur lors du chargement des images:', error);
     }
@@ -470,44 +566,32 @@ async function loadPortfolioImages() {
 // ============================================
 function initPortfolioFilters() {
     const filterButtons = document.querySelectorAll('.filter-btn');
-
-    console.log('Initializing filters, buttons found:', filterButtons.length);
+    const portfolioGrid = document.getElementById('portfolioGrid');
 
     filterButtons.forEach(button => {
         button.addEventListener('click', () => {
-            console.log('Filter clicked:', button.getAttribute('data-filter'));
+            const portfolioItems = portfolioGrid ? portfolioGrid.querySelectorAll('.portfolio-item') : document.querySelectorAll('.portfolio-item');
+            const filter = (button.getAttribute('data-filter') || 'all').toLowerCase();
 
-            // Re-query items dynamically to handle updates
-            const portfolioItems = document.querySelectorAll('.portfolio-item');
-
-            // Update active states
+            // Activer uniquement le bouton cliqué (tri par catégorie)
             filterButtons.forEach(btn => {
                 btn.classList.remove('active');
                 btn.setAttribute('aria-selected', 'false');
             });
-
             button.classList.add('active');
             button.setAttribute('aria-selected', 'true');
 
-            // Filter items
-            const filter = button.getAttribute('data-filter');
-
+            // Afficher les items de la catégorie choisie, masquer les autres
             portfolioItems.forEach(item => {
-                if (filter === 'all' || item.getAttribute('data-category') === filter) {
-                    item.style.display = 'block';
-                    // Small delay to allow display:block to apply before opacity transition
-                    requestAnimationFrame(() => {
-                        item.style.opacity = '1';
-                        item.style.transform = 'scale(1)';
-                    });
+                const cat = (item.getAttribute('data-category') || '').toLowerCase();
+                if (filter === 'all' || cat === filter) {
+                    item.style.display = '';
+                    item.style.opacity = '1';
+                    item.style.transform = 'scale(1)';
                 } else {
                     item.style.opacity = '0';
                     item.style.transform = 'scale(0.8)';
-                    setTimeout(() => {
-                        if (item.style.opacity === '0') { // Check if still hidden
-                            item.style.display = 'none';
-                        }
-                    }, 300);
+                    setTimeout(() => { item.style.display = 'none'; }, 300);
                 }
             });
         });
@@ -549,9 +633,15 @@ function openLightbox(item) {
     const category = imageData?.category || item.querySelector('.portfolio-category')?.textContent || '';
     const badge = imageData?.award || item.querySelector('.portfolio-badge')?.textContent || '';
 
-    if (img && lightboxImage) {
-        lightboxImage.src = img.src;
-        lightboxImage.alt = img.alt || title;
+    if (lightboxImage) {
+        const src = imageData?.filename ? ('assets/images/' + imageData.filename) : (img?.src || '');
+        lightboxImage.src = src;
+        lightboxImage.alt = imageData?.title || img?.alt || title;
+        lightboxImage.onerror = function () {
+            this.onerror = null;
+            this.src = 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>');
+            this.alt = (this.alt || '') + ' (image non disponible)';
+        };
     }
 
     if (lightboxTitle) {
@@ -559,15 +649,7 @@ function openLightbox(item) {
     }
 
     if (lightboxDescription) {
-        const categoryNames = {
-            'digital': 'Digital Painting',
-            'paintover': 'Paintover',
-            'IA': 'IA Art',
-            'photo': 'Photo',
-            'gaming': 'Gaming Artwork',
-            'tradi': 'Traditional Arts'
-        };
-        const categoryText = categoryNames[category] || category;
+        const categoryText = portfolioCategoryNames[category] || category;
         lightboxDescription.textContent = `${categoryText}${badge ? ' • ' + badge : ''}`;
     }
 
@@ -711,13 +793,26 @@ function buildHeroSlidesFromPortfolio(data) {
     const count = Math.min(5, images.length);
     const picked = shuffleArray(images).slice(0, count);
     container.innerHTML = '';
+    const placeholderSvg = 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>');
     picked.forEach((img, i) => {
         const slide = document.createElement('div');
         slide.className = 'hero-slide' + (i === 0 ? ' active' : '');
         slide.setAttribute('data-slide', String(i));
         const caption = [img.title, img.award, img.year].filter(Boolean).join(' — ') || img.title || img.filename;
-        slide.innerHTML = '<img src="assets/images/' + img.filename + '" alt="' + (img.title || img.filename).replace(/"/g, '&quot;') + '" class="hero-image-3d">' +
-            '<div class="hero-image-caption">' + caption.replace(/</g, '&lt;') + '</div>';
+        const heroImg = document.createElement('img');
+        heroImg.src = 'assets/images/' + img.filename;
+        heroImg.alt = (img.title || img.filename).replace(/"/g, '');
+        heroImg.className = 'hero-image-3d';
+        heroImg.onerror = function () {
+            this.onerror = null;
+            this.src = placeholderSvg;
+            this.alt = (this.alt || '') + ' (non disponible)';
+        };
+        const capDiv = document.createElement('div');
+        capDiv.className = 'hero-image-caption';
+        capDiv.textContent = caption;
+        slide.appendChild(heroImg);
+        slide.appendChild(capDiv);
         container.appendChild(slide);
     });
 }
@@ -910,3 +1005,159 @@ function initJourneyTimeline() {
 
     items.forEach(el => journeyObserver.observe(el));
 }
+
+// ============================================
+// MODE NUIT ATELIER (nuit-atelier.html)
+// Toggle, overlays (vignette, candle-light, grain, stars), curseur bougie
+// ============================================
+(function atelierInit() {
+    const candleLight = document.getElementById('candle-light');
+    const starsCanvas = document.getElementById('stars-overlay');
+    const atelierCursor = document.getElementById('atelier-cursor');
+    const toggleBtn = document.getElementById('atelier-toggle-btn');
+    const banner = document.getElementById('atelier-banner');
+    if (!candleLight || !atelierCursor) return;
+
+    let isNight = false;
+    let flameT = 0;
+    const trailPts = [];
+    const PX = 3;
+    const FLAME = [
+        '...FF...', '..FFFF..', '.FFFFFF.', '.FWWFF..', 'FFWWWFF.', '.FFFFFF.',
+        '..FFFF..', '...CC...', '...CC...', '..CCCC..', '...CC...', '........'
+    ];
+
+    // Candle light suit la souris (--lx, --ly en %)
+    document.addEventListener('mousemove', function (e) {
+        const lx = (e.clientX / window.innerWidth * 100).toFixed(1);
+        const ly = (e.clientY / window.innerHeight * 100).toFixed(1);
+        candleLight.style.setProperty('--lx', lx + '%');
+        candleLight.style.setProperty('--ly', ly + '%');
+    });
+
+    // Curseur atelier : position souris + trail pour le canvas atelier
+    let mx = -100, my = -100;
+    document.addEventListener('mousemove', function (e) {
+        mx = e.clientX;
+        my = e.clientY;
+        trailPts.push({ x: mx, y: my, life: 1 });
+        if (trailPts.length > 20) trailPts.shift();
+    });
+
+    function drawAtelierCursor() {
+        if (!atelierCursor) return;
+        const ctx = atelierCursor.getContext('2d');
+        const W = atelierCursor.width = window.innerWidth;
+        const H = atelierCursor.height = window.innerHeight;
+        ctx.clearRect(0, 0, W, H);
+        if (!document.body.classList.contains('night')) {
+            requestAnimationFrame(drawAtelierCursor);
+            return;
+        }
+        // Trail fumée
+        trailPts.forEach(function (p, i) {
+            const a = (i / trailPts.length) * 0.15;
+            ctx.globalAlpha = a;
+            ctx.fillStyle = 'rgba(255,157,58,1)';
+            ctx.fillRect(p.x - 1, p.y - 1, 3, 3);
+        });
+        ctx.globalAlpha = 1;
+        // Halo bougie
+        const halo = ctx.createRadialGradient(mx, my, 0, mx, my, 40);
+        halo.addColorStop(0, 'rgba(255,157,58,0.25)');
+        halo.addColorStop(0.5, 'rgba(255,157,58,0.08)');
+        halo.addColorStop(1, 'transparent');
+        ctx.fillStyle = halo;
+        ctx.beginPath();
+        ctx.arc(mx, my, 40, 0, Math.PI * 2);
+        ctx.fill();
+        // Flamme pixel
+        const wobble = Math.sin(flameT * 0.3) * 1.5;
+        const offsetX = mx - 4 * PX + wobble;
+        const offsetY = my - 10 * PX;
+        FLAME.forEach(function (row, gy) {
+            Array.prototype.forEach.call(row, function (c, gx) {
+                if (c === 'F') {
+                    const flicker = 0.7 + Math.sin(flameT * 0.5 + gx * 0.8 + gy * 0.3) * 0.3;
+                    ctx.fillStyle = 'rgba(255,' + Math.floor(100 + flicker * 100) + ',30,' + flicker + ')';
+                    ctx.fillRect(Math.round(offsetX + gx * PX), Math.round(offsetY + gy * PX), PX, PX);
+                } else if (c === 'W') {
+                    ctx.fillStyle = 'rgba(255,240,200,' + (0.8 + Math.sin(flameT * 0.7) * 0.2) + ')';
+                    ctx.fillRect(Math.round(offsetX + gx * PX), Math.round(offsetY + gy * PX), PX, PX);
+                } else if (c === 'C') {
+                    ctx.fillStyle = 'rgba(220,180,140,0.9)';
+                    ctx.fillRect(Math.round(offsetX + gx * PX), Math.round(offsetY + gy * PX), PX, PX);
+                }
+            });
+        });
+        flameT++;
+        requestAnimationFrame(drawAtelierCursor);
+    }
+
+    let starsData = [];
+    function initStars() {
+        if (!starsCanvas) return;
+        starsCanvas.width = window.innerWidth;
+        starsCanvas.height = window.innerHeight;
+        starsData = Array.from({ length: 120 }, function () {
+            return {
+                x: Math.random() * starsCanvas.width,
+                y: Math.random() * starsCanvas.height,
+                r: Math.random() * 1.5 + 0.3,
+                phase: Math.random() * Math.PI * 2,
+                speed: 0.5 + Math.random() * 1.5
+            };
+        });
+    }
+    initStars();
+    window.addEventListener('resize', initStars);
+
+    function drawStars() {
+        if (!starsCanvas || !starsData.length) {
+            requestAnimationFrame(drawStars);
+            return;
+        }
+        const ctx = starsCanvas.getContext('2d');
+        ctx.clearRect(0, 0, starsCanvas.width, starsCanvas.height);
+        if (!document.body.classList.contains('night')) {
+            requestAnimationFrame(drawStars);
+            return;
+        }
+        const t = Date.now() / 1000;
+        starsData.forEach(function (s) {
+            const a = 0.3 + 0.4 * Math.sin(t * s.speed + s.phase);
+            ctx.fillStyle = 'rgba(255,235,200,' + a + ')';
+            ctx.beginPath();
+            ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+            ctx.fill();
+        });
+        requestAnimationFrame(drawStars);
+    }
+    drawStars();
+
+    let bannerTimeout;
+    window.toggleNightAtelier = function () {
+        isNight = !isNight;
+        document.body.classList.toggle('night', isNight);
+        if (toggleBtn) {
+            toggleBtn.classList.toggle('on', isNight);
+            toggleBtn.querySelector('.toggle-icon').textContent = isNight ? '☀️' : '🕯️';
+            toggleBtn.setAttribute('aria-pressed', isNight);
+        }
+        if (banner) {
+            if (isNight) {
+                banner.classList.add('vis');
+                clearTimeout(bannerTimeout);
+                bannerTimeout = setTimeout(function () { banner.classList.remove('vis'); }, 3000);
+            } else {
+                banner.classList.remove('vis');
+            }
+        }
+    };
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        atelierCursor.style.display = 'none';
+    } else {
+        drawAtelierCursor();
+    }
+})();
