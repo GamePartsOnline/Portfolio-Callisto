@@ -1,16 +1,49 @@
 {
   "categories": [
-    { "id": "digital", "label": "Digital Painting" },
-    { "id": "graphics", "label": "Graphics" },
-    { "id": "paintover", "label": "Paintover" },
-    { "id": "IA", "label": "IA Art" },
-    { "id": "photo", "label": "Photos" },
-    { "id": "gaming", "label": "Gaming Artwork" },
-    { "id": "tradi", "label": "Traditional Arts" },
-    { "id": "logo", "label": "Logo (masqué du portfolio)" },
-    { "id": "pastel-sec", "label": "Pastel sec" },
-    { "id": "acrylique", "label": "Acrylique" },
-    { "id": "animation", "label": "Animation" }
+    {
+      "id": "digital",
+      "label": "Digital Painting"
+    },
+    {
+      "id": "graphics",
+      "label": "Graphics"
+    },
+    {
+      "id": "paintover",
+      "label": "Paintover"
+    },
+    {
+      "id": "IA",
+      "label": "IA Art"
+    },
+    {
+      "id": "photo",
+      "label": "Photos"
+    },
+    {
+      "id": "gaming",
+      "label": "Gaming Artwork"
+    },
+    {
+      "id": "tradi",
+      "label": "Traditional Arts"
+    },
+    {
+      "id": "logo",
+      "label": "Logo (masqué du portfolio)"
+    },
+    {
+      "id": "pastel-sec",
+      "label": "Pastel sec"
+    },
+    {
+      "id": "acrylique",
+      "label": "Acrylique"
+    },
+    {
+      "id": "animation",
+      "label": "Animation"
+    }
   ],
   "images": [
     {
