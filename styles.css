@@ -1828,12 +1828,6 @@ body.night .about-card-tag {
   color: var(--color-brand-neon);
   box-shadow: 0 0 12px rgba(0, 255, 224, 0.25);
 }
-.filter-btn[data-filter="digital"]:hover,
-.filter-btn[data-filter="digital"]:focus {
-  border-color: #00ffe0;
-  color: #00ffe0;
-  box-shadow: 0 0 12px rgba(0, 255, 224, 0.25);
-}
 .filter-btn[data-filter="paintover"]:hover,
 .filter-btn[data-filter="paintover"]:focus {
   border-color: var(--color-brand-rose);
@@ -1905,13 +1899,6 @@ body.night .about-card-tag {
 }
 
 /* Contour néon actif — couleur par catégorie (répertoires assets/images/) */
-.filter-btn.active[data-filter="digital"] {
-  border-color: #00ffe0;
-  color: #00ffe0;
-  box-shadow:
-    0 0 14px rgba(0, 255, 224, 0.4),
-    inset 0 0 14px rgba(0, 255, 224, 0.06);
-}
 .filter-btn.active[data-filter="paintover"] {
   border-color: var(--color-brand-rose);
   color: var(--color-brand-rose);
@@ -2015,12 +2002,6 @@ body.night .about-card-tag {
 }
 
 /* Bordure au survol selon la catégorie de l'image */
-.portfolio-item[data-category="digital"]:hover {
-  border-color: #00ffe0;
-  box-shadow:
-    0 0 20px rgba(0, 255, 224, 0.2),
-    inset 0 0 20px rgba(0, 255, 224, 0.03);
-}
 .portfolio-item[data-category="paintover"]:hover {
   border-color: var(--color-brand-rose);
   box-shadow:

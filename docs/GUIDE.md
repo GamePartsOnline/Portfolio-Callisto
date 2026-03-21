@@ -33,7 +33,7 @@ Copier les images dans le dossier `assets/images/`
   "images": [
     {
       "filename": "mon-image.jpg",
-      "category": "digital",
+      "category": "graphics",
       "title": "Titre de mon œuvre",
       "award": "1ère place @ Rsync 2024",
       "year": 2024
@@ -44,7 +44,7 @@ Copier les images dans le dossier `assets/images/`
 
 **Champs disponibles :**
 - `filename` (requis) : Nom du fichier dans `assets/images/`
-- `category` (requis) : `digital`, `animation`, `graphics`, `photo`, `gaming`, `traditional`
+- `category` (requis) : `graphics`, `animation`, `photo`, `gaming`, `paintover`, `IA`, etc.
 - `title` (optionnel) : Titre de l'œuvre
 - `award` (optionnel) : Texte de la récompense (ex: "1ère place @ Rsync 2024")
 - `year` (optionnel) : Année de la récompense (utilisé pour trier les awards)
@@ -53,9 +53,8 @@ Copier les images dans le dossier `assets/images/`
 
 ### Catégories disponibles
 
-- `digital` - Digital Painting
 - `animation` - Animation/Video
-- `graphics` - Graphics
+- `graphics` - Graphics (inclut l’illustration / peinture numérique type demoscene)
 - `photo` - Photos
 - `gaming` - Gaming Artwork
 - `traditional` - Traditional Arts

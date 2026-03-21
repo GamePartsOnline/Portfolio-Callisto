@@ -239,7 +239,6 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
 // ============================================
 const portfolioData = {
   categories: [
-    { id: "digital", label: "Digital Painting" },
     { id: "graphics", label: "Graphics" },
     { id: "paintover", label: "Paintover" },
     { id: "IA", label: "IA Art" },
@@ -252,21 +251,21 @@ const portfolioData = {
   images: [
     {
       filename: "sky_code.jpg",
-      category: "digital",
+      category: "graphics",
       title: "Sky code",
       year: 2026,
       award: "INERCIA - PORTUGAL",
     },
     {
       filename: "Callisto_Pascals-lemur-leap_step-finale-2048x1152.jpg",
-      category: "digital",
+      category: "graphics",
       title: "Pascal's lemur leap",
       award: "10ème place @ Revision - Saarbrucken - Allemagne",
       year: 2025,
     },
     {
       filename: "Chromatic.jpg",
-      category: "digital",
+      category: "graphics",
       title: "Chromatique résonance",
       award: "1ère place @ Rsync",
       year: 2024,
@@ -280,7 +279,7 @@ const portfolioData = {
     },
     {
       filename: "2fb0.356160_ori-2048x1910.jpg",
-      category: "digital",
+      category: "graphics",
       title: "Symphony of the abyss",
       year: 2025,
       award: "2ème place @ Rsync 2025",
@@ -293,50 +292,61 @@ const portfolioData = {
       year: 2024,
     },
     {
+      filename: "graphics/3f29.85342.jpg",
+      category: "paintover",
+      title: "Pac'man to space",
+      year: 2015,
+      award: "9th in the Revision 2015 Paintover competition",
+      description:
+        "by Callisto\n\nReleased 5 April 2015 — Windows.",
+    },
+    {
       filename: "407845946_398297489188178_8033467046376857047_n.jpg",
-      category: "digital",
+      category: "graphics",
       title: "Aerolia Harmonia",
       award: "Graphics Showcase - Inercia - Portugal",
       year: 2023,
     },
     {
       filename: "Luna-fly-by-callisto-finale-1-scaled.jpg",
-      category: "digital",
+      category: "graphics",
       title: "Luna Fly",
       award: "5ème place @ Session",
       year: 2023,
     },
     {
       filename: "cropped-elevation-finale-scaled-1.jpg",
-      category: "digital",
+      category: "graphics",
       title: "Elevation 2079",
       award: "1ère place @ Inercia",
       year: 2022,
     },
     {
-      filename: "339435602_905924634051246_6940335715669469411_n.jpg",
-      category: "digital",
+      filename: "graphics/339435602_905924634051246_6940335715669469411_n.jpg",
+      category: "graphics",
       title: "Howl Of The Forest",
-      award: "11th revision - saarbrucken - Allemagne",
       year: 2023,
+      award: "11th in the Revision 2023 Modern Graphics competition",
+      description:
+        "by Callisto / Flush ^ Vital-Motion!\n\nReleased 9 April 2023.",
     },
     {
       filename: "PresentationCallisto2022-5.jpg",
-      category: "digital",
+      category: "graphics",
       title: "You Seem So Delicious",
       year: 2022,
       award: "1st Assembly - Finlande",
     },
     {
       filename: "rift.jpg",
-      category: "digital",
+      category: "graphics",
       title: "The rift",
       year: 2021,
       award: "11th  revision - saarbrucken - Allemagne",
     },
     {
       filename: "Callisto_finale-6.jpg",
-      category: "digital",
+      category: "graphics",
       title: "Sharko",
       year: 2021,
       award: "5TH SESSION, JAPON, TOKYO",
@@ -350,7 +360,7 @@ const portfolioData = {
     },
     {
       filename: "74410909_1244316935752931_2378795365198462976_n.jpg",
-      category: "digital",
+      category: "graphics",
       award: "Digital Painting just for fun",
       title: "Eagle",
     },
@@ -395,7 +405,7 @@ const portfolioData = {
       award:
         "16th place — Revision 2015 PC Demo — Royal Belgian Beer Squadron",
       description:
-        "[DEMOSCENE] [PC DEMO] Windows — Group: Royal Belgian Beer Squadron — Released 5 April 2015 — 16th in the Revision 2015 PC Demo competition.",
+        "[DEMOSCENE] [PC DEMO] Windows — Group: Royal Belgian Beer Squadron — Released 5 April 2015 — 16th in the Revision 2015 PC Demo competition.\n\nCallisto - \"Text (Translation)\"",
     },
     {
       filename: "logo-cllisto.png",
@@ -418,7 +428,6 @@ function getCategoryNamesFromData(data) {
   }
   if (Object.keys(map).length === 0) {
     Object.assign(map, {
-      digital: "Digital Painting",
       graphics: "Graphics",
       paintover: "Paintover",
       IA: "IA Art",
@@ -498,7 +507,6 @@ function buildPortfolioFilterButtons(categories) {
     Array.isArray(categories) && categories.length > 0
       ? categories
       : [
-          { id: "digital", label: "Digital Painting" },
           { id: "graphics", label: "Graphics" },
           { id: "paintover", label: "Paintover" },
           { id: "IA", label: "IA Art" },

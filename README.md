@@ -122,7 +122,6 @@ Portfolio-Callisto/
 | `paintover` | Paintover et retouches artistiques |
 | `photo` | Photographies |
 | `IA` | Créations assistées par IA (prompt art) |
-| `digital` | Digital painting & illustration |
 | `logo` | Logos (exclus de la grille portfolio) |
 
 ---

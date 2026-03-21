@@ -38,7 +38,7 @@
 
 ## Données galerie (`portfolio_images.json`)
 
-- **`categories`** : liste `{ id, label }` — ex. `graphics`, `photo`, `paintover`, `IA`, `digital`, `logo` (masqué du portfolio selon la logique JS), etc.
+- **`categories`** : liste `{ id, label }` — ex. `graphics`, `photo`, `paintover`, `IA`, `logo` (masqué du portfolio selon la logique JS), etc.
 - **`images`** : pour chaque entrée, typiquement :
   - `filename` (chemin sous `assets/images/`)
   - `category`

@@ -24,7 +24,7 @@ def main():
     # Déplacer chaque image du portfolio dans son dossier catégorie
     for img in data["images"]:
         old_name = img["filename"]
-        # Si déjà avec sous-dossier (ex: "digital/fichier.jpg"), ignorer
+        # Si déjà avec sous-dossier (ex: "graphics/fichier.jpg"), ignorer
         if "/" in old_name:
             continue
         cat = img.get("category", "other")

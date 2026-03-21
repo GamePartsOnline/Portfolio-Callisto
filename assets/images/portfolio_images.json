@@ -1,10 +1,6 @@
 {
   "categories": [
     {
-      "id": "digital",
-      "label": "Digital Painting"
-    },
-    {
       "id": "graphics",
       "label": "Graphics"
     },
@@ -49,12 +45,18 @@
     {
       "filename": "graphics/339435602_905924634051246_6940335715669469411_n.jpg",
       "category": "graphics",
-      "title": "339435602 905924634051246 6940335715669469411 n"
+      "title": "Howl Of The Forest",
+      "year": 2023,
+      "award": "11th in the Revision 2023 Modern Graphics competition",
+      "description": "by Callisto / Flush ^ Vital-Motion!\n\nReleased 9 April 2023."
     },
     {
       "filename": "graphics/344736827_755458082626458_6207407694818355725_n.jpg",
       "category": "graphics",
-      "title": "344736827 755458082626458 6207407694818355725 n"
+      "title": "Luna Fly",
+      "year": 2023,
+      "award": "5th in the SESSIONS in C4 LAN 2023 SPRING Combined Graphics competition",
+      "description": "by Callisto / Flush ^ GPO ^ Vital-Motion!\n\nReleased 29 April 2023."
     },
     {
       "filename": "graphics/376688281_353500107001250_6102064824076954240_n.jpg",
@@ -84,9 +86,10 @@
     {
       "filename": "graphics/oeil_de_tigre.jpg",
       "category": "graphics",
-      "title": "Œil de tigre",
+      "title": "Tigre by Callisto",
       "award": "5th in the Revision 2016 Modern Graphics competition",
-      "year": 2016
+      "year": 2016,
+      "description": "Released 27 March 2016 — Windows."
     },
     {
       "filename": "graphics/IAinercia.jpg",
@@ -153,7 +156,18 @@
     {
       "filename": "paintover/c6ce.pl187430.jpg",
       "category": "paintover",
-      "title": "c6ce.pl187430"
+      "title": "Sharp Eyes by Callisto",
+      "year": 2016,
+      "award": "9th in the Revision 2016 Paintover competition",
+      "description": "Released 27 March 2016 — Windows."
+    },
+    {
+      "filename": "graphics/3f29.85342.jpg",
+      "category": "paintover",
+      "title": "Pac'man to space",
+      "year": 2015,
+      "award": "9th in the Revision 2015 Paintover competition",
+      "description": "by Callisto\n\nReleased 5 April 2015 — Windows."
     },
     {
       "filename": "photo/183407402_10225214914982252_8102507980517360390_n-1024x768.jpg",
@@ -199,7 +213,7 @@
       "title": "RBBS — We Have Accidentally Your Whole Audience",
       "year": 2015,
       "award": "16th place — Revision 2015 PC Demo — Royal Belgian Beer Squadron",
-      "description": "[DEMOSCENE] [PC DEMO] Windows — Group: Royal Belgian Beer Squadron — Released 5 April 2015 — 16th in the Revision 2015 PC Demo competition.\n\nCallisto — \"Text (Translation)\""
+      "description": "[DEMOSCENE] [PC DEMO] Windows — Group: Royal Belgian Beer Squadron — Released 5 April 2015 — 16th in the Revision 2015 PC Demo competition.\n\nCallisto - \"Text (Translation)\""
     }
   ]
 }

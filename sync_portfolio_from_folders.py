@@ -73,12 +73,11 @@ def main():
     folders_with_files = {img["category"] for img in new_images}
     existing_cats = {c["id"]: c for c in data.get("categories", [])}
     new_cats = []
-    for cid in ["digital", "graphics", "paintover", "IA", "photo", "gaming", "tradi", "logo", "pastel-sec", "acrylique", "animation", "other"]:
+    for cid in ["graphics", "paintover", "IA", "photo", "gaming", "tradi", "logo", "pastel-sec", "acrylique", "animation", "other"]:
         if cid in existing_cats:
             new_cats.append(existing_cats[cid])
         elif cid in folders_with_files or cid == "logo":
             label = {
-                "digital": "Digital Painting",
                 "graphics": "Graphics",
                 "paintover": "Paintover",
                 "IA": "IA Art",
