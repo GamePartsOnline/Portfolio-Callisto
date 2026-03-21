@@ -11,61 +11,27 @@ Ce dossier contient toutes les images téléchargées depuis le site https://cal
 
 ## 📁 Organisation
 
-Les images sont organisées par catégories selon leur nom :
+Sous-dossiers : `graphics/`, `paintover/`, `photo/`, `gaming/`, `logo/`, etc.
 
-### Digital Painting / Demoscene
-- `Chromatic-Resonance.jpg` - Chromatique résonance (1ère place @ Rsync)
-- `Callisto_Pascals-lemur-leap_step-finale-*.jpg` - Pascal's lemur leap (10ème place @ Revision)
-- `paintover2024_callisto_refresh_step05.jpg` - Refresh (12ème place @ Revision)
-- `cropped-elevation-finale-scaled-1.jpg` - Elevation 2079 (1ère place @ Inercia 2022)
-- `Luna-fly-by-callisto-finale-1-scaled.jpg` - Luna Fly
-- `IMG_0899-*.jpg` - Image récente (2025)
+**Important :** les chemins dans `portfolio_images.json` doivent **exactement** correspondre aux fichiers présents dans `assets/images/` (sinon vignettes cassées). Le dépôt utilise en général les **noms d’origine** (hash Instagram, etc.).
 
-### Animation/Video
-- `339435602_*.jpg` - Vidéos d'animation
-- `344736827_*.jpg` - Vidéos d'animation
-- `407845946_*.jpg` - Vidéos d'animation
+**Optionnel — slugs** : on peut renommer les fichiers en **slug** + année (`howl-of-the-forest-2023.jpg`, etc.) **à condition** de lancer le script de renommage **et** de mettre le JSON à jour en même temps, puis de tout déployer d’un coup. Ne pas changer uniquement le JSON sans renommer les fichiers sur le serveur / en local.
 
-### Photos
-- `Callisto_photo_revision2023-*.jpg` - Photo @ Revision 2023
-- `183407402_*.jpg` - Photos diverses
-- `183672347_*.jpg` - Photos diverses
-- `184748692_*.jpg` - Photos diverses
-- `201800017_*.jpg` - Photos diverses
-- `219354504_*.jpg` - Photos diverses
-- `312518226_*.jpg` - Photos diverses
-- `603b.288439-*.jpg` - Photos diverses
-- `83081489_*.jpg` - Photos diverses
-- `97006880_*.jpg` - Photos diverses
-- `98001932_*.jpg` - Photos diverses
-- `a4d5.292273-*.jpg` - Photos diverses
-- `IMG_20220818_*.jpg` - Photo août 2022
-- `Callisto_convergence-*.jpg` - Convergence
+### Exemples de fichiers renommés (référence)
 
-### Traditional Arts
-- `acrilyc-*.png` - Acrylique
-- `aquarelle-*.png` - Aquarelle
-- `crayons-1-*.png` - Crayons
-- `pastel-sec-*.png` - Pastel sec
+- `graphics/chromatique-resonance-2024.jpg` — Chromatique résonance  
+- `graphics/howl-of-the-forest-2023.jpg` — Howl Of The Forest  
+- `graphics/pascals-lemur-leap-2025.jpg` — Pascal's lemur leap  
+- `paintover/sharp-eyes-by-callisto-2016.jpg` — Sharp Eyes by Callisto  
+- `photo/convergence-2023.jpg` — Convergence  
 
-### Gaming Artwork
-- `94688130_*.jpg` - Artwork gaming
+Les entrées **sans titre exploitable** (ex. id numérique seul, `Photo` générique, noms `010d.*`) gardent souvent l’ancien nom de fichier.
 
-### Logos & Branding
-- `logo-cllisto.png` - Logo Callisto
-- `logo-cllisto-150x150.png` - Logo Callisto (thumbnail)
+### Fichiers hérités (liste non exhaustive)
 
-### Autres
-- `PresentationCallisto2022-5.jpg` - Présentation 2022
-- `Callisto_finale-6.jpg` - Image finale
-- `3f29.85342-*.jpg` - Divers
-- `eb9a.315530-*.jpg` - Divers
-- `2fb0.356160_ori-*.jpg` - Original
-- `376688281_*.jpg` - Divers
-- `74410909_*.jpg` - Divers
-- `editing-1141505_1920-*.jpg` - Image d'édition
-- `imprimante-decoupeuse-roland-*.jpg` - Imprimante Roland VS 640
-- `telechargement-2.jpg` - Téléchargement
+- `Luna-fly-by-callisto-finale-1-scaled.jpg`, `407845946_*`, hashes Instagram — selon dossier  
+- `Traditional Arts` : `acrilyc-*.png`, `pastel-sec-*.png`, etc.  
+- `gaming/` : ex. `94688130_*.jpg`
 
 ## 📝 Notes
 

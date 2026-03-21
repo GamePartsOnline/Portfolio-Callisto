@@ -51,37 +51,36 @@
       "description": "by Callisto / Flush ^ Vital-Motion!\n\nReleased 9 April 2023."
     },
     {
-      "filename": "graphics/344736827_755458082626458_6207407694818355725_n.jpg",
-      "category": "graphics",
-      "title": "Luna Fly",
-      "year": 2023,
-      "award": "5th in the SESSIONS in C4 LAN 2023 SPRING Combined Graphics competition",
-      "description": "by Callisto / Flush ^ GPO ^ Vital-Motion!\n\nReleased 29 April 2023."
-    },
-    {
       "filename": "graphics/376688281_353500107001250_6102064824076954240_n.jpg",
       "category": "graphics",
-      "title": "Digital Painting",
-      "year": 2023
+      "title": "Between Dream and Reality",
+      "year": 2023,
+      "award": "3rd in the Function 2023 Handdrawn Graphics competition",
+      "description": "by Callisto / Flush ^ Vital-Motion!\n\nReleased 9 September 2023."
     },
     {
       "filename": "graphics/407845946_398297489188178_8033467046376857047_n.jpg",
       "category": "graphics",
-      "title": "407845946 398297489188178 8033467046376857047 n"
+      "title": "Elevation 2079",
+      "year": 2022,
+      "award": "1st in the Inércia Demoparty 2022 Freestyle Graphics competition",
+      "description": "by Callisto / Flush ^ Vital-Motion!\n\nReleased 5 November 2022."
     },
     {
       "filename": "graphics/Callisto_Pascals-lemur-leap_step-finale-2048x1152.jpg",
       "category": "graphics",
-      "title": "Pascal's lemur leap",
-      "award": "10ème place @ Revision 2025",
-      "year": 2025
+      "title": "Pascal's Lemur Leap",
+      "year": 2025,
+      "award": "10th in the Revision 2025 Modern Graphics competition",
+      "description": "by Callisto / Flush\n\nReleased 20 April 2025."
     },
     {
       "filename": "graphics/Chromatic.jpg",
       "category": "graphics",
       "title": "Chromatique résonance",
-      "award": "1ère place @ Rsync 2024",
-      "year": 2024
+      "year": 2024,
+      "award": "1st in the Rsync 2024 Graphics competition",
+      "description": "Chromatic Resonance by Callisto\n\nReleased 5 January 2024."
     },
     {
       "filename": "graphics/oeil_de_tigre.jpg",
@@ -92,22 +91,28 @@
       "description": "Released 27 March 2016 — Windows."
     },
     {
-      "filename": "graphics/IAinercia.jpg",
-      "category": "graphics",
-      "title": "IA Inercia 2975",
-      "award": "Graphics IA Showcase @ Inercia - Portugal",
-      "year": 2025
+      "filename": "IA/digital/dba8.371782.jpg",
+      "category": "IA",
+      "title": "Inercia 2925 by Callisto",
+      "year": 2025,
+      "award": "Inércia 2025 genAI Showcase",
+      "description": "In the Inércia 2025 genAI Showcase.\n\nReleased 7 December 2025 — Windows."
     },
     {
       "filename": "graphics/Luna-fly-by-callisto-finale-1-scaled.jpg",
       "category": "graphics",
-      "title": "Luna fly by callisto finale 1 scaled"
+      "title": "Luna Fly",
+      "year": 2023,
+      "award": "5th in the SESSIONS in C4 LAN 2023 SPRING Combined Graphics competition",
+      "description": "by Callisto / Flush ^ GPO ^ Vital-Motion!\n\nReleased 29 April 2023."
     },
     {
-      "filename": "graphics/PresentationCallisto2022-5.jpg",
+      "filename": "graphics/b2c6.287706.jpg",
       "category": "graphics",
-      "title": "Présentation 2022",
-      "year": 2022
+      "title": "You Seem So Delicious",
+      "year": 2021,
+      "award": "1st in the Assembly 2021 Winter Online Graphics competition",
+      "description": "by Callisto / Syn[Rj]\n\nReleased 19 March 2021."
     },
     {
       "filename": "graphics/cropped-elevation-finale-scaled-1.jpg",
@@ -118,10 +123,11 @@
     },
     {
       "filename": "graphics/paintover2024_callisto_refresh_step05.jpg",
-      "category": "graphics",
+      "category": "paintover",
       "title": "Refresh",
-      "award": "12ème place @ Revision 2024",
-      "year": 2024
+      "year": 2024,
+      "award": "12th in the Revision 2024 Paintover competition",
+      "description": "by Callisto / Flush ^ Vital-Motion!\n\nReleased 31 March 2024."
     },
     {
       "filename": "graphics/rift.jpg",
@@ -136,6 +142,14 @@
       "title": "Sky code",
       "award": "Participation @ Inercia 2025",
       "year": 2025
+    },
+    {
+      "filename": "graphics/the-mystic-river-2017.jpg",
+      "category": "graphics",
+      "title": "The Mystic River",
+      "year": 2017,
+      "award": "9th in the Revision 2017 Modern Graphics competition",
+      "description": "by Callisto\n\nReleased 15 April 2017 — Windows."
     },
     {
       "filename": "logo/logo-cllisto.png",

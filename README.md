@@ -108,7 +108,8 @@ Portfolio-Callisto/
 
 3. Déployer sur **IONOS** (FTP / gestionnaire de fichiers) — voir [docs/DEPLOY.md](./docs/DEPLOY.md)
 
-**Scripts utilitaires Python disponibles :**
+**Scripts utilitaires :**
+- `rename_legacy_image_files.sh` — renomme les fichiers **sur le disque** vers des slugs (à n’utiliser **que** si le `portfolio_images.json` pointe déjà vers ces noms cibles ; sinon les images 404). Après renommage, déployer les fichiers + JSON ensemble.
 - `sync_images_to_json.py` — synchronise les fichiers images avec le JSON
 - `sync_portfolio_from_folders.py` — génère le JSON depuis la structure de dossiers
 - `organize_images_by_category.py` — trie les images dans les sous-dossiers
