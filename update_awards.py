@@ -13,9 +13,9 @@ awards_mapping = {
         "award": "10ème place @ Revision 2025",
         "year": 2025
     },
-    "2fb0.356160_ori-2048x1910.jpg": {
-        "title": "Symphony of the abyss",
-        "award": "2ème place @ Rsync 2025",
+    "abyss_of-symphony.jpg": {
+        "title": "Symphony Of The Abyss by Callisto",
+        "award": "2nd in the Rsync 2025 Graphics competition",
         "year": 2025
     },
     "paintover2024_callisto_refresh_step05.jpg": {

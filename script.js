@@ -246,23 +246,34 @@ const portfolioData = {
     { id: "gaming", label: "Gaming Artwork" },
     { id: "tradi", label: "Traditional Arts" },
     { id: "animation", label: "Animation" },
+    { id: "other", label: "Others" },
     { id: "logo", label: "Logo (masqué du portfolio)" },
   ],
   images: [
     {
       filename: "graphics/sky_code.jpg",
       category: "graphics",
-      title: "Sky code",
+      title: "Sky Code",
       year: 2025,
-      award: "INERCIA - PORTUGAL",
+      award: "Inércia 2025 Graphics Showcase",
+      description:
+        "by Callisto / Flush ^ GPO ^ Silicium\n\nReleased 7 December 2025.",
     },
     {
-      filename: "graphics/the-mystic-river-2017.jpg",
+      filename: "graphics/5f43.132281.jpg",
       category: "graphics",
-      title: "The Mystic River",
+      title: "The Mystic River by Callisto",
       year: 2017,
       award: "9th in the Revision 2017 Modern Graphics competition",
-      description: "by Callisto\n\nReleased 15 April 2017 — Windows.",
+      description: "Released 15 April 2017 — Windows.",
+    },
+    {
+      filename: "graphics/d776.375292.jpg",
+      category: "graphics",
+      title: "IRL Gfx Squirrel Is Here",
+      year: 2026,
+      award: "5th in the Rsync 2026 Graphics competition",
+      description: "by Callisto\n\nReleased 9 January 2026.",
     },
     {
       filename: "graphics/Callisto_Pascals-lemur-leap_step-finale-2048x1152.jpg",
@@ -291,11 +302,20 @@ const portfolioData = {
         "In the Inércia 2025 genAI Showcase.\n\nReleased 7 December 2025 — Windows.",
     },
     {
-      filename: "graphics/2fb0.356160_ori-2048x1910.jpg",
+      filename: "graphics/abyss_of-symphony.jpg",
       category: "graphics",
-      title: "Symphony of the abyss",
+      title: "Symphony Of The Abyss by Callisto",
       year: 2025,
-      award: "2ème place @ Rsync 2025",
+      award: "2nd in the Rsync 2025 Graphics competition",
+      description: "Released 10 January 2025.",
+    },
+    {
+      filename: "graphics/paul_le_poulpe.png",
+      category: "graphics",
+      title: "Paul le poulpe by Callisto",
+      year: 2024,
+      award: "Shadow Party 2024 Newschool Graphics competition",
+      description: "Released 29 June 2024.",
     },
     {
       filename: "graphics/paintover2024_callisto_refresh_step05.jpg",
@@ -305,6 +325,23 @@ const portfolioData = {
       award: "12th in the Revision 2024 Paintover competition",
       description:
         "by Callisto / Flush ^ Vital-Motion!\n\nReleased 31 March 2024.",
+    },
+    {
+      filename: "paintover/76b3.160407.jpg",
+      category: "paintover",
+      title: "Sisters and Company",
+      year: 2018,
+      award: "8th in the Revision 2018 Paintover competition",
+      description: "by Callisto\n\nReleased 1 April 2018.",
+    },
+    {
+      filename: "paintover/010d.307657.jpg",
+      category: "paintover",
+      title: "Head in the Stars by Callisto / Flush",
+      year: 2022,
+      award: "10th in the Revision 2022 Paintover competition",
+      description:
+        "Invitation for Shadow Party 2022\n\nReleased 17 April 2022.",
     },
     {
       filename: "graphics/3f29.85342.jpg",
@@ -374,11 +411,44 @@ const portfolioData = {
       award: "5TH SESSION, JAPON, TOKYO",
     },
     {
+      filename: "photo/Callisto_photo_revision2023-1024x547.jpg",
+      category: "photo",
+      title: "Balls Of Steel by Callisto / Flush ^ Vital-Motion!",
+      year: 2023,
+      award: "16th in the Revision 2023 Photo competition",
+      description: "Released 8 April 2023.",
+    },
+    {
       filename: "photo/dino.jpg",
       category: "photo",
-      title: "Dino sort",
+      title: "Dino Sort",
       year: 2025,
-      award: "The Shadow Party 2025 Photo competition",
+      award: "9th in the Shadow Party 2025 Photo competition",
+      description: "by Callisto / Flush\n\nReleased 5 July 2025.",
+    },
+    {
+      filename: "photo/da05.354142.jpg",
+      category: "photo",
+      title: "Um Toque de Luz with Polo",
+      year: 2024,
+      award: "Inércia 2024 Graphics Showcase",
+      description: "by Callisto and Polo\n\nReleased 7 December 2024.",
+    },
+    {
+      filename: "photo/9013.346292.jpg",
+      category: "photo",
+      title: "Snail's Pace by Callisto",
+      year: 2024,
+      award: "Shadow Party 2024 Photo competition",
+      description: "Released 29 June 2024.",
+    },
+    {
+      filename: "other/7a53.346293.png",
+      category: "other",
+      title: "Flush by Callisto",
+      year: 2024,
+      award: "3rd in the Shadow Party 2024 Sticker competition",
+      description: "Released 29 June 2024.",
     },
     {
       filename: "graphics/74410909_1244316935752931_2378795365198462976_n.jpg",
@@ -417,6 +487,45 @@ const portfolioData = {
       category: "photo",
       title: "Photo",
       year: 2022,
+    },
+    {
+      filename: "other/9513.363339.jpg",
+      category: "other",
+      title: "Thanks All",
+      year: 2025,
+      award: "6th in the Shadow Party 2025 Oldschool Graphics competition",
+      description:
+        "by Callisto / Flush\n\nReleased 5 July 2025.\n\nAmiga OCS/ECS.",
+    },
+    {
+      category: "other",
+      youtubeId: "MNNEgh-VEaA",
+      videoUrl: "https://www.youtube.com/watch?v=MNNEgh-VEaA",
+      title: "Shadow Party 2025 Invitation by Flush",
+      year: 2025,
+      award: "4th in the 68k Inside 2025 Demo competition",
+      description:
+        "Invitation for Shadow Party 2025\n\nReleased 24 May 2025.\n\nAtari ST/E.",
+    },
+    {
+      category: "other",
+      youtubeId: "RLnD5NiZ8FE",
+      videoUrl: "https://www.youtube.com/watch?v=RLnD5NiZ8FE",
+      title: "Slip Slip by Flush",
+      year: 2025,
+      award: "6th in the Rsync 2025 Oldskool Demo competition",
+      description:
+        "Released 10 January 2025.\n\nNintendo Game Boy Advance (GBA).",
+    },
+    {
+      category: "animation",
+      youtubeId: "ARsYTLJvYzQ",
+      videoUrl: "https://www.youtube.com/watch?v=ARsYTLJvYzQ",
+      title: "SHADOW PARTY INVITATION 2025 by Callisto",
+      year: 2025,
+      award: "9th in the Revision 2025 Animation/Video competition",
+      description:
+        "Invitation for Shadow Party 2025\n\nReleased 19 April 2025.",
     },
     {
       category: "animation",
@@ -460,6 +569,7 @@ function getCategoryNamesFromData(data) {
       "pastel-sec": "Pastel sec",
       acrylique: "Acrylique",
       animation: "Animation",
+      other: "Others",
     });
   }
   return map;
@@ -538,6 +648,7 @@ function buildPortfolioFilterButtons(categories) {
           { id: "pastel-sec", label: "Pastel sec" },
           { id: "acrylique", label: "Acrylique" },
           { id: "animation", label: "Animation" },
+          { id: "other", label: "Others" },
         ];
   container.innerHTML = "";
   const allBtn = document.createElement("button");
