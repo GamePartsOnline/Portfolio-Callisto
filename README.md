@@ -1,300 +1,195 @@
-# Callisto Arts - Portfolio 2026
+# Callisto Arts — Portfolio
 
-Portfolio moderne et minimaliste pour Callisto (Frédérique Charton), artiste designer digitale spécialisée en digital painting, animation et demoscene.
+Portfolio professionnel de **Frédérique Charton (CALLISTO)**  
+Graphiste digitale, illustratrice, artiste demoscene, AI builder.
 
-**Dépôt GitHub :** [https://github.com/GamePartsOnline/Portfolio-Callisto](https://github.com/GamePartsOnline/Portfolio-Callisto)
+**Site en production :** [portfolio.callistoarts.com](https://portfolio.callistoarts.com)  
+**Dépôt GitHub :** [github.com/GamePartsOnline/Portfolio-Callisto](https://github.com/GamePartsOnline/Portfolio-Callisto)
 
 ---
 
-## 🚀 Lancer le site en local
+## À propos
 
-Le site doit être servi par un serveur HTTP (pas en ouvrant `index.html` directement), sinon le JavaScript et les ressources ne fonctionnent pas correctement.
+CALLISTO est une graphiste professionnelle basée à Châlons-en-Champagne, France. Active dans la scène internationale depuis 2015 :
 
-### Étape 1 — Récupérer le projet depuis GitHub
+- Primée dans les plus grandes demoparties mondiales (Revision, Rsync, Inercia, Assembly, Tokyo Demo Fest)
+- Manager de GPO SARL, studio de création digitale
+- Membre organisatrice de Shadow Party
+- Certifiée TOSA Illustrator & InDesign
+- Exposée à la Pinacothèque du Luxembourg (2021)
 
-**Si tu n'as pas encore le projet :**
+---
 
-1. Ouvre un terminal.
-2. Va dans le dossier où tu veux placer le projet (par ex. `Documents` ou `Projets`).
-3. Clone le dépôt :
-   ```bash
-   git clone https://github.com/GamePartsOnline/Portfolio-Callisto.git
-   ```
-4. Entre dans le dossier du projet :
-   ```bash
-   cd Portfolio-Callisto
-   ```
+## Version actuelle — v2.0.0
 
-**Si le projet est déjà cloné :** ouvre un terminal et va dans le dossier du projet :
-```bash
-cd chemin/vers/Portfolio-Callisto
-```
+Site statique vanilla (HTML / CSS / JavaScript), **hébergé en production chez IONOS (mutualisé)**. Voir [docs/HOSTING.md](./docs/HOSTING.md) pour le détail et la stratégie pour la future version Rails.
 
-### Étape 2 — Démarrer le serveur
+### Lancer en local
 
-**Option A – Script (recommandé)**
+Le site requiert un serveur HTTP (pas d'ouverture directe de `index.html`).
 
+**Option recommandée — script inclus :**
 ```bash
 chmod +x start-server.sh
 ./start-server.sh
 ```
 
-**Option B – Python (sans script)**
-
+**Option Python :**
 ```bash
 python3 -m http.server 8765 --bind 0.0.0.0
+# Ouvrir http://127.0.0.1:8765
 ```
 
-*Sur Windows, si `python3` ne fonctionne pas, essaie `python` à la place.*
-
-**Option C – Extension Live Server (Cursor / VS Code)**
-
-1. Installe l'extension **Live Server** (Ritwick Dey).
-2. Clic droit sur `index.html` → **Open with Live Server**.  
-   Le site s'ouvre dans le navigateur (souvent sur le port 5500).
-
-### Étape 3 — Ouvrir le site dans le navigateur
-
-- **Avec le script ou Python :** ouvre ton navigateur et va sur :  
-  **http://127.0.0.1:8765**
-- **Avec Live Server :** le navigateur s'ouvre en général automatiquement.
-
-> ⚠️ Utilise toujours une adresse **http://** (serveur local). N'ouvre pas le fichier en **file://** (double-clic sur `index.html`), sinon le site ne fonctionnera pas correctement.
+**Option VS Code / Cursor :**  
+Clic droit sur `index.html` → Open with Live Server
 
 ---
 
-## 🎨 Caractéristiques
-
-- **Style Minimaliste** : Design épuré avec palette de couleurs gris et blanc
-- **Liquid Glass 2026** : Effets de verre liquide modernes sur les cards
-- **Background Animé** : Système multi-couches avec gradient animé, orbes flottants, particules et mesh
-- **Gestion Automatique** : Chargement automatique des images depuis JSON avec métadonnées
-- **Récompenses Automatiques** : Système de badges et section awards générés automatiquement
-- **Mobile First** : Conception responsive optimisée pour mobile
-- **WCAG Compliant** : Conforme aux normes d'accessibilité web (contraste, navigation clavier, aria-labels)
-- **Performance** : Lazy loading des images, animations optimisées, GPU acceleration
-- **Accessibilité** : Support complet du clavier, lecteurs d'écran, réduction de mouvement
-
-## 🚀 Technologies
-
-- HTML5 sémantique
-- CSS3 (Custom Properties, Grid, Flexbox, Animations)
-- JavaScript Vanilla (ES6+, Fetch API, Web Animations API)
-- JSON pour la gestion des métadonnées d'images
-- Fonts : Inter (Google Fonts)
-
-## 📁 Structure
+### Structure
 
 ```
-Portfolio/
-├── index.html                    # Structure HTML principale
-├── styles.css                    # Styles CSS (liquid glass, background animé, timeline)
-├── script.js                     # Interactions, animations et chargement automatique
-├── start-server.sh               # Script pour lancer le serveur local
-├── README.md                     # Documentation principale
-├── GUIDE.md                      # Guide d'utilisation détaillé
-├── BACKGROUND.md                 # Documentation du système de background animé
-├── .gitignore                    # Fichiers à ignorer
-└── assets/
-    └── images/
-        ├── portfolio_images.json # Métadonnées des images (titre, catégorie, récompenses)
-        ├── logo-cllisto.png      # Logo Callisto Arts
-        └── [images du portfolio]  # Images optimisées du portfolio
+Portfolio-Callisto/
+├── index.html                     ← Application complète (SPA)
+├── styles.css                     ← Design system Liquid Glass 2026
+├── script.js                      ← Logique, animations, chargement JSON
+├── content.json                   ← Textes About/Contact éditables
+├── start-server.sh                ← Serveur local
+├── assets/
+│   ├── images/
+│   │   ├── portfolio_images.json  ← Catégories + œuvres (métadonnées)
+│   │   ├── graphics/ …            ← Dossiers par type
+│   └── js/
+│       └── cursor-callisto.js     ← Curseur pixel art custom
+├── docs/                          ← Documentation (voir docs/INDEX.md)
+└── README.md                      ← Ce fichier
 ```
 
-## 🎯 Sections
+---
 
-1. **Hero** : Section d'accueil avec animation et background animé
-2. **À propos** : Présentation de l'artiste + lien vers la timeline
-3. **Timeline (Mon parcours)** : Parcours chronologique (neon) avec événements, prix et milestones
-4. **Portfolio** : Grille d'images avec filtres par catégorie (chargement automatique depuis JSON)
-5. **Récompenses** : Cards des prix obtenus (génération automatique depuis les images primées)
-6. **Contact** : Liens sociaux et informations de contact
+### Fonctionnalités
 
-## 🎨 Effet Liquid Glass 2026
+**Interface publique**
+- Hero animé avec carousel automatique (5 images aléatoires)
+- Portfolio : grille 24 œuvres, filtres par catégorie
+- Lightbox plein écran avec métadonnées complètes
+- Badges récompense sur les œuvres + détail dans la **timeline** (journey)
+- Timeline chronologique 2011–2026 (style neon)
+- Mode Nuit d'Atelier (ambiance bougie, curseur flamme, étoiles)
+- Curseur pixel art custom avec traînée neon et burst au clic
+- Background animé 5 couches (gradient, mesh, orbes, grille, particules)
 
-L'effet liquid glass est réalisé avec :
+**Technique**
+- Design Liquid Glass 2026 (glassmorphism, backdrop-filter)
+- Palette : rose `#f472b6`, turquoise `#00ffe0`, or `#ffd700`
+- WCAG AA/AAA (contraste 7:1, navigation clavier, ARIA complet)
+- Responsive : Mobile < 640px / Tablet 640–1024px / Desktop > 1024px
+- Chargement JSON dynamique avec fallback embarqué
+- `prefers-reduced-motion` respecté (toutes animations désactivées)
 
-- `backdrop-filter: blur(20px)` pour l'effet de flou
-- Bordures semi-transparentes
-- Ombres multiples pour la profondeur
-- Animation au survol avec transformation
-- Effet de brillance animée sur les orbes
+---
 
-## 🌊 Background Animé Multi-Couches
+### Gestion du contenu (v2.0.0)
 
-Le portfolio inclut un système de background animé moderne composé de :
+**Ajouter une œuvre :**
 
-1. **Gradient Animé** : Déplacement lent des nuances de gris (20s)
-2. **Mesh Gradient** : Overlay avec gradients radiaux pour la profondeur (25s)
-3. **Orbes Flottants** : 3 orbes avec effet glassmorphism et mouvement organique
-4. **Grille Animée** : Pattern subtil en mouvement continu (30s)
-5. **Particules Flottantes** : 30-50 particules avec trajectoires complexes (JavaScript)
-
-Toutes les animations respectent `prefers-reduced-motion` et sont optimisées pour la performance.
-
-Voir `BACKGROUND.md` pour la documentation complète.
-
-## 📊 Système de Gestion Automatique des Images
-
-Le portfolio utilise un système JSON pour gérer automatiquement les images :
-
-### Format JSON (`portfolio_images.json`)
+1. Placer l'image dans `assets/images/{categorie}/`
+2. Ajouter l'entrée dans `assets/images/portfolio_images.json` :
 
 ```json
 {
-  "images": [
-    {
-      "filename": "Chromatic-Resonance.jpg",
-      "category": "graphics",
-      "title": "Chromatique résonance",
-      "award": "1ère place @ Rsync 2024",
-      "year": 2024
-    }
-  ]
+  "filename": "mon-oeuvre.jpg",
+  "category": "graphics",
+  "title": "Titre de l'œuvre",
+  "description": "Description optionnelle",
+  "year": 2026,
+  "award": "1ère place @ Événement 2026"
 }
 ```
 
-### Catégories disponibles
+3. Déployer sur **IONOS** (FTP / gestionnaire de fichiers) — voir [docs/DEPLOY.md](./docs/DEPLOY.md)
 
-- `digital` - Digital Painting
-- `animation` - Animation/Video
-- `graphics` - Graphics
-- `photo` - Photos
-- `gaming` - Gaming Artwork
-- `traditional` - Traditional Arts
-- `logo` - Logos (exclus de l'affichage portfolio)
+**Scripts utilitaires Python disponibles :**
+- `sync_images_to_json.py` — synchronise les fichiers images avec le JSON
+- `sync_portfolio_from_folders.py` — génère le JSON depuis la structure de dossiers
+- `organize_images_by_category.py` — trie les images dans les sous-dossiers
+- `update_awards.py` — met à jour les métadonnées de récompenses
 
-### Fonctionnalités automatiques
+**Catégories disponibles :**
 
-- ✅ Chargement automatique des images depuis le JSON
-- ✅ Génération automatique des badges de récompenses
-- ✅ Section Awards générée automatiquement
-- ✅ Filtres par catégorie fonctionnels
-- ✅ Lightbox avec métadonnées complètes
-
-## 🏆 Système de Récompenses
-
-Les images avec le champ `award` dans le JSON affichent automatiquement :
-
-- **Badge doré** sur l'image dans le portfolio
-- **Card dans la section Awards** avec année, titre, événement et rang
-- **Tri automatique** par année (plus récent en premier)
-- **Extraction intelligente** de l'événement et du rang depuis le texte de l'award
-
-## 🎨 Logo Intégré
-
-Le logo Callisto Arts est intégré stratégiquement :
-
-- **Navigation** : Logo + texte "Callisto Arts" (texte masqué sur mobile)
-- **Footer** : Logo centré avec texte de copyright
-- **Effets** : Hover et transitions fluides
-
-## ♿ Accessibilité (WCAG)
-
-- **Contraste** : Ratio de contraste AAA (7:1 pour texte normal, 4.5:1 pour texte large)
-- **Navigation clavier** : Tous les éléments interactifs sont accessibles au clavier
-- **ARIA Labels** : Labels appropriés pour les lecteurs d'écran
-- **Focus visible** : Indicateurs de focus clairs
-- **Réduction de mouvement** : Respect de `prefers-reduced-motion` (toutes les animations se désactivent)
-- **Skip links** : Navigation rapide vers le contenu principal
-
-## 📱 Responsive Design
-
-- **Mobile** : < 640px (1 colonne, menu hamburger, logo seul)
-- **Tablet** : 640px - 1024px (2 colonnes)
-- **Desktop** : > 1024px (3 colonnes, logo + texte)
-
-## 🔧 Installation
-
-1. **Récupérer le projet** : voir [Lancer le site en local](#-lancer-le-site-en-local) (clone depuis GitHub).
-2. Placer les images dans `assets/images/`.
-3. Configurer les métadonnées (données dans `script.js` ou JSON) avec tes images.
-4. **Lancer le site** : suivre les étapes 2 et 3 de la section « Lancer le site en local » (serveur HTTP obligatoire).
-
-## 📝 Ajouter des Images
-
-### Méthode Recommandée (JSON)
-
-1. Placer l'image dans `assets/images/`
-2. Ajouter l'entrée dans `portfolio_images.json` :
-   ```json
-   {
-     "filename": "mon-image.jpg",
-     "category": "digital",
-     "title": "Titre de l'œuvre",
-     "award": "1ère place @ Événement 2024", // Optionnel
-     "year": 2024 // Optionnel si award présent
-   }
-   ```
-
-L'image apparaîtra automatiquement dans le portfolio avec ses métadonnées !
-
-### Modifier les couleurs
-
-Éditer les variables CSS dans `styles.css` :
-
-```css
-:root {
-  --color-bg-primary: #1a1a1a;
-  --color-text-primary: #ffffff;
-  /* ... */
-}
-```
-
-## 🌐 Compatibilité
-
-- Chrome/Edge : ✅ (toutes fonctionnalités)
-- Firefox : ✅ (toutes fonctionnalités)
-- Safari : ✅ (toutes fonctionnalités)
-- Mobile browsers : ✅ (optimisé)
-
-## 📚 Documentation Complémentaire
-
-- **GUIDE.md** : Guide d'utilisation détaillé
-- **BACKGROUND.md** : Documentation technique du background animé
-- **assets/images/README.md** : Documentation des images
-
-## 🐛 Dépannage
-
-### Les images ne se chargent pas
-
-1. Vérifier que `portfolio_images.json` est valide (JSON valide)
-2. Vérifier les chemins des images dans le JSON
-3. Vérifier la console du navigateur (F12) pour les erreurs
-
-### Le background animé ne fonctionne pas
-
-1. Vérifier que JavaScript est activé
-2. Vérifier la console pour les erreurs
-3. Vérifier que `prefers-reduced-motion` n'est pas activé dans les préférences système
-
-### Les récompenses ne s'affichent pas
-
-1. Vérifier que le champ `award` est présent dans le JSON
-2. Vérifier le format : `"award": "Xème place @ Événement Année"`
-
-## 📄 Licence
-
-© 2026 Callisto - Charton Frédérique / GPO
-
-## 🙏 Remerciements
-
-- Revision Demoparty
-- Assembly
-- Syntax
-- Tokyo Demo Fest
-- Atascii
-- Shadow Party
-- Inercia
-- Rsync
-- Sessions
-- Tous les demosceners
+| Catégorie | Description |
+|---|---|
+| `graphics` | Œuvres graphiques pour compétitions (demoparties) |
+| `paintover` | Paintover et retouches artistiques |
+| `photo` | Photographies |
+| `IA` | Créations assistées par IA (prompt art) |
+| `digital` | Digital painting & illustration |
+| `logo` | Logos (exclus de la grille portfolio) |
 
 ---
 
-**My fun is DRAWING !!! ALWAYS... end for ever.**
+### Récompenses (champ `award` dans le JSON)
 
-# Portfolio-Callisto
+Les œuvres avec un champ `award` affichent un **badge** sur la grille ; le détail des prix est aussi dans la **timeline** (section Journey).
 
-#proposition de modification , j'suis trop contente merci
+---
+
+## Prochaine version — Rails 8
+
+Refonte vers **Rails 8**, **SQLite**, **Hotwire**, **Tailwind** — même esprit visuel (Liquid Glass), avec une **admin simple** :
+
+- **Galerie** : images, titres, catégories, ordre, champs optionnels (année, ligne récompense)
+- **Textes** : hero, about, contact, footer (sans tout complexifier)
+
+**Voir :** [docs/ROADMAP.md](./docs/ROADMAP.md), [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md), [docs/ADMIN.md](./docs/ADMIN.md)
+
+---
+
+## Compatibilité navigateurs
+
+| Navigateur | Support |
+|---|---|
+| Chrome / Edge | Complet |
+| Firefox | Complet |
+| Safari | Complet |
+| Mobile browsers | Optimisé |
+
+---
+
+## Documentation
+
+Toute la documentation est dans le dossier [`docs/`](./docs/) :
+
+| Fichier | Contenu |
+|---|---|
+| [docs/INDEX.md](./docs/INDEX.md) | Sommaire de la documentation |
+| [docs/SITE.md](./docs/SITE.md) | **Analyse du site actuel** (structure, JSON, technique) |
+| [docs/STACK.md](./docs/STACK.md) | Rails 8 + SQLite + Hotwire + Tailwind |
+| [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) | Architecture Rails cible (simple) |
+| [docs/ADMIN.md](./docs/ADMIN.md) | Admin : galerie + catégories + textes |
+| [docs/ROADMAP.md](./docs/ROADMAP.md) | Étapes de migration |
+| [docs/HOSTING.md](./docs/HOSTING.md) | IONOS (actuel) · hébergement Rails (plus tard) |
+| [docs/DEPLOY.md](./docs/DEPLOY.md) | Déploiement statique · Rails à documenter |
+| [docs/DESIGN.md](./docs/DESIGN.md) | Design system Liquid Glass |
+| [docs/CONTENT.md](./docs/CONTENT.md) | Rappel contenus |
+| [docs/GUIDE.md](./docs/GUIDE.md) | Guide maintenance site statique v2 |
+| [docs/BACKGROUND.md](./docs/BACKGROUND.md) | Background animé |
+| [docs/CHANGELOG.md](./docs/CHANGELOG.md) | Historique des versions |
+| [docs/TEST.md](./docs/TEST.md) | Tests manuels v2 |
+
+---
+
+## Licence
+
+© 2026 CALLISTO — Charton Frédérique / GPO SARL  
+Tous droits réservés. Les œuvres du portfolio appartiennent à leurs auteurs respectifs.
+
+---
+
+## Remerciements
+
+Merci à toute la communauté demoscene internationale :
+Revision · Assembly · Syntax · Tokyo Demo Fest · Atascii · Shadow Party · Inercia · Rsync · Sessions · et tous les demosceners
+
+---
+
+*My fun is DRAWING. ALWAYS. And forever.*

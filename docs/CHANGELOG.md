@@ -2,6 +2,15 @@
 
 Toutes les modifications notables de ce projet seront documentées dans ce fichier.
 
+## [Docs] - 2026-03-21
+
+### Documentation
+
+- Refonte complète de la documentation dans `docs/` : alignement sur le **site actuel** (analyse dans [SITE.md](./SITE.md)) et sur une cible **Rails 8 + SQLite + Hotwire + Tailwind** sans sur-ingénierie.
+- Périmètre admin clarifié : **galerie** (images, catégories) + **textes des pages** — voir [ADMIN.md](./ADMIN.md).
+- Suppression des références obsolètes (Next.js, stack lourde) dans les docs principales et le README.
+- Hébergement : production actuelle **IONOS mutualisé** documentée dans [HOSTING.md](./HOSTING.md).
+
 ## [2.0.0] - 2026-01-14
 
 ### ✨ Ajouté

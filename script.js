@@ -246,6 +246,7 @@ const portfolioData = {
     { id: "photo", label: "Photos" },
     { id: "gaming", label: "Gaming Artwork" },
     { id: "tradi", label: "Traditional Arts" },
+    { id: "animation", label: "Animation" },
     { id: "logo", label: "Logo (masqué du portfolio)" },
   ],
   images: [
@@ -386,6 +387,17 @@ const portfolioData = {
       year: 2022,
     },
     {
+      category: "animation",
+      youtubeId: "Z54V_SABn1U",
+      videoUrl: "https://youtu.be/Z54V_SABn1U",
+      title: "RBBS — We Have Accidentally Your Whole Audience",
+      year: 2015,
+      award:
+        "16th place — Revision 2015 PC Demo — Royal Belgian Beer Squadron",
+      description:
+        "[DEMOSCENE] [PC DEMO] Windows — Group: Royal Belgian Beer Squadron — Released 5 April 2015 — 16th in the Revision 2015 PC Demo competition.",
+    },
+    {
       filename: "logo-cllisto.png",
       category: "logo",
       title: "Logo Callisto",
@@ -420,6 +432,21 @@ function getCategoryNamesFromData(data) {
     });
   }
   return map;
+}
+
+/** Extrait l’id vidéo YouTube (11 caractères) depuis une URL ou un id brut. */
+function extractYoutubeId(urlOrId) {
+  if (!urlOrId) return null;
+  const s = String(urlOrId).trim();
+  if (/^[a-zA-Z0-9_-]{11}$/.test(s)) return s;
+  const m = s.match(
+    /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/shorts\/)([a-zA-Z0-9_-]{11})/,
+  );
+  return m ? m[1] : null;
+}
+
+function getYoutubeThumbnailUrl(youtubeId) {
+  return `https://img.youtube.com/vi/${youtubeId}/hqdefault.jpg`;
 }
 
 /** Libellé par défaut pour un id de catégorie (ex: "pastel-sec" -> "Pastel sec"). */
@@ -534,6 +561,13 @@ async function loadPortfolioImages() {
     // Créer les éléments portfolio
     allImages.forEach((image) => {
       if (image.category === "logo") return;
+      const yid = image.youtubeId || extractYoutubeId(image.videoUrl);
+      const thumbFromFile = image.filename
+        ? `assets/images/${image.filename}`
+        : "";
+      const thumbSrc = thumbFromFile || (yid ? getYoutubeThumbnailUrl(yid) : "");
+      if (!thumbSrc) return;
+
       const category =
         image.category ||
         (image.filename && image.filename.includes("/")
@@ -541,6 +575,7 @@ async function loadPortfolioImages() {
           : "other");
       const item = document.createElement("div");
       item.className = "portfolio-item glass-card";
+      if (yid) item.classList.add("portfolio-item--video");
       item.setAttribute("data-category", category);
       item.setAttribute("tabindex", "0");
       item.setAttribute("role", "button");
@@ -550,8 +585,8 @@ async function loadPortfolioImages() {
       imageDiv.className = "portfolio-image";
 
       const img = document.createElement("img");
-      img.src = `assets/images/${image.filename}`;
-      img.alt = image.title || image.filename;
+      img.src = thumbSrc;
+      img.alt = image.title || image.filename || (yid ? "Vidéo YouTube" : "");
       img.loading = "lazy";
       img.decoding = "async";
       img.onerror = function () {
@@ -671,8 +706,10 @@ function initPortfolioFilters() {
 // ============================================
 const lightbox = document.getElementById("lightbox");
 const lightboxImage = document.getElementById("lightbox-image");
+const lightboxVideo = document.getElementById("lightbox-video");
 const lightboxTitle = document.getElementById("lightbox-title");
 const lightboxDescription = document.getElementById("lightbox-description");
+const lightboxKicker = document.getElementById("lightbox-kicker");
 const lightboxClose = document.querySelector(".lightbox-close");
 
 function openLightbox(item) {
@@ -704,30 +741,57 @@ function openLightbox(item) {
     item.querySelector(".portfolio-badge")?.textContent ||
     "";
 
-  if (lightboxImage) {
-    const src = imageData?.filename
-      ? "assets/images/" + imageData.filename
-      : img?.src || "";
-    lightboxImage.src = src;
-    lightboxImage.alt = imageData?.title || img?.alt || title;
-    lightboxImage.onerror = function () {
-      this.onerror = null;
-      this.src =
-        "data:image/svg+xml," +
-        encodeURIComponent(
-          '<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>',
-        );
-      this.alt = (this.alt || "") + " (image non disponible)";
-    };
+  const yid = imageData?.youtubeId || extractYoutubeId(imageData?.videoUrl);
+  const showYoutubeEmbed = Boolean(yid);
+
+  if (showYoutubeEmbed && lightboxVideo) {
+    if (lightboxImage) lightboxImage.style.display = "none";
+    lightboxVideo.classList.add("lightbox-video--visible");
+    lightboxVideo.src = `https://www.youtube-nocookie.com/embed/${yid}?rel=0`;
+  } else {
+    if (lightboxVideo) {
+      lightboxVideo.classList.remove("lightbox-video--visible");
+      lightboxVideo.src = "";
+    }
+    if (lightboxImage) {
+      lightboxImage.style.display = "";
+      const src = imageData?.filename
+        ? "assets/images/" + imageData.filename
+        : img?.src || "";
+      lightboxImage.src = src;
+      lightboxImage.alt = imageData?.title || img?.alt || title;
+      lightboxImage.onerror = function () {
+        this.onerror = null;
+        this.src =
+          "data:image/svg+xml," +
+          encodeURIComponent(
+            '<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>',
+          );
+        this.alt = (this.alt || "") + " (image non disponible)";
+      };
+    }
   }
 
   if (lightboxTitle) {
     lightboxTitle.textContent = title;
   }
 
+  const categoryText = portfolioCategoryNames[category] || category;
+  if (lightboxKicker) {
+    lightboxKicker.textContent = categoryText || "";
+    lightboxKicker.hidden = !categoryText;
+  }
+
   if (lightboxDescription) {
-    const categoryText = portfolioCategoryNames[category] || category;
-    lightboxDescription.textContent = `${categoryText}${badge ? " • " + badge : ""}`;
+    const year = imageData?.year;
+    const parts = [];
+    if (year) parts.push(String(year));
+    if (badge) parts.push(badge);
+    let line = parts.join(" • ");
+    if (imageData?.description) {
+      line = line ? `${line}\n\n${imageData.description}` : imageData.description;
+    }
+    lightboxDescription.textContent = line;
   }
 
   if (lightbox) {
@@ -738,6 +802,11 @@ function openLightbox(item) {
 }
 
 function closeLightbox() {
+  if (lightboxVideo) {
+    lightboxVideo.src = "";
+    lightboxVideo.classList.remove("lightbox-video--visible");
+  }
+  if (lightboxImage) lightboxImage.style.display = "";
   if (lightbox) {
     lightbox.setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
@@ -865,7 +934,11 @@ function shuffleArray(arr) {
 function buildHeroSlidesFromPortfolio(data) {
   const container = document.getElementById("heroSlides");
   if (!container || !data || !data.images) return;
-  const images = data.images.filter((img) => img.category !== "logo");
+  const images = data.images.filter(
+    (img) =>
+      img.category !== "logo" &&
+      (img.filename || img.youtubeId || extractYoutubeId(img.videoUrl)),
+  );
   if (!images.length) return;
   const count = Math.min(5, images.length);
   const picked = shuffleArray(images).slice(0, count);
@@ -884,8 +957,11 @@ function buildHeroSlidesFromPortfolio(data) {
       img.title ||
       img.filename;
     const heroImg = document.createElement("img");
-    heroImg.src = "assets/images/" + img.filename;
-    heroImg.alt = (img.title || img.filename).replace(/"/g, "");
+    const yHero = img.youtubeId || extractYoutubeId(img.videoUrl);
+    heroImg.src = yHero
+      ? getYoutubeThumbnailUrl(yHero)
+      : "assets/images/" + img.filename;
+    heroImg.alt = (img.title || img.filename || "").replace(/"/g, "");
     heroImg.className = "hero-image-3d";
     heroImg.onerror = function () {
       this.onerror = null;

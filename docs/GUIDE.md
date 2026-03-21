@@ -1,4 +1,8 @@
-# Guide d'utilisation - Portfolio Callisto Arts
+# Guide d'utilisation — Portfolio Callisto Arts (site statique v2)
+
+> Pour la vision **Rails + admin**, voir [ADMIN.md](./ADMIN.md) et [SITE.md](./SITE.md).
+
+---
 
 ## 📸 Ajouter des images au portfolio
 

@@ -30,7 +30,7 @@
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
 
     <title>Callisto Arts - Portfolio 2026</title>
-    <link rel="stylesheet" href="styles.css?v=5">
+    <link rel="stylesheet" href="styles.css?v=9">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -85,6 +85,7 @@
             <p class="hero-subtitle">
                 Owner at GPO SARL | Digital Drawing artist | AI Builder
             </p>
+            <div class="hero-subtitle-line" aria-hidden="true"></div>
 
             <div class="hero-3d-container">
                 <div class="glass-3d-card hero-slide-wrapper">
@@ -417,31 +418,23 @@
         </div>
     </footer>
 
-    <!-- Mode Nuit d'Atelier (overlays + toggle) -->
+    <!-- Mode Nuit d'Atelier (overlays — activation possible via console : toggleNightAtelier) -->
     <div id="vignette" class="atelier-overlay" aria-hidden="true"></div>
     <div id="candle-light" class="atelier-overlay" aria-hidden="true"></div>
     <div id="grain" class="atelier-overlay" aria-hidden="true"></div>
     <canvas id="stars-overlay" class="atelier-overlay" aria-hidden="true"></canvas>
     <canvas id="atelier-cursor" class="atelier-cursor" aria-hidden="true"></canvas>
 
-    <div class="atelier-toggle" aria-label="Mode Nuit d'Atelier">
-        <button type="button" class="toggle-btn atelier-toggle-btn" id="atelier-toggle-btn" onclick="toggleNightAtelier()" aria-pressed="false" aria-label="Activer le mode nuit atelier">
-            <span class="toggle-icon">🕯️</span>
-        </button>
-        <span class="toggle-label">Mode Atelier</span>
-    </div>
-
-    <div class="night-banner" id="atelier-banner" aria-live="polite">
-        <strong>🕯️ Nuit d'Atelier</strong>
-        <p>Lumière douce activée. Ambiance bougie.</p>
-    </div>
-
     <!-- Lightbox Modal -->
     <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightbox-title"
         aria-hidden="true">
         <button class="lightbox-close" aria-label="Close">×</button>
+        <p class="lightbox-kicker" id="lightbox-kicker"></p>
         <div class="lightbox-content">
             <img id="lightbox-image" src="" alt="">
+            <iframe id="lightbox-video" class="lightbox-video" title="YouTube" loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
             <div class="lightbox-info">
                 <h3 id="lightbox-title"></h3>
                 <p id="lightbox-description"></p>
@@ -449,7 +442,7 @@
         </div>
     </div>
 
-    <script src="script.js?v=5"></script>
+    <script src="script.js?v=8"></script>
     <script src="assets/js/cursor-callisto.js"></script>
 </body>
 

@@ -789,7 +789,24 @@ a:focus-visible {
 .hero-subtitle {
   font-size: var(--font-size-xl);
   color: var(--color-text-secondary);
-  margin-bottom: var(--spacing-lg);
+  margin-bottom: var(--spacing-sm);
+}
+
+/* Ligne décorative sous le sous-titre hero */
+.hero-subtitle-line {
+  width: min(280px, 70vw);
+  height: 2px;
+  margin: 0 auto var(--spacing-lg);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-brand-neon, #00ffe0),
+    var(--color-brand-rose, #f472b6),
+    transparent
+  );
+  border-radius: 2px;
+  opacity: 0.9;
+  box-shadow: 0 0 12px rgba(0, 255, 224, 0.35);
 }
 
 /* 3D Glass Effect — décalé vers le bas pour que l’agrandissement au survol ne touche pas le texte */
@@ -1761,6 +1778,16 @@ body.night .about-card-tag {
     0 0 20px var(--color-brand-neon-glow);
 }
 
+/* Moins d’air entre le bloc titre « Portfolio » et les boutons filtres (section-title-wrap global = 64px bas + 4rem marge) */
+.portfolio .section-title-wrap {
+  padding: 20px 20px 24px;
+  margin-bottom: var(--spacing-sm);
+}
+
+.portfolio .section-title-wrap::before {
+  min-height: 88px;
+}
+
 .portfolio-filters {
   display: flex;
   flex-wrap: wrap;
@@ -2418,8 +2445,10 @@ body.night .about-card-tag {
   -webkit-backdrop-filter: blur(10px);
   z-index: 2000;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: var(--spacing-sm);
   padding: var(--spacing-md);
   opacity: 0;
   visibility: hidden;
@@ -2456,6 +2485,23 @@ body.night .about-card-tag {
   outline: none;
 }
 
+.lightbox-kicker {
+  margin: 0;
+  padding: 0 var(--spacing-md);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent-neon, #00ffe0);
+  text-align: center;
+  max-width: 90vw;
+}
+
+.lightbox-kicker:empty,
+.lightbox-kicker[hidden] {
+  display: none;
+}
+
 .lightbox-content {
   max-width: 90vw;
   max-height: 90vh;
@@ -2471,9 +2517,47 @@ body.night .about-card-tag {
   border-radius: 12px;
 }
 
+.lightbox-content iframe.lightbox-video {
+  display: none;
+  width: min(90vw, 960px);
+  max-width: 100%;
+  aspect-ratio: 16 / 9;
+  max-height: min(70vh, 540px);
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 0 32px rgba(0, 255, 224, 0.08);
+}
+
+.lightbox-content iframe.lightbox-video.lightbox-video--visible {
+  display: block;
+}
+
+#lightbox-description {
+  white-space: pre-line;
+}
+
 .lightbox-info {
   text-align: center;
   color: var(--color-text-primary);
+}
+
+/* Vignette vidéo YouTube (portfolio) */
+.portfolio-item--video .portfolio-image::after {
+  content: "▶";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 0 16px rgba(0, 0, 0, 0.85);
+  pointer-events: none;
+  background: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 0.25) 0%,
+    transparent 55%
+  );
 }
 
 /* ============================================
