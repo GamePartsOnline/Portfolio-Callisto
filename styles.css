@@ -22,7 +22,7 @@
   --color-brand-neon-glow: rgba(0, 255, 224, 0.4);
   --color-border: rgba(255, 255, 255, 0.1);
 
-  /* Liquid Glass 2026 — transparence pour laisser voir le fond */
+  /* Liquid Glass 2026 — transparency to show the background */
   --glass-bg: rgba(255, 255, 255, 0.06);
   --glass-border: rgba(255, 255, 255, 0.12);
   --glass-shadow: rgba(0, 0, 0, 0.3);
@@ -54,9 +54,9 @@
 
   /* WCAG Contrast Ratios */
   --contrast-ratio-text: 7: 1;
-  /* AAA pour texte normal */
+  /* AAA for normal text */
   --contrast-ratio-large: 4.5: 1;
-  /* AAA pour texte large */
+  /* AAA for large text */
 }
 
 html {
@@ -64,6 +64,9 @@ html {
   font-size: 16px;
   background-color: var(--color-bg-primary);
   /* Fallback color */
+  /* Prevent horizontal scroll (body alone is often not enough on mobile) */
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 body {
@@ -76,11 +79,18 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   position: relative;
-  /* Évite le débordement horizontal des grilles (flex/grid) sur mobile */
+  /* Prevent horizontal overflow from flex/grid on mobile */
   min-width: 0;
 }
 
-/* Pixel cursor canvas (Callisto) — au-dessus du contenu, ne bloque jamais les clics */
+/* Main content: no lateral overflow (flex/grid children, 100vw elsewhere) */
+#main-content {
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: clip;
+}
+
+/* Pixel cursor canvas (Callisto) — above content, never blocks clicks */
 .cursor-canvas {
   position: fixed;
   inset: 0;
@@ -89,7 +99,7 @@ body {
   image-rendering: pixelated;
 }
 
-/* Lecteur audio — au-dessus de tout (lightbox, canvas) — clics garantis */
+/* Audio player — above everything (lightbox, canvas) — clicks always work */
 .music-player-wrap {
   --music-bar-fill: var(--color-brand-neon, #00ffe0);
   --music-bar-track: rgba(255, 255, 255, 0.1);
@@ -97,14 +107,15 @@ body {
   position: fixed;
   bottom: max(1rem, env(safe-area-inset-bottom));
   left: max(1rem, env(safe-area-inset-left));
-  /* Au-dessus de la lightbox (2000), du canvas (99999) et de tout le reste */
+  /* Above lightbox (2000), canvas (99999), and everything else */
   z-index: 2147483647;
   transform: translateZ(0);
   will-change: transform;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  max-width: min(100vw - 2rem, 360px);
+  /* 100% = viewport for fixed; avoids 100vw + scrollbar → horizontal scroll */
+  max-width: min(360px, calc(100% - 2rem));
   padding: 0.65rem 0.85rem 0.65rem;
   background: var(--glass-bg, rgba(255, 255, 255, 0.06));
   backdrop-filter: var(--glass-blur, blur(20px));
@@ -174,7 +185,7 @@ body {
   justify-content: center;
   position: relative;
   z-index: 2;
-  /* Zone tactile plus haute pour la barre de lecture */
+  /* Taller touch target for the seek bar */
   padding: 6px 0;
   margin: -4px 0;
 }
@@ -200,7 +211,7 @@ body {
   text-shadow: 0 0 12px rgba(0, 255, 224, 0.25);
 }
 
-/* Barre de progression (range) — style néon + zone cliquable large */
+/* Progress bar (range) — neon style + wide click area */
 .music-seek {
   -webkit-appearance: none;
   appearance: none;
@@ -217,7 +228,7 @@ body {
   );
   background-clip: padding-box;
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
-  /* Centre la piste visuelle dans la zone haute */
+  /* Centers the visible track in the tall hit area */
   background-origin: border-box;
 }
 
@@ -267,7 +278,7 @@ body {
   cursor: grabbing;
 }
 
-/* Volume — plus fin */
+/* Volume — thinner */
 .music-vol-label {
   flex-shrink: 0;
   font-size: 0.58rem;
@@ -380,7 +391,7 @@ body {
   color: #fb923c;
 }
 
-/* Mode nuit atelier — teinte bougie sur la barre */
+/* Workshop night mode — candle tint on the bar */
 body.night .music-player-wrap {
   --music-bar-fill: var(--candle, #ff9d3a);
   --music-bar-track: rgba(255, 200, 120, 0.12);
@@ -407,19 +418,19 @@ body.night .music-seek::-webkit-slider-thumb {
 
 @media (max-width: 480px) {
   .music-player-wrap {
-    max-width: calc(100vw - 1.25rem);
+    max-width: calc(100% - 1.25rem);
     left: 0.625rem;
     bottom: max(0.75rem, env(safe-area-inset-bottom));
   }
 }
 
-/* Masque le curseur système quand le curseur pixel est actif */
+/* Hide system cursor when pixel cursor is active */
 .cursor-pixel,
 .cursor-pixel * {
   cursor: none !important;
 }
 
-/* Lecteur musique : curseur normal + priorité sur la règle ci-dessus */
+/* Music player: normal cursor + overrides rule above */
 html.cursor-pixel .music-player-wrap,
 html.cursor-pixel .music-player-wrap * {
   cursor: pointer !important;
@@ -659,7 +670,7 @@ html.cursor-pixel .music-player-wrap * {
   }
 }
 
-/* Effet de profondeur avec parallaxe subtil */
+/* Depth effect with subtle parallax */
 .hero {
   position: relative;
   z-index: 1;
@@ -670,7 +681,7 @@ html.cursor-pixel .music-player-wrap * {
   z-index: 1;
 }
 
-/* Amélioration de la visibilité du contenu sur le background animé */
+/* Improves content visibility over animated background */
 .hero-content,
 .section-title,
 .card-content {
@@ -678,7 +689,7 @@ html.cursor-pixel .music-player-wrap * {
   z-index: 2;
 }
 
-/* Effet de brillance animée sur les orbes */
+/* Animated shine on orbs */
 .orb::after {
   content: "";
   position: absolute;
@@ -709,7 +720,7 @@ html.cursor-pixel .music-player-wrap * {
   }
 }
 
-/* Vagues subtiles en arrière-plan */
+/* Subtle waves in the background */
 .bg-gradient::before {
   content: "";
   position: absolute;
@@ -770,7 +781,7 @@ html.cursor-pixel .music-player-wrap * {
   }
 }
 
-/* Optimisation performance pour mobile */
+/* Performance tuning for mobile */
 @media (max-width: 768px) {
   .bg-grid {
     background-size: 150px 150px;
@@ -789,7 +800,7 @@ html.cursor-pixel .music-player-wrap * {
   }
 }
 
-/* Mode haute performance - désactiver certaines animations si nécessaire */
+/* High performance mode — disable some animations if needed */
 @media (prefers-reduced-motion: no-preference) {
   @media (max-width: 768px) {
     .bg-mesh {
@@ -1073,11 +1084,19 @@ a:focus-visible {
    ============================================ */
 .hero {
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   align-items: center;
   justify-content: center;
+  /* Clears fixed nav + gray border — otherwise “Welcome to my world” can
+     look cut off by this bar on mobile (two-line text). */
   padding: var(--spacing-lg) var(--spacing-md);
-  position: relative;
+  padding-top: max(
+    var(--spacing-lg),
+    calc(4.25rem + env(safe-area-inset-top, 0px))
+  );
+  box-sizing: border-box;
+  scroll-margin-top: calc(4rem + env(safe-area-inset-top, 0px));
   position: relative;
   /* Background removed to show particles */
 }
@@ -1085,6 +1104,16 @@ a:focus-visible {
 .hero-content {
   text-align: center;
   max-width: 800px;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: visible;
+  /* Margin for title glow + notches (avoids C/S clipped with overflow-x on body) */
+  padding-left: max(var(--spacing-sm), env(safe-area-inset-left, 0px));
+  padding-right: max(var(--spacing-sm), env(safe-area-inset-right, 0px));
+}
+
+.hero-title {
+  overflow: visible;
 }
 
 .hero-greeting {
@@ -1095,18 +1124,23 @@ a:focus-visible {
   margin-bottom: var(--spacing-sm);
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  text-wrap: balance;
 }
 
 .hero-name {
   display: block;
-  font-size: var(--font-size-4xl);
   font-weight: 700;
   margin-bottom: var(--spacing-md);
   color: var(--color-brand-rose);
   letter-spacing: 0.02em;
+  line-height: 1.12;
+  /* Fluid size + margin for halo (body has overflow-x: hidden) */
+  font-size: clamp(1.85rem, 8.5vw, var(--font-size-4xl));
+  padding-inline: 0.4em;
+  box-sizing: border-box;
   text-shadow:
-    0 0 24px var(--color-brand-rose-glow),
-    0 0 48px var(--color-brand-rose-glow);
+    0 0 14px var(--color-brand-rose-glow),
+    0 0 28px var(--color-brand-rose-glow);
   transition:
     color var(--transition-base),
     text-shadow var(--transition-base);
@@ -1114,18 +1148,61 @@ a:focus-visible {
 .hero-name:hover {
   color: var(--color-brand-neon);
   text-shadow:
-    0 0 24px var(--color-brand-neon-glow),
-    0 0 48px var(--color-brand-neon-glow),
-    0 0 72px rgba(0, 255, 224, 0.25);
+    0 0 18px var(--color-brand-neon-glow),
+    0 0 36px var(--color-brand-neon-glow),
+    0 0 56px rgba(0, 255, 224, 0.22);
 }
 
 .hero-subtitle {
-  font-size: var(--font-size-xl);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  column-gap: 0.45rem;
+  row-gap: 0.4rem;
+  width: 100%;
+  max-width: min(38rem, 100%);
+  margin: 0 auto var(--spacing-sm);
+  padding-inline: max(0.75rem, env(safe-area-inset-left, 0px))
+    max(0.75rem, env(safe-area-inset-right, 0px));
+  box-sizing: border-box;
+  font-size: clamp(0.8rem, 3.4vw, var(--font-size-xl));
+  line-height: 1.55;
   color: var(--color-text-secondary);
-  margin-bottom: var(--spacing-sm);
+  text-align: center;
+  overflow-wrap: anywhere;
+  word-wrap: break-word;
+  hyphens: manual;
 }
 
-/* Ligne décorative sous le sous-titre hero */
+.hero-subtitle__item {
+  min-width: 0;
+  text-wrap: balance;
+}
+
+.hero-subtitle__sep {
+  color: rgba(0, 255, 224, 0.4);
+  font-weight: 300;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+/* Single readable column on very small screens — no text clipped at edges */
+@media (max-width: 520px) {
+  .hero-subtitle {
+    flex-direction: column;
+    gap: 0.35rem;
+    font-size: clamp(0.78rem, 3.2vw, 1rem);
+    padding-inline: max(1rem, env(safe-area-inset-left, 0px))
+      max(1rem, env(safe-area-inset-right, 0px));
+  }
+
+  .hero-subtitle__sep {
+    display: none;
+  }
+}
+
+/* Decorative line under hero subtitle */
 .hero-subtitle-line {
   width: min(280px, 70vw);
   height: 2px;
@@ -1142,7 +1219,7 @@ a:focus-visible {
   box-shadow: 0 0 12px rgba(0, 255, 224, 0.35);
 }
 
-/* 3D Glass Effect — décalé vers le bas pour que l’agrandissement au survol ne touche pas le texte */
+/* 3D glass effect — shifted down so hover scale does not hit the text */
 .hero-3d-container {
   perspective: 1000px;
   margin: var(--spacing-md) auto;
@@ -1173,7 +1250,7 @@ a:focus-visible {
   flex-direction: column;
 }
 
-/* Hero slide (Sky code, œil de tigre, araignée) — même cadre */
+/* Hero slide (Sky code, tiger eye, spider) — same frame */
 .hero-slide-wrapper {
   padding: 0;
 }
@@ -1355,6 +1432,17 @@ a:focus-visible {
 @media (min-width: 768px) {
   .hero-name {
     font-size: 5rem;
+    padding-inline: 0.2em;
+    text-shadow:
+      0 0 24px var(--color-brand-rose-glow),
+      0 0 48px var(--color-brand-rose-glow);
+  }
+
+  .hero-name:hover {
+    text-shadow:
+      0 0 24px var(--color-brand-neon-glow),
+      0 0 48px var(--color-brand-neon-glow),
+      0 0 72px rgba(0, 255, 224, 0.25);
   }
 
   .hero-greeting {
@@ -1378,7 +1466,7 @@ a:focus-visible {
   box-sizing: border-box;
 }
 
-/* Bloc titre de section — un seul grand trait avec dégradé (transparent en haut → léger en bas), comme My journey */
+/* Section title block — one tall band with gradient (transparent top → subtle bottom), like My journey */
 .section-title-wrap {
   position: relative;
   text-align: center;
@@ -1386,7 +1474,7 @@ a:focus-visible {
   margin-bottom: var(--spacing-lg);
 }
 
-/* Grand trait : dégradé + cadre (bordure et ombre), même dimensions que My journey */
+/* Tall band: gradient + frame (border and shadow), same dimensions as My journey */
 .section-title-wrap::before {
   content: "";
   position: absolute;
@@ -1421,14 +1509,14 @@ a:focus-visible {
   padding-bottom: 0;
 }
 
-/* Pas de ligne ::after sous le titre : comme My journey, seule la bande (::before) fait le cadre */
+/* No ::after line under title: like My journey, only the ::before band frames it */
 .section-title::after {
   content: none;
   display: none;
 }
 
 /* ============================================
-   ABOUT SECTION — même présentation titre néon
+   ABOUT SECTION — same neon title treatment
    ============================================ */
 .about .section-title {
   color: var(--color-brand-neon);
@@ -1452,6 +1540,69 @@ a:focus-visible {
 .about-content {
   display: grid;
   gap: var(--spacing-md);
+}
+
+/* Event announcement (e.g. CORSICA GAME WEEK) */
+.about-upcoming {
+  margin: 0;
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-radius: 16px;
+  border: 1px solid rgba(0, 255, 224, 0.28);
+  background: rgba(0, 255, 224, 0.05);
+  box-shadow:
+    0 0 24px rgba(0, 255, 224, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  font-size: var(--font-size-sm);
+  line-height: 1.75;
+  color: var(--color-text-secondary);
+  max-width: min(1100px, 100%);
+  justify-self: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.about-upcoming a {
+  color: var(--color-brand-neon);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0, 255, 224, 0.35);
+}
+
+.about-upcoming a:hover,
+.about-upcoming a:focus-visible {
+  color: var(--color-brand-rose);
+  border-bottom-color: rgba(244, 114, 182, 0.5);
+}
+
+.about-upcoming-label {
+  display: block;
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-brand-neon);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.about-upcoming-headline {
+  display: block;
+  font-size: var(--font-size-lg);
+  color: var(--color-text-primary);
+  margin-bottom: 0.75rem;
+  text-shadow: 0 0 16px var(--color-brand-neon-glow);
+}
+
+body.night .about-upcoming {
+  border-color: rgba(255, 157, 58, 0.28);
+  background: rgba(255, 157, 58, 0.06);
+  box-shadow: 0 0 20px rgba(255, 157, 58, 0.08);
+}
+
+body.night .about-upcoming-label {
+  color: var(--candle, #ff9d3a);
+}
+
+body.night .about-upcoming-headline {
+  text-shadow: 0 0 14px rgba(255, 157, 58, 0.35);
 }
 
 /* Citation About (style nuit-atelier) */
@@ -1565,7 +1716,7 @@ body.night .about-card-tag {
   max-width: 100%;
 }
 
-/* Cartes de texte larges et responsives (À propos, Contact, etc.) */
+/* Wide responsive text cards (About, Contact, etc.) */
 .about .glass-card,
 .contact .glass-card {
   width: 100%;
@@ -1686,7 +1837,7 @@ body.night .about-card-tag {
 /* ============================================
    JOURNEY / TIMELINE (Scoped "neon" style)
    ============================================ */
-/* Section transparente pour laisser voir le fond animé (particules) */
+/* Transparent section so animated background (particles) shows through */
 .journey {
   --journey-neon: #00ffe0;
   --journey-neon2: #ff2df7;
@@ -1706,7 +1857,7 @@ body.night .about-card-tag {
   background: transparent;
 }
 
-/* Scanlines légères pour ne pas cacher les particules du fond */
+/* Light scanlines so background particles stay visible */
 .journey-scanlines {
   position: absolute;
   inset: 0;
@@ -1734,8 +1885,8 @@ body.night .about-card-tag {
   position: relative;
 }
 
-/* Pas de ::before sur le header : évite le rectangle/cadre, seul le trait sous le h2 reste */
-/* Titre My journey — même présentation néon que About / Portfolio */
+/* No ::before on header: avoids rectangle/frame, only the line under h2 remains */
+/* My journey title — same neon treatment as About / Portfolio */
 .journey-header h2 {
   font-family: "Cinzel", serif;
   font-size: clamp(2rem, 5vw, 3.5rem);
@@ -1751,7 +1902,7 @@ body.night .about-card-tag {
   padding-bottom: 12px;
 }
 
-/* Pas de cadre ni trait derrière le titre My journey — titre seul */
+/* No frame or band behind My journey title — title only */
 .journey-header h2::before {
   content: none;
   display: none;
@@ -1825,7 +1976,7 @@ body.night .about-card-tag {
   color: var(--journey-rose);
 }
 
-/* Barre horizontale transparente (gauche → droite) avec trait turquoise plus foncé en dégradé vers le bas */
+/* Transparent horizontal bar (left → right) with darker turquoise line fading downward */
 .journey-horizontal-bar {
   width: 100%;
   max-width: min(1140px, calc(100% - 2 * var(--spacing-md)));
@@ -1942,7 +2093,8 @@ body.night .about-card-tag {
   border-radius: 8px;
   padding: clamp(18px, 4vw, 28px) clamp(24px, 5vw, 36px);
   width: 100%;
-  max-width: min(540px, calc(100vw - 2 * var(--spacing-md)));
+  /* 100% of flex parent — not 100vw (otherwise card wider than area → horizontal scroll) */
+  max-width: min(540px, 100%);
   min-width: 0;
   position: relative;
   cursor: default;
@@ -2125,10 +2277,10 @@ body.night .about-card-tag {
 }
 
 /* ============================================
-   PORTFOLIO SECTION — style néon (titre, ligne, boutons)
+   PORTFOLIO SECTION — neon style (title, line, buttons)
    ============================================ */
 
-/* Titre "Portfolio" en néon turquoise */
+/* “Portfolio” title in neon turquoise */
 .portfolio .section-title {
   color: var(--color-brand-neon);
   text-shadow:
@@ -2148,7 +2300,7 @@ body.night .about-card-tag {
     0 0 20px var(--color-brand-neon-glow);
 }
 
-/* Moins d’air entre le bloc titre « Portfolio » et les boutons filtres (section-title-wrap global = 64px bas + 4rem marge) */
+/* Tighter gap between “Portfolio” title block and filter buttons (global section-title-wrap = 64px bottom + 4rem margin) */
 .portfolio .section-title-wrap {
   padding: 20px 20px 24px;
   margin-bottom: var(--spacing-sm);
@@ -2169,7 +2321,7 @@ body.night .about-card-tag {
   -webkit-overflow-scrolling: touch;
 }
 
-/* Boutons de filtre : catégories = dossiers assets/images/, contour néon par couleur */
+/* Filter buttons: categories = assets/images/ folders, neon outline per color */
 .filter-btn {
   padding: var(--spacing-xs) var(--spacing-md);
   background: transparent;
@@ -2189,12 +2341,12 @@ body.night .about-card-tag {
 .filter-btn:focus {
   color: var(--color-text-primary);
   outline: none;
-  /* Contour néon par défaut (nouvelles catégories = nouveaux dossiers) */
+  /* Default neon outline (new categories = new folders) */
   border-color: var(--color-brand-neon);
   box-shadow: 0 0 12px rgba(0, 255, 224, 0.2);
 }
 
-/* Contour néon au survol (inactif) — couleur par catégorie (override ci‑dessus) */
+/* Neon outline on hover (inactive) — color per category (overrides above) */
 .filter-btn[data-filter="all"]:hover,
 .filter-btn[data-filter="all"]:focus {
   border-color: var(--color-brand-neon);
@@ -2265,7 +2417,7 @@ body.night .about-card-tag {
     inset 0 0 14px rgba(0, 255, 224, 0.06);
 }
 
-/* Contour néon actif — couleur par catégorie (répertoires assets/images/) */
+/* Active neon outline — color per category (assets/images/ folders) */
 .filter-btn.active[data-filter="paintover"] {
   border-color: var(--color-brand-rose);
   color: var(--color-brand-rose);
@@ -2338,8 +2490,8 @@ body.night .about-card-tag {
   min-width: 0;
 }
 
-/* Bloc image portfolio — vignettes carrées, grille 4 colonnes */
-/* Bordure type timeline (néon) sur les cartes images uniquement */
+/* Portfolio image block — square thumbs, 4-column grid */
+/* Timeline-style (neon) border on image cards only */
 .portfolio-item {
   display: block;
   aspect-ratio: 1 / 1;
@@ -2359,7 +2511,7 @@ body.night .about-card-tag {
   -webkit-tap-highlight-color: rgba(0, 255, 224, 0.15);
 }
 
-/* Survol par défaut (turquoise) */
+/* Default hover (turquoise) */
 .portfolio-item:hover {
   border-color: var(--color-brand-neon);
   box-shadow:
@@ -2367,7 +2519,7 @@ body.night .about-card-tag {
     inset 0 0 20px rgba(0, 255, 224, 0.03);
 }
 
-/* Bordure au survol selon la catégorie de l'image */
+/* Hover border by image category */
 .portfolio-item[data-category="paintover"]:hover {
   border-color: var(--color-brand-rose);
   box-shadow:
@@ -2464,7 +2616,7 @@ body.night .about-card-tag {
   transform: translateY(0);
 }
 
-/* Tactile : pas de survol — afficher titre / catégorie sur la vignette */
+/* Touch: no hover — show title / category on the thumbnail */
 @media (hover: none) and (pointer: coarse) {
   .portfolio-overlay {
     transform: translateY(0);
@@ -2533,15 +2685,16 @@ body.night .about-card-tag {
   }
 }
 
-/* ——— Portfolio : filtres scrollables sur très petit écran ——— */
+/* ——— Portfolio: scrollable filters on very small screens ——— */
 @media (max-width: 480px) {
   .portfolio-filters {
     flex-wrap: nowrap;
     justify-content: flex-start;
     overflow-x: auto;
     padding-bottom: 6px;
-    margin-left: calc(-1 * var(--spacing-sm));
-    margin-right: calc(-1 * var(--spacing-sm));
+    /* No negative margins: they extend scrollWidth past the viewport */
+    margin-left: 0;
+    margin-right: 0;
     padding-left: var(--spacing-sm);
     padding-right: var(--spacing-sm);
     scrollbar-width: thin;
@@ -2554,10 +2707,10 @@ body.night .about-card-tag {
 }
 
 /* ============================================
-   CONTACT SECTION — style néon (titre, ligne, carte, boutons)
+   CONTACT SECTION — neon style (title, line, card, buttons)
    ============================================ */
 
-/* Titre "Contact" en néon */
+/* “Contact” title in neon */
 .contact .section-title {
   color: var(--color-brand-neon);
   text-shadow:
@@ -2577,7 +2730,7 @@ body.night .about-card-tag {
     0 0 20px var(--color-brand-neon-glow);
 }
 
-/* Carte Contact : bordure néon */
+/* Contact card: neon border */
 .contact .glass-card {
   border: 1px solid rgba(0, 255, 224, 0.15);
   transition:
@@ -2659,7 +2812,7 @@ body.night .about-card-tag {
   fill: #1769ff;
 }
 
-/* Instagram — dégradé / rose #E1306C */
+/* Instagram — gradient / pink #E1306C */
 .social-instagram {
   border-color: rgba(225, 48, 108, 0.3);
 }
@@ -2744,7 +2897,7 @@ body.night .about-card-tag {
 }
 
 /* ============================================
-   BARRE SOCIALE FIXE (droite) — couleurs du site (néon / rose, glass)
+   FIXED SOCIAL RAIL (right) — site colors (neon / pink, glass)
    ============================================ */
 .social-fixed-rail {
   position: fixed;
@@ -2828,17 +2981,22 @@ body.night .social-fixed-rail__link:focus-visible {
 }
 
 /*
- * Téléphone / petite tablette : la barre sociale à droite recouvrait la galerie
- * (z-index élevé + touches captées). Déplacer en bas, centré, au-dessus du
- * lecteur musique (gauche) pour libérer toute la largeur pour le portfolio.
+ * Phone / small tablet: rail centered at bottom. The music player is
+ * fixed at the bottom (max z-index, ~150–170px tall): it covered the icons
+ * when bottom was too low. The bottom of the social rail must sit ABOVE
+ * the top of the player → bottom ≥ ~180px + safe-area.
  */
 @media (max-width: 768px) {
   .social-fixed-rail {
     top: auto;
-    bottom: max(6.5rem, calc(env(safe-area-inset-bottom) + 5.25rem));
+    bottom: max(
+      11.5rem,
+      calc(185px + env(safe-area-inset-bottom, 0px))
+    );
     left: 50%;
     right: auto;
     transform: translateX(-50%);
+    /* Below player (2147483647) but above content — geometry is enough */
     z-index: 1002;
   }
 
@@ -2866,15 +3024,21 @@ body.night .social-fixed-rail__link:focus-visible {
     height: 20px;
   }
 
-  /* Espace sous le contenu pour la barre sociale fixe en bas */
+  /* Player + social rail + margin — keeps footer clear of fixed UI */
   body {
-    padding-bottom: calc(4.5rem + env(safe-area-inset-bottom));
+    padding-bottom: max(
+      13rem,
+      calc(220px + env(safe-area-inset-bottom, 0px))
+    );
   }
 }
 
 @media (max-width: 480px) {
   .social-fixed-rail {
-    bottom: max(6rem, calc(env(safe-area-inset-bottom) + 4.75rem));
+    bottom: max(
+      11.25rem,
+      calc(180px + env(safe-area-inset-bottom, 0px))
+    );
   }
 
   .social-fixed-rail__list {
@@ -2896,7 +3060,7 @@ body.night .social-fixed-rail__link:focus-visible {
 }
 
 /* ============================================
-   FOOTER — lisibilité renforcée
+   FOOTER — stronger readability
    ============================================ */
 .footer {
   padding: var(--spacing-lg) var(--spacing-md);
@@ -3001,7 +3165,7 @@ body.night .social-fixed-rail__link:focus-visible {
   padding: var(--spacing-md);
   opacity: 0;
   visibility: hidden;
-  /* Ne pas bloquer les clics sur le lecteur musique (z-index plus bas) */
+  /* Do not block clicks on the music player (lower z-index) */
   pointer-events: none;
   transition: all var(--transition-base);
 }
@@ -3095,7 +3259,7 @@ body.night .social-fixed-rail__link:focus-visible {
   color: var(--color-text-primary);
 }
 
-/* Vignette vidéo YouTube (portfolio) */
+/* YouTube video thumbnail (portfolio) */
 .portfolio-item--video .portfolio-image::after {
   content: "▶";
   position: absolute;
@@ -3132,7 +3296,7 @@ body.night .social-fixed-rail__link:focus-visible {
   top: 0;
 }
 
-/* Focus visible pour tous les éléments interactifs */
+/* Focus-visible for all interactive elements */
 button:focus-visible,
 a:focus-visible,
 input:focus-visible,
@@ -3213,7 +3377,7 @@ body.night #stars-overlay {
   opacity: 1;
 }
 
-/* Curseur atelier (bougie) — affiché en mode nuit à la place du curseur pixel */
+/* Workshop cursor (candle) — shown in night mode instead of pixel cursor */
 .atelier-cursor {
   position: fixed;
   inset: 0;
@@ -3298,7 +3462,7 @@ body.night.cursor-pixel * {
   color: var(--candle);
 }
 
-/* Bannière info nuit */
+/* Night mode info banner */
 .night-banner {
   position: fixed;
   bottom: 110px;
@@ -3344,13 +3508,18 @@ body.night {
     filter 1.5s ease;
 }
 
-/* Harmonisation titres / néon → bougie en mode nuit */
+/* Unify titles / neon → candle in night mode */
 body.night .section-title,
 body.night .section-title .neon-text,
 body.night .hero-title,
 body.night .hero-subtitle {
   color: #ffe8c8 !important;
   text-shadow: 0 0 30px rgba(255, 157, 58, 0.35);
+}
+
+body.night .hero-subtitle__sep {
+  color: rgba(255, 200, 160, 0.45) !important;
+  text-shadow: none;
 }
 body.night .section-title::after,
 body.night .glow-line {
@@ -3392,7 +3561,7 @@ body.night footer {
   border-top-color: rgba(255, 157, 58, 0.15);
 }
 
-/* Réduction de mouvement pour les utilisateurs préférant moins d'animation */
+/* Reduced motion for users who prefer less animation */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

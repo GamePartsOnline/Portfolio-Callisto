@@ -1,19 +1,19 @@
 /**
- * True si la page est ouverte en file:// (double-clic sur index.html).
- * Dans ce cas fetch() vers des fichiers locaux est bloqué par le navigateur (CORS).
+ * True when the page is opened as file:// (double-clicking index.html).
+ * In that case fetch() to local files is blocked by the browser (CORS).
  */
 function isFileProtocol() {
   return window.location.protocol === "file:";
 }
 
-/** Fichiers renommés : ancienne clé JSON → nom actuel sur disque */
+/** Renamed files: old JSON key → current filename on disk */
 const LEGACY_IMAGE_FILENAMES = {
   "aquarelle/ouvaton?.jpg": "aquarelle/ouvaton.jpg",
 };
 
 /**
- * Chemin d’image portfolio : encode chaque segment (encodeURI ne encode pas `?`
- * ni `#` dans le nom de fichier).
+ * Portfolio image path: encode each segment (encodeURI does not encode `?`
+ * or `#` in filenames).
  */
 function assetImagePath(filename) {
   if (!filename) return "";
@@ -39,13 +39,14 @@ function initParticles() {
     particlesContainer.style.zIndex = "10"; // Force visibility above other layers
   }
 
-  // Vérifier si l'utilisateur préfère réduire les animations
+  // Respect prefers-reduced-motion
   const prefersReducedMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)",
   ).matches;
   if (prefersReducedMotion) {
-    // Créer quelques particules statiques seulement
-    const staticParticles = window.innerWidth < 768 ? 6 : 12;
+    // Only a few static particles (fewer on phone — less DOM / paint)
+    const w = window.innerWidth;
+    const staticParticles = w < 480 ? 3 : w < 768 ? 5 : 12;
     for (let i = 0; i < staticParticles; i++) {
       const particle = document.createElement("div");
       particle.className = "particle";
@@ -63,8 +64,10 @@ function initParticles() {
     return;
   }
 
-  // Moins de particules + une seule boucle rAF (évite 40–80 timers GPU en parallèle)
-  const particleCount = window.innerWidth < 768 ? 8 : 16;
+  // Fewer particles + single rAF loop (avoids 40–80 parallel GPU timers)
+  // Phone (<480px): 4 · tablet / large phone (<768px): 6 · desktop: 16
+  const w = window.innerWidth;
+  const particleCount = w < 480 ? 4 : w < 768 ? 6 : 16;
   const particles = [];
   const states = [];
 
@@ -143,7 +146,7 @@ function initParticles() {
 
   requestAnimationFrame(animateParticlesFrame);
 
-  // Réinitialiser au redimensionnement (avec debounce)
+  // Reset on resize (debounced)
   let resizeTimeout;
   window.addEventListener("resize", () => {
     clearTimeout(resizeTimeout);
@@ -155,7 +158,7 @@ function initParticles() {
 }
 
 // ============================================
-// PARALLAX EFFECT SUR SCROLL (subtile)
+// PARALLAX ON SCROLL (subtle)
 // ============================================
 function initParallax() {
   const prefersReducedMotion = window.matchMedia(
@@ -172,7 +175,7 @@ function initParallax() {
     if (!ticking) {
       window.requestAnimationFrame(() => {
         const scrolled = window.pageYOffset;
-        const rate = scrolled * 0.1; // Facteur de parallaxe très subtil
+        const rate = scrolled * 0.1; // Very subtle parallax factor
 
         orbs.forEach((orb, index) => {
           const speed = (index + 1) * 0.05;
@@ -198,9 +201,9 @@ const navMenu = document.getElementById("navMenu");
 const navDesktopMq = window.matchMedia("(min-width: 768px)");
 
 /**
- * aria-hidden sur #navMenu : ne jamais le poser tant qu’un descendant a le focus
- * (sinon avertissement navigateur + utilisateurs AT exclus). Déplacer le focus avant.
- * En vue bureau, ne pas masquer le menu aux lecteurs d’écran.
+ * aria-hidden on #navMenu: never set it while a descendant has focus
+ * (otherwise browser warnings + AT users excluded). Move focus first.
+ * On desktop, do not hide the menu from screen readers.
  */
 function syncNavMenuAriaHidden() {
   if (!navToggle || !navMenu) return;
@@ -231,7 +234,7 @@ if (navToggle && navMenu) {
     syncNavMenuAriaHidden();
   });
 
-  // Fermer le menu au clic sur un lien (mobile uniquement : menu ouvert)
+  // Close menu when a link is clicked (mobile only, when open)
   const navLinks = document.querySelectorAll(".nav-link");
   navLinks.forEach((link) => {
     link.addEventListener("click", () => {
@@ -242,7 +245,7 @@ if (navToggle && navMenu) {
     });
   });
 
-  // Fermer le menu avec Escape — focus avant aria-hidden
+  // Close menu with Escape — focus before aria-hidden
   document.addEventListener("keydown", (e) => {
     if (
       e.key === "Escape" &&
@@ -267,7 +270,7 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     const target = document.querySelector(href);
 
     if (target) {
-      const offsetTop = target.offsetTop - 60; // Compenser la nav fixe
+      const offsetTop = target.offsetTop - 60; // Offset for fixed nav
       window.scrollTo({
         top: offsetTop,
         behavior: "smooth",
@@ -289,12 +292,12 @@ const portfolioData = {
     { id: "IA", label: "IA Art" },
     { id: "photo", label: "Photos" },
     { id: "gaming", label: "Gaming Artwork" },
-    { id: "pastel-sec", label: "Pastel sec" },
-    { id: "acrylique", label: "Acrylique" },
-    { id: "aquarelle", label: "Aquarelle" },
+    { id: "pastel-sec", label: "Dry pastel" },
+    { id: "acrylique", label: "Acrylic" },
+    { id: "aquarelle", label: "Watercolor" },
     { id: "animation", label: "Animation" },
     { id: "other", label: "Others" },
-    { id: "logo", label: "Logo (masqué du portfolio)" },
+    { id: "logo", label: "Logo (hidden from portfolio)" },
   ],
   images: [
     {
@@ -351,7 +354,7 @@ const portfolioData = {
     {
       filename: "graphics/Chromatic.jpg",
       category: "graphics",
-      title: "Chromatique résonance",
+      title: "Chromatic resonance",
       year: 2024,
       award: "1st in the Rsync 2024 Graphics competition",
       description:
@@ -377,7 +380,7 @@ const portfolioData = {
     {
       filename: "graphics/paul_le_poulpe.png",
       category: "graphics",
-      title: "Paul le poulpe by Callisto",
+      title: "Paul the octopus by Callisto",
       year: 2024,
       award: "Shadow Party 2024 Newschool Graphics competition",
       description: "Released 29 June 2024.",
@@ -457,7 +460,7 @@ const portfolioData = {
       filename: "graphics/cropped-elevation-finale-scaled-1.jpg",
       category: "graphics",
       title: "Elevation 2079",
-      award: "1ère place @ Inercia",
+      award: "1st place @ Inercia",
       year: 2022,
     },
     {
@@ -482,7 +485,7 @@ const portfolioData = {
       category: "graphics",
       title: "The rift",
       year: 2021,
-      award: "11th  revision - saarbrucken - Allemagne",
+      award: "11th Revision — Saarbrücken — Germany",
     },
     {
       filename: "graphics/sharko.png",
@@ -552,7 +555,7 @@ const portfolioData = {
     {
       filename: "other/227e.342096.jpg",
       category: "other",
-      title: "Souvenirs Shadow Party 2022 by Callisto / Flush",
+      title: "Shadow Party 2022 memories by Callisto / Flush",
       year: 2024,
       award: "16th in the Revision 2024 Animated GIF competition",
       description: "Released 31 March 2024.",
@@ -577,7 +580,7 @@ const portfolioData = {
       category: "gaming",
       youtubeId: "HLdNMPZUMl4",
       videoUrl: "https://youtu.be/HLdNMPZUMl4",
-      title: "GPO - pouss pouss fabrication",
+      title: "GPO — push-push manufacturing",
     },
     {
       filename:
@@ -735,7 +738,7 @@ const portfolioData = {
       category: "animation",
       youtubeId: "c-NTft-ujUY",
       videoUrl: "https://youtu.be/c-NTft-ujUY",
-      title: "Lycée Agricole de Somme Suippe - portes ouvertes",
+      title: "Somme Suippe agricultural high school — open house",
     },
     {
       category: "animation",
@@ -751,343 +754,343 @@ const portfolioData = {
     {
       "filename": "acrylique/3-508x494-1.jpg",
       "category": "acrylique",
-      "title": "plaque pour mon papa",
+      "title": "Plaque for my dad",
       "year": 2021,
-      "description": "Série commémorative — acrylique."
+      "description": "Commemorative series — acrylic."
     },
     {
       "filename": "acrylique/2-1.jpg",
       "category": "acrylique",
-      "title": "Fuite bleu et rose",
+      "title": "Blue and pink flow",
       "year": 2021,
-      "description": "Acrylique"
+      "description": "Acrylic"
     },
     {
       "filename": "acrylique/2-508x427-1.jpg",
       "category": "acrylique",
-      "title": "sous les étoiles de l'arbre",
+      "title": "Under the tree's stars",
       "year": 2021,
-      "description": "Acrylique"
+      "description": "Acrylic"
     },
     {
       "filename": "acrylique/09.19-508x518-1.jpg",
       "category": "acrylique",
       "title": "Love Fleur de 2019",
       "year": 2021,
-      "description": "Acrylique"
+      "description": "Acrylic"
     },
     {
       "filename": "acrylique/484016.1153284291.1.o24494341.jpg",
       "category": "acrylique",
-      "title": "La girafe et son petit",
+      "title": "The giraffe and her calf",
       "year": 2021,
-      "description": "Acrylique"
+      "description": "Acrylic"
     },
     {
       "filename": "acrylique/484017.325007515.1.o1678965315.jpg",
       "category": "acrylique",
-      "title": "Le loup",
+      "title": "The wolf",
       "year": 2021,
-      "description": "Acrylique"
+      "description": "Acrylic"
     },
     {
       "filename": "acrylique/484020.1992883738.1.o2118704691.jpg",
       "category": "acrylique",
-      "title": "le petit chat se ballade",
+      "title": "The kitten out for a walk",
       "year": 2021,
-      "description": "Acrylique"
+      "description": "Acrylic"
     },
     {
       "filename": "acrylique/488894.1841485046.1.o1475312202.jpg",
       "category": "acrylique",
-      "title": "La plage",
+      "title": "The beach",
       "year": 2021,
-      "description": "Acrylique"
+      "description": "Acrylic"
     },
     {
       "filename": "acrylique/489645.1217804915.1.o1251498251.jpg",
       "category": "acrylique",
-      "title": "coucher de soleil",
+      "title": "Sunset",
       "year": 2021,
-      "description": "Acrylique"
+      "description": "Acrylic"
     },
     {
       "filename": "acrylique/492052.180022828.1.o831404474.jpg",
       "category": "acrylique",
       "title": "The first city",
       "year": 2021,
-      "description": "Acrylique"
+      "description": "Acrylic"
     },
     {
       "filename": "acrylique/538030.20213600.1.o1324333696.jpg",
       "category": "acrylique",
-      "title": "Coeur d'orchidée M",
+      "title": "Orchid heart M",
       "year": 2021,
-      "description": "Série acrylique"
+      "description": "Acrylic series"
     },
     {
       "filename": "acrylique/15390826_633081763543121_7934280355348809027_n-768x757-1.jpg",
       "category": "acrylique",
-      "title": "bulle de neige",
+      "title": "Snow bubble",
       "year": 2021,
-      "description": "Acrylique"
+      "description": "Acrylic"
     },
     {
       "filename": "acrylique/19095290_723789734472323_308791567686722242_o-2-1000x985-1.jpg",
       "category": "acrylique",
-      "title": "La balançoire d'amour",
+      "title": "The swing of love",
       "year": 2021,
-      "description": "Acrylique"
+      "description": "Acrylic"
     },
     {
       "filename": "acrylique/43604374_989553927895901_3236040201478340608_n-1000x646-1.png",
       "category": "acrylique",
-      "title": "The elephant d'or",
+      "title": "The golden elephant",
       "year": 2021,
-      "description": "Acrylique"
+      "description": "Acrylic"
     },
     {
       "filename": "acrylique/59687580_1116098235241469_934782928846585856_n-1000x1003-1.jpg",
       "category": "acrylique",
-      "title": "Tahiti plage",
+      "title": "Tahiti beach",
       "year": 2021,
-      "description": "Acrylique"
+      "description": "Acrylic"
     },
     {
-      "filename": "acrylique/Abstrait1-600x511-1.jpg",
+      "filename": "acrylique/Abstract1-600x511-1.jpg",
       "category": "acrylique",
-      "title": "Abstrait",
+      "title": "Abstract",
       "year": 2021,
-      "description": "Acrylique"
+      "description": "Acrylic"
     },
     {
       "filename": "acrylique/Capture-2-508x511-1.jpg",
       "category": "acrylique",
-      "title": "Fleur en courbes",
+      "title": "Flower in curves",
       "year": 2021,
-      "description": "Acrylique"
+      "description": "Acrylic"
     },
     {
       "filename": "acrylique/eric-768x511-1.jpg",
       "category": "acrylique",
       "title": "Nicky et Laura with love",
       "year": 2021,
-      "description": "Portrait acrylique"
+      "description": "Acrylic portrait"
     },
     {
       "filename": "acrylique/fred-charton-13336097-544626092388689-198714441282019086-n-768x576-1.jpg",
       "category": "acrylique",
-      "title": "L'aigle s'envole",
+      "title": "The eagle takes flight",
       "year": 2021,
-      "description": "Acrylique"
+      "description": "Acrylic"
     },
     {
       "filename": "acrylique/fred-charton-img-20190508-160321.jpg",
       "category": "acrylique",
-      "title": "A la facon d'un grand artiste",
+      "title": "In the manner of a great artist",
       "year": 2021,
-      "description": "Acrylique"
+      "description": "Acrylic"
     },
     {
       "filename": "acrylique/fred-charton-img-20190511-165808.jpg",
       "category": "acrylique",
-      "title": "coucher de soleil au bord des rochers",
+      "title": "Sunset on the rocks",
       "year": 2021,
-      "description": "Acrylique"
+      "description": "Acrylic"
     },
     {
       "filename": "acrylique/fred-charton-neige-768x591-1.jpg",
       "category": "acrylique",
-      "title": "La neige au sommet de la montagne",
+      "title": "Snow on the mountaintop",
       "year": 2021,
-      "description": "Acrylique"
+      "description": "Acrylic"
     },
     {
       "filename": "acrylique/roger.jpg",
       "category": "acrylique",
-      "title": "roger pour ma coupine",
+      "title": "Roger for my girlfriend",
       "year": 2021,
-      "description": "Acrylique"
+      "description": "Acrylic"
     },
     {
       "filename": "aquarelle/Latortue.jpg",
       "category": "aquarelle",
-      "title": "La tortue",
-      "description": "Aquarelle"
+      "title": "The turtle",
+      "description": "Watercolor"
     },
     {
       "filename": "aquarelle/Le_cheval_blanc.jpg",
       "category": "aquarelle",
-      "title": "Le cheval blanc",
-      "description": "Aquarelle"
+      "title": "The white horse",
+      "description": "Watercolor"
     },
     {
       "filename": "aquarelle/Promenade.jpg",
       "category": "aquarelle",
       "title": "Promenade",
-      "description": "Aquarelle"
+      "description": "Watercolor"
     },
     {
       "filename": "aquarelle/cannard.jpg",
       "category": "aquarelle",
       "title": "Cannard",
-      "description": "Aquarelle"
+      "description": "Watercolor"
     },
     {
       "filename": "aquarelle/coquelicot.jpg",
       "category": "aquarelle",
       "title": "Coquelicot",
-      "description": "Aquarelle"
+      "description": "Watercolor"
     },
     {
       "filename": "aquarelle/cygne.jpg",
       "category": "aquarelle",
       "title": "Cygne",
-      "description": "Aquarelle"
+      "description": "Watercolor"
     },
     {
       "filename": "aquarelle/demolion.jpg",
       "category": "aquarelle",
-      "title": "Le lion",
-      "description": "Aquarelle"
+      "title": "The lion",
+      "description": "Watercolor"
     },
     {
       "filename": "aquarelle/facecat.jpg",
       "category": "aquarelle",
-      "title": "Face de chat",
-      "description": "Aquarelle"
+      "title": "Cat face",
+      "description": "Watercolor"
     },
     {
       "filename": "aquarelle/fleuroseauborddeleau.jpg",
       "category": "aquarelle",
-      "title": "Fleur rose au bord de l'eau",
-      "description": "Aquarelle"
+      "title": "Pink flower by the water",
+      "description": "Watercolor"
     },
     {
       "filename": "aquarelle/heron.jpg",
       "category": "aquarelle",
-      "title": "Héron",
-      "description": "Aquarelle"
+      "title": "Heron",
+      "description": "Watercolor"
     },
     {
       "filename": "aquarelle/lepetit pont .jpg",
       "category": "aquarelle",
-      "title": "Le petit pont",
-      "description": "Aquarelle"
+      "title": "The little bridge",
+      "description": "Watercolor"
     },
     {
       "filename": "aquarelle/levillage.jpg",
       "category": "aquarelle",
-      "title": "Le village",
-      "description": "Aquarelle"
+      "title": "The village",
+      "description": "Watercolor"
     },
     {
       "filename": "aquarelle/ouvaton.jpg",
       "category": "aquarelle",
-      "title": "Où va-t-on ?",
-      "description": "Aquarelle"
+      "title": "Where are we going?",
+      "description": "Watercolor"
     },
     {
       "filename": "aquarelle/plage et city .jpg",
       "category": "aquarelle",
-      "title": "Plage et city",
-      "description": "Aquarelle"
+      "title": "Beach and city",
+      "description": "Watercolor"
     },
     {
       "filename": "aquarelle/thecat.jpg",
       "category": "aquarelle",
       "title": "The cat",
-      "description": "Aquarelle"
+      "description": "Watercolor"
     },
     {
       "filename": "aquarelle/voyage.jpg",
       "category": "aquarelle",
-      "title": "Voyage",
-      "description": "Aquarelle"
+      "title": "Journey",
+      "description": "Watercolor"
     },
     {
       "filename": "pastel-sec/Choucky.png",
       "category": "pastel-sec",
       "title": "Choucky",
-      "description": "Pastel sec"
+      "description": "Dry pastel"
     },
     {
       "filename": "pastel-sec/Lestbernarde_son_regard.jpg",
       "category": "pastel-sec",
-      "title": "Le Saint-Bernard et son regard",
-      "description": "Pastel sec"
+      "title": "The Saint Bernard and its gaze",
+      "description": "Dry pastel"
     },
     {
       "filename": "pastel-sec/fred-charton-carla-fini.jpg",
       "category": "pastel-sec",
       "title": "Carla",
-      "description": "Pastel sec"
+      "description": "Dry pastel"
     },
     {
       "filename": "pastel-sec/fred-charton-guerriere.jpg",
       "category": "pastel-sec",
-      "title": "La guerrière Callisto",
-      "description": "Pastel sec"
+      "title": "Callisto the warrior",
+      "description": "Dry pastel"
     },
     {
       "filename": "pastel-sec/fred-charton-tigre.jpg",
       "category": "pastel-sec",
       "title": "Tigre",
-      "description": "Pastel sec"
+      "description": "Dry pastel"
     },
     {
       "filename": "pastel-sec/l'abeille.jpg",
       "category": "pastel-sec",
-      "title": "L'abeille",
-      "description": "Pastel sec"
+      "title": "The bee",
+      "description": "Dry pastel"
     },
     {
       "filename": "pastel-sec/lagirafeetsongirafon.jpg",
       "category": "pastel-sec",
-      "title": "La girafe et son girafon",
-      "description": "Pastel sec"
+      "title": "The giraffe and her calf",
+      "description": "Dry pastel"
     },
     {
       "filename": "pastel-sec/le chat.png",
       "category": "pastel-sec",
-      "title": "Le chat",
-      "description": "Pastel sec"
+      "title": "The cat",
+      "description": "Dry pastel"
     },
     {
       "filename": "pastel-sec/lecabanon.jpg",
       "category": "pastel-sec",
-      "title": "Le cabanon",
-      "description": "Pastel sec"
+      "title": "The shed",
+      "description": "Dry pastel"
     },
     {
       "filename": "pastel-sec/lechien.jpg",
       "category": "pastel-sec",
-      "title": "Le chien",
-      "description": "Pastel sec"
+      "title": "The dog",
+      "description": "Dry pastel"
     },
     {
       "filename": "pastel-sec/les petites cabannes.jpg",
       "category": "pastel-sec",
-      "title": "Les petites cabannes",
-      "description": "Pastel sec"
+      "title": "The little cabins",
+      "description": "Dry pastel"
     },
     {
       "filename": "pastel-sec/regard.jpg",
       "category": "pastel-sec",
-      "title": "Regard",
-      "description": "Pastel sec"
+      "title": "Gaze",
+      "description": "Dry pastel"
     },
     {
       "filename": "pastel-sec/rochideeetpriere.jpg",
       "category": "pastel-sec",
-      "title": "Roche, idée et prière",
-      "description": "Pastel sec"
+      "title": "Rock, idea and prayer",
+      "description": "Dry pastel"
     },
     {
       "filename": "pastel-sec/yang.jpg",
       "category": "pastel-sec",
       "title": "Yang",
-      "description": "Pastel sec"
+      "description": "Dry pastel"
     },
     {
       filename: "logo/logo-cllisto.png",
@@ -1098,7 +1101,7 @@ const portfolioData = {
   ],
 };
 
-// Catégories chargées depuis le JSON (id -> label), utilisé pour les libellés et la lightbox
+// Categories from JSON (id -> label), used for filter labels and the lightbox
 let portfolioCategoryNames = {};
 
 function getCategoryNamesFromData(data) {
@@ -1115,10 +1118,10 @@ function getCategoryNamesFromData(data) {
       IA: "IA Art",
       photo: "Photos",
       gaming: "Gaming Artwork",
-      logo: "Logo (masqué du portfolio)",
-      "pastel-sec": "Pastel sec",
-      acrylique: "Acrylique",
-      aquarelle: "Aquarelle",
+      logo: "Logo (hidden from portfolio)",
+      "pastel-sec": "Dry pastel",
+      acrylique: "Acrylic",
+      aquarelle: "Watercolor",
       animation: "Animation",
       other: "Others",
     });
@@ -1126,7 +1129,7 @@ function getCategoryNamesFromData(data) {
   return map;
 }
 
-/** Extrait l’id vidéo YouTube (11 caractères) depuis une URL ou un id brut. */
+/** Extract YouTube video id (11 chars) from a URL or raw id. */
 function extractYoutubeId(urlOrId) {
   if (!urlOrId) return null;
   const s = String(urlOrId).trim();
@@ -1141,7 +1144,7 @@ function getYoutubeThumbnailUrl(youtubeId) {
   return `https://img.youtube.com/vi/${youtubeId}/hqdefault.jpg`;
 }
 
-/** Libellé par défaut pour un id de catégorie (ex: "pastel-sec" -> "Pastel sec"). */
+/** Default label for a category id (e.g. "pastel-sec" -> "Dry pastel"). */
 function humanizeCategoryId(id) {
   if (!id) return "Other";
   if (id === "IA") return "IA Art";
@@ -1150,8 +1153,8 @@ function humanizeCategoryId(id) {
 }
 
 /**
- * Vignette + catégorie pour une entrée portfolio (même règle que la grille).
- * Retourne null si l’entrée n’affiche aucune vignette (pas d’image dans la galerie).
+ * Thumbnail + category for a portfolio entry (same rules as the grid).
+ * Returns null if the entry has no thumbnail (no image in the gallery).
  */
 function getPortfolioThumbInfo(image) {
   if (!image || image.category === "logo") return null;
@@ -1173,9 +1176,9 @@ function getPortfolioThumbInfo(image) {
 }
 
 /**
- * Filtres : uniquement les catégories qui ont au moins une œuvre visible (vignette).
- * Les catégories vides du JSON ne s’affichent pas.
- * Chaque entrée inclut `count` : nombre d’œuvres dans la catégorie.
+ * Filters: only categories with at least one visible work (thumbnail).
+ * Empty categories from JSON are not shown.
+ * Each entry includes `count`: number of works in the category.
  */
 function getCategoriesFromImages(data) {
   const labelMap = getCategoryNamesFromData(data);
@@ -1200,9 +1203,9 @@ function getCategoriesFromImages(data) {
 let portfolioFiltersRebuildRaf = null;
 
 /**
- * Après suppression d’une vignette (fichier manquant), recalcule les filtres
- * pour ne garder que les catégories encore représentées dans le DOM.
- * Regroupe les appels si plusieurs images échouent dans la même frame.
+ * After removing a thumbnail (missing file), rebuild filters to keep only
+ * categories still present in the DOM.
+ * Batches calls when several images fail in the same frame.
  */
 function rebuildPortfolioFiltersFromDom() {
   if (portfolioFiltersRebuildRaf) cancelAnimationFrame(portfolioFiltersRebuildRaf);
@@ -1235,7 +1238,7 @@ function rebuildPortfolioFiltersFromDom() {
 function buildPortfolioFilterButtons(categories) {
   const container = document.getElementById("portfolioFilters");
   if (!container) return;
-  /* Tableau vide = aucune catégorie avec œuvres (ne pas retomber sur la liste par défaut). */
+  /* Empty array = no categories with works (do not fall back to default list). */
   const list = Array.isArray(categories)
     ? categories
     : [
@@ -1244,9 +1247,9 @@ function buildPortfolioFilterButtons(categories) {
         { id: "IA", label: "IA Art" },
         { id: "photo", label: "Photos" },
         { id: "gaming", label: "Gaming Artwork" },
-        { id: "pastel-sec", label: "Pastel sec" },
-        { id: "acrylique", label: "Acrylique" },
-        { id: "aquarelle", label: "Aquarelle" },
+        { id: "pastel-sec", label: "Dry pastel" },
+        { id: "acrylique", label: "Acrylic" },
+        { id: "aquarelle", label: "Watercolor" },
         { id: "animation", label: "Animation" },
         { id: "other", label: "Others" },
       ];
@@ -1283,7 +1286,7 @@ function buildPortfolioFilterButtons(categories) {
 async function loadPortfolioImages() {
   try {
     let data = portfolioData;
-    /* En file://, ne pas fetch (CORS) — données embarquées dans portfolioData */
+    /* On file://, skip fetch (CORS) — use embedded portfolioData */
     if (!isFileProtocol()) {
       try {
         const res = await fetch(
@@ -1295,7 +1298,7 @@ async function loadPortfolioImages() {
           if (json && json.images) data = json;
         }
       } catch (_) {
-        /* garde portfolioData en secours */
+        /* keep portfolioData as fallback */
       }
     }
     const portfolioGrid = document.getElementById("portfolioGrid");
@@ -1308,7 +1311,7 @@ async function loadPortfolioImages() {
 
     const allImages = data.images || [];
 
-    // Créer les éléments portfolio
+    // Build portfolio DOM items
     allImages.forEach((image) => {
       const info = getPortfolioThumbInfo(image);
       if (!info) return;
@@ -1326,7 +1329,7 @@ async function loadPortfolioImages() {
 
       const img = document.createElement("img");
       img.src = thumbSrc;
-      img.alt = image.title || image.filename || (yid ? "Vidéo YouTube" : "");
+      img.alt = image.title || image.filename || (yid ? "YouTube video" : "");
       img.loading = "lazy";
       img.decoding = "async";
       img.onerror = function () {
@@ -1352,7 +1355,7 @@ async function loadPortfolioImages() {
 
       overlay.appendChild(title);
 
-      // Ajouter l'année si présente
+      // Add year when present
       if (image.year) {
         const yearSpan = document.createElement("span");
         yearSpan.className = "portfolio-year";
@@ -1362,7 +1365,7 @@ async function loadPortfolioImages() {
 
       overlay.appendChild(categoryEl);
 
-      // Ajouter le badge de récompense si présent
+      // Add award badge when present
       if (image.award) {
         const badge = document.createElement("span");
         badge.className = "portfolio-badge award";
@@ -1376,17 +1379,17 @@ async function loadPortfolioImages() {
       portfolioGrid.appendChild(item);
     });
 
-    // Réinitialiser les filtres après le chargement
+    // Re-init filters after load
     initPortfolioFilters();
 
-    // Attacher les événements lightbox
+    // Attach lightbox events
     attachLightboxEvents();
 
-    // Hero : reconstruire avec les mêmes données que la grille (cohérence)
+    // Hero: rebuild with same data as grid (stay in sync)
     await buildHeroSlidesFromPortfolio(data);
     initHeroSlide();
   } catch (error) {
-    console.error("Erreur lors du chargement des images:", error);
+    console.error("Error loading portfolio images:", error);
   }
 }
 
@@ -1406,7 +1409,7 @@ function initPortfolioFilters() {
         button.getAttribute("data-filter") || "all"
       ).toLowerCase();
 
-      // Activer uniquement le bouton cliqué (tri par catégorie)
+      // Activate only the clicked button (filter by category)
       filterButtons.forEach((btn) => {
         btn.classList.remove("active");
         btn.setAttribute("aria-selected", "false");
@@ -1414,7 +1417,7 @@ function initPortfolioFilters() {
       button.classList.add("active");
       button.setAttribute("aria-selected", "true");
 
-      // Afficher les items de la catégorie choisie, masquer les autres
+      // Show items in the selected category, hide the rest
       portfolioItems.forEach((item) => {
         const cat = (item.getAttribute("data-category") || "").toLowerCase();
         if (filter === "all" || cat === filter) {
@@ -1453,7 +1456,7 @@ const lightboxClose = document.querySelector(".lightbox-close");
 function openLightbox(item) {
   const img = item.querySelector("img");
 
-  // Récupérer les données JSON stockées dans l'élément
+  // Read JSON stored on the element
   const imageDataStr = item.getAttribute("data-image-data");
   let imageData = null;
 
@@ -1461,11 +1464,11 @@ function openLightbox(item) {
     try {
       imageData = JSON.parse(imageDataStr);
     } catch (e) {
-      console.error("Erreur parsing image data:", e);
+      console.error("Error parsing image data:", e);
     }
   }
 
-  // Fallback sur les éléments DOM si pas de données JSON
+  // Fallback to DOM if no JSON data
   const title =
     imageData?.title ||
     item.querySelector(".portfolio-title")?.textContent ||
@@ -1553,12 +1556,12 @@ function closeLightbox() {
   }
 }
 
-// Fonction pour attacher les événements lightbox aux items portfolio
+// Attach lightbox events to portfolio items
 function attachLightboxEvents() {
   const portfolioItems = document.querySelectorAll(".portfolio-item");
 
   portfolioItems.forEach((item) => {
-    // Retirer les anciens listeners s'ils existent
+    // Remove old listeners if any
     const newItem = item.cloneNode(true);
     item.parentNode.replaceChild(newItem, item);
 
@@ -1566,7 +1569,7 @@ function attachLightboxEvents() {
       openLightbox(newItem);
     });
 
-    // Support clavier
+    // Keyboard support
     newItem.addEventListener("keydown", (e) => {
       if (e.key === "Enter" || e.key === " ") {
         e.preventDefault();
@@ -1576,19 +1579,19 @@ function attachLightboxEvents() {
   });
 }
 
-// Fermer lightbox
+// Close lightbox
 if (lightboxClose) {
   lightboxClose.addEventListener("click", closeLightbox);
 }
 
-// Fermer avec Escape
+// Close with Escape
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape" && lightbox?.getAttribute("aria-hidden") === "false") {
     closeLightbox();
   }
 });
 
-// Fermer en cliquant sur le fond
+// Close when clicking the backdrop
 if (lightbox) {
   lightbox.addEventListener("click", (e) => {
     if (e.target === lightbox) {
@@ -1614,10 +1617,10 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, observerOptions);
 
-// Sections et cartes — animation d’apparition au scroll.
-// Exclure #portfolio et les vignettes (.portfolio-item) : sinon opacity:0 reste
-// appliqué (section masquée ou vignettes chargées après l’observer) et la galerie
-// semble « invisible ».
+// Sections and cards — fade-in on scroll.
+// Exclude #portfolio and thumbnails (.portfolio-item): otherwise opacity:0 can
+// stick (hidden section or thumbs loaded after the observer) and the gallery
+// looks “invisible”.
 document
   .querySelectorAll(".section:not(#portfolio), .glass-card:not(.portfolio-item)")
   .forEach((el) => {
@@ -1665,7 +1668,7 @@ if (heroScroll) {
 }
 
 // ============================================
-// HERO SLIDE — images aléatoires du portfolio
+// HERO SLIDE — random images from portfolio
 // ============================================
 function shuffleArray(arr) {
   const a = [...arr];
@@ -1676,7 +1679,7 @@ function shuffleArray(arr) {
   return a;
 }
 
-/** Pré-vérifie qu’une URL d’image charge (évite diapos hero vides / cassées). */
+/** Pre-check that an image URL loads (avoids empty / broken hero slides). */
 function verifyImageLoads(url) {
   return new Promise((resolve) => {
     if (!url) {
@@ -1799,16 +1802,16 @@ function initHeroSlide() {
 }
 
 // ============================================
-// LAZY LOADING IMAGES (si pas déjà géré par le navigateur)
+// LAZY LOADING IMAGES (if not already handled by the browser)
 // ============================================
 if ("loading" in HTMLImageElement.prototype) {
-  // Le navigateur supporte le lazy loading natif
+  // Browser supports native lazy loading
   const images = document.querySelectorAll('img[loading="lazy"]');
   images.forEach((img) => {
     img.src = img.src;
   });
 } else {
-  // Fallback pour les navigateurs plus anciens
+  // Fallback for older browsers
   const imageObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
@@ -1828,14 +1831,14 @@ if ("loading" in HTMLImageElement.prototype) {
 // ============================================
 // ACCESSIBILITY - Skip Link
 // ============================================
-// Ajouter un skip link si nécessaire
+// Add skip link
 const skipLink = document.createElement("a");
 skipLink.href = "#main-content";
 skipLink.className = "skip-link";
 skipLink.textContent = "Skip to main content";
 document.body.insertBefore(skipLink, document.body.firstChild);
 
-// Ajouter un id au main content si nécessaire
+// Ensure main content has an id
 const mainContent =
   document.querySelector("main") || document.querySelector("#about");
 if (mainContent && !mainContent.id) {
@@ -1843,7 +1846,7 @@ if (mainContent && !mainContent.id) {
 }
 
 // ============================================
-// PERFORMANCE - Debounce pour scroll
+// PERFORMANCE - Scroll debounce
 // ============================================
 function debounce(func, wait) {
   let timeout;
@@ -1857,20 +1860,20 @@ function debounce(func, wait) {
   };
 }
 
-// Optimiser les événements scroll
+// Optimized scroll events
 const optimizedScrollHandler = debounce(() => {
-  // Code de scroll optimisé ici
+  // Optimized scroll handling
 }, 10);
 
 // ============================================
-// INITIALISATION
+// INITIALIZATION
 // ============================================
 document.addEventListener("DOMContentLoaded", async () => {
-  // Hero : images aléatoires du portfolio (puis init du carrousel)
+  // Hero: random portfolio images (then init carousel)
   await buildHeroSlidesFromPortfolio(portfolioData);
   initHeroSlide();
 
-  // Vérifier la préférence de réduction de mouvement
+  // Respect reduced-motion preference
   const prefersReducedMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)",
   ).matches;
@@ -1884,23 +1887,23 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Timeline "Journey" (neon) reveal on scroll
   initJourneyTimeline();
 
-  // Initialiser les particules du background
+  // Init background particles
   initParticles();
 
-  // Initialiser l'effet parallaxe
+  // Init parallax effect
   initParallax();
 
-  // Charger les images du portfolio depuis le JSON
+  // Load portfolio images from JSON
   loadPortfolioImages();
 
-  // Charger les textes éditables (About / Contact) depuis content.json si présent
+  // Load editable About / Contact copy from content.json when present
   loadContentJson();
 
-  console.log("Portfolio Callisto Arts - Initialisé avec background animé");
+  console.log("Portfolio Callisto Arts — initialized with animated background");
 });
 
 // ============================================
-// CONTENT.JSON (textes About / Contact éditables)
+// CONTENT.JSON (editable About / Contact copy)
 // ============================================
 async function loadContentJson() {
   if (isFileProtocol()) return;
@@ -1923,7 +1926,7 @@ async function loadContentJson() {
       contactAddress.textContent = data.contact.address;
     }
   } catch (_) {
-    /* pas de content.json = garde le HTML par défaut */
+    /* no content.json — keep default HTML */
   }
 }
 
@@ -1963,7 +1966,7 @@ function initJourneyTimeline() {
 }
 
 // ============================================
-// MODE NUIT ATELIER (nuit-atelier.html)
+// WORKSHOP NIGHT MODE (nuit-atelier.html)
 // Toggle, overlays (vignette, candle-light, grain, stars), curseur bougie
 // ============================================
 (function atelierInit() {
@@ -1993,7 +1996,7 @@ function initJourneyTimeline() {
     "........",
   ];
 
-  // Candle light suit la souris (--lx, --ly en %)
+  // Candle light follows mouse (--lx, --ly in %)
   document.addEventListener("mousemove", function (e) {
     const lx = ((e.clientX / window.innerWidth) * 100).toFixed(1);
     const ly = ((e.clientY / window.innerHeight) * 100).toFixed(1);
@@ -2001,7 +2004,7 @@ function initJourneyTimeline() {
     candleLight.style.setProperty("--ly", ly + "%");
   });
 
-  // Curseur atelier : position souris + trail pour le canvas atelier
+  // Workshop cursor: mouse position + trail for workshop canvas
   let mx = -100,
     my = -100;
   document.addEventListener("mousemove", function (e) {
@@ -2021,7 +2024,7 @@ function initJourneyTimeline() {
       requestAnimationFrame(drawAtelierCursor);
       return;
     }
-    // Trail fumée
+    // Smoke trail
     trailPts.forEach(function (p, i) {
       const a = (i / trailPts.length) * 0.15;
       ctx.globalAlpha = a;
@@ -2029,7 +2032,7 @@ function initJourneyTimeline() {
       ctx.fillRect(p.x - 1, p.y - 1, 3, 3);
     });
     ctx.globalAlpha = 1;
-    // Halo bougie
+    // Candle halo
     const halo = ctx.createRadialGradient(mx, my, 0, mx, my, 40);
     halo.addColorStop(0, "rgba(255,157,58,0.25)");
     halo.addColorStop(0.5, "rgba(255,157,58,0.08)");
@@ -2038,7 +2041,7 @@ function initJourneyTimeline() {
     ctx.beginPath();
     ctx.arc(mx, my, 40, 0, Math.PI * 2);
     ctx.fill();
-    // Flamme pixel
+    // Pixel flame
     const wobble = Math.sin(flameT * 0.3) * 1.5;
     const offsetX = mx - 4 * PX + wobble;
     const offsetY = my - 10 * PX;

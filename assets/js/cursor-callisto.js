@@ -1,13 +1,13 @@
 // ═══════════════════════════════════════════
 //   PIXEL ART CURSOR — Callisto Arts (portfolio)
-//   Trail néon + burst au clic, harmonisé au site
-//   (version allégée GPU : moins de pixels + ~30 fps)
+//   Neon trail + click burst, matched to the site
+//   (lighter GPU build: fewer pixels + ~30 fps)
 // ═══════════════════════════════════════════
 (function () {
   'use strict';
 
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  /* Téléphone / tablette tactile : pas de curseur pixel (clics + perf) */
+  /* Phone / touch tablet: no pixel cursor (taps + performance) */
   if (
     window.matchMedia('(hover: none)').matches &&
     window.matchMedia('(pointer: coarse)').matches
@@ -31,7 +31,7 @@
   resize();
   window.addEventListener('resize', resize);
 
-  // Couleurs harmonisées au site (rose + turquoise)
+  // Colors matched to the site (pink + turquoise)
   const MODE = {
     main: '#00ffe0',
     trail: ['#00ffe0', '#00bfff', '#ffffff', '#00ff99', '#f472b6'],
@@ -43,7 +43,7 @@
   const TRAIL_LEN = 10;
   let bursts = [];
 
-  /** ~30 fps au lieu de 60 : moins de fillRect plein écran */
+  /** ~30 fps instead of 60: fewer full-screen fillRects */
   const MIN_FRAME_MS = 1000 / 30;
   let lastFrameTime = 0;
 
