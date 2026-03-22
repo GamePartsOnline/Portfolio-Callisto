@@ -38,6 +38,7 @@
 
 ## Données galerie (`portfolio_images.json`)
 
+- **Vue tableau (liste complète)** : [`portfolio_images_INDEX.md`](./portfolio_images_INDEX.md) — généré par `python3 scripts/generate_portfolio_index.py`
 - **`categories`** : liste `{ id, label }` — ex. `graphics`, `photo`, `paintover`, `IA`, `logo` (masqué du portfolio selon la logique JS), etc.
 - **`images`** : pour chaque entrée, typiquement :
   - `filename` (chemin sous `assets/images/`)

@@ -1,16 +1,35 @@
-# ROADMAP — Migration vers Rails 8
+# ROADMAP — Portfolio Callisto Arts
 
-**Principe :** peu d’étapes, chaque étape livrable.
-
----
-
-## État actuel — v2.0.0 ✅
-
-Site **statique** (HTML/CSS/JS), données dans `portfolio_images.json` + `content.json`, hébergé **IONOS mutualisé**. Voir [SITE.md](./SITE.md).
+**Principe :** peu d’étapes, chaque étape livrable. Deux horizons : **site statique** (maintenant) et **éventuelle app Rails** (plus tard).
 
 ---
 
-## Phase 1 — App Rails + admin galerie
+## Court terme — site statique (HTML / CSS / JS)
+
+*Maintenance continue, sans changer de stack.*
+
+| Priorité | Piste | Détail |
+|----------|--------|--------|
+| Données | **JSON & fichiers** | Cohérence `portfolio_images.json` ↔ `script.js` (fallback), titres, fichiers manquants — voir [TODO.md](./TODO.md) |
+| Contenu | **Œuvres** | Nouvelles images, catégories, `hidden`, renommages — [GUIDE.md](./GUIDE.md), index [portfolio_images_INDEX.md](./portfolio_images_INDEX.md) |
+| Qualité | **Tests manuels** | Mobile, lightbox, filtres, `file://` vs serveur local — [TEST.md](./TEST.md) |
+| Perf / UX | **Optionnel** | Délégation d’événements sur les filtres (éviter doublons), lazy-load affiné, WebP si pipeline |
+
+**Hors scope immédiat :** refonte lourde du JS, second framework front.
+
+---
+
+## Moyen terme — migration Rails 8 *(optionnelle)*
+
+**Principe :** peu d’étapes, chaque étape livrable. Voir aussi [SITE.md](./SITE.md), [ARCHITECTURE.md](./ARCHITECTURE.md), [HOSTING.md](./HOSTING.md).
+
+### État actuel — v2.x (statique) ✅
+
+Site **statique** (HTML/CSS/JS), données dans `portfolio_images.json` + `content.json`, déploiement type **IONOS mutualisé** ou **Cloudflare Pages** selon [DEPLOY.md](./DEPLOY.md).
+
+---
+
+### Phase 1 — App Rails + admin galerie
 
 - [ ] Projet **Rails 8** avec **SQLite**, **Tailwind**, **importmap**, **Hotwire**
 - [ ] Modèles **Category**, **Work** + **Active Storage** pour les images
@@ -20,7 +39,7 @@ Site **statique** (HTML/CSS/JS), données dans `portfolio_images.json` + `conten
 
 ---
 
-## Phase 2 — Textes des pages
+### Phase 2 — Textes des pages
 
 - [ ] Modèle ou clés **SiteContent** (hero, about, contact, footer…)
 - [ ] Formulaires admin pour éditer ces textes (Action Text ou simple `textarea` au début)
@@ -28,7 +47,7 @@ Site **statique** (HTML/CSS/JS), données dans `portfolio_images.json` + `conten
 
 ---
 
-## Phase 3 — Finitions (optionnel)
+### Phase 3 — Finitions (optionnel)
 
 - [ ] Timeline **journey** éditable en base (si tu veux tout changer sans toucher aux vues)
 - [ ] **i18n** FR/EN si besoin
@@ -44,4 +63,4 @@ Site **statique** (HTML/CSS/JS), données dans `portfolio_images.json` + `conten
 
 ---
 
-*ROADMAP allégée — Mars 2026.*
+*Dernière révision — Mars 2026 · [INDEX.md](./INDEX.md)*

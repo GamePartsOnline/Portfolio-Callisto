@@ -12,7 +12,7 @@
 | **[STACK.md](./STACK.md)** | Pourquoi **Rails 8 + SQLite + Hotwire + Tailwind** |
 | **[ARCHITECTURE.md](./ARCHITECTURE.md)** | App Rails cible : modèles, admin, stockage |
 | **[ADMIN.md](./ADMIN.md)** | Périmètre admin : **galerie + catégories + textes** (simple) |
-| **[ROADMAP.md](./ROADMAP.md)** | Étapes de migration, sans sur-ingénierie |
+| **[ROADMAP.md](./ROADMAP.md)** | **Court terme** (statique) + **moyen terme** (migration Rails), sans sur-ingénierie |
 | **[HOSTING.md](./HOSTING.md)** | Production actuelle **IONOS mutualisé** · évolution future |
 | **[DEPLOY.md](./DEPLOY.md)** | Déploiement (statique aujourd’hui · Rails demain, à préciser) |
 
@@ -23,6 +23,7 @@
 | Document | Rôle |
 |---|---|
 | [GUIDE.md](./GUIDE.md) | Ajouter des images / JSON, couleurs, dépannage |
+| [portfolio_images_INDEX.md](./portfolio_images_INDEX.md) | **Tableau** de toutes les œuvres (`portfolio_images.json`) — `python3 scripts/generate_portfolio_index.py` |
 | [BACKGROUND.md](./BACKGROUND.md) | Background animé (couches CSS + particules) |
 | [DESIGN.md](./DESIGN.md) | Rappel du design system (Liquid Glass) |
 | [CHANGELOG.md](./CHANGELOG.md) | Historique des versions v1 / v2 |

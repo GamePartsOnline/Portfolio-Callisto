@@ -73,7 +73,7 @@ def main():
     folders_with_files = {img["category"] for img in new_images}
     existing_cats = {c["id"]: c for c in data.get("categories", [])}
     new_cats = []
-    for cid in ["graphics", "paintover", "IA", "photo", "gaming", "tradi", "logo", "pastel-sec", "acrylique", "animation", "other"]:
+    for cid in ["graphics", "paintover", "IA", "photo", "gaming", "logo", "pastel-sec", "acrylique", "aquarelle", "animation", "other"]:
         if cid in existing_cats:
             new_cats.append(existing_cats[cid])
         elif cid in folders_with_files or cid == "logo":
@@ -83,10 +83,10 @@ def main():
                 "IA": "IA Art",
                 "photo": "Photos",
                 "gaming": "Gaming Artwork",
-                "tradi": "Traditional Arts",
                 "logo": "Logo (masqué du portfolio)",
                 "pastel-sec": "Pastel sec",
                 "acrylique": "Acrylique",
+                "aquarelle": "Aquarelle",
                 "animation": "Animation",
                 "other": "Other",
             }.get(cid, cid)

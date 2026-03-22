@@ -2,6 +2,16 @@
 
 Ce dossier contient toutes les images téléchargées depuis le site https://callistoarts.com/
 
+## 📋 Tableau de toutes les œuvres (`portfolio_images.json`)
+
+La **liste complète** (catégorie, fichier, titre) est dans **`../../docs/portfolio_images_INDEX.md`** — [ouvrir le fichier `docs/portfolio_images_INDEX.md`](../../docs/portfolio_images_INDEX.md) à la racine du dépôt.
+
+Pour **mettre à jour** ce tableau après avoir édité le JSON :
+
+```bash
+python3 scripts/generate_portfolio_index.py
+```
+
 ## 📊 Statistiques
 
 - **Total d'images** : 168 fichiers
@@ -30,7 +40,7 @@ Les entrées **sans titre exploitable** (ex. id numérique seul, `Photo` génér
 ### Fichiers hérités (liste non exhaustive)
 
 - `Luna-fly-by-callisto-finale-1-scaled.jpg`, `407845946_*`, hashes Instagram — selon dossier  
-- `Traditional Arts` : `acrilyc-*.png`, `pastel-sec-*.png`, etc.  
+- `pastel-sec/`, `acrylique/`, `aquarelle/` : techniques trad. (pastels, acrylique, aquarelle).  
 - `gaming/` : ex. `94688130_*.jpg`
 
 ## 📝 Notes

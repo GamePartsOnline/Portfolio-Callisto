@@ -21,10 +21,6 @@
       "label": "Gaming Artwork"
     },
     {
-      "id": "tradi",
-      "label": "Traditional Arts"
-    },
-    {
       "id": "logo",
       "label": "Logo (masqué du portfolio)"
     },
@@ -35,6 +31,10 @@
     {
       "id": "acrylique",
       "label": "Acrylique"
+    },
+    {
+      "id": "aquarelle",
+      "label": "Aquarelle"
     },
     {
       "id": "animation",
@@ -659,6 +659,347 @@
       "year": 2021,
       "award": "2nd in the Assembly 2021 Winter Online Demo competition",
       "description": "Graphics: Callisto, Nytrik, Med…\n\nhttps://demozoo.org/productions/291630/"
+    },
+    {
+      "filename": "acrylique/3-508x494-1.jpg",
+      "category": "acrylique",
+      "title": "plaque pour mon papa",
+      "year": 2021,
+      "description": "Série commémorative — acrylique."
+    },
+    {
+      "filename": "acrylique/2-1.jpg",
+      "category": "acrylique",
+      "title": "Fuite bleu et rose",
+      "year": 2021,
+      "description": "Acrylique"
+    },
+    {
+      "filename": "acrylique/2-508x427-1.jpg",
+      "category": "acrylique",
+      "title": "sous les étoiles de l'arbre",
+      "year": 2021,
+      "description": "Acrylique"
+    },
+    {
+      "filename": "acrylique/09.19-508x518-1.jpg",
+      "category": "acrylique",
+      "title": "Love Fleur de 2019",
+      "year": 2021,
+      "description": "Acrylique"
+    },
+    {
+      "filename": "acrylique/484016.1153284291.1.o24494341.jpg",
+      "category": "acrylique",
+      "title": "La girafe et son petit",
+      "year": 2021,
+      "description": "Acrylique"
+    },
+    {
+      "filename": "acrylique/484017.325007515.1.o1678965315.jpg",
+      "category": "acrylique",
+      "title": "Le loup",
+      "year": 2021,
+      "description": "Acrylique"
+    },
+    {
+      "filename": "acrylique/484020.1992883738.1.o2118704691.jpg",
+      "category": "acrylique",
+      "title": "le petit chat se ballade",
+      "year": 2021,
+      "description": "Acrylique"
+    },
+    {
+      "filename": "acrylique/488894.1841485046.1.o1475312202.jpg",
+      "category": "acrylique",
+      "title": "La plage",
+      "year": 2021,
+      "description": "Acrylique"
+    },
+    {
+      "filename": "acrylique/489645.1217804915.1.o1251498251.jpg",
+      "category": "acrylique",
+      "title": "coucher de soleil",
+      "year": 2021,
+      "description": "Acrylique"
+    },
+    {
+      "filename": "acrylique/492052.180022828.1.o831404474.jpg",
+      "category": "acrylique",
+      "title": "The first city",
+      "year": 2021,
+      "description": "Acrylique"
+    },
+    {
+      "filename": "acrylique/538030.20213600.1.o1324333696.jpg",
+      "category": "acrylique",
+      "title": "Coeur d'orchidée M",
+      "year": 2021,
+      "description": "Série acrylique"
+    },
+    {
+      "filename": "acrylique/15390826_633081763543121_7934280355348809027_n-768x757-1.jpg",
+      "category": "acrylique",
+      "title": "bulle de neige",
+      "year": 2021,
+      "description": "Acrylique"
+    },
+    {
+      "filename": "acrylique/19095290_723789734472323_308791567686722242_o-2-1000x985-1.jpg",
+      "category": "acrylique",
+      "title": "La balançoire d'amour",
+      "year": 2021,
+      "description": "Acrylique"
+    },
+    {
+      "filename": "acrylique/43604374_989553927895901_3236040201478340608_n-1000x646-1.png",
+      "category": "acrylique",
+      "title": "The elephant d'or",
+      "year": 2021,
+      "description": "Acrylique"
+    },
+    {
+      "filename": "acrylique/59687580_1116098235241469_934782928846585856_n-1000x1003-1.jpg",
+      "category": "acrylique",
+      "title": "Tahiti plage",
+      "year": 2021,
+      "description": "Acrylique"
+    },
+    {
+      "filename": "acrylique/Abstrait1-600x511-1.jpg",
+      "category": "acrylique",
+      "title": "Abstrait",
+      "year": 2021,
+      "description": "Acrylique"
+    },
+    {
+      "filename": "acrylique/Capture-2-508x511-1.jpg",
+      "category": "acrylique",
+      "title": "Fleur en courbes",
+      "year": 2021,
+      "description": "Acrylique"
+    },
+    {
+      "filename": "acrylique/eric-768x511-1.jpg",
+      "category": "acrylique",
+      "title": "Nicky et Laura with love",
+      "year": 2021,
+      "description": "Portrait acrylique"
+    },
+    {
+      "filename": "acrylique/fred-charton-13336097-544626092388689-198714441282019086-n-768x576-1.jpg",
+      "category": "acrylique",
+      "title": "L'aigle s'envole",
+      "year": 2021,
+      "description": "Acrylique"
+    },
+    {
+      "filename": "acrylique/fred-charton-img-20190508-160321.jpg",
+      "category": "acrylique",
+      "title": "A la facon d'un grand artiste",
+      "year": 2021,
+      "description": "Acrylique"
+    },
+    {
+      "filename": "acrylique/fred-charton-img-20190511-165808.jpg",
+      "category": "acrylique",
+      "title": "coucher de soleil au bord des rochers",
+      "year": 2021,
+      "description": "Acrylique"
+    },
+    {
+      "filename": "acrylique/fred-charton-neige-768x591-1.jpg",
+      "category": "acrylique",
+      "title": "La neige au sommet de la montagne",
+      "year": 2021,
+      "description": "Acrylique"
+    },
+    {
+      "filename": "acrylique/roger.jpg",
+      "category": "acrylique",
+      "title": "roger pour ma coupine",
+      "year": 2021,
+      "description": "Acrylique"
+    },
+    {
+      "filename": "aquarelle/Latortue.jpg",
+      "category": "aquarelle",
+      "title": "La tortue",
+      "description": "Aquarelle"
+    },
+    {
+      "filename": "aquarelle/Le_cheval_blanc.jpg",
+      "category": "aquarelle",
+      "title": "Le cheval blanc",
+      "description": "Aquarelle"
+    },
+    {
+      "filename": "aquarelle/Promenade.jpg",
+      "category": "aquarelle",
+      "title": "Promenade",
+      "description": "Aquarelle"
+    },
+    {
+      "filename": "aquarelle/cannard.jpg",
+      "category": "aquarelle",
+      "title": "Cannard",
+      "description": "Aquarelle"
+    },
+    {
+      "filename": "aquarelle/coquelicot.jpg",
+      "category": "aquarelle",
+      "title": "Coquelicot",
+      "description": "Aquarelle"
+    },
+    {
+      "filename": "aquarelle/cygne.jpg",
+      "category": "aquarelle",
+      "title": "Cygne",
+      "description": "Aquarelle"
+    },
+    {
+      "filename": "aquarelle/demolion.jpg",
+      "category": "aquarelle",
+      "title": "Le lion",
+      "description": "Aquarelle"
+    },
+    {
+      "filename": "aquarelle/facecat.jpg",
+      "category": "aquarelle",
+      "title": "Face de chat",
+      "description": "Aquarelle"
+    },
+    {
+      "filename": "aquarelle/fleuroseauborddeleau.jpg",
+      "category": "aquarelle",
+      "title": "Fleur rose au bord de l'eau",
+      "description": "Aquarelle"
+    },
+    {
+      "filename": "aquarelle/heron.jpg",
+      "category": "aquarelle",
+      "title": "Héron",
+      "description": "Aquarelle"
+    },
+    {
+      "filename": "aquarelle/lepetit pont .jpg",
+      "category": "aquarelle",
+      "title": "Le petit pont",
+      "description": "Aquarelle"
+    },
+    {
+      "filename": "aquarelle/levillage.jpg",
+      "category": "aquarelle",
+      "title": "Le village",
+      "description": "Aquarelle"
+    },
+    {
+      "filename": "aquarelle/ouvaton.jpg",
+      "category": "aquarelle",
+      "title": "Où va-t-on ?",
+      "description": "Aquarelle"
+    },
+    {
+      "filename": "aquarelle/plage et city .jpg",
+      "category": "aquarelle",
+      "title": "Plage et city",
+      "description": "Aquarelle"
+    },
+    {
+      "filename": "aquarelle/thecat.jpg",
+      "category": "aquarelle",
+      "title": "The cat",
+      "description": "Aquarelle"
+    },
+    {
+      "filename": "aquarelle/voyage.jpg",
+      "category": "aquarelle",
+      "title": "Voyage",
+      "description": "Aquarelle"
+    },
+    {
+      "filename": "pastel-sec/Choucky.png",
+      "category": "pastel-sec",
+      "title": "Choucky",
+      "description": "Pastel sec"
+    },
+    {
+      "filename": "pastel-sec/Lestbernarde_son_regard.jpg",
+      "category": "pastel-sec",
+      "title": "Le Saint-Bernard et son regard",
+      "description": "Pastel sec"
+    },
+    {
+      "filename": "pastel-sec/fred-charton-carla-fini.jpg",
+      "category": "pastel-sec",
+      "title": "Carla",
+      "description": "Pastel sec"
+    },
+    {
+      "filename": "pastel-sec/fred-charton-guerriere.jpg",
+      "category": "pastel-sec",
+      "title": "La guerrière Callisto",
+      "description": "Pastel sec"
+    },
+    {
+      "filename": "pastel-sec/fred-charton-tigre.jpg",
+      "category": "pastel-sec",
+      "title": "Tigre",
+      "description": "Pastel sec"
+    },
+    {
+      "filename": "pastel-sec/l'abeille.jpg",
+      "category": "pastel-sec",
+      "title": "L'abeille",
+      "description": "Pastel sec"
+    },
+    {
+      "filename": "pastel-sec/lagirafeetsongirafon.jpg",
+      "category": "pastel-sec",
+      "title": "La girafe et son girafon",
+      "description": "Pastel sec"
+    },
+    {
+      "filename": "pastel-sec/le chat.png",
+      "category": "pastel-sec",
+      "title": "Le chat",
+      "description": "Pastel sec"
+    },
+    {
+      "filename": "pastel-sec/lecabanon.jpg",
+      "category": "pastel-sec",
+      "title": "Le cabanon",
+      "description": "Pastel sec"
+    },
+    {
+      "filename": "pastel-sec/lechien.jpg",
+      "category": "pastel-sec",
+      "title": "Le chien",
+      "description": "Pastel sec"
+    },
+    {
+      "filename": "pastel-sec/les petites cabannes.jpg",
+      "category": "pastel-sec",
+      "title": "Les petites cabannes",
+      "description": "Pastel sec"
+    },
+    {
+      "filename": "pastel-sec/regard.jpg",
+      "category": "pastel-sec",
+      "title": "Regard",
+      "description": "Pastel sec"
+    },
+    {
+      "filename": "pastel-sec/rochideeetpriere.jpg",
+      "category": "pastel-sec",
+      "title": "Roche, idée et prière",
+      "description": "Pastel sec"
+    },
+    {
+      "filename": "pastel-sec/yang.jpg",
+      "category": "pastel-sec",
+      "title": "Yang",
+      "description": "Pastel sec"
     }
   ]
 }

@@ -57,7 +57,7 @@ Copier les images dans le dossier `assets/images/`
 - `graphics` - Graphics (inclut l’illustration / peinture numérique type demoscene)
 - `photo` - Photos
 - `gaming` - Gaming Artwork
-- `traditional` - Traditional Arts
+- `pastel-sec` - Pastel sec · `acrylique` - Acrylique · `aquarelle` - Aquarelle
 - `logo` - Logos (exclus de l'affichage portfolio)
 
 ## 🏆 Ajouter une récompense

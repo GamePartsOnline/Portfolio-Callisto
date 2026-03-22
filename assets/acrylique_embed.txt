@@ -1,0 +1,161 @@
+    {
+      "filename": "acrylique/3-508x494-1.jpg",
+      "category": "acrylique",
+      "title": "Tableau pour la tombe de mon papa",
+      "year": 2021,
+      "description": "Série commémorative — acrylique."
+    },
+    {
+      "filename": "acrylique/2-1.jpg",
+      "category": "acrylique",
+      "title": "Pour la tombe de mon papa (2)",
+      "year": 2021,
+      "description": "Acrylique"
+    },
+    {
+      "filename": "acrylique/2-508x427-1.jpg",
+      "category": "acrylique",
+      "title": "Pour la tombe de mon papa (3)",
+      "year": 2021,
+      "description": "Acrylique"
+    },
+    {
+      "filename": "acrylique/09.19-508x518-1.jpg",
+      "category": "acrylique",
+      "title": "Pour la tombe de mon papa (4)",
+      "year": 2021,
+      "description": "Acrylique"
+    },
+    {
+      "filename": "acrylique/484016.1153284291.1.o24494341.jpg",
+      "category": "acrylique",
+      "title": "Pour la tombe de mon papa (5)",
+      "year": 2021,
+      "description": "Acrylique"
+    },
+    {
+      "filename": "acrylique/484017.325007515.1.o1678965315.jpg",
+      "category": "acrylique",
+      "title": "Pour la tombe de mon papa (6)",
+      "year": 2021,
+      "description": "Acrylique"
+    },
+    {
+      "filename": "acrylique/484020.1992883738.1.o2118704691.jpg",
+      "category": "acrylique",
+      "title": "Pour la tombe de mon papa (7)",
+      "year": 2021,
+      "description": "Acrylique"
+    },
+    {
+      "filename": "acrylique/488894.1841485046.1.o1475312202.jpg",
+      "category": "acrylique",
+      "title": "Pour la tombe de mon papa (8)",
+      "year": 2021,
+      "description": "Acrylique"
+    },
+    {
+      "filename": "acrylique/489645.1217804915.1.o1251498251.jpg",
+      "category": "acrylique",
+      "title": "Pour la tombe de mon papa (9)",
+      "year": 2021,
+      "description": "Acrylique"
+    },
+    {
+      "filename": "acrylique/492052.180022828.1.o831404474.jpg",
+      "category": "acrylique",
+      "title": "Ville de lumière #3",
+      "year": 2021,
+      "description": "Acrylique"
+    },
+    {
+      "filename": "acrylique/538030.20213600.1.o1324333696.jpg",
+      "category": "acrylique",
+      "title": "Acrylique — lumière",
+      "year": 2021,
+      "description": "Série acrylique"
+    },
+    {
+      "filename": "acrylique/15390826_633081763543121_7934280355348809027_n-768x757-1.jpg",
+      "category": "acrylique",
+      "title": "Abstrait",
+      "year": 2021,
+      "description": "Acrylique"
+    },
+    {
+      "filename": "acrylique/19095290_723789734472323_308791567686722242_o-2-1000x985-1.jpg",
+      "category": "acrylique",
+      "title": "Abstrait — composition",
+      "year": 2021,
+      "description": "Acrylique"
+    },
+    {
+      "filename": "acrylique/43604374_989553927895901_3236040201478340608_n-1000x646-1.png",
+      "category": "acrylique",
+      "title": "Acrylique — portrait",
+      "year": 2021,
+      "description": "Acrylique"
+    },
+    {
+      "filename": "acrylique/59687580_1116098235241469_934782928846585856_n-1000x1003-1.jpg",
+      "category": "acrylique",
+      "title": "Acrylique — figure",
+      "year": 2021,
+      "description": "Acrylique"
+    },
+    {
+      "filename": "acrylique/Abstrait1-600x511-1.jpg",
+      "category": "acrylique",
+      "title": "Abstrait (étude)",
+      "year": 2021,
+      "description": "Acrylique"
+    },
+    {
+      "filename": "acrylique/Capture-2-508x511-1.jpg",
+      "category": "acrylique",
+      "title": "Atelier — capture",
+      "year": 2021,
+      "description": "Acrylique"
+    },
+    {
+      "filename": "acrylique/eric-768x511-1.jpg",
+      "category": "acrylique",
+      "title": "Eric",
+      "year": 2021,
+      "description": "Portrait acrylique"
+    },
+    {
+      "filename": "acrylique/fred-charton-13336097-544626092388689-198714441282019086-n-768x576-1.jpg",
+      "category": "acrylique",
+      "title": "Portrait",
+      "year": 2021,
+      "description": "Acrylique"
+    },
+    {
+      "filename": "acrylique/fred-charton-img-20190508-160321.jpg",
+      "category": "acrylique",
+      "title": "Carnet — mai 2019",
+      "year": 2021,
+      "description": "Acrylique"
+    },
+    {
+      "filename": "acrylique/fred-charton-img-20190511-165808.jpg",
+      "category": "acrylique",
+      "title": "Carnet — mai 2019 (2)",
+      "year": 2021,
+      "description": "Acrylique"
+    },
+    {
+      "filename": "acrylique/fred-charton-neige-768x591-1.jpg",
+      "category": "acrylique",
+      "title": "Neige",
+      "year": 2021,
+      "description": "Acrylique"
+    },
+    {
+      "filename": "acrylique/roger.jpg",
+      "category": "acrylique",
+      "title": "Roger",
+      "year": 2021,
+      "description": "Acrylique"
+    }

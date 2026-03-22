@@ -7,6 +7,13 @@
   'use strict';
 
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  /* Téléphone / tablette tactile : pas de curseur pixel (clics + perf) */
+  if (
+    window.matchMedia('(hover: none)').matches &&
+    window.matchMedia('(pointer: coarse)').matches
+  ) {
+    return;
+  }
 
   const canvas = document.getElementById('cursor-canvas');
   if (!canvas) return;

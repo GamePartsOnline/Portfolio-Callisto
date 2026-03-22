@@ -6,7 +6,8 @@ Graphiste digitale, illustratrice, artiste demoscene, AI builder.
 **Site en production :** [portfolio.callistoarts.com](https://portfolio.callistoarts.com)  
 **Dépôt GitHub :** [github.com/GamePartsOnline/Portfolio-Callisto](https://github.com/GamePartsOnline/Portfolio-Callisto)  
 **Behance :** [behance.net/CallistoArtwork](https://www.behance.net/CallistoArtwork) — portfolio Adobe (projets, outils, GPO)  
-**LinkedIn :** [linkedin.com/in/frederique-charton](https://www.linkedin.com/in/frederique-charton)
+**LinkedIn :** [linkedin.com/in/frederique-charton](https://www.linkedin.com/in/frederique-charton)  
+**Suivi galerie :** [docs/TODO.md](./docs/TODO.md) — catégories vides, vignettes, titres, JSON / fallback `script.js`
 
 ---
 
@@ -63,6 +64,7 @@ Portfolio-Callisto/
 │   └── js/
 │       └── cursor-callisto.js     ← Curseur pixel art custom
 ├── docs/                          ← Documentation (voir docs/INDEX.md)
+│   └── portfolio_images_INDEX.md  ← Tableau catégorie | fichier | titre (régénéré par script)
 └── README.md                      ← Ce fichier
 ```
 
@@ -168,7 +170,7 @@ Toute la documentation est dans le dossier [`docs/`](./docs/) :
 | [docs/STACK.md](./docs/STACK.md) | Rails 8 + SQLite + Hotwire + Tailwind |
 | [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) | Architecture Rails cible (simple) |
 | [docs/ADMIN.md](./docs/ADMIN.md) | Admin : galerie + catégories + textes |
-| [docs/ROADMAP.md](./docs/ROADMAP.md) | Étapes de migration |
+| [docs/ROADMAP.md](./docs/ROADMAP.md) | Roadmap statique + migration Rails (optionnelle) |
 | [docs/HOSTING.md](./docs/HOSTING.md) | IONOS (actuel) · hébergement Rails (plus tard) |
 | [docs/DEPLOY.md](./docs/DEPLOY.md) | Déploiement statique · Rails à documenter |
 | [docs/DESIGN.md](./docs/DESIGN.md) | Design system Liquid Glass |
