@@ -50,7 +50,7 @@
     />
 
     <title>Callisto Arts - Portfolio 2026</title>
-    <link rel="stylesheet" href="styles.css?v=32" />
+    <link rel="stylesheet" href="styles.css?v=37" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -64,6 +64,7 @@
   </head>
 
   <body>
+    <a class="skip-link" href="#main-content">Aller au contenu principal</a>
     <canvas
       id="cursor-canvas"
       class="cursor-canvas"
@@ -83,19 +84,24 @@
     </div>
 
     <!-- Navigation -->
-    <nav class="nav" role="navigation" aria-label="Main navigation">
+    <nav class="nav" role="navigation" aria-label="Navigation principale">
       <div class="nav-container">
-        <a href="#home" class="nav-logo" aria-label="Back to home">
+        <a href="#home" class="nav-logo" aria-label="Callisto Arts — retour à l’accueil">
           <img
             src="assets/images/logo/logo-cllisto.png"
-            alt="Callisto Arts Logo"
+            alt=""
             class="logo-img"
+            width="40"
+            height="40"
+            decoding="async"
           />
           <span class="logo-text">Callisto Arts</span>
         </a>
         <button
           class="nav-toggle"
-          aria-label="Mobile menu"
+          type="button"
+          aria-label="Ouvrir ou fermer le menu"
+          aria-controls="navMenu"
           aria-expanded="false"
           id="navToggle"
         >
@@ -288,7 +294,7 @@
     </section>
 
     <!-- Main Content -->
-    <main id="main-content">
+    <main id="main-content" tabindex="-1">
       <!-- Portfolio section (below the random hero image) -->
       <section
         id="portfolio"
@@ -826,7 +832,18 @@
                 </div>
                 <div class="contact-info">
                   <p id="contact-company"><strong>GPO SARL</strong></p>
-                  <p id="contact-address">Châlons-en-Champagne, France</p>
+                  <p id="contact-address">
+                    4 rue des Jardins<br />
+                    51330 Givry-en-Argonne, France
+                  </p>
+                  <p id="contact-email">
+                    <a href="mailto:callisto.gfx@gmail.com"
+                      >callisto.gfx@gmail.com</a
+                    >
+                  </p>
+                  <p id="contact-phone">
+                    <a href="tel:+33673540394">06 73 54 03 94</a>
+                  </p>
                 </div>
               </div>
             </div>
@@ -841,14 +858,22 @@
         <div class="footer-content">
           <img
             src="assets/images/logo/logo-cllisto.png"
-            alt="Callisto Arts Logo"
+            alt=""
             class="footer-logo"
+            width="80"
+            height="80"
+            decoding="async"
           />
           <div class="footer-text">
             <p>&copy; 2026 Callisto - Charton Frédérique / GPO</p>
             <p class="footer-subtitle">
               My fun is DRAWING !!! ALWAYS... end for ever.
             </p>
+            <div class="footer-extra">
+              <a href="mentions-legales.html">Mentions légales</a>
+              <span aria-hidden="true"> · </span>
+              <a href="#" data-cookie-open>Réglages cookies</a>
+            </div>
           </div>
         </div>
       </div>
@@ -909,9 +934,9 @@
     <div
       class="music-player-wrap"
       role="region"
-      aria-label="Background music — Doctor Gekill"
+      aria-label="Doctor Gekil — background audio"
     >
-      <span class="music-player-label">Music — Doctor Gekill</span>
+      <span class="music-player-label">Doctor Gekil</span>
       <div class="music-player-row music-player-row--top">
         <button
           type="button"
@@ -964,14 +989,54 @@
         loop
       >
         <source
-          src="assets/musique/Doctor_Gekil_jmusic.mp3"
+          src="assets/musique/Doctor%20Gekil%20-%20Stargaze.mp3"
           type="audio/mpeg"
         />
       </audio>
       <p id="music-player-hint" class="music-player-hint" hidden></p>
     </div>
 
-    <script src="script.js?v=85"></script>
+    <!-- Bandeau cookies (RGPD / ePrivacy) — préférence : localStorage -->
+    <div
+      id="cookie-banner"
+      class="cookie-banner"
+      role="region"
+      aria-label="Information cookies"
+      aria-hidden="true"
+      hidden
+    >
+      <div class="cookie-banner__inner container">
+        <p class="cookie-banner__text">
+          Nous utilisons des cookies et traceurs pour le fonctionnement du site
+          (techniques) et, si vous acceptez, pour des contenus intégrés (ex.
+          vidéos YouTube) et l’amélioration de l’expérience. Vous pouvez refuser
+          les cookies non essentiels ou consulter le détail dans les mentions
+          légales.
+        </p>
+        <div class="cookie-banner__actions">
+          <button
+            type="button"
+            id="cookie-reject-nonessential"
+            class="cookie-banner__btn cookie-banner__btn--secondary"
+          >
+            Refuser les cookies non essentiels
+          </button>
+          <button
+            type="button"
+            id="cookie-accept-all"
+            class="cookie-banner__btn cookie-banner__btn--primary"
+          >
+            Tout accepter
+          </button>
+        </div>
+        <p class="cookie-banner__more">
+          <a href="mentions-legales.html#cookies">Mentions légales — cookies</a>
+        </p>
+      </div>
+    </div>
+
+    <script src="assets/js/cookie-consent.js?v=1" defer></script>
+    <script src="script.js?v=94"></script>
     <script src="assets/js/cursor-callisto.js?v=63"></script>
     <script>
       (function () {

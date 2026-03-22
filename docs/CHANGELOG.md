@@ -2,6 +2,23 @@
 
 Toutes les modifications notables de ce projet seront documentées dans ce fichier.
 
+## [Unreleased] - 2026-03-02
+
+### Accessibilité
+
+- `buildArtworkAltText()` pour vignettes, hero et lightbox ; logos `alt=""` + `aria-label` nav ; contrastes renforcés (footer, mentions, lecteur). Voir [A11Y.md](./A11Y.md).
+- Mobile : cibles tactiles ≥ 44px, safe areas, `scroll-padding-top`, points du hero élargis au doigt.
+
+### Légal / cookies
+
+- Bandeau cookies (consentement, `localStorage`), script `assets/js/cookie-consent.js`, lien « Réglages cookies » au pied de page, ancre `#cookies` dans `mentions-legales.html`.
+
+### Performance
+
+- Grille / hero : miniatures WebP sous `assets/images/thumbs/…/*-thumb.webp` avec repli vers l’original.
+- Lightbox : WebP plein écran sous `assets/images/webp/…/*.webp` avec repli JPG/PNG.
+- Script `scripts/generate_image_derivatives.py` (Pillow) + doc dans `docs/GUIDE.md`.
+
 ## [Docs] - 2026-03-21
 
 ### Documentation

@@ -26,6 +26,45 @@ function assetImagePath(filename) {
   return "assets/images/" + segments.map(encodeURIComponent).join("/");
 }
 
+/**
+ * Grid thumbnail (generated): assets/images/thumbs/.../basename-thumb.webp
+ * Run: python3 scripts/generate_image_derivatives.py
+ */
+function assetImageThumbPath(filename) {
+  if (!filename) return "";
+  let normalized = String(filename).replace(/\\/g, "/").replace(/^\/+/, "");
+  if (LEGACY_IMAGE_FILENAMES[normalized]) {
+    normalized = LEGACY_IMAGE_FILENAMES[normalized];
+  }
+  const segments = normalized.split("/").filter(Boolean);
+  if (!segments.length) return "";
+  const last = segments[segments.length - 1];
+  const dot = last.lastIndexOf(".");
+  if (dot <= 0) return "";
+  const base = last.slice(0, dot);
+  segments[segments.length - 1] = `${base}-thumb.webp`;
+  return "assets/images/thumbs/" + segments.map(encodeURIComponent).join("/");
+}
+
+/**
+ * Full-size WebP (generated): assets/images/webp/.../basename.webp
+ */
+function assetImageWebpFullPath(filename) {
+  if (!filename) return "";
+  let normalized = String(filename).replace(/\\/g, "/").replace(/^\/+/, "");
+  if (LEGACY_IMAGE_FILENAMES[normalized]) {
+    normalized = LEGACY_IMAGE_FILENAMES[normalized];
+  }
+  const segments = normalized.split("/").filter(Boolean);
+  if (!segments.length) return "";
+  const last = segments[segments.length - 1];
+  const dot = last.lastIndexOf(".");
+  if (dot <= 0) return "";
+  const base = last.slice(0, dot);
+  segments[segments.length - 1] = `${base}.webp`;
+  return "assets/images/webp/" + segments.map(encodeURIComponent).join("/");
+}
+
 // ============================================
 // ANIMATED BACKGROUND PARTICLES
 // ============================================
@@ -275,6 +314,18 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         top: offsetTop,
         behavior: "smooth",
       });
+      /* Skip link + keyboard: move focus to main landmark after scroll */
+      if (target.id === "main-content") {
+        const focusMain = () => {
+          try {
+            target.focus({ preventScroll: true });
+          } catch (_) {
+            target.setAttribute("tabindex", "-1");
+            target.focus({ preventScroll: true });
+          }
+        };
+        window.setTimeout(focusMain, 450);
+      }
     }
   });
 });
@@ -857,13 +908,6 @@ const portfolioData = {
       "description": "Acrylic"
     },
     {
-      "filename": "acrylique/Abstract1-600x511-1.jpg",
-      "category": "acrylique",
-      "title": "Abstract",
-      "year": 2021,
-      "description": "Acrylic"
-    },
-    {
       "filename": "acrylique/Capture-2-508x511-1.jpg",
       "category": "acrylique",
       "title": "Flower in curves",
@@ -1153,6 +1197,39 @@ function humanizeCategoryId(id) {
 }
 
 /**
+ * Descriptive alt for portfolio thumbnails, hero, lightbox (WCAG 1.1.1).
+ * @param {object} image — portfolio entry
+ * @param {string} categoryId — resolved category id
+ * @param {Record<string,string>} [labelMap] — id → label (defaults to portfolioCategoryNames)
+ */
+function buildArtworkAltText(image, categoryId, labelMap) {
+  const map = labelMap || portfolioCategoryNames || {};
+  const catKey = categoryId || image?.category || "";
+  const catLabel = map[catKey] || humanizeCategoryId(catKey);
+  const title = (image?.title || "").trim();
+  const fileHint = image?.filename
+    ? image.filename
+        .replace(/^.*\//, "")
+        .replace(/\.[^.]+$/, "")
+        .replace(/[._-]+/g, " ")
+        .trim()
+    : "";
+  const head = title || fileHint;
+  const y = image?.year;
+  const yid = image?.youtubeId || extractYoutubeId(image?.videoUrl);
+  const parts = [];
+  if (head) parts.push(head);
+  if (catLabel) parts.push(catLabel);
+  if (y != null && y !== "") parts.push(String(y));
+  let out = parts.join(" — ");
+  if (yid) {
+    out = out ? `${out} — YouTube` : "YouTube video — portfolio";
+  }
+  if (!out.trim()) out = "Portfolio artwork";
+  return out.replace(/"/g, "'");
+}
+
+/**
  * Thumbnail + category for a portfolio entry (same rules as the grid).
  * Returns null if the entry has no thumbnail (no image in the gallery).
  */
@@ -1160,11 +1237,14 @@ function getPortfolioThumbInfo(image) {
   if (!image || image.category === "logo") return null;
   if (image.hidden === true) return null;
   const yid = image.youtubeId || extractYoutubeId(image.videoUrl);
+  const thumbGrid = image.filename ? assetImageThumbPath(image.filename) : "";
   const thumbFromFile = image.filename ? assetImagePath(image.filename) : "";
   const thumbExternal = image.thumbnailUrl || "";
+  /* Prefer original file in grid so thumbnails always show (WebP thumb optional / flaky in <picture>). */
   const thumbSrc =
     thumbExternal ||
     thumbFromFile ||
+    thumbGrid ||
     (yid ? getYoutubeThumbnailUrl(yid) : "");
   if (!thumbSrc) return null;
   const category =
@@ -1310,6 +1390,7 @@ async function loadPortfolioImages() {
     buildPortfolioFilterButtons(categoriesFromImages);
 
     const allImages = data.images || [];
+    const categoryLabelMap = getCategoryNamesFromData(data);
 
     // Build portfolio DOM items
     allImages.forEach((image) => {
@@ -1329,17 +1410,34 @@ async function loadPortfolioImages() {
 
       const img = document.createElement("img");
       img.src = thumbSrc;
-      img.alt = image.title || image.filename || (yid ? "YouTube video" : "");
+      img.alt = buildArtworkAltText(image, category, categoryLabelMap);
       img.loading = "lazy";
       img.decoding = "async";
-      img.onerror = function () {
+
+      function onImgFinalError() {
         this.onerror = null;
         const card = this.closest(".portfolio-item");
         if (card && card.parentNode) {
           card.remove();
           rebuildPortfolioFiltersFromDom();
         }
+      }
+
+      img.onerror = function () {
+        this.onerror = null;
+        /* YouTube / external URL failed, or rare edge case: try local file. */
+        if (image.filename) {
+          const full = assetImagePath(image.filename);
+          if (full && this.src !== full) {
+            this.src = full;
+            this.onerror = onImgFinalError;
+            return;
+          }
+        }
+        onImgFinalError.call(this);
       };
+
+      imageDiv.appendChild(img);
 
       const overlay = document.createElement("div");
       overlay.className = "portfolio-overlay";
@@ -1373,7 +1471,6 @@ async function loadPortfolioImages() {
         overlay.appendChild(badge);
       }
 
-      imageDiv.appendChild(img);
       imageDiv.appendChild(overlay);
       item.appendChild(imageDiv);
       portfolioGrid.appendChild(item);
@@ -1496,22 +1593,46 @@ function openLightbox(item) {
     }
     if (lightboxImage) {
       lightboxImage.style.display = "";
-      const src =
-        imageData?.thumbnailUrl ||
-        (imageData?.filename
-          ? assetImagePath(imageData.filename)
-          : img?.src || "");
-      lightboxImage.src = src;
-      lightboxImage.alt = imageData?.title || img?.alt || title;
-      lightboxImage.onerror = function () {
-        this.onerror = null;
-        this.src =
-          "data:image/svg+xml," +
-          encodeURIComponent(
-            '<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>',
-          );
-        this.alt = (this.alt || "") + " (image non disponible)";
-      };
+      const fn = imageData?.filename;
+      const lightboxPlaceholderSvg =
+        "data:image/svg+xml," +
+        encodeURIComponent(
+          '<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>',
+        );
+      const catForAlt =
+        (imageData && imageData.category) ||
+        item.getAttribute("data-category") ||
+        "";
+      lightboxImage.alt = imageData
+        ? buildArtworkAltText(imageData, catForAlt, portfolioCategoryNames)
+        : img?.alt || title || "";
+      if (fn) {
+        const webp = assetImageWebpFullPath(fn);
+        const orig = assetImagePath(fn);
+        lightboxImage.src = webp || orig;
+        lightboxImage.onerror = function () {
+          this.onerror = null;
+          if (orig && this.src !== orig) {
+            this.src = orig;
+            this.onerror = function () {
+              this.onerror = null;
+              this.src = lightboxPlaceholderSvg;
+              this.alt = (this.alt || "") + " (image non disponible)";
+            };
+          } else {
+            this.src = lightboxPlaceholderSvg;
+            this.alt = (this.alt || "") + " (image non disponible)";
+          }
+        };
+      } else {
+        const src = imageData?.thumbnailUrl || img?.src || "";
+        lightboxImage.src = src;
+        lightboxImage.onerror = function () {
+          this.onerror = null;
+          this.src = lightboxPlaceholderSvg;
+          this.alt = (this.alt || "") + " (image non disponible)";
+        };
+      }
     }
   }
 
@@ -1698,6 +1819,7 @@ let heroCarouselIntervalId = null;
 async function buildHeroSlidesFromPortfolio(data) {
   const container = document.getElementById("heroSlides");
   if (!container || !data || !data.images) return;
+  const heroLabelMap = getCategoryNamesFromData(data);
   const images = data.images.filter((img) => getPortfolioThumbInfo(img));
   if (!images.length) return;
   const shuffled = shuffleArray(images);
@@ -1706,15 +1828,25 @@ async function buildHeroSlidesFromPortfolio(data) {
   for (const img of shuffled) {
     if (valid.length >= want) break;
     const yHero = img.youtubeId || extractYoutubeId(img.videoUrl);
-    const url = yHero
-      ? getYoutubeThumbnailUrl(yHero)
-      : img.thumbnailUrl ||
-        (img.filename ? assetImagePath(img.filename) : "");
+    let url = "";
+    if (yHero) {
+      url = getYoutubeThumbnailUrl(yHero);
+      if (!(await verifyImageLoads(url))) url = "";
+    } else if (img.thumbnailUrl) {
+      url = img.thumbnailUrl;
+      if (!(await verifyImageLoads(url))) url = "";
+    } else if (img.filename) {
+      /* Fichier d’abord : évite des GET 404 sur les WebP thumbs non générés. */
+      const t = assetImageThumbPath(img.filename);
+      const f = assetImagePath(img.filename);
+      if (await verifyImageLoads(f)) url = f;
+      else if (await verifyImageLoads(t)) url = t;
+    }
     if (!url) continue;
-    if (await verifyImageLoads(url)) valid.push(img);
+    valid.push({ img, url });
   }
   container.innerHTML = "";
-  valid.forEach((img, i) => {
+  valid.forEach(({ img, url }, i) => {
     const slide = document.createElement("div");
     slide.className = "hero-slide" + (i === 0 ? " active" : "");
     slide.setAttribute("data-slide", String(i));
@@ -1723,15 +1855,16 @@ async function buildHeroSlidesFromPortfolio(data) {
       img.title ||
       img.filename;
     const heroImg = document.createElement("img");
-    const yHero = img.youtubeId || extractYoutubeId(img.videoUrl);
-    heroImg.src = yHero
-      ? getYoutubeThumbnailUrl(yHero)
-      : img.thumbnailUrl ||
-        (img.filename ? assetImagePath(img.filename) : "");
-    heroImg.alt = (img.title || img.filename || "").replace(/"/g, "");
+    heroImg.src = url;
+    heroImg.alt = buildArtworkAltText(img, img.category, heroLabelMap);
     heroImg.className = "hero-image-3d";
     heroImg.onerror = function () {
       this.onerror = null;
+      const yH = img.youtubeId || extractYoutubeId(img.videoUrl);
+      if (!yH && img.filename && this.src !== assetImagePath(img.filename)) {
+        this.src = assetImagePath(img.filename);
+        return;
+      }
       this.closest(".hero-slide")?.remove();
       initHeroSlide();
     };
@@ -1829,23 +1962,6 @@ if ("loading" in HTMLImageElement.prototype) {
 }
 
 // ============================================
-// ACCESSIBILITY - Skip Link
-// ============================================
-// Add skip link
-const skipLink = document.createElement("a");
-skipLink.href = "#main-content";
-skipLink.className = "skip-link";
-skipLink.textContent = "Skip to main content";
-document.body.insertBefore(skipLink, document.body.firstChild);
-
-// Ensure main content has an id
-const mainContent =
-  document.querySelector("main") || document.querySelector("#about");
-if (mainContent && !mainContent.id) {
-  mainContent.id = "main-content";
-}
-
-// ============================================
 // PERFORMANCE - Scroll debounce
 // ============================================
 function debounce(func, wait) {
@@ -1923,7 +2039,29 @@ async function loadContentJson() {
     }
     const contactAddress = document.getElementById("contact-address");
     if (contactAddress && data.contact && data.contact.address) {
-      contactAddress.textContent = data.contact.address;
+      contactAddress.innerHTML = escapeHtmlContent(data.contact.address).replace(
+        /\n/g,
+        "<br />",
+      );
+    }
+    const contactEmail = document.getElementById("contact-email");
+    if (contactEmail && data.contact && data.contact.email) {
+      const em = escapeHtmlContent(data.contact.email);
+      contactEmail.innerHTML =
+        '<a href="mailto:' +
+        escapeHtmlAttr(data.contact.email) +
+        '">' +
+        em +
+        "</a>";
+    }
+    const contactPhone = document.getElementById("contact-phone");
+    if (contactPhone && data.contact && data.contact.phone) {
+      const tel =
+        data.contact.phoneTel ||
+        data.contact.phone.replace(/\s/g, "").replace(/^0/, "+33");
+      const label = escapeHtmlContent(data.contact.phone);
+      contactPhone.innerHTML =
+        '<a href="tel:' + escapeHtmlAttr(tel) + '">' + label + "</a>";
     }
   } catch (_) {
     /* no content.json — keep default HTML */
@@ -1934,6 +2072,14 @@ function escapeHtmlContent(s) {
   const div = document.createElement("div");
   div.textContent = s;
   return div.innerHTML;
+}
+
+function escapeHtmlAttr(s) {
+  return String(s)
+    .replace(/&/g, "&amp;")
+    .replace(/"/g, "&quot;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
 }
 
 // ============================================

@@ -51,6 +51,58 @@ Copier les images dans le dossier `assets/images/`
 
 **L'image apparaîtra automatiquement dans le portfolio !**
 
+#### Miniatures WebP + plein écran WebP (recommandé)
+
+La grille et le hero chargent d’abord des fichiers générés : `assets/images/thumbs/.../<nom>-thumb.webp`.  
+La lightbox privilégie `assets/images/webp/.../<nom>.webp`, puis retombe sur le JPG/PNG d’origine si besoin.
+
+Après avoir ajouté des fichiers dans `assets/images/` et mis à jour le JSON :
+
+**Option A — Ubuntu / Debian récents (PEP 668)** : un **venv** dans le projet (recommandé ; n’installe rien dans le Python système) :
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r scripts/requirements-images.txt
+python scripts/generate_image_derivatives.py
+```
+
+Si `python3 -m venv` échoue (« ensurepip » / module manquant), installe le paquet une fois :  
+`sudo apt update && sudo apt install -y python3-venv`  
+puis relance les commandes ci‑dessus.
+
+Raccourci : `./scripts/setup_image_venv.sh` (crée `.venv`, installe Pillow, affiche la commande pour lancer le script).
+
+**Option B — sans venv** : Pillow fourni par le système (nécessite `sudo`) :
+
+```bash
+sudo apt update && sudo apt install -y python3-pil
+python3 scripts/generate_image_derivatives.py
+```
+
+Aperçu sans écrire de fichiers (avec le venv activé, ou ` .venv/bin/python` à la place de `python`) :
+
+```bash
+python scripts/generate_image_derivatives.py --dry-run
+```
+
+Les sous-dossiers reprennent le chemin du `filename` dans le JSON (ex. `graphics/foo.jpg` → `thumbs/graphics/foo-thumb.webp` et `webp/graphics/foo.webp`).
+
+##### Si « ça ne fonctionne pas » — causes fréquentes
+
+1. **`sudo` refuse le mot de passe** → `python3-pil` n’est pas installé, le script affiche *Install Pillow* et s’arrête. Il faut soit le bon mot de passe administrateur, soit une installation **sans sudo** (voir ci‑dessous).
+
+2. **`No module named pip`** → n’utilise pas le Python système pour `pip install` : crée un **venv** (option A ci‑dessus) ou installe `python3-pil` avec `sudo apt`.
+
+3. **`externally-managed-environment` (PEP 668)** → Ubuntu/Debian **interdisent** `pip install` sur le Python du système. Utilise un **venv** (`.venv` dans le projet) — voir option A — ou `sudo apt install python3-pil`.
+
+4. **`--dry-run: command not found`** → tu as lancé `--dry-run` seul. Il faut :  
+   `python scripts/generate_image_derivatives.py --dry-run`  
+   (ou `.venv/bin/python scripts/generate_image_derivatives.py --dry-run` si tu n’actives pas le venv.)
+
+**Depuis Windows** (le dépôt est sous `C:\Users\...`) : dans **cmd** / **PowerShell** :  
+`py -m venv .venv` → `.venv\Scripts\activate` → `pip install -r scripts\requirements-images.txt` → `py scripts\generate_image_derivatives.py`
+
 ### Catégories disponibles
 
 - `animation` - Animation/Video

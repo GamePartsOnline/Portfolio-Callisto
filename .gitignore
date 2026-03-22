@@ -1,3 +1,6 @@
+# Python venv (Pillow / scripts images)
+.venv/
+
 # Dependencies
 node_modules/
 package-lock.json

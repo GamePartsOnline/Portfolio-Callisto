@@ -1,0 +1,4 @@
+# Optional: image derivatives (WebP thumbs + full) for the portfolio grid/lightbox.
+# Recommended (PEP 668): python3 -m venv .venv && . .venv/bin/activate && pip install -r scripts/requirements-images.txt
+# Or system package: sudo apt install -y python3-pil
+Pillow>=10.0.0
