@@ -5,7 +5,8 @@ Graphiste digitale, illustratrice, artiste demoscene, AI builder.
 
 **Site en production :** [portfolio.callistoarts.com](https://portfolio.callistoarts.com)  
 **Dépôt GitHub :** [github.com/GamePartsOnline/Portfolio-Callisto](https://github.com/GamePartsOnline/Portfolio-Callisto)  
-**Behance :** [behance.net/CallistoArtwork](https://www.behance.net/CallistoArtwork) — portfolio Adobe (projets, outils, GPO)
+**Behance :** [behance.net/CallistoArtwork](https://www.behance.net/CallistoArtwork) — portfolio Adobe (projets, outils, GPO)  
+**LinkedIn :** [linkedin.com/in/frederique-charton](https://www.linkedin.com/in/frederique-charton)
 
 ---
 

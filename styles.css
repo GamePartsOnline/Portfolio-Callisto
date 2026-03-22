@@ -2360,6 +2360,24 @@ body.night .about-card-tag {
   color: #e1306c;
 }
 
+/* LinkedIn — bleu #0A66C2 */
+.social-linkedin {
+  border-color: rgba(10, 102, 194, 0.3);
+}
+.social-linkedin:hover,
+.social-linkedin:focus {
+  border-color: #0a66c2;
+  box-shadow: 0 0 14px rgba(10, 102, 194, 0.35);
+  color: #0a66c2;
+}
+.social-linkedin .social-icon {
+  color: #0a66c2;
+}
+.social-linkedin:hover .social-icon,
+.social-linkedin:focus .social-icon {
+  color: #0a66c2;
+}
+
 /* Facebook — bleu #1877F2 */
 .social-facebook {
   border-color: rgba(24, 119, 242, 0.3);
