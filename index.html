@@ -1,452 +1,741 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Callisto Portfolio - Frédérique Charton, Manager at GPO SARL, Digital Drawing artist and AI Builder">
-    <meta name="keywords"
-        content="Callisto Arts, Frédérique Charton, digital painting, demoscene, animation, graphics, portfolio artist, full-stack, GPO SARL">
-    <meta name="author" content="Callisto - Frédérique Charton">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Callisto Portfolio - Frédérique Charton, Manager at GPO SARL, Digital Drawing artist and AI Builder"
+    />
+    <meta
+      name="keywords"
+      content="Callisto Arts, Frédérique Charton, digital painting, demoscene, animation, graphics, portfolio artist, full-stack, GPO SARL"
+    />
+    <meta name="author" content="Callisto - Frédérique Charton" />
 
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://callistoarts.com/">
-    <meta property="og:title" content="Callisto Arts - Portfolio 2026">
-    <meta property="og:description"
-        content="Callisto Portfolio - Manager at GPO SARL, Digital Drawing artist and AI Builder">
-    <meta property="og:image" content="https://callistoarts.com/assets/images/graphics/Chromatic.jpg">
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://callistoarts.com/" />
+    <meta property="og:title" content="Callisto Arts - Portfolio 2026" />
+    <meta
+      property="og:description"
+      content="Callisto Portfolio - Manager at GPO SARL, Digital Drawing artist and AI Builder"
+    />
+    <meta
+      property="og:image"
+      content="https://callistoarts.com/assets/images/graphics/Chromatic.jpg"
+    />
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://callistoarts.com/">
-    <meta property="twitter:title" content="Callisto Arts - Portfolio 2026">
-    <meta property="twitter:description"
-        content="Callisto Portfolio - Manager at GPO SARL, Digital Drawing artist and AI Builder">
-    <meta property="twitter:image" content="https://callistoarts.com/assets/images/graphics/Chromatic.jpg">
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://callistoarts.com/" />
+    <meta property="twitter:title" content="Callisto Arts - Portfolio 2026" />
+    <meta
+      property="twitter:description"
+      content="Callisto Portfolio - Manager at GPO SARL, Digital Drawing artist and AI Builder"
+    />
+    <meta
+      property="twitter:image"
+      content="https://callistoarts.com/assets/images/graphics/Chromatic.jpg"
+    />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 
     <title>Callisto Arts - Portfolio 2026</title>
-    <link rel="stylesheet" href="styles.css?v=10">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Cinzel:wght@400;700&display=swap"
-        rel="stylesheet">
-</head>
+    <link rel="stylesheet" href="styles.css?v=11" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Cinzel:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-<body>
-    <canvas id="cursor-canvas" class="cursor-canvas" aria-hidden="true"></canvas>
+  <body>
+    <audio controls autoplay loop>
+      <source src="music.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+
+    <canvas
+      id="cursor-canvas"
+      class="cursor-canvas"
+      aria-hidden="true"
+    ></canvas>
     <!-- Animated Background -->
     <div class="animated-background" aria-hidden="true">
-        <div class="bg-gradient"></div>
-        <div class="bg-mesh"></div>
-        <div class="bg-particles" id="bgParticles"></div>
-        <div class="bg-orbs">
-            <div class="orb orb-1"></div>
-            <div class="orb orb-2"></div>
-            <div class="orb orb-3"></div>
-        </div>
-        <div class="bg-grid"></div>
+      <div class="bg-gradient"></div>
+      <div class="bg-mesh"></div>
+      <div class="bg-particles" id="bgParticles"></div>
+      <div class="bg-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+      </div>
+      <div class="bg-grid"></div>
     </div>
 
     <!-- Navigation -->
     <nav class="nav" role="navigation" aria-label="Main navigation">
-        <div class="nav-container">
-            <a href="#home" class="nav-logo" aria-label="Back to home">
-                <img src="assets/images/logo/logo-cllisto.png" alt="Callisto Arts Logo" class="logo-img">
-                <span class="logo-text">Callisto Arts</span>
-            </a>
-            <button class="nav-toggle" aria-label="Mobile menu" aria-expanded="false" id="navToggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#journey" class="nav-link">Timeline</a></li>
-                <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
-        </div>
+      <div class="nav-container">
+        <a href="#home" class="nav-logo" aria-label="Back to home">
+          <img
+            src="assets/images/logo/logo-cllisto.png"
+            alt="Callisto Arts Logo"
+            class="logo-img"
+          />
+          <span class="logo-text">Callisto Arts</span>
+        </a>
+        <button
+          class="nav-toggle"
+          aria-label="Mobile menu"
+          aria-expanded="false"
+          id="navToggle"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="#home" class="nav-link">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#journey" class="nav-link">Timeline</a></li>
+          <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </div>
     </nav>
 
     <!-- Hero Section -->
     <section id="home" class="hero" role="banner">
-        <div class="hero-content">
-            <h1 class="hero-title">
-                <span class="hero-greeting">Welcome to my world</span>
-                <span class="hero-name">Callisto Arts</span>
-            </h1>
-            <p class="hero-subtitle">
-                Owner at GPO SARL | Digital Drawing artist | AI Builder
-            </p>
-            <div class="hero-subtitle-line" aria-hidden="true"></div>
+      <div class="hero-content">
+        <h1 class="hero-title">
+          <span class="hero-greeting">Welcome to my world</span>
+          <span class="hero-name">Callisto Arts</span>
+        </h1>
+        <p class="hero-subtitle">
+          Owner at GPO SARL | Digital Drawing artist | AI Builder
+        </p>
+        <div class="hero-subtitle-line" aria-hidden="true"></div>
 
-            <div class="hero-3d-container">
-                <div class="glass-3d-card hero-slide-wrapper">
-                    <div class="hero-slides" id="heroSlides" aria-live="polite">
-                        <!-- Slides remplis aléatoirement par le script à partir du portfolio -->
-                    </div>
-                    <button type="button" class="hero-slide-btn hero-slide-prev" aria-label="Image précédente">‹</button>
-                    <button type="button" class="hero-slide-btn hero-slide-next" aria-label="Image suivante">›</button>
-                    <div class="hero-slide-dots" aria-hidden="true"></div>
-                    <div class="glass-shine"></div>
-                </div>
-            </div>
-
-            <div class="hero-scroll" aria-label="Scroll to content">
-                <span>Scroll</span>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                </svg>
-            </div>
+        <div
+          class="hero-social"
+          role="navigation"
+          aria-label="Behance portfolio"
+        >
+          <a
+            href="https://www.behance.net/CallistoArtwork"
+            class="hero-behance-btn"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Behance — Callisto Artwork (opens in new tab)"
+          >
+            <svg
+              class="hero-behance-icon"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path
+                fill="currentColor"
+                d="M22 7h-7V5h7v2zM15 15.5c0-1.33.47-2.29 1.42-2.86C17.37 11.94 18.7 11.5 20 11.5v2.5c-1.2 0-2.27.35-2.7.9-.43.56-.43 1.3 0 1.86.43.55 1.5.9 2.7.9h.3v2.31c-.55.17-1.14.26-1.74.26-2.21 0-3.86-1.44-3.86-3.5zM9 8H2v2h5v2H2v2h7v-8zm4.5 0H11v8h2.5c1.38 0 2.5-1.12 2.5-2.5S16.88 8 15.5 8h-.5zM15.5 12c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"
+              />
+            </svg>
+            <span class="hero-behance-label">Behance</span>
+          </a>
         </div>
+
+        <div class="hero-3d-container">
+          <div class="glass-3d-card hero-slide-wrapper">
+            <div class="hero-slides" id="heroSlides" aria-live="polite">
+              <!-- Slides remplis aléatoirement par le script à partir du portfolio -->
+            </div>
+            <button
+              type="button"
+              class="hero-slide-btn hero-slide-prev"
+              aria-label="Image précédente"
+            >
+              ‹
+            </button>
+            <button
+              type="button"
+              class="hero-slide-btn hero-slide-next"
+              aria-label="Image suivante"
+            >
+              ›
+            </button>
+            <div class="hero-slide-dots" aria-hidden="true"></div>
+            <div class="glass-shine"></div>
+          </div>
+        </div>
+
+        <div class="hero-scroll" aria-label="Scroll to content">
+          <span>Scroll</span>
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M7 13l5 5 5-5M7 6l5 5 5-5"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+        </div>
+      </div>
     </section>
 
     <!-- Main Content -->
     <main id="main-content">
-        <!-- Portfolio Section (sous l'image hero aléatoire) -->
-        <section id="portfolio" class="portfolio section" aria-labelledby="portfolio-title">
-            <div class="container">
-                <div class="section-title-wrap">
-                    <h2 id="portfolio-title" class="section-title">Portfolio</h2>
-                </div>
-                <div class="portfolio-filters" id="portfolioFilters" role="tablist" aria-label="Filtres portfolio">
-                    <!-- Boutons de filtre générés par script.js à partir des catégories du JSON -->
-                </div>
-                <div class="portfolio-grid" id="portfolioGrid">
-                    <!-- Images are loaded automatically from script.js data -->
-                </div>
+      <!-- Portfolio Section (sous l'image hero aléatoire) -->
+      <section
+        id="portfolio"
+        class="portfolio section"
+        aria-labelledby="portfolio-title"
+      >
+        <div class="container">
+          <div class="section-title-wrap">
+            <h2 id="portfolio-title" class="section-title">Portfolio</h2>
+          </div>
+          <div
+            class="portfolio-filters"
+            id="portfolioFilters"
+            role="tablist"
+            aria-label="Filtres portfolio"
+          >
+            <!-- Boutons de filtre générés par script.js à partir des catégories du JSON -->
+          </div>
+          <div class="portfolio-grid" id="portfolioGrid">
+            <!-- Images are loaded automatically from script.js data -->
+          </div>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section id="about" class="about section" aria-labelledby="about-title">
+        <div class="container">
+          <div class="section-title-wrap">
+            <h2 id="about-title" class="section-title">About</h2>
+          </div>
+          <div class="about-content">
+            <div class="card glass-card">
+              <div class="card-content">
+                <h3>CHARTON Frédérique aka CALLISTO</h3>
+                <p class="about-text" id="about-intro">
+                  I am Callisto, 46 years old, based in Châlons-en-Champagne.<br />
+                  Manager at GPO SARL, Digital Drawing artist & AI Builder.
+                </p>
+                <p class="about-text">
+                  Demoscene:
+                  <a
+                    href="https://demozoo.org/sceners/57855/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    ><strong>Demozoo profile — Callisto</strong></a
+                  >
+                  (graphics, photos, videos — 66+ productions). Groups include
+                  <strong>Flush</strong>, <strong>GPO</strong>,
+                  <strong>Vital-Motion!</strong>, Syn[Rj], Silicium, New C-Rex,
+                  RBBS…
+                </p>
+                <p class="about-text">
+                  <a
+                    href="https://www.behance.net/CallistoArtwork"
+                    class="about-behance-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <svg
+                      class="about-behance-icon"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M22 7h-7V5h7v2zM15 15.5c0-1.33.47-2.29 1.42-2.86C17.37 11.94 18.7 11.5 20 11.5v2.5c-1.2 0-2.27.35-2.7.9-.43.56-.43 1.3 0 1.86.43.55 1.5.9 2.7.9h.3v2.31c-.55.17-1.14.26-1.74.26-2.21 0-3.86-1.44-3.86-3.5zM9 8H2v2h5v2H2v2h7v-8zm4.5 0H11v8h2.5c1.38 0 2.5-1.12 2.5-2.5S16.88 8 15.5 8h-.5zM15.5 12c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"
+                      />
+                    </svg>
+                    <strong>Behance — Callisto Artwork</strong>
+                  </a>
+                  — portfolio Adobe (projets démo, paintover, pixel art, GPO /
+                  flippers, Inktober…). Outils : Photoshop, Illustrator, Fresco.
+                  Disponible en freelance &amp; recherche de projets.
+                </p>
+                <p
+                  class="about-text"
+                  style="display: none"
+                  aria-hidden="true"
+                  id="remove-me"
+                >
+                  My full timeline (version “neon”) is available just below.
+                </p>
+              </div>
             </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="about section" aria-labelledby="about-title">
-            <div class="container">
-                <div class="section-title-wrap">
-                    <h2 id="about-title" class="section-title">About</h2>
-                </div>
-                <div class="about-content">
-                    <div class="card glass-card">
-                        <div class="card-content">
-                            <h3>CHARTON Frédérique aka CALLISTO</h3>
-                            <p class="about-text" id="about-intro">
-                                I am Callisto, 46 years old, based in Châlons-en-Champagne.<br>
-                                Manager at GPO SARL, Digital Drawing artist & AI Builder.
-                            </p>
-                            <p class="about-text">
-                                Demoscene: <a href="https://demozoo.org/sceners/57855/" target="_blank"
-                                    rel="noopener noreferrer"><strong>Demozoo profile — Callisto</strong></a>
-                                (graphics, photos, videos — 66+ productions). Groups include
-                                <strong>Flush</strong>, <strong>GPO</strong>, <strong>Vital-Motion!</strong>,
-                                Syn[Rj], Silicium, New C-Rex, RBBS…
-                            </p>
-                            <p class="about-text" style="display:none" aria-hidden="true" id="remove-me">
-                                My full timeline (version “neon”) is available just below.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="about-cards" aria-label="Présentation par domaines">
-                        <div class="about-card glass-card">
-                            <span class="about-card-icon" aria-hidden="true">🎨</span>
-                            <h3>Digital Drawing</h3>
-                            <p>Artiste digital depuis 2011, compétitions internationales, et passionnée !</p>
-                            <span class="about-card-tag">Portfolio</span>
-                        </div>
-                        <div class="about-card glass-card">
-                            <span class="about-card-icon" aria-hidden="true">🎰</span>
-                            <h3>GPO SARL</h3>
-                            <p>Réparation, vente, locations et fabrications de jeux automatiques — flippers, babyfoot, bornes d'arcade… Nombreux customs et rénovations à l'origine.</p>
-                            <span class="about-card-tag">GPO SARL</span>
-                        </div>
-                        <div class="about-card glass-card">
-                            <span class="about-card-icon" aria-hidden="true">🌌</span>
-                            <h3>Demoscene</h3>
-                            <p>Membre active depuis 2015 — Shadow Party, Revision, Rsync, Inercia, Assembly, Tokyo Demo Fest…</p>
-                            <span class="about-card-tag">Scener</span>
-                        </div>
-                    </div>
-                    <blockquote class="about-quote" cite="https://callistoarts.com">
-                        <p>"My fun is DRAWING !!! ALWAYS… end for ever."</p>
-                        <cite>— CALLISTO, Charton Frédérique</cite>
-                    </blockquote>
-                    <div class="about-cards" aria-label="Présentation par domaines (suite)">
-                        <div class="about-card glass-card">
-                            <span class="about-card-icon" aria-hidden="true">🤖</span>
-                            <h3>AI Prompt</h3>
-                            <p>ChatGPT, Perplexity, Gemini, Claude. Exploration et intégration des outils IA dans le workflow créatif.</p>
-                            <span class="about-card-tag">AI Builder</span>
-                        </div>
-                        <div class="about-card glass-card">
-                            <span class="about-card-icon" aria-hidden="true">💻</span>
-                            <h3>Dev en formation</h3>
-                            <p>The Hacking Project — Full Stack : HTML, CSS, JS, vibe coding assisté par IA, Ruby…</p>
-                            <span class="about-card-tag">THP 2026</span>
-                        </div>
-                        <div class="about-card glass-card">
-                            <span class="about-card-icon" aria-hidden="true">✏️</span>
-                            <h3>UI Design / Graphiste</h3>
-                            <p>Interfaces et ergonomie, accessibilité, sites internet et gaming.<br>Illustrator, Photoshop, Indesign, Fresco, Procreate …</p>
-                            <span class="about-card-tag">UX/UI</span>
-                        </div>
-                    </div>
-                </div>
+            <div class="about-cards" aria-label="Présentation par domaines">
+              <div class="about-card glass-card">
+                <span class="about-card-icon" aria-hidden="true">🎨</span>
+                <h3>Digital Drawing</h3>
+                <p>
+                  Artiste digital depuis 2011, compétitions internationales, et
+                  passionnée !
+                </p>
+                <span class="about-card-tag">Portfolio</span>
+              </div>
+              <div class="about-card glass-card">
+                <span class="about-card-icon" aria-hidden="true">🎰</span>
+                <h3>GPO SARL</h3>
+                <p>
+                  Réparation, vente, locations et fabrications de jeux
+                  automatiques — flippers, babyfoot, bornes d'arcade… Nombreux
+                  customs et rénovations à l'origine.
+                </p>
+                <span class="about-card-tag">GPO SARL</span>
+              </div>
+              <div class="about-card glass-card">
+                <span class="about-card-icon" aria-hidden="true">🌌</span>
+                <h3>Demoscene</h3>
+                <p>
+                  Membre active depuis 2015 — Shadow Party, Revision, Rsync,
+                  Inercia, Assembly, Tokyo Demo Fest…
+                </p>
+                <span class="about-card-tag">Scener</span>
+              </div>
             </div>
-        </section>
-
-        <!-- Journey / Timeline Section -->
-        <section id="journey" class="journey section" aria-labelledby="journey-title">
-            <div class="container">
-                <div class="journey-scanlines" aria-hidden="true"></div>
-
-                <header class="journey-header">
-                    <h2 id="journey-title">My <span>journey</span></h2>
-                    <p>// CALLISTO — CHARTON FRÉDÉRIQUE — DIGITAL ARTIST & DEMOSCENER</p>
-                    <div class="journey-header-line" aria-hidden="true"></div>
-                </header>
-
-                <div class="journey-legend" aria-label="Timeline legend">
-                    <div class="journey-legend-item journey-l-neon">
-                        <div class="journey-legend-dot" aria-hidden="true"></div>Event
-                    </div>
-                    <div class="journey-legend-item journey-l-gold">
-                        <div class="journey-legend-dot" aria-hidden="true"></div>Prizes & Awards
-                    </div>
-                    <div class="journey-legend-item journey-l-rose">
-                        <div class="journey-legend-dot" aria-hidden="true"></div>Certificates & diplomas
-                    </div>
-                </div>
-
-                <div class="journey-horizontal-bar" aria-hidden="true"></div>
-
-                <div class="journey-timeline" role="list">
-                    <div class="journey-tl-item" role="listitem">
-                        <article class="journey-tl-card">
-                            <div class="journey-tl-year">2026</div>
-                            <span class="journey-tl-tag">In progress</span>
-                            <div class="journey-tl-content">
-                                <strong>AI Builder</strong>.<br>
-                                Coming in April: <strong>Revision 2026</strong><br>
-                                5th place @ Rsync (Belgium)
-                            </div>
-                        </article>
-                    </div>
-
-                    <div class="journey-tl-item journey-prize journey-right" role="listitem">
-                        <article class="journey-tl-card">
-                            <div class="journey-tl-year">2025</div>
-                            <span class="journey-tl-tag">Awards</span>
-                            <ul class="journey-prize-list">
-                                <li class="journey-place-2">2nd @ Rsync — "Symphony of the Abyss"</li>
-                                <li>10th @ Revision — "Pascal's Lemur Leap"</li>
-                                <li>9th @ Revision — "Invitation SHADOW PARTY 2025"</li>
-                                <li>Participation Inercia — "Sky Code"</li>
-                            </ul>
-                        </article>
-                    </div>
-
-                    <div class="journey-tl-item journey-prize" role="listitem">
-                        <article class="journey-tl-card">
-                            <div class="journey-tl-year">2024</div>
-                            <span class="journey-tl-tag">Awards</span>
-                            <ul class="journey-prize-list">
-                                <li class="journey-place-1">1st @ Rsync — "Chromatique Résonance" (Graphics)</li>
-                                <li>7th @ Revision — "The Pixel Mouse Love Story"</li>
-                                <li>12th @ Revision — "REFRESH"</li>
-                            </ul>
-                        </article>
-                    </div>
-
-                    <div class="journey-tl-item journey-prize journey-certificate journey-right" role="listitem">
-                        <article class="journey-tl-card">
-                            <div class="journey-tl-year">2023</div>
-                            <span class="journey-tl-tag">Awards + Certificate</span>
-                            <ul class="journey-prize-list">
-                                <li>9th Animation/Video @ Revision — "Cyberpin"</li>
-                                <li>11th Modern Graphics @ Revision — "Howl at the Forest"</li>
-                                <li>16th Photo @ Revision — "Ball of Steel"</li>
-                            </ul>
-                            <div class="journey-tl-content journey-tl-content-spaced">
-                                <strong>InDesign</strong> certification (MJM). Discovery of AI.
-                            </div>
-                        </article>
-                    </div>
-
-                    <div class="journey-tl-item journey-prize" role="listitem">
-                        <article class="journey-tl-card">
-                            <div class="journey-tl-year">2022</div>
-                            <span class="journey-tl-tag">Awards</span>
-                            <ul class="journey-prize-list">
-                                <li class="journey-place-1">1st Freestyle Graphics — "Elevation 2079" @ Inercia</li>
-                                <li class="journey-place-3">3rd Nuskool Graphics @ Syntax</li>
-                            </ul>
-                            <div class="journey-tl-content journey-tl-content-spaced">
-                                Challenges Inktober & Adobe Live.
-                            </div>
-                        </article>
-                    </div>
-
-                    <div class="journey-tl-item journey-certificate journey-right" role="listitem">
-                        <article class="journey-tl-card">
-                            <div class="journey-tl-year">2021</div>
-                            <span class="journey-tl-tag">Certificates</span>
-                            <div class="journey-tl-content">
-                                <strong>TOSA Illustrator</strong> certification.<br>
-                                Pinacothèque du Luxembourg certificate — 3 digital paintings.<br>
-                                Logo, t-shirts and trophies <strong>Tokyo Demo Fest 2021</strong>.<br>
-                                Video editing training — Shadow Party.
-                            </div>
-                        </article>
-                    </div>
-
-                    <div class="journey-tl-item" role="listitem">
-                        <article class="journey-tl-card">
-                            <div class="journey-tl-year">2020</div>
-                            <span class="journey-tl-tag">Organization</span>
-                            <div class="journey-tl-content">
-                                COVID year: online demoparties.<br>
-                                Joined the administration of <strong>demoscene.fr</strong> and <strong>Shadow
-                                    Party</strong>.
-                            </div>
-                        </article>
-                    </div>
-
-                    <div class="journey-tl-item journey-prize journey-right" role="listitem">
-                        <article class="journey-tl-card">
-                            <div class="journey-tl-year">2016</div>
-                            <span class="journey-tl-tag">International breakthrough</span>
-                            <ul class="journey-prize-list">
-                                <li>5th — "Tiger Eyes" @ Revision (Germany)</li>
-                                <li class="journey-place-1">1st — "You Seem So Delicious" — Assembly 2021 Winter Online Graphics</li>
-                                <li>5th — "Sharko" @ Tokyo Demo Fest (Japan)</li>
-                            </ul>
-                        </article>
-                    </div>
-
-                    <div class="journey-tl-item" role="listitem">
-                        <article class="journey-tl-card">
-                            <div class="journey-tl-year">2015</div>
-                            <span class="journey-tl-tag">Birth</span>
-                            <div class="journey-tl-content">
-                                First demoparty — an amazing discovery that became a real passion.<br>
-                                First <strong>paintover</strong> on a corner of a table.
-                            </div>
-                        </article>
-                    </div>
-
-                    <div class="journey-tl-item journey-certificate journey-right" role="listitem">
-                        <article class="journey-tl-card">
-                            <div class="journey-tl-year">2012</div>
-                            <span class="journey-tl-tag">Training & diplomas</span>
-                            <div class="journey-tl-content">
-                                Creation of <strong>GPO SARL</strong> — repair, sale, rental of arcade games.<br>
-                                Illustrator & Versaworks training (Roland VS 640).<br>
-                                Intensive Adobe learning via Franck Payen.
-                            </div>
-                        </article>
-                    </div>
-
-                    <div class="journey-tl-item" role="listitem">
-                        <article class="journey-tl-card">
-                            <div class="journey-tl-year">2011</div>
-                            <span class="journey-tl-tag">Origins</span>
-                            <div class="journey-tl-content">
-                                Return to drawing after a long break.<br>
-                                Exploration: pencil, watercolor, acrylic, dry pastels…
-                            </div>
-                        </article>
-                    </div>
-                </div>
+            <blockquote class="about-quote" cite="https://callistoarts.com">
+              <p>"My fun is DRAWING !!! ALWAYS… end for ever."</p>
+              <cite>— CALLISTO, Charton Frédérique</cite>
+            </blockquote>
+            <div
+              class="about-cards"
+              aria-label="Présentation par domaines (suite)"
+            >
+              <div class="about-card glass-card">
+                <span class="about-card-icon" aria-hidden="true">🤖</span>
+                <h3>AI Prompt</h3>
+                <p>
+                  ChatGPT, Perplexity, Gemini, Claude. Exploration et
+                  intégration des outils IA dans le workflow créatif.
+                </p>
+                <span class="about-card-tag">AI Builder</span>
+              </div>
+              <div class="about-card glass-card">
+                <span class="about-card-icon" aria-hidden="true">💻</span>
+                <h3>Dev en formation</h3>
+                <p>
+                  The Hacking Project — Full Stack : HTML, CSS, JS, vibe coding
+                  assisté par IA, Ruby…
+                </p>
+                <span class="about-card-tag">THP 2026</span>
+              </div>
+              <div class="about-card glass-card">
+                <span class="about-card-icon" aria-hidden="true">✏️</span>
+                <h3>UI Design / Graphiste</h3>
+                <p>
+                  Interfaces et ergonomie, accessibilité, sites internet et
+                  gaming.<br />Illustrator, Photoshop, Indesign, Fresco,
+                  Procreate …
+                </p>
+                <span class="about-card-tag">UX/UI</span>
+              </div>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="contact section" aria-labelledby="contact-title">
-            <div class="container">
-                <div class="section-title-wrap">
-                    <h2 id="contact-title" class="section-title">Contact</h2>
-                </div>
-                <div class="contact-content">
-                    <div class="card glass-card">
-                        <div class="card-content">
-                            <h3>Social media</h3>
-                            <div class="social-links">
-                                <a href="https://www.behance.net/CallistoArtwork" class="social-link social-behance" aria-label="Behance" target="_blank"
-                                    rel="noopener noreferrer">
-                                    <svg class="social-icon social-icon-behance" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M22 7h-7V5h7v2zM15 15.5c0-1.33.47-2.29 1.42-2.86C17.37 11.94 18.7 11.5 20 11.5v2.5c-1.2 0-2.27.35-2.7.9-.43.56-.43 1.3 0 1.86.43.55 1.5.9 2.7.9h.3v2.31c-.55.17-1.14.26-1.74.26-2.21 0-3.86-1.44-3.86-3.5zM9 8H2v2h5v2H2v2h7v-8zm4.5 0H11v8h2.5c1.38 0 2.5-1.12 2.5-2.5S16.88 8 15.5 8h-.5zM15.5 12c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"/></svg>
-                                    <span>Behance</span>
-                                </a>
-                                <a href="https://www.instagram.com/callisto_artwork/" class="social-link social-instagram" aria-label="Instagram" target="_blank"
-                                    rel="noopener noreferrer">
-                                    <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-                                    <span>Instagram</span>
-                                </a>
-                                <a href="https://www.facebook.com/callistoarts" class="social-link social-facebook" aria-label="Facebook" target="_blank"
-                                    rel="noopener noreferrer">
-                                    <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                                    <span>Facebook</span>
-                                </a>
-                                <a href="https://demozoo.org/sceners/57855/" class="social-link social-demozoo" aria-label="Demozoo" target="_blank"
-                                    rel="noopener noreferrer">
-                                    <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                                    <span>Demozoo</span>
-                                </a>
-                            </div>
-                            <div class="contact-info">
-                                <p id="contact-company"><strong>GPO SARL</strong></p>
-                                <p id="contact-address">Châlons-en-Champagne, France</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+      <!-- Journey / Timeline Section -->
+      <section
+        id="journey"
+        class="journey section"
+        aria-labelledby="journey-title"
+      >
+        <div class="container">
+          <div class="journey-scanlines" aria-hidden="true"></div>
+
+          <header class="journey-header">
+            <h2 id="journey-title">My <span>journey</span></h2>
+            <p>
+              // CALLISTO — CHARTON FRÉDÉRIQUE — DIGITAL ARTIST & DEMOSCENER
+            </p>
+            <div class="journey-header-line" aria-hidden="true"></div>
+          </header>
+
+          <div class="journey-legend" aria-label="Timeline legend">
+            <div class="journey-legend-item journey-l-neon">
+              <div class="journey-legend-dot" aria-hidden="true"></div>
+              Event
             </div>
-        </section>
+            <div class="journey-legend-item journey-l-gold">
+              <div class="journey-legend-dot" aria-hidden="true"></div>
+              Prizes & Awards
+            </div>
+            <div class="journey-legend-item journey-l-rose">
+              <div class="journey-legend-dot" aria-hidden="true"></div>
+              Certificates & diplomas
+            </div>
+          </div>
+
+          <div class="journey-horizontal-bar" aria-hidden="true"></div>
+
+          <div class="journey-timeline" role="list">
+            <div class="journey-tl-item" role="listitem">
+              <article class="journey-tl-card">
+                <div class="journey-tl-year">2026</div>
+                <span class="journey-tl-tag">In progress</span>
+                <div class="journey-tl-content">
+                  <strong>AI Builder</strong>.<br />
+                  Coming in April: <strong>Revision 2026</strong><br />
+                  5th place @ Rsync (Belgium)
+                </div>
+              </article>
+            </div>
+
+            <div
+              class="journey-tl-item journey-prize journey-right"
+              role="listitem"
+            >
+              <article class="journey-tl-card">
+                <div class="journey-tl-year">2025</div>
+                <span class="journey-tl-tag">Awards</span>
+                <ul class="journey-prize-list">
+                  <li class="journey-place-2">
+                    2nd @ Rsync — "Symphony of the Abyss"
+                  </li>
+                  <li>10th @ Revision — "Pascal's Lemur Leap"</li>
+                  <li>9th @ Revision — "Invitation SHADOW PARTY 2025"</li>
+                  <li>Participation Inercia — "Sky Code"</li>
+                </ul>
+              </article>
+            </div>
+
+            <div class="journey-tl-item journey-prize" role="listitem">
+              <article class="journey-tl-card">
+                <div class="journey-tl-year">2024</div>
+                <span class="journey-tl-tag">Awards</span>
+                <ul class="journey-prize-list">
+                  <li class="journey-place-1">
+                    1st @ Rsync — "Chromatique Résonance" (Graphics)
+                  </li>
+                  <li>7th @ Revision — "The Pixel Mouse Love Story"</li>
+                  <li>12th @ Revision — "REFRESH"</li>
+                </ul>
+              </article>
+            </div>
+
+            <div
+              class="journey-tl-item journey-prize journey-certificate journey-right"
+              role="listitem"
+            >
+              <article class="journey-tl-card">
+                <div class="journey-tl-year">2023</div>
+                <span class="journey-tl-tag">Awards + Certificate</span>
+                <ul class="journey-prize-list">
+                  <li>9th Animation/Video @ Revision — "Cyberpin"</li>
+                  <li>
+                    11th Modern Graphics @ Revision — "Howl at the Forest"
+                  </li>
+                  <li>16th Photo @ Revision — "Ball of Steel"</li>
+                </ul>
+                <div class="journey-tl-content journey-tl-content-spaced">
+                  <strong>InDesign</strong> certification (MJM). Discovery of
+                  AI.
+                </div>
+              </article>
+            </div>
+
+            <div class="journey-tl-item journey-prize" role="listitem">
+              <article class="journey-tl-card">
+                <div class="journey-tl-year">2022</div>
+                <span class="journey-tl-tag">Awards</span>
+                <ul class="journey-prize-list">
+                  <li class="journey-place-1">
+                    1st Freestyle Graphics — "Elevation 2079" @ Inercia
+                  </li>
+                  <li class="journey-place-3">3rd Nuskool Graphics @ Syntax</li>
+                </ul>
+                <div class="journey-tl-content journey-tl-content-spaced">
+                  Challenges Inktober & Adobe Live.
+                </div>
+              </article>
+            </div>
+
+            <div
+              class="journey-tl-item journey-certificate journey-right"
+              role="listitem"
+            >
+              <article class="journey-tl-card">
+                <div class="journey-tl-year">2021</div>
+                <span class="journey-tl-tag">Certificates</span>
+                <div class="journey-tl-content">
+                  <strong>TOSA Illustrator</strong> certification.<br />
+                  Pinacothèque du Luxembourg certificate — 3 digital
+                  paintings.<br />
+                  Logo, t-shirts and trophies
+                  <strong>Tokyo Demo Fest 2021</strong>.<br />
+                  Video editing training — Shadow Party.
+                </div>
+              </article>
+            </div>
+
+            <div class="journey-tl-item" role="listitem">
+              <article class="journey-tl-card">
+                <div class="journey-tl-year">2020</div>
+                <span class="journey-tl-tag">Organization</span>
+                <div class="journey-tl-content">
+                  COVID year: online demoparties.<br />
+                  Joined the administration of <strong>demoscene.fr</strong> and
+                  <strong>Shadow Party</strong>.
+                </div>
+              </article>
+            </div>
+
+            <div
+              class="journey-tl-item journey-prize journey-right"
+              role="listitem"
+            >
+              <article class="journey-tl-card">
+                <div class="journey-tl-year">2016</div>
+                <span class="journey-tl-tag">International breakthrough</span>
+                <ul class="journey-prize-list">
+                  <li>5th — "Tiger Eyes" @ Revision (Germany)</li>
+                  <li class="journey-place-1">
+                    1st — "You Seem So Delicious" — Assembly 2021 Winter Online
+                    Graphics
+                  </li>
+                  <li>5th — "Sharko" @ Tokyo Demo Fest (Japan)</li>
+                </ul>
+              </article>
+            </div>
+
+            <div class="journey-tl-item" role="listitem">
+              <article class="journey-tl-card">
+                <div class="journey-tl-year">2015</div>
+                <span class="journey-tl-tag">Birth</span>
+                <div class="journey-tl-content">
+                  First demoparty — an amazing discovery that became a real
+                  passion.<br />
+                  First <strong>paintover</strong> on a corner of a table.
+                </div>
+              </article>
+            </div>
+
+            <div
+              class="journey-tl-item journey-certificate journey-right"
+              role="listitem"
+            >
+              <article class="journey-tl-card">
+                <div class="journey-tl-year">2012</div>
+                <span class="journey-tl-tag">Training & diplomas</span>
+                <div class="journey-tl-content">
+                  Creation of <strong>GPO SARL</strong> — repair, sale, rental
+                  of arcade games.<br />
+                  Illustrator & Versaworks training (Roland VS 640).<br />
+                  Intensive Adobe learning via Franck Payen.
+                </div>
+              </article>
+            </div>
+
+            <div class="journey-tl-item" role="listitem">
+              <article class="journey-tl-card">
+                <div class="journey-tl-year">2011</div>
+                <span class="journey-tl-tag">Origins</span>
+                <div class="journey-tl-content">
+                  Return to drawing after a long break.<br />
+                  Exploration: pencil, watercolor, acrylic, dry pastels…
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section
+        id="contact"
+        class="contact section"
+        aria-labelledby="contact-title"
+      >
+        <div class="container">
+          <div class="section-title-wrap">
+            <h2 id="contact-title" class="section-title">Contact</h2>
+          </div>
+          <div class="contact-content">
+            <div class="card glass-card">
+              <div class="card-content">
+                <h3>Social media</h3>
+                <div class="social-links">
+                  <a
+                    href="https://www.behance.net/CallistoArtwork"
+                    class="social-link social-behance"
+                    aria-label="Behance"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <svg
+                      class="social-icon social-icon-behance"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M22 7h-7V5h7v2zM15 15.5c0-1.33.47-2.29 1.42-2.86C17.37 11.94 18.7 11.5 20 11.5v2.5c-1.2 0-2.27.35-2.7.9-.43.56-.43 1.3 0 1.86.43.55 1.5.9 2.7.9h.3v2.31c-.55.17-1.14.26-1.74.26-2.21 0-3.86-1.44-3.86-3.5zM9 8H2v2h5v2H2v2h7v-8zm4.5 0H11v8h2.5c1.38 0 2.5-1.12 2.5-2.5S16.88 8 15.5 8h-.5zM15.5 12c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"
+                      />
+                    </svg>
+                    <span>Behance</span>
+                  </a>
+                  <a
+                    href="https://www.instagram.com/callisto_artwork/"
+                    class="social-link social-instagram"
+                    aria-label="Instagram"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <svg
+                      class="social-icon"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"
+                      />
+                    </svg>
+                    <span>Instagram</span>
+                  </a>
+                  <a
+                    href="https://www.facebook.com/callistoarts"
+                    class="social-link social-facebook"
+                    aria-label="Facebook"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <svg
+                      class="social-icon"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
+                      />
+                    </svg>
+                    <span>Facebook</span>
+                  </a>
+                  <a
+                    href="https://demozoo.org/sceners/57855/"
+                    class="social-link social-demozoo"
+                    aria-label="Demozoo"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <svg
+                      class="social-icon"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"
+                      />
+                    </svg>
+                    <span>Demozoo</span>
+                  </a>
+                </div>
+                <div class="contact-info">
+                  <p id="contact-company"><strong>GPO SARL</strong></p>
+                  <p id="contact-address">Châlons-en-Champagne, France</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
     <!-- Footer -->
     <footer class="footer" role="contentinfo">
-        <div class="container">
-            <div class="footer-content">
-                <img src="assets/images/logo/logo-cllisto.png" alt="Callisto Arts Logo" class="footer-logo">
-                <div class="footer-text">
-                    <p>&copy; 2026 Callisto - Charton Frédérique / GPO</p>
-                    <p class="footer-subtitle">My fun is DRAWING !!! ALWAYS... end for ever.</p>
-                </div>
-            </div>
+      <div class="container">
+        <div class="footer-content">
+          <img
+            src="assets/images/logo/logo-cllisto.png"
+            alt="Callisto Arts Logo"
+            class="footer-logo"
+          />
+          <div class="footer-text">
+            <p>&copy; 2026 Callisto - Charton Frédérique / GPO</p>
+            <p class="footer-subtitle">
+              My fun is DRAWING !!! ALWAYS... end for ever.
+            </p>
+          </div>
         </div>
+      </div>
     </footer>
 
     <!-- Mode Nuit d'Atelier (overlays — activation possible via console : toggleNightAtelier) -->
     <div id="vignette" class="atelier-overlay" aria-hidden="true"></div>
     <div id="candle-light" class="atelier-overlay" aria-hidden="true"></div>
     <div id="grain" class="atelier-overlay" aria-hidden="true"></div>
-    <canvas id="stars-overlay" class="atelier-overlay" aria-hidden="true"></canvas>
-    <canvas id="atelier-cursor" class="atelier-cursor" aria-hidden="true"></canvas>
+    <canvas
+      id="stars-overlay"
+      class="atelier-overlay"
+      aria-hidden="true"
+    ></canvas>
+    <canvas
+      id="atelier-cursor"
+      class="atelier-cursor"
+      aria-hidden="true"
+    ></canvas>
 
     <!-- Lightbox Modal -->
-    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightbox-title"
-        aria-hidden="true">
-        <button class="lightbox-close" aria-label="Close">×</button>
-        <p class="lightbox-kicker" id="lightbox-kicker"></p>
-        <div class="lightbox-content">
-            <img id="lightbox-image" src="" alt="">
-            <iframe id="lightbox-video" class="lightbox-video" title="YouTube" loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen></iframe>
-            <div class="lightbox-info">
-                <h3 id="lightbox-title"></h3>
-                <p id="lightbox-description"></p>
-            </div>
+    <div
+      class="lightbox"
+      id="lightbox"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="lightbox-title"
+      aria-hidden="true"
+    >
+      <button class="lightbox-close" aria-label="Close">×</button>
+      <p class="lightbox-kicker" id="lightbox-kicker"></p>
+      <div class="lightbox-content">
+        <img id="lightbox-image" src="" alt="" />
+        <iframe
+          id="lightbox-video"
+          class="lightbox-video"
+          title="YouTube"
+          loading="lazy"
+          allow="
+            accelerometer;
+            autoplay;
+            clipboard-write;
+            encrypted-media;
+            gyroscope;
+            picture-in-picture;
+            web-share;
+          "
+          allowfullscreen
+        ></iframe>
+        <div class="lightbox-info">
+          <h3 id="lightbox-title"></h3>
+          <p id="lightbox-description"></p>
         </div>
+      </div>
     </div>
 
     <script src="script.js?v=64"></script>
     <script src="assets/js/cursor-callisto.js?v=61"></script>
-</body>
-
+  </body>
 </html>
