@@ -269,6 +269,14 @@
       "year": 2023
     },
     {
+      "category": "photo",
+      "thumbnailUrl": "https://media.demozoo.org/screens/o/06/9d/28ef.315531.jpg",
+      "title": "Tettigonia Viridissima",
+      "year": 2022,
+      "award": "5th in the Inércia Demoparty 2022 Photo competition",
+      "description": "by Callisto / Flush ^ Vital-Motion!\n\nReleased 5 November 2022.\n\nhttps://demozoo.org/graphics/314984/"
+    },
+    {
       "filename": "photo/Callisto_convergence-1024x510.jpg",
       "category": "photo",
       "title": "Convergence by Callisto / Flush ^ Vital-Motion!",
@@ -451,6 +459,12 @@
       "videoUrl": "https://youtu.be/_XIO12_g-So",
       "title": "Explosion 2023",
       "year": 2023
+    },
+    {
+      "category": "animation",
+      "youtubeId": "c-NTft-ujUY",
+      "videoUrl": "https://youtu.be/c-NTft-ujUY",
+      "title": "Lycée Agricole de Somme Suippe - portes ouvertes"
     },
     {
       "category": "animation",

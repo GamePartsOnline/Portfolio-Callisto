@@ -9,7 +9,6 @@ function initParticles() {
   // DO THIS FIRST to ensure it applies even if reduced motion is on
   if (particlesContainer) {
     particlesContainer.style.zIndex = "10"; // Force visibility above other layers
-    console.log("Particles container found and z-index set to 10");
   }
 
   // Vérifier si l'utilisateur préfère réduire les animations
@@ -18,7 +17,7 @@ function initParticles() {
   ).matches;
   if (prefersReducedMotion) {
     // Créer quelques particules statiques seulement
-    const staticParticles = window.innerWidth < 768 ? 20 : 40; // More static particles
+    const staticParticles = window.innerWidth < 768 ? 12 : 24;
     for (let i = 0; i < staticParticles; i++) {
       const particle = document.createElement("div");
       particle.className = "particle";
@@ -36,97 +35,85 @@ function initParticles() {
     return;
   }
 
-  const particleCount = window.innerWidth < 768 ? 40 : 80; // Retour à un nombre élégant
+  // Moins de particules + une seule boucle rAF (évite 40–80 timers GPU en parallèle)
+  const particleCount = window.innerWidth < 768 ? 18 : 36;
   const particles = [];
+  const states = [];
 
-  // Créer les particules avec différentes tailles
   for (let i = 0; i < particleCount; i++) {
     const particle = document.createElement("div");
     particle.className = "particle";
 
-    // Tailles élégantes (étoiles lointaines)
     const size = Math.random() * 2.5 + 1.5; // 1.5-4px
     particle.style.width = size + "px";
     particle.style.height = size + "px";
 
-    // Opacité subtile
-    const opacity = Math.random() * 0.4 + 0.4; // 0.4-0.8
+    const opacity = Math.random() * 0.4 + 0.4;
     particle.style.opacity = opacity;
 
     particlesContainer.appendChild(particle);
     particles.push(particle);
-  }
 
-  // Animer les particules avec des trajectoires fluides
-  function animateParticles() {
-    particles.forEach((particle, index) => {
-      // Position initiale aléatoire
-      const startX = Math.random() * window.innerWidth;
-      const startY = Math.random() * window.innerHeight;
+    const startX = Math.random() * window.innerWidth;
+    const startY = Math.random() * window.innerHeight;
+    particle.style.left = startX + "px";
+    particle.style.top = startY + "px";
 
-      particle.style.left = startX + "px";
-      particle.style.top = startY + "px";
-
-      // Créer une trajectoire circulaire ou sinusoïdale
-      const trajectoryType = Math.random() > 0.5 ? "circular" : "sinusoidal";
-      const duration = 15000 + Math.random() * 15000; // 15-30s
-      const radius = 50 + Math.random() * 100; // 50-150px
-      const speed = Math.random() * 0.02 + 0.01; // Vitesse de rotation
-
-      let startTime = null;
-      let angle = Math.random() * Math.PI * 2;
-
-      function animate(currentTime) {
-        if (!startTime) startTime = currentTime;
-        const elapsed = (currentTime - startTime) / duration;
-
-        if (elapsed >= 1) {
-          // Réinitialiser
-          startTime = currentTime;
-          angle = Math.random() * Math.PI * 2;
-          return;
-        }
-
-        let x, y;
-        if (trajectoryType === "circular") {
-          angle += speed;
-          x = Math.cos(angle) * radius;
-          y = Math.sin(angle) * radius;
-        } else {
-          // Sinusoïdal
-          x = Math.sin(angle) * radius;
-          y = Math.cos(angle * 2) * radius * 0.5;
-          angle += speed;
-        }
-
-        // Ajouter un mouvement de dérive lent
-        const driftX = Math.sin(elapsed * Math.PI * 2) * 30;
-        const driftY = Math.cos(elapsed * Math.PI * 2) * 20;
-
-        particle.style.transform = `translate(${x + driftX}px, ${y + driftY}px)`;
-
-        // Variation d'opacité plus stable
-        const baseOpacity = particle.dataset.baseOpacity
-          ? parseFloat(particle.dataset.baseOpacity)
-          : 0.5;
-        if (!particle.dataset.baseOpacity)
-          particle.dataset.baseOpacity = baseOpacity;
-
-        const opacityVariation = Math.sin(elapsed * Math.PI * 4) * 0.2;
-        particle.style.opacity = Math.max(
-          0.3,
-          Math.min(1.0, baseOpacity + opacityVariation),
-        );
-
-        requestAnimationFrame(animate);
-      }
-
-      requestAnimationFrame(animate);
+    states.push({
+      particle,
+      trajectoryType: Math.random() > 0.5 ? "circular" : "sinusoidal",
+      duration: 15000 + Math.random() * 15000,
+      radius: 50 + Math.random() * 100,
+      speed: Math.random() * 0.02 + 0.01,
+      startTime: null,
+      angle: Math.random() * Math.PI * 2,
     });
   }
 
-  // Initialiser les particules
-  animateParticles();
+  function animateParticlesFrame(currentTime) {
+    states.forEach((s) => {
+      const particle = s.particle;
+      if (!s.startTime) s.startTime = currentTime;
+      let elapsed = (currentTime - s.startTime) / s.duration;
+      if (elapsed >= 1) {
+        s.startTime = currentTime;
+        s.angle = Math.random() * Math.PI * 2;
+        elapsed = 0;
+      }
+
+      let x;
+      let y;
+      if (s.trajectoryType === "circular") {
+        s.angle += s.speed;
+        x = Math.cos(s.angle) * s.radius;
+        y = Math.sin(s.angle) * s.radius;
+      } else {
+        x = Math.sin(s.angle) * s.radius;
+        y = Math.cos(s.angle * 2) * s.radius * 0.5;
+        s.angle += s.speed;
+      }
+
+      const driftX = Math.sin(elapsed * Math.PI * 2) * 30;
+      const driftY = Math.cos(elapsed * Math.PI * 2) * 20;
+
+      particle.style.transform = `translate(${x + driftX}px, ${y + driftY}px)`;
+
+      const baseOpacity = particle.dataset.baseOpacity
+        ? parseFloat(particle.dataset.baseOpacity)
+        : 0.5;
+      if (!particle.dataset.baseOpacity)
+        particle.dataset.baseOpacity = String(baseOpacity);
+
+      const opacityVariation = Math.sin(elapsed * Math.PI * 4) * 0.2;
+      particle.style.opacity = Math.max(
+        0.3,
+        Math.min(1.0, baseOpacity + opacityVariation),
+      );
+    });
+    requestAnimationFrame(animateParticlesFrame);
+  }
+
+  requestAnimationFrame(animateParticlesFrame);
 
   // Réinitialiser au redimensionnement (avec debounce)
   let resizeTimeout;
@@ -523,6 +510,16 @@ const portfolioData = {
       award: "Flower photography",
     },
     {
+      category: "photo",
+      thumbnailUrl:
+        "https://media.demozoo.org/screens/o/06/9d/28ef.315531.jpg",
+      title: "Tettigonia Viridissima",
+      year: 2022,
+      award: "5th in the Inércia Demoparty 2022 Photo competition",
+      description:
+        "by Callisto / Flush ^ Vital-Motion!\n\nReleased 5 November 2022.\n\nhttps://demozoo.org/graphics/314984/",
+    },
+    {
       filename: "gaming/94688130_1733793336752338_604221269126152192_n.jpg",
       category: "gaming",
       title: "Plateau de flipper",
@@ -680,6 +677,12 @@ const portfolioData = {
       videoUrl: "https://youtu.be/_XIO12_g-So",
       title: "Explosion 2023",
       year: 2023,
+    },
+    {
+      category: "animation",
+      youtubeId: "c-NTft-ujUY",
+      videoUrl: "https://youtu.be/c-NTft-ujUY",
+      title: "Lycée Agricole de Somme Suippe - portes ouvertes",
     },
     {
       category: "animation",

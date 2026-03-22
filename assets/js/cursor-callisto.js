@@ -1,6 +1,7 @@
 // ═══════════════════════════════════════════
 //   PIXEL ART CURSOR — Callisto Arts (portfolio)
 //   Trail néon + burst au clic, harmonisé au site
+//   (version allégée GPU : moins de pixels + ~30 fps)
 // ═══════════════════════════════════════════
 (function () {
   'use strict';
@@ -32,11 +33,15 @@
 
   const PX = 3;
   let trail = [];
-  const TRAIL_LEN = 18;
+  const TRAIL_LEN = 10;
   let bursts = [];
 
+  /** ~30 fps au lieu de 60 : moins de fillRect plein écran */
+  const MIN_FRAME_MS = 1000 / 30;
+  let lastFrameTime = 0;
+
   function spawnBurst(x, y) {
-    const count = 24;
+    const count = 10;
     for (let i = 0; i < count; i++) {
       const angle = (Math.PI * 2 * i) / count + (Math.random() - 0.5) * 0.4;
       const speed = 2 + Math.random() * 5;
@@ -61,9 +66,17 @@
     isHover = !!(e.target.closest('a, button, [role="button"], .filter-btn, .portfolio-item'));
   });
 
+  let lastTrailX = -99999;
+  let lastTrailY = -99999;
+
   document.addEventListener('mousemove', function (e) {
     mx = e.clientX;
     my = e.clientY;
+    const dx = e.clientX - lastTrailX;
+    const dy = e.clientY - lastTrailY;
+    if (dx * dx + dy * dy < 36) return;
+    lastTrailX = e.clientX;
+    lastTrailY = e.clientY;
     trail.push({
       x: mx, y: my,
       life: 1,
@@ -78,7 +91,11 @@
     ctx.fillRect(Math.round(x), Math.round(y), size, size);
   }
 
-  function draw() {
+  function draw(t) {
+    requestAnimationFrame(draw);
+    if (t - lastFrameTime < MIN_FRAME_MS) return;
+    lastFrameTime = t;
+
     ctx.clearRect(0, 0, W, H);
 
     trail.forEach(function (p, i) {
@@ -119,8 +136,6 @@
       ctx.fill();
       drawPixel(mx - 1, my - 1, '#ffffff', 3);
     }
-
-    requestAnimationFrame(draw);
   }
-  draw();
+  requestAnimationFrame(draw);
 })();
