@@ -71,8 +71,8 @@
       "description": "by Callisto / Flush ^ Vital-Motion!\n\nReleased 5 November 2022."
     },
     {
+      "filename": "graphics/teddy-beer-syntax-2022.png",
       "category": "graphics",
-      "thumbnailUrl": "https://media.demozoo.org/screens/o/d1/2d/7398.316044.png",
       "title": "I come with my teddy BEER !!!",
       "year": 2022,
       "award": "3rd in the Syntax 2022 Nuskool Graphics competition",
@@ -269,8 +269,8 @@
       "year": 2023
     },
     {
+      "filename": "photo/tettigonia-viridissima.jpg",
       "category": "photo",
-      "thumbnailUrl": "https://media.demozoo.org/screens/o/06/9d/28ef.315531.jpg",
       "title": "Tettigonia Viridissima",
       "year": 2022,
       "award": "5th in the Inércia Demoparty 2022 Photo competition",
@@ -406,6 +406,14 @@
     },
     {
       "category": "animation",
+      "youtubeId": "W6ybnfktkRM",
+      "videoUrl": "https://www.youtube.com/watch?v=W6ybnfktkRM",
+      "title": "Shadow Party Invitation 2022 (Alkama, Aubépine, Callisto, CoyHot, p0ke)",
+      "year": 2022,
+      "description": "Invitation for Shadow Party 2022.\n\nReleased 8 May 2022.\n\nhttps://demozoo.org/productions/308487/"
+    },
+    {
+      "category": "animation",
       "youtubeId": "epusxPh_dS8",
       "videoUrl": "https://youtu.be/epusxPh_dS8",
       "title": "Shadow Party 2022 - Breaking News",
@@ -480,6 +488,177 @@
       "youtubeId": "HLdNMPZUMl4",
       "videoUrl": "https://youtu.be/HLdNMPZUMl4",
       "title": "GPO - pouss pouss fabrication"
+    },
+    {
+      "filename": "other/atari.png",
+      "category": "other",
+      "title": "ATARI",
+      "year": 2022,
+      "award": "23rd in the ATASCII Compo 2022",
+      "description": "Atari 8-bit ASCII — by Callisto / Flush ^ Vital-Motion!\n\nReleased 22 October 2022.\n\nhttps://demozoo.org/graphics/314180/"
+    },
+    {
+      "filename": "photo/shadow!!!.jpg",
+      "category": "photo",
+      "title": "Shadow!!!!",
+      "year": 2022,
+      "award": "8th in the Shadow Party 2022 Photo competition",
+      "description": "by Callisto / Flush ^ Vital-Motion!\n\nReleased 11 June 2022.\n\nhttps://demozoo.org/graphics/309084/"
+    },
+    {
+      "filename": "graphics/Shadow Party at Night.jpg",
+      "category": "graphics",
+      "title": "Shadow Party at Night",
+      "year": 2022,
+      "award": "4th in the Shadow Party 2022 Newschool Graphics competition",
+      "description": "by Callisto / Flush ^ Vital-Motion!\n\nReleased 11 June 2022.\n\nhttps://demozoo.org/graphics/309082/"
+    },
+    {
+      "filename": "graphics/c33e.307590.jpg",
+      "category": "graphics",
+      "title": "Send Me an Angel !",
+      "year": 2022,
+      "award": "13th in the Revision 2022 Modern Graphics competition",
+      "description": "by Callisto / Flush ^ Vital-Motion!\n\nReleased 17 April 2022.\n\nhttps://demozoo.org/graphics/307449/"
+    },
+    {
+      "filename": "graphics/sharko.png",
+      "category": "graphics",
+      "title": "Sharko",
+      "year": 2021,
+      "award": "5th in the TokyoDemoFest 2021 Graphics competition",
+      "description": "by Callisto / Flush\n\nReleased 11 December 2021.\n\nhttps://demozoo.org/graphics/303081/"
+    },
+    {
+      "filename": "logo/LOGO TOKYO DEMO FEST 2021.jpg",
+      "category": "logo",
+      "title": "LOGO TOKYO DEMO FEST 2021",
+      "year": 2021,
+      "award": "9th in the névoke 2021 Hard Mode Graphics competition",
+      "description": "by Callisto and Zavie — invitation for TokyoDemoFest 2021.\n\nReleased 14 August 2021.\n\nhttps://demozoo.org/graphics/298056/"
+    },
+    {
+      "filename": "other/Diamond Painting Arts.jpg",
+      "category": "photo",
+      "title": "Diamond Painting Arts",
+      "year": 2021,
+      "award": "5th in the Shadow Party 2021 Photo competition",
+      "description": "by Callisto / Syn[Rj]\n\nReleased 21 May 2021.\n\nhttps://demozoo.org/graphics/294716/"
+    },
+    {
+      "filename": "graphics/f750.292269.jpg",
+      "category": "graphics",
+      "title": "I'm Up",
+      "year": 2021,
+      "award": "=4 in the Shadow Party 2021 Newschool Graphics competition",
+      "description": "by Callisto / Syn[Rj]\n\nReleased 21 May 2021.\n\nhttps://demozoo.org/graphics/294709/"
+    },
+    {
+      "filename": "photo/pinball roto.jpg",
+      "category": "photo",
+      "title": "Pinball Roto-targets",
+      "year": 2021,
+      "award": "18th in the Revision Online 2021 Photo competition",
+      "description": "by Callisto / GPO ^ Syn[Rj]\n\nReleased 3 April 2021.\n\nhttps://demozoo.org/graphics/292233/"
+    },
+    {
+      "filename": "graphics/474f.282982.jpg",
+      "category": "graphics",
+      "title": "Stoke the flames",
+      "year": 2020,
+      "award": "3rd in the Syntax 2020 Nuskool Pixeled Graphics competition",
+      "description": "by Callisto\n\nReleased 28 November 2020.\n\nhttps://demozoo.org/graphics/287791/"
+    },
+    {
+      "filename": "graphics/shipwerk.jpg",
+      "category": "graphics",
+      "title": "The Shipwrek",
+      "year": 2020,
+      "award": "10th in the Revision Online 2020 Modern Graphics competition",
+      "description": "by Callisto\n\nReleased 12 April 2020.\n\nhttps://demozoo.org/graphics/277112/"
+    },
+    {
+      "filename": "graphics/myprecious.jpg",
+      "category": "graphics",
+      "title": "My precious",
+      "year": 2019,
+      "award": "13th in the Revision 2019 Modern Graphics competition",
+      "description": "by Callisto\n\nReleased 21 April 2019.\n\nhttps://demozoo.org/graphics/202676/"
+    },
+    {
+      "filename": "paintover/thevalley.jpg",
+      "category": "paintover",
+      "title": "The valley",
+      "year": 2019,
+      "award": "8th in the Revision 2019 Paintover competition",
+      "description": "by Callisto\n\nReleased 21 April 2019.\n\nhttps://demozoo.org/graphics/202778/"
+    },
+    {
+      "filename": "graphics/pinkelephant.jpg",
+      "category": "graphics",
+      "title": "Delirium Pink Elefant",
+      "year": 2018,
+      "award": "9th in the Revision 2018 Modern Graphics competition",
+      "description": "by Callisto\n\nReleased 1 April 2018.\n\nhttps://demozoo.org/graphics/185488/"
+    },
+    {
+      "filename": "graphics/bublle.jpg",
+      "category": "paintover",
+      "title": "Bubbles",
+      "year": 2017,
+      "award": "6th in the Revision 2017 Paintover competition",
+      "description": "by Callisto\n\nReleased 16 April 2017.\n\nhttps://demozoo.org/graphics/170857/"
+    },
+    {
+      "category": "animation",
+      "thumbnailUrl": "https://media.demozoo.org/screens/o/0e/77/2400.363647.png",
+      "title": "Just Mov'It",
+      "year": 2025,
+      "award": "5th in the Shadow Party 2025 Wild Demo competition",
+      "description": "Video — by Callisto, Captain Spinal & Marex.\n\nReleased 5 July 2025.\n\nhttps://demozoo.org/productions/374518/"
+    },
+    {
+      "category": "animation",
+      "youtubeId": "FD3EkxmfiNE",
+      "videoUrl": "https://www.youtube.com/watch?v=FD3EkxmfiNE",
+      "title": "J – Coalesce (graphics — Ctrl-Alt-Test)",
+      "year": 2021,
+      "award": "4th in the Function 2021 Demo competition",
+      "description": "Invitation for TokyoDemoFest 2021 — Graphics credit: Callisto & Zavie.\n\nhttps://demozoo.org/productions/299998/"
+    },
+    {
+      "category": "animation",
+      "youtubeId": "72PzTueQykE",
+      "videoUrl": "https://www.youtube.com/watch?v=72PzTueQykE",
+      "title": "The Razor Is Dead (Laboratoire Prout — painting)",
+      "year": 2019,
+      "award": "13th in the Revision 2019 PC Demo competition",
+      "description": "Graphics (Painting): Callisto.\n\nhttps://demozoo.org/productions/202836/"
+    },
+    {
+      "category": "animation",
+      "youtubeId": "mGFi74p3G-Y",
+      "videoUrl": "https://www.youtube.com/watch?v=mGFi74p3G-Y",
+      "title": "revision 2019 in the hurry (Flush — Nintendo Switch)",
+      "year": 2019,
+      "award": "7th in the Revision 2019 Wild competition",
+      "description": "Graphics: Callisto / Flush.\n\nhttps://demozoo.org/productions/202755/"
+    },
+    {
+      "category": "animation",
+      "thumbnailUrl": "https://media.demozoo.org/screens/o/a7/22/03bf.283688.png",
+      "title": "shadow 2021 invitro (GBA — Flush)",
+      "year": 2020,
+      "description": "Graphics: Callisto.\n\nhttps://demozoo.org/productions/288268/"
+    },
+    {
+      "category": "animation",
+      "youtubeId": "Ax-XUV7c-1c",
+      "videoUrl": "https://www.youtube.com/watch?v=Ax-XUV7c-1c",
+      "title": "Shadow-Party 2021 (Mandarine — invitation demo)",
+      "year": 2021,
+      "award": "2nd in the Assembly 2021 Winter Online Demo competition",
+      "description": "Graphics: Callisto, Nytrik, Med…\n\nhttps://demozoo.org/productions/291630/"
     }
   ]
 }

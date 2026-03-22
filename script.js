@@ -1,3 +1,9 @@
+/** Chemin d’image portfolio (encode les espaces et caractères spéciaux dans le nom de fichier). */
+function assetImagePath(filename) {
+  if (!filename) return "";
+  return encodeURI("assets/images/" + String(filename).replace(/\\/g, "/"));
+}
+
 // ============================================
 // ANIMATED BACKGROUND PARTICLES
 // ============================================
@@ -17,7 +23,7 @@ function initParticles() {
   ).matches;
   if (prefersReducedMotion) {
     // Créer quelques particules statiques seulement
-    const staticParticles = window.innerWidth < 768 ? 12 : 24;
+    const staticParticles = window.innerWidth < 768 ? 6 : 12;
     for (let i = 0; i < staticParticles; i++) {
       const particle = document.createElement("div");
       particle.className = "particle";
@@ -36,7 +42,7 @@ function initParticles() {
   }
 
   // Moins de particules + une seule boucle rAF (évite 40–80 timers GPU en parallèle)
-  const particleCount = window.innerWidth < 768 ? 18 : 36;
+  const particleCount = window.innerWidth < 768 ? 8 : 16;
   const particles = [];
   const states = [];
 
@@ -256,9 +262,8 @@ const portfolioData = {
       description: "Released 2 December 2023.",
     },
     {
+      filename: "graphics/teddy-beer-syntax-2022.png",
       category: "graphics",
-      thumbnailUrl:
-        "https://media.demozoo.org/screens/o/d1/2d/7398.316044.png",
       title: "I come with my teddy BEER !!!",
       year: 2022,
       award: "3rd in the Syntax 2022 Nuskool Graphics competition",
@@ -426,11 +431,13 @@ const portfolioData = {
       award: "11th  revision - saarbrucken - Allemagne",
     },
     {
-      filename: "graphics/Callisto_finale-6.jpg",
+      filename: "graphics/sharko.png",
       category: "graphics",
       title: "Sharko",
       year: 2021,
-      award: "5TH SESSION, JAPON, TOKYO",
+      award: "5th in the TokyoDemoFest 2021 Graphics competition",
+      description:
+        "by Callisto / Flush\n\nReleased 11 December 2021.\n\nhttps://demozoo.org/graphics/303081/",
     },
     {
       filename: "photo/Callisto_convergence-1024x510.jpg",
@@ -510,9 +517,8 @@ const portfolioData = {
       award: "Flower photography",
     },
     {
+      filename: "photo/tettigonia-viridissima.jpg",
       category: "photo",
-      thumbnailUrl:
-        "https://media.demozoo.org/screens/o/06/9d/28ef.315531.jpg",
       title: "Tettigonia Viridissima",
       year: 2022,
       award: "5th in the Inércia Demoparty 2022 Photo competition",
@@ -619,6 +625,16 @@ const portfolioData = {
       videoUrl: "https://youtu.be/_R6Goi-AO6A",
       title: "Callisto (syn[RJ]) - Invitation Shadow-party 2021",
       year: 2021,
+    },
+    {
+      category: "animation",
+      youtubeId: "W6ybnfktkRM",
+      videoUrl: "https://www.youtube.com/watch?v=W6ybnfktkRM",
+      title:
+        "Shadow Party Invitation 2022 (Alkama, Aubépine, Callisto, CoyHot, p0ke)",
+      year: 2022,
+      description:
+        "Invitation for Shadow Party 2022.\n\nReleased 8 May 2022.\n\nhttps://demozoo.org/productions/308487/",
     },
     {
       category: "animation",
@@ -861,7 +877,7 @@ async function loadPortfolioImages() {
       if (image.category === "logo") return;
       const yid = image.youtubeId || extractYoutubeId(image.videoUrl);
       const thumbFromFile = image.filename
-        ? `assets/images/${image.filename}`
+        ? assetImagePath(image.filename)
         : "";
       const thumbExternal = image.thumbnailUrl || "";
       const thumbSrc =
@@ -1060,7 +1076,7 @@ function openLightbox(item) {
       const src =
         imageData?.thumbnailUrl ||
         (imageData?.filename
-          ? "assets/images/" + imageData.filename
+          ? assetImagePath(imageData.filename)
           : img?.src || "");
       lightboxImage.src = src;
       lightboxImage.alt = imageData?.title || img?.alt || title;
@@ -1268,7 +1284,7 @@ function buildHeroSlidesFromPortfolio(data) {
     heroImg.src = yHero
       ? getYoutubeThumbnailUrl(yHero)
       : img.thumbnailUrl ||
-        (img.filename ? "assets/images/" + img.filename : "");
+        (img.filename ? assetImagePath(img.filename) : "");
     heroImg.alt = (img.title || img.filename || "").replace(/"/g, "");
     heroImg.className = "hero-image-3d";
     heroImg.onerror = function () {
