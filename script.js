@@ -260,6 +260,25 @@ const portfolioData = {
         "by Callisto / Flush ^ GPO ^ Silicium\n\nReleased 7 December 2025.",
     },
     {
+      filename: "graphics/armonia.jpg",
+      category: "graphics",
+      title:
+        "Aerolia Harmonia by Callisto / Flush ^ Vital Motion Group",
+      year: 2023,
+      award: "Inércia Demoparty 2023 Graphics Showcase",
+      description: "Released 2 December 2023.",
+    },
+    {
+      category: "graphics",
+      thumbnailUrl:
+        "https://media.demozoo.org/screens/o/d1/2d/7398.316044.png",
+      title: "I come with my teddy BEER !!!",
+      year: 2022,
+      award: "3rd in the Syntax 2022 Nuskool Graphics competition",
+      description:
+        "by Callisto / Flush ^ Vital-Motion!\n\nReleased 13 November 2022.\n\nhttps://demozoo.org/graphics/315433/",
+    },
+    {
       filename: "graphics/5f43.132281.jpg",
       category: "graphics",
       title: "The Mystic River by Callisto",
@@ -327,6 +346,14 @@ const portfolioData = {
         "by Callisto / Flush ^ Vital-Motion!\n\nReleased 31 March 2024.",
     },
     {
+      filename: "graphics/pixelmouse.jpg",
+      category: "graphics",
+      title: "The Pixel Mouse Love Story by Callisto / Flush ^ Vital-Motion!",
+      year: 2024,
+      award: "7th in the Revision 2024 Modern Graphics competition",
+      description: "Released 31 March 2024.",
+    },
+    {
       filename: "paintover/76b3.160407.jpg",
       category: "paintover",
       title: "Sisters and Company",
@@ -342,6 +369,14 @@ const portfolioData = {
       award: "10th in the Revision 2022 Paintover competition",
       description:
         "Invitation for Shadow Party 2022\n\nReleased 17 April 2022.",
+    },
+    {
+      filename: "paintover/25aa.264370.jpg",
+      category: "paintover",
+      title: "Fairy Butter Ponny by Callisto",
+      year: 2020,
+      award: "16th in the Revision Online 2020 Paintover competition",
+      description: "Released 12 April 2020.",
     },
     {
       filename: "graphics/3f29.85342.jpg",
@@ -411,12 +446,28 @@ const portfolioData = {
       award: "5TH SESSION, JAPON, TOKYO",
     },
     {
+      filename: "photo/Callisto_convergence-1024x510.jpg",
+      category: "photo",
+      title: "Convergence by Callisto / Flush ^ Vital-Motion!",
+      year: 2024,
+      award: "18th in the Revision 2024 Photo competition",
+      description: "Released 30 March 2024.",
+    },
+    {
       filename: "photo/Callisto_photo_revision2023-1024x547.jpg",
       category: "photo",
       title: "Balls Of Steel by Callisto / Flush ^ Vital-Motion!",
       year: 2023,
       award: "16th in the Revision 2023 Photo competition",
       description: "Released 8 April 2023.",
+    },
+    {
+      filename: "photo/myhungryman.jpg",
+      category: "photo",
+      title: "My Angry Husband by Callisto / Flush ^ Vital-Motion!",
+      year: 2023,
+      award: "19th in the Function 2023 Photo competition",
+      description: "Released 9 September 2023.",
     },
     {
       filename: "photo/dino.jpg",
@@ -451,6 +502,14 @@ const portfolioData = {
       description: "Released 29 June 2024.",
     },
     {
+      filename: "other/227e.342096.jpg",
+      category: "other",
+      title: "Souvenirs Shadow Party 2022 by Callisto / Flush",
+      year: 2024,
+      award: "16th in the Revision 2024 Animated GIF competition",
+      description: "Released 31 March 2024.",
+    },
+    {
       filename: "graphics/74410909_1244316935752931_2378795365198462976_n.jpg",
       category: "graphics",
       award: "Digital Painting just for fun",
@@ -467,6 +526,12 @@ const portfolioData = {
       filename: "gaming/94688130_1733793336752338_604221269126152192_n.jpg",
       category: "gaming",
       title: "Plateau de flipper",
+    },
+    {
+      category: "gaming",
+      youtubeId: "HLdNMPZUMl4",
+      videoUrl: "https://youtu.be/HLdNMPZUMl4",
+      title: "GPO - pouss pouss fabrication",
     },
     {
       filename:
@@ -526,6 +591,95 @@ const portfolioData = {
       award: "9th in the Revision 2025 Animation/Video competition",
       description:
         "Invitation for Shadow Party 2025\n\nReleased 19 April 2025.",
+    },
+    {
+      category: "animation",
+      youtubeId: "p6qi_bfKb2s",
+      videoUrl: "https://youtu.be/p6qi_bfKb2s",
+      title: "Invitation SHADOW PARTY 25",
+      year: 2025,
+    },
+    {
+      category: "animation",
+      youtubeId: "HU_Z_d-PB7k",
+      videoUrl: "https://www.youtube.com/watch?v=HU_Z_d-PB7k&t=1207",
+      title:
+        "Invitation - 29-30 June 2024 - Givry En Argonne (France) by Flush",
+      year: 2024,
+      award: "13th in the Revision 2024 Animation / Video competition",
+      description:
+        "Invitation for Shadow Party 2024\n\nReleased 30 March 2024.",
+    },
+    {
+      category: "animation",
+      youtubeId: "GnuswI8YeAM",
+      videoUrl: "https://youtu.be/GnuswI8YeAM",
+      title: "Slide Shadow Party",
+    },
+    {
+      category: "animation",
+      youtubeId: "_R6Goi-AO6A",
+      videoUrl: "https://youtu.be/_R6Goi-AO6A",
+      title: "Callisto (syn[RJ]) - Invitation Shadow-party 2021",
+      year: 2021,
+    },
+    {
+      category: "animation",
+      youtubeId: "epusxPh_dS8",
+      videoUrl: "https://youtu.be/epusxPh_dS8",
+      title: "Shadow Party 2022 - Breaking News",
+      year: 2022,
+    },
+    {
+      category: "animation",
+      youtubeId: "vHEVS7NptKc",
+      videoUrl: "https://youtu.be/vHEVS7NptKc",
+      title: "Invitation Shadow Party 2022",
+      year: 2022,
+    },
+    {
+      category: "animation",
+      youtubeId: "UOlYOQ3_j6I",
+      videoUrl: "https://www.youtube.com/watch?v=UOlYOQ3_j6I",
+      title: "Lady Glagla by Flush",
+      year: 2023,
+      award:
+        "2nd in the Silly Venture 2k23 WE Atari ST/STE Demo competition",
+      description: "Released 9 December 2023.\n\nAtari ST/E.",
+    },
+    {
+      category: "animation",
+      youtubeId: "2nKO3UTdiPQ",
+      videoUrl: "https://youtu.be/2nKO3UTdiPQ",
+      title: "Cyberpin by Callisto",
+      year: 2023,
+      award: "9th in the Revision 2023 Animation/Video competition",
+      description: "Released 8 April 2023.\n\nWindows.",
+    },
+    {
+      category: "animation",
+      youtubeId: "NJlUdcykhdw",
+      videoUrl: "https://youtu.be/NJlUdcykhdw",
+      title: "CYBERPIN - TV pinball / on the top screen",
+      year: 2023,
+      description: "Released 8 April 2023.\n\nWindows.",
+    },
+    {
+      category: "animation",
+      youtubeId: "0zU_85iDf9g",
+      videoUrl: "https://youtu.be/0zU_85iDf9g",
+      title: "Primitives and FM by New C-Rex",
+      year: 2023,
+      award:
+        "6th in the SESSIONS in C4 LAN 2023 SPRING Wild competition",
+      description: "Released 29 April 2023.",
+    },
+    {
+      category: "animation",
+      youtubeId: "_XIO12_g-So",
+      videoUrl: "https://youtu.be/_XIO12_g-So",
+      title: "Explosion 2023",
+      year: 2023,
     },
     {
       category: "animation",
@@ -706,7 +860,11 @@ async function loadPortfolioImages() {
       const thumbFromFile = image.filename
         ? `assets/images/${image.filename}`
         : "";
-      const thumbSrc = thumbFromFile || (yid ? getYoutubeThumbnailUrl(yid) : "");
+      const thumbExternal = image.thumbnailUrl || "";
+      const thumbSrc =
+        thumbExternal ||
+        thumbFromFile ||
+        (yid ? getYoutubeThumbnailUrl(yid) : "");
       if (!thumbSrc) return;
 
       const category =
@@ -896,9 +1054,11 @@ function openLightbox(item) {
     }
     if (lightboxImage) {
       lightboxImage.style.display = "";
-      const src = imageData?.filename
-        ? "assets/images/" + imageData.filename
-        : img?.src || "";
+      const src =
+        imageData?.thumbnailUrl ||
+        (imageData?.filename
+          ? "assets/images/" + imageData.filename
+          : img?.src || "");
       lightboxImage.src = src;
       lightboxImage.alt = imageData?.title || img?.alt || title;
       lightboxImage.onerror = function () {
@@ -1078,7 +1238,10 @@ function buildHeroSlidesFromPortfolio(data) {
   const images = data.images.filter(
     (img) =>
       img.category !== "logo" &&
-      (img.filename || img.youtubeId || extractYoutubeId(img.videoUrl)),
+      (img.filename ||
+        img.thumbnailUrl ||
+        img.youtubeId ||
+        extractYoutubeId(img.videoUrl)),
   );
   if (!images.length) return;
   const count = Math.min(5, images.length);
@@ -1101,7 +1264,8 @@ function buildHeroSlidesFromPortfolio(data) {
     const yHero = img.youtubeId || extractYoutubeId(img.videoUrl);
     heroImg.src = yHero
       ? getYoutubeThumbnailUrl(yHero)
-      : "assets/images/" + img.filename;
+      : img.thumbnailUrl ||
+        (img.filename ? "assets/images/" + img.filename : "");
     heroImg.alt = (img.title || img.filename || "").replace(/"/g, "");
     heroImg.className = "hero-image-3d";
     heroImg.onerror = function () {
