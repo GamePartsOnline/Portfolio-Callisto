@@ -10,7 +10,7 @@
 
 | Priorité | Piste | Détail |
 |----------|--------|--------|
-| Données | **JSON & fichiers** | Cohérence `portfolio_images.json` ↔ `script.js` (fallback), titres, fichiers manquants — voir [TODO.md](./TODO.md) |
+| Données | **JSON & fichiers** | `portfolio_images.json` (source liste) ; `script.js` = catégories seulement — voir [TODO.md](./TODO.md) |
 | Contenu | **Œuvres** | Nouvelles images, catégories, `hidden`, renommages — [GUIDE.md](./GUIDE.md), index [portfolio_images_INDEX.md](./portfolio_images_INDEX.md) |
 | Qualité | **Tests manuels** | Mobile, lightbox, filtres, `file://` vs serveur local — [TEST.md](./TEST.md) |
 | Perf / UX | **Optionnel** | Délégation d’événements sur les filtres (éviter doublons), lazy-load affiné, WebP si pipeline |

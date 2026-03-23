@@ -1127,54 +1127,6 @@ a:focus-visible {
     min-height: var(--touch-target-min, 44px);
   }
 
-  /* Points du carousel : cible 44×44px, pastille visuelle inchangée (::after) */
-  .hero-slide-dot {
-    position: relative;
-    width: var(--touch-target-min, 44px);
-    height: var(--touch-target-min, 44px);
-    border: none;
-    background: transparent;
-    padding: 0;
-    touch-action: manipulation;
-  }
-
-  .hero-slide-dot::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 10px;
-    height: 10px;
-    box-sizing: border-box;
-    border-radius: 50%;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    background: transparent;
-    pointer-events: none;
-  }
-
-  .hero-slide-dot.active {
-    background: transparent;
-  }
-
-  .hero-slide-dot.active::after {
-    background: #00ffe0;
-    border-color: #00ffe0;
-  }
-
-  .hero-slide-dot:hover::after {
-    background: rgba(255, 255, 255, 0.3);
-  }
-
-  .hero-slide-dot.active:hover::after {
-    background: #00ffe0;
-  }
-
-  .hero-slide-dot:focus-visible {
-    outline: 2px solid var(--color-brand-neon, #00ffe0);
-    outline-offset: 2px;
-  }
-
   .portfolio-filters {
     gap: 10px;
     padding-bottom: 4px;
@@ -1455,29 +1407,64 @@ a:focus-visible {
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  max-width: calc(100% - 2rem);
   z-index: 2;
 }
 
+/* WCAG 2.5.5 / Lighthouse : cible ≥ 44×44 px sur tous les viewports ; pastille via ::after */
 .hero-slide-dot {
-  width: 8px;
-  height: 8px;
+  position: relative;
+  box-sizing: border-box;
+  width: var(--touch-target-min, 44px);
+  height: var(--touch-target-min, 44px);
+  min-width: var(--touch-target-min, 44px);
+  min-height: var(--touch-target-min, 44px);
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  touch-action: manipulation;
+  flex-shrink: 0;
+}
+
+.hero-slide-dot::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  box-sizing: border-box;
   border-radius: 50%;
   border: 1px solid rgba(255, 255, 255, 0.5);
   background: transparent;
-  cursor: pointer;
+  pointer-events: none;
   transition:
     background 0.2s,
     border-color 0.2s;
 }
 
-.hero-slide-dot:hover {
+.hero-slide-dot:hover::after {
   background: rgba(255, 255, 255, 0.3);
 }
 
-.hero-slide-dot.active {
+.hero-slide-dot.active::after {
   background: #00ffe0;
   border-color: #00ffe0;
+}
+
+.hero-slide-dot.active:hover::after {
+  background: #00ffe0;
+}
+
+.hero-slide-dot:focus-visible {
+  outline: 2px solid var(--color-brand-neon, #00ffe0);
+  outline-offset: 2px;
 }
 
 .glass-3d-card:hover {

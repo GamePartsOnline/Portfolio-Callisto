@@ -45,18 +45,17 @@ Si une vignette **ne s’affiche pas** en ligne : vérifier le **déploiement** 
 
 **À surveiller :** titres dupliqués, fautes d’orthographe, années manquantes, `description` vide pour les œuvres importantes.
 
-**Aquarelle (Mars 2026) :** 16 images renommées dans `assets/images/aquarelle/` — `filename` + titres alignés dans **`portfolio_images.json`** et **`script.js`** (fallback). Table fichier ↔ titre : **`assets/images/aquarelle/README.md`**.
+**Aquarelle (Mars 2026) :** 16 images renommées dans `assets/images/aquarelle/` — `filename` + titres dans **`portfolio_images.json`** uniquement (liste d’images plus dupliquée dans `script.js`). Table fichier ↔ titre : **`assets/images/aquarelle/README.md`**.
 
-**Pastel sec (Mars 2026) :** 14 images renommées dans `assets/images/pastel-sec/` — idem JSON + **`script.js`**. Table : **`assets/images/pastel-sec/README.md`**.
+**Pastel sec (Mars 2026) :** 14 images renommées dans `assets/images/pastel-sec/` — idem **`portfolio_images.json`**. Table : **`assets/images/pastel-sec/README.md`**.
 
 ---
 
-## 4. Cohérence JSON ↔ `script.js` (fallback hors ligne)
+## 4. Cohérence JSON ↔ `script.js`
 
-Le site charge en priorité **`portfolio_images.json`** (fetch).  
-En cas d’échec (CORS, fichier absent), **`portfolioData`** dans `script.js` sert de **secours** et peut être **plus ancien** (pas d’acrylique, moins d’entrées).
+Le site charge **`portfolio_images.json`** en HTTP (hero + grille). **`script.js`** ne contient plus que les **catégories** (labels filtres) ; pas de liste d’images embarquée.
 
-**Action si besoin** : synchroniser les gros ajouts dans `script.js` ou accepter un mode dégradé hors ligne.
+En **`file://`** ou si le fetch échoue : **galerie et hero vides** — prévisualiser avec un serveur local (`python3 -m http.server`, etc.).
 
 ---
 

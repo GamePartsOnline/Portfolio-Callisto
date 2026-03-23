@@ -10,7 +10,8 @@ Réponses courantes aux alertes **Performance** sur ce site statique.
 ## Use efficient cache lifetimes
 
 - Fichier **`_headers`** à la racine du dépôt (déploiement **Cloudflare Pages**) : TTL plus long pour `assets/`, plus court pour HTML et pour `styles.css` / `script.js` (bust via `?v=` dans `index.html`).
-- **`portfolio_images.json`** : le fetch utilise `?v=1` — **incrémentez ce numéro** dans `script.js` quand vous modifiez le JSON en prod (pour invalider le cache navigateur/CDN). Évitez `Date.now()` ou `cache: no-store` sur chaque visite.
+- **`portfolio_images.json`** : le fetch utilise `?v=1` — **incrémentez ce numéro** dans `script.js` (`PORTFOLIO_JSON_URL`) **et** dans le `<link rel="preload">` de `index.html` quand vous modifiez le JSON en prod (cache navigateur/CDN). Évitez `Date.now()` ou `cache: no-store` sur chaque visite.
+- **Parse JS** : les images ne sont plus dans `script.js` (objet littéral ~800 lignes) ; elles sont chargées en JSON, ce qui réduit **parsing & compilation** du bundle principal.
 
 ## Improve image delivery
 
@@ -39,11 +40,12 @@ Relancer Lighthouse en **navigation privée** après déploiement pour tenir com
 ## Grille portfolio + hero
 
 - La grille est injectée par **lots** (`requestAnimationFrame`, 10 cartes par frame) pour limiter les **long tasks**.
-- Le **hero n’est plus reconstruit** après `fetch(portfolio_images.json)` : une seule construction au chargement (meilleur LCP). Après mise à jour du JSON seul, **redéployer** aussi `script.js` (données embarquées) pour que le hero reste cohérent, ou accepter une légère différence jusqu’au prochain build.
+- Le **hero n’est pas reconstruit** après la grille : une construction au chargement après le **même** `fetch` du JSON (hero et grille alignés). Un `<link rel="preload" as="fetch">` sur le JSON démarre le téléchargement tôt.
 
-## Preload LCP (`index.html`)
+## Preload d’une image LCP
 
-Un `<link rel="preload" as="image" … href="…/sky_code-thumb.webp">` aide la découverte LCP. Si le fichier n’existe pas encore, lance `scripts/generate_image_derivatives.py` ou retire / adapte le `href`.
+On **ne** met pas de `<link rel="preload" as="image" href="…">` vers une image **fixe** tant que le **hero** choisit des œuvres **au hasard** : le navigateur préchargerait souvent un fichier **non utilisé** → avertissement Chrome *« preloaded using link preload but not used within a few seconds »*.  
+Si un jour le hero affiche **toujours** la même URL en premier, on pourrait alors précharger **exactement** cette URL.
 
 ## Minifier (optionnel)
 

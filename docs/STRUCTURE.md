@@ -7,9 +7,11 @@ Portfolio-Callisto/
 ├── index.html                 # Page unique (sections : hero, portfolio, about, journey, contact…)
 ├── mentions-legales.html      # Mentions + cookies
 ├── styles.css                 # Design system + layout
-├── script.js                  # Données portfolio embarquées + logique UI
+├── script.js                  # Catégories portfolio + logique UI (images via JSON HTTP)
 ├── content.json               # Textes About/Contact optionnels (fetch HTTP)
 ├── _headers                   # Cache HTTP (Cloudflare Pages)
+├── robots.txt                 # Directives crawlers (Lighthouse SEO)
+├── sitemap.xml                # URLs canoniques du site statique
 ├── CNAME                      # Domaine custom GitHub Pages / équivalent
 ├── wrangler.json              # Config CF (si utilisé)
 │
@@ -48,8 +50,8 @@ Portfolio-Callisto/
 
 | Fichier | Rôle |
 |--------|------|
-| `script.js` (`portfolioData`) | Fallback + hero au premier rendu (évite `file://` / CORS). |
-| `assets/images/portfolio_images.json` | Grille + filtres après `fetch` HTTP. |
+| `script.js` (`portfolioData`) | Catégories embarquées ; hero + grille après `fetch` du JSON (HTTP). |
+| `assets/images/portfolio_images.json` | Source de vérité : liste d’images + métadonnées (même fetch que le hero). |
 | `content.json` | Surcharge textes About/Contact si présent. |
 
 ## Ce qui ne va pas dans `assets/`

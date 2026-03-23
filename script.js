@@ -341,9 +341,11 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
 // PORTFOLIO AUTO-LOAD FROM JSON
 // ============================================
 // ============================================
-// PORTFOLIO DATA (Embedded to fix local CORS issues)
+// PORTFOLIO DATA — categories embarquées ; images chargées depuis
+// assets/images/portfolio_images.json (HTTP) pour réduire parse/compile JS.
+// file:// : pas de fetch → images vides (ouvrir via serveur local pour prévisualiser).
 // ============================================
-const portfolioData = {
+let portfolioData = {
   categories: [
     { id: "graphics", label: "Graphics" },
     { id: "paintover", label: "Paintover" },
@@ -357,799 +359,7 @@ const portfolioData = {
     { id: "other", label: "Others" },
     { id: "logo", label: "Logo (hidden from portfolio)" },
   ],
-  images: [
-    {
-      filename: "graphics/sky_code.jpg",
-      category: "graphics",
-      title: "Sky Code",
-      year: 2025,
-      award: "Inércia 2025 Graphics Showcase",
-      description:
-        "by Callisto / Flush ^ GPO ^ Silicium\n\nReleased 7 December 2025.",
-    },
-    {
-      filename: "graphics/armonia.jpg",
-      category: "graphics",
-      title:
-        "Aerolia Harmonia by Callisto / Flush ^ Vital Motion Group",
-      year: 2023,
-      award: "Inércia Demoparty 2023 Graphics Showcase",
-      description: "Released 2 December 2023.",
-    },
-    {
-      filename: "graphics/teddy-beer-syntax-2022.png",
-      category: "graphics",
-      title: "I come with my teddy BEER !!!",
-      year: 2022,
-      award: "3rd in the Syntax 2022 Nuskool Graphics competition",
-      description:
-        "by Callisto / Flush ^ Vital-Motion!\n\nReleased 13 November 2022.\n\nhttps://demozoo.org/graphics/315433/",
-    },
-    {
-      filename: "graphics/5f43.132281.jpg",
-      category: "graphics",
-      title: "The Mystic River by Callisto",
-      year: 2017,
-      award: "9th in the Revision 2017 Modern Graphics competition",
-      description: "Released 15 April 2017 — Windows.",
-    },
-    {
-      filename: "graphics/d776.375292.jpg",
-      category: "graphics",
-      title: "IRL Gfx Squirrel Is Here",
-      year: 2026,
-      award: "5th in the Rsync 2026 Graphics competition",
-      description: "by Callisto\n\nReleased 9 January 2026.",
-    },
-    {
-      filename: "graphics/Callisto_Pascals-lemur-leap_step-finale-2048x1152.jpg",
-      category: "graphics",
-      title: "Pascal's Lemur Leap",
-      year: 2025,
-      award: "10th in the Revision 2025 Modern Graphics competition",
-      description: "by Callisto / Flush\n\nReleased 20 April 2025.",
-    },
-    {
-      filename: "graphics/Chromatic.jpg",
-      category: "graphics",
-      title: "Chromatic resonance",
-      year: 2024,
-      award: "1st in the Rsync 2024 Graphics competition",
-      description:
-        "Chromatic Resonance by Callisto\n\nReleased 5 January 2024.",
-    },
-    {
-      filename: "IA/digital/dba8.371782.jpg",
-      category: "IA",
-      title: "Inercia 2925 by Callisto",
-      year: 2025,
-      award: "Inércia 2025 genAI Showcase",
-      description:
-        "In the Inércia 2025 genAI Showcase.\n\nReleased 7 December 2025 — Windows.",
-    },
-    {
-      filename: "graphics/abyss_of-symphony.jpg",
-      category: "graphics",
-      title: "Symphony Of The Abyss by Callisto",
-      year: 2025,
-      award: "2nd in the Rsync 2025 Graphics competition",
-      description: "Released 10 January 2025.",
-    },
-    {
-      filename: "graphics/paul_le_poulpe.png",
-      category: "graphics",
-      title: "Paul the octopus by Callisto",
-      year: 2024,
-      award: "Shadow Party 2024 Newschool Graphics competition",
-      description: "Released 29 June 2024.",
-    },
-    {
-      filename: "graphics/paintover2024_callisto_refresh_step05.jpg",
-      category: "paintover",
-      title: "Refresh",
-      year: 2024,
-      award: "12th in the Revision 2024 Paintover competition",
-      description:
-        "by Callisto / Flush ^ Vital-Motion!\n\nReleased 31 March 2024.",
-    },
-    {
-      filename: "graphics/pixelmouse.jpg",
-      category: "graphics",
-      title: "The Pixel Mouse Love Story by Callisto / Flush ^ Vital-Motion!",
-      year: 2024,
-      award: "7th in the Revision 2024 Modern Graphics competition",
-      description: "Released 31 March 2024.",
-    },
-    {
-      filename: "paintover/76b3.160407.jpg",
-      category: "paintover",
-      title: "Sisters and Company",
-      year: 2018,
-      award: "8th in the Revision 2018 Paintover competition",
-      description: "by Callisto\n\nReleased 1 April 2018.",
-    },
-    {
-      filename: "paintover/010d.307657.jpg",
-      category: "paintover",
-      title: "Head in the Stars by Callisto / Flush",
-      year: 2022,
-      award: "10th in the Revision 2022 Paintover competition",
-      description:
-        "Invitation for Shadow Party 2022\n\nReleased 17 April 2022.",
-    },
-    {
-      filename: "paintover/25aa.264370.jpg",
-      category: "paintover",
-      title: "Fairy Butter Ponny by Callisto",
-      year: 2020,
-      award: "16th in the Revision Online 2020 Paintover competition",
-      description: "Released 12 April 2020.",
-    },
-    {
-      filename: "graphics/3f29.85342.jpg",
-      category: "paintover",
-      title: "Pac'man to space",
-      year: 2015,
-      award: "9th in the Revision 2015 Paintover competition",
-      description:
-        "by Callisto\n\nReleased 5 April 2015 — Windows.",
-    },
-    {
-      filename: "graphics/407845946_398297489188178_8033467046376857047_n.jpg",
-      category: "graphics",
-      title: "Elevation 2079",
-      year: 2022,
-      award:
-        "1st in the Inércia Demoparty 2022 Freestyle Graphics competition",
-      description:
-        "by Callisto / Flush ^ Vital-Motion!\n\nReleased 5 November 2022.",
-    },
-    {
-      filename: "graphics/Luna-fly-by-callisto-finale-1-scaled.jpg",
-      category: "graphics",
-      title: "Luna Fly",
-      year: 2023,
-      award:
-        "5th in the SESSIONS in C4 LAN 2023 SPRING Combined Graphics competition",
-      description:
-        "by Callisto / Flush ^ GPO ^ Vital-Motion!\n\nReleased 29 April 2023.",
-    },
-    {
-      filename: "graphics/cropped-elevation-finale-scaled-1.jpg",
-      category: "graphics",
-      title: "Elevation 2079",
-      award: "1st place @ Inercia",
-      year: 2022,
-    },
-    {
-      filename: "graphics/339435602_905924634051246_6940335715669469411_n.jpg",
-      category: "graphics",
-      title: "Howl Of The Forest",
-      year: 2023,
-      award: "11th in the Revision 2023 Modern Graphics competition",
-      description:
-        "by Callisto / Flush ^ Vital-Motion!\n\nReleased 9 April 2023.",
-    },
-    {
-      filename: "graphics/b2c6.287706.jpg",
-      category: "graphics",
-      title: "You Seem So Delicious",
-      year: 2021,
-      award: "1st in the Assembly 2021 Winter Online Graphics competition",
-      description: "by Callisto / Syn[Rj]\n\nReleased 19 March 2021.",
-    },
-    {
-      filename: "graphics/rift.jpg",
-      category: "graphics",
-      title: "The rift",
-      year: 2021,
-      award: "11th Revision — Saarbrücken — Germany",
-    },
-    {
-      filename: "graphics/sharko.png",
-      category: "graphics",
-      title: "Sharko",
-      year: 2021,
-      award: "5th in the TokyoDemoFest 2021 Graphics competition",
-      description:
-        "by Callisto / Flush\n\nReleased 11 December 2021.\n\nhttps://demozoo.org/graphics/303081/",
-    },
-    {
-      filename: "photo/Callisto_convergence-1024x510.jpg",
-      category: "photo",
-      title: "Convergence by Callisto / Flush ^ Vital-Motion!",
-      year: 2024,
-      award: "18th in the Revision 2024 Photo competition",
-      description: "Released 30 March 2024.",
-    },
-    {
-      filename: "photo/Callisto_photo_revision2023-1024x547.jpg",
-      category: "photo",
-      title: "Balls Of Steel by Callisto / Flush ^ Vital-Motion!",
-      year: 2023,
-      award: "16th in the Revision 2023 Photo competition",
-      description: "Released 8 April 2023.",
-    },
-    {
-      filename: "photo/myhungryman.jpg",
-      category: "photo",
-      title: "My Angry Husband by Callisto / Flush ^ Vital-Motion!",
-      year: 2023,
-      award: "19th in the Function 2023 Photo competition",
-      description: "Released 9 September 2023.",
-    },
-    {
-      filename: "photo/dino.jpg",
-      category: "photo",
-      title: "Dino Sort",
-      year: 2025,
-      award: "9th in the Shadow Party 2025 Photo competition",
-      description: "by Callisto / Flush\n\nReleased 5 July 2025.",
-    },
-    {
-      filename: "photo/da05.354142.jpg",
-      category: "photo",
-      title: "Um Toque de Luz with Polo",
-      year: 2024,
-      award: "Inércia 2024 Graphics Showcase",
-      description: "by Callisto and Polo\n\nReleased 7 December 2024.",
-    },
-    {
-      filename: "photo/9013.346292.jpg",
-      category: "photo",
-      title: "Snail's Pace by Callisto",
-      year: 2024,
-      award: "Shadow Party 2024 Photo competition",
-      description: "Released 29 June 2024.",
-    },
-    {
-      filename: "other/7a53.346293.png",
-      category: "other",
-      title: "Flush by Callisto",
-      year: 2024,
-      award: "3rd in the Shadow Party 2024 Sticker competition",
-      description: "Released 29 June 2024.",
-    },
-    {
-      filename: "other/227e.342096.jpg",
-      category: "other",
-      title: "Shadow Party 2022 memories by Callisto / Flush",
-      year: 2024,
-      award: "16th in the Revision 2024 Animated GIF competition",
-      description: "Released 31 March 2024.",
-    },
-    {
-      filename:
-        "photo/312518226_10228185642768590_4918581913671770871_n-1024x652.jpg",
-      category: "photo",
-      title: "Flowers",
-      award: "Flower photography",
-    },
-    {
-      filename: "photo/tettigonia-viridissima.jpg",
-      category: "photo",
-      title: "Tettigonia Viridissima",
-      year: 2022,
-      award: "5th in the Inércia Demoparty 2022 Photo competition",
-      description:
-        "by Callisto / Flush ^ Vital-Motion!\n\nReleased 5 November 2022.\n\nhttps://demozoo.org/graphics/314984/",
-    },
-    {
-      category: "gaming",
-      youtubeId: "HLdNMPZUMl4",
-      videoUrl: "https://youtu.be/HLdNMPZUMl4",
-      title: "GPO — push-push manufacturing",
-    },
-    {
-      filename:
-        "photo/183407402_10225214914982252_8102507980517360390_n-1024x768.jpg",
-      category: "photo",
-      title: "Photo",
-      year: 2021,
-    },
-    {
-      filename:
-        "photo/183672347_10225215575758771_3763955342084286418_n-1024x690.jpg",
-      category: "photo",
-      title: "Photo",
-      year: 2021,
-    },
-    {
-      filename: "other/9513.363339.jpg",
-      category: "other",
-      title: "Thanks All",
-      year: 2025,
-      award: "6th in the Shadow Party 2025 Oldschool Graphics competition",
-      description:
-        "by Callisto / Flush\n\nReleased 5 July 2025.\n\nAmiga OCS/ECS.",
-    },
-    {
-      category: "other",
-      youtubeId: "MNNEgh-VEaA",
-      videoUrl: "https://www.youtube.com/watch?v=MNNEgh-VEaA",
-      title: "Shadow Party 2025 Invitation by Flush",
-      year: 2025,
-      award: "4th in the 68k Inside 2025 Demo competition",
-      description:
-        "Invitation for Shadow Party 2025\n\nReleased 24 May 2025.\n\nAtari ST/E.",
-    },
-    {
-      category: "other",
-      youtubeId: "RLnD5NiZ8FE",
-      videoUrl: "https://www.youtube.com/watch?v=RLnD5NiZ8FE",
-      title: "Slip Slip by Flush",
-      year: 2025,
-      award: "6th in the Rsync 2025 Oldskool Demo competition",
-      description:
-        "Released 10 January 2025.\n\nNintendo Game Boy Advance (GBA).",
-    },
-    {
-      category: "animation",
-      youtubeId: "ARsYTLJvYzQ",
-      videoUrl: "https://www.youtube.com/watch?v=ARsYTLJvYzQ",
-      title: "SHADOW PARTY INVITATION 2025 by Callisto",
-      year: 2025,
-      award: "9th in the Revision 2025 Animation/Video competition",
-      description:
-        "Invitation for Shadow Party 2025\n\nReleased 19 April 2025.",
-    },
-    {
-      category: "animation",
-      youtubeId: "p6qi_bfKb2s",
-      videoUrl: "https://youtu.be/p6qi_bfKb2s",
-      title: "Invitation SHADOW PARTY 25",
-      year: 2025,
-    },
-    {
-      category: "animation",
-      youtubeId: "HU_Z_d-PB7k",
-      videoUrl: "https://www.youtube.com/watch?v=HU_Z_d-PB7k&t=1207",
-      title:
-        "Invitation - 29-30 June 2024 - Givry En Argonne (France) by Flush",
-      year: 2024,
-      award: "13th in the Revision 2024 Animation / Video competition",
-      description:
-        "Invitation for Shadow Party 2024\n\nReleased 30 March 2024.",
-    },
-    {
-      category: "animation",
-      youtubeId: "GnuswI8YeAM",
-      videoUrl: "https://youtu.be/GnuswI8YeAM",
-      title: "Slide Shadow Party",
-    },
-    {
-      category: "animation",
-      youtubeId: "_R6Goi-AO6A",
-      videoUrl: "https://youtu.be/_R6Goi-AO6A",
-      title: "Callisto (syn[RJ]) - Invitation Shadow-party 2021",
-      year: 2021,
-    },
-    {
-      category: "animation",
-      youtubeId: "W6ybnfktkRM",
-      videoUrl: "https://www.youtube.com/watch?v=W6ybnfktkRM",
-      title:
-        "Shadow Party Invitation 2022 (Alkama, Aubépine, Callisto, CoyHot, p0ke)",
-      year: 2022,
-      description:
-        "Invitation for Shadow Party 2022.\n\nReleased 8 May 2022.\n\nhttps://demozoo.org/productions/308487/",
-    },
-    {
-      category: "animation",
-      youtubeId: "epusxPh_dS8",
-      videoUrl: "https://youtu.be/epusxPh_dS8",
-      title: "Shadow Party 2022 - Breaking News",
-      year: 2022,
-    },
-    {
-      category: "animation",
-      youtubeId: "vHEVS7NptKc",
-      videoUrl: "https://youtu.be/vHEVS7NptKc",
-      title: "Invitation Shadow Party 2022",
-      year: 2022,
-    },
-    {
-      category: "animation",
-      youtubeId: "UOlYOQ3_j6I",
-      videoUrl: "https://www.youtube.com/watch?v=UOlYOQ3_j6I",
-      title: "Lady Glagla by Flush",
-      year: 2023,
-      award:
-        "2nd in the Silly Venture 2k23 WE Atari ST/STE Demo competition",
-      description: "Released 9 December 2023.\n\nAtari ST/E.",
-    },
-    {
-      category: "animation",
-      youtubeId: "2nKO3UTdiPQ",
-      videoUrl: "https://youtu.be/2nKO3UTdiPQ",
-      title: "Cyberpin by Callisto",
-      year: 2023,
-      award: "9th in the Revision 2023 Animation/Video competition",
-      description: "Released 8 April 2023.\n\nWindows.",
-    },
-    {
-      category: "animation",
-      youtubeId: "NJlUdcykhdw",
-      videoUrl: "https://youtu.be/NJlUdcykhdw",
-      title: "CYBERPIN - TV pinball / on the top screen",
-      year: 2023,
-      description: "Released 8 April 2023.\n\nWindows.",
-    },
-    {
-      category: "animation",
-      youtubeId: "0zU_85iDf9g",
-      videoUrl: "https://youtu.be/0zU_85iDf9g",
-      title: "Primitives and FM by New C-Rex",
-      year: 2023,
-      award:
-        "6th in the SESSIONS in C4 LAN 2023 SPRING Wild competition",
-      description: "Released 29 April 2023.",
-    },
-    {
-      category: "animation",
-      youtubeId: "_XIO12_g-So",
-      videoUrl: "https://youtu.be/_XIO12_g-So",
-      title: "Explosion 2023",
-      year: 2023,
-    },
-    {
-      category: "animation",
-      youtubeId: "c-NTft-ujUY",
-      videoUrl: "https://youtu.be/c-NTft-ujUY",
-      title: "Somme Suippe agricultural high school — open house",
-    },
-    {
-      category: "animation",
-      youtubeId: "Z54V_SABn1U",
-      videoUrl: "https://youtu.be/Z54V_SABn1U",
-      title: "RBBS — We Have Accidentally Your Whole Audience",
-      year: 2015,
-      award:
-        "16th place — Revision 2015 PC Demo — Royal Belgian Beer Squadron",
-      description:
-        "[DEMOSCENE] [PC DEMO] Windows — Group: Royal Belgian Beer Squadron — Released 5 April 2015 — 16th in the Revision 2015 PC Demo competition.\n\nCallisto - \"Text (Translation)\"",
-    },
-    {
-      "filename": "acrylique/3-508x494-1.jpg",
-      "category": "acrylique",
-      "title": "Plaque for my dad",
-      "year": 2021,
-      "description": "Commemorative series — acrylic."
-    },
-    {
-      "filename": "acrylique/2-1.jpg",
-      "category": "acrylique",
-      "title": "Blue and pink flow",
-      "year": 2021,
-      "description": "Acrylic"
-    },
-    {
-      "filename": "acrylique/2-508x427-1.jpg",
-      "category": "acrylique",
-      "title": "Under the tree's stars",
-      "year": 2021,
-      "description": "Acrylic"
-    },
-    {
-      "filename": "acrylique/09.19-508x518-1.jpg",
-      "category": "acrylique",
-      "title": "Love Fleur de 2019",
-      "year": 2021,
-      "description": "Acrylic"
-    },
-    {
-      "filename": "acrylique/484016.1153284291.1.o24494341.jpg",
-      "category": "acrylique",
-      "title": "The giraffe and her calf",
-      "year": 2021,
-      "description": "Acrylic"
-    },
-    {
-      "filename": "acrylique/484017.325007515.1.o1678965315.jpg",
-      "category": "acrylique",
-      "title": "The wolf",
-      "year": 2021,
-      "description": "Acrylic"
-    },
-    {
-      "filename": "acrylique/484020.1992883738.1.o2118704691.jpg",
-      "category": "acrylique",
-      "title": "The kitten out for a walk",
-      "year": 2021,
-      "description": "Acrylic"
-    },
-    {
-      "filename": "acrylique/488894.1841485046.1.o1475312202.jpg",
-      "category": "acrylique",
-      "title": "The beach",
-      "year": 2021,
-      "description": "Acrylic"
-    },
-    {
-      "filename": "acrylique/489645.1217804915.1.o1251498251.jpg",
-      "category": "acrylique",
-      "title": "Sunset",
-      "year": 2021,
-      "description": "Acrylic"
-    },
-    {
-      "filename": "acrylique/492052.180022828.1.o831404474.jpg",
-      "category": "acrylique",
-      "title": "The first city",
-      "year": 2021,
-      "description": "Acrylic"
-    },
-    {
-      "filename": "acrylique/538030.20213600.1.o1324333696.jpg",
-      "category": "acrylique",
-      "title": "Orchid heart M",
-      "year": 2021,
-      "description": "Acrylic series"
-    },
-    {
-      "filename": "acrylique/15390826_633081763543121_7934280355348809027_n-768x757-1.jpg",
-      "category": "acrylique",
-      "title": "Snow bubble",
-      "year": 2021,
-      "description": "Acrylic"
-    },
-    {
-      "filename": "acrylique/19095290_723789734472323_308791567686722242_o-2-1000x985-1.jpg",
-      "category": "acrylique",
-      "title": "The swing of love",
-      "year": 2021,
-      "description": "Acrylic"
-    },
-    {
-      "filename": "acrylique/43604374_989553927895901_3236040201478340608_n-1000x646-1.png",
-      "category": "acrylique",
-      "title": "The golden elephant",
-      "year": 2021,
-      "description": "Acrylic"
-    },
-    {
-      "filename": "acrylique/59687580_1116098235241469_934782928846585856_n-1000x1003-1.jpg",
-      "category": "acrylique",
-      "title": "Tahiti beach",
-      "year": 2021,
-      "description": "Acrylic"
-    },
-    {
-      "filename": "acrylique/Capture-2-508x511-1.jpg",
-      "category": "acrylique",
-      "title": "Flower in curves",
-      "year": 2021,
-      "description": "Acrylic"
-    },
-    {
-      "filename": "acrylique/eric-768x511-1.jpg",
-      "category": "acrylique",
-      "title": "Nicky et Laura with love",
-      "year": 2021,
-      "description": "Acrylic portrait"
-    },
-    {
-      "filename": "acrylique/fred-charton-13336097-544626092388689-198714441282019086-n-768x576-1.jpg",
-      "category": "acrylique",
-      "title": "The eagle takes flight",
-      "year": 2021,
-      "description": "Acrylic"
-    },
-    {
-      "filename": "acrylique/fred-charton-img-20190508-160321.jpg",
-      "category": "acrylique",
-      "title": "In the manner of a great artist",
-      "year": 2021,
-      "description": "Acrylic"
-    },
-    {
-      "filename": "acrylique/fred-charton-img-20190511-165808.jpg",
-      "category": "acrylique",
-      "title": "Sunset on the rocks",
-      "year": 2021,
-      "description": "Acrylic"
-    },
-    {
-      "filename": "acrylique/fred-charton-neige-768x591-1.jpg",
-      "category": "acrylique",
-      "title": "Snow on the mountaintop",
-      "year": 2021,
-      "description": "Acrylic"
-    },
-    {
-      "filename": "acrylique/roger.jpg",
-      "category": "acrylique",
-      "title": "Roger for my girlfriend",
-      "year": 2021,
-      "description": "Acrylic"
-    },
-    {
-      "filename": "aquarelle/Latortue.jpg",
-      "category": "aquarelle",
-      "title": "The turtle",
-      "description": "Watercolor"
-    },
-    {
-      "filename": "aquarelle/Le_cheval_blanc.jpg",
-      "category": "aquarelle",
-      "title": "The white horse",
-      "description": "Watercolor"
-    },
-    {
-      "filename": "aquarelle/Promenade.jpg",
-      "category": "aquarelle",
-      "title": "Promenade",
-      "description": "Watercolor"
-    },
-    {
-      "filename": "aquarelle/cannard.jpg",
-      "category": "aquarelle",
-      "title": "Cannard",
-      "description": "Watercolor"
-    },
-    {
-      "filename": "aquarelle/coquelicot.jpg",
-      "category": "aquarelle",
-      "title": "Coquelicot",
-      "description": "Watercolor"
-    },
-    {
-      "filename": "aquarelle/cygne.jpg",
-      "category": "aquarelle",
-      "title": "Cygne",
-      "description": "Watercolor"
-    },
-    {
-      "filename": "aquarelle/demolion.jpg",
-      "category": "aquarelle",
-      "title": "The lion",
-      "description": "Watercolor"
-    },
-    {
-      "filename": "aquarelle/facecat.jpg",
-      "category": "aquarelle",
-      "title": "Cat face",
-      "description": "Watercolor"
-    },
-    {
-      "filename": "aquarelle/fleuroseauborddeleau.jpg",
-      "category": "aquarelle",
-      "title": "Pink flower by the water",
-      "description": "Watercolor"
-    },
-    {
-      "filename": "aquarelle/heron.jpg",
-      "category": "aquarelle",
-      "title": "Heron",
-      "description": "Watercolor"
-    },
-    {
-      "filename": "aquarelle/lepetit pont .jpg",
-      "category": "aquarelle",
-      "title": "The little bridge",
-      "description": "Watercolor"
-    },
-    {
-      "filename": "aquarelle/levillage.jpg",
-      "category": "aquarelle",
-      "title": "The village",
-      "description": "Watercolor"
-    },
-    {
-      "filename": "aquarelle/ouvaton.jpg",
-      "category": "aquarelle",
-      "title": "Where are we going?",
-      "description": "Watercolor"
-    },
-    {
-      "filename": "aquarelle/plage et city .jpg",
-      "category": "aquarelle",
-      "title": "Beach and city",
-      "description": "Watercolor"
-    },
-    {
-      "filename": "aquarelle/thecat.jpg",
-      "category": "aquarelle",
-      "title": "The cat",
-      "description": "Watercolor"
-    },
-    {
-      "filename": "aquarelle/voyage.jpg",
-      "category": "aquarelle",
-      "title": "Journey",
-      "description": "Watercolor"
-    },
-    {
-      "filename": "pastel-sec/Choucky.png",
-      "category": "pastel-sec",
-      "title": "Choucky",
-      "description": "Dry pastel"
-    },
-    {
-      "filename": "pastel-sec/Lestbernarde_son_regard.jpg",
-      "category": "pastel-sec",
-      "title": "The Saint Bernard and its gaze",
-      "description": "Dry pastel"
-    },
-    {
-      "filename": "pastel-sec/fred-charton-carla-fini.jpg",
-      "category": "pastel-sec",
-      "title": "Carla",
-      "description": "Dry pastel"
-    },
-    {
-      "filename": "pastel-sec/fred-charton-guerriere.jpg",
-      "category": "pastel-sec",
-      "title": "Callisto the warrior",
-      "description": "Dry pastel"
-    },
-    {
-      "filename": "pastel-sec/fred-charton-tigre.jpg",
-      "category": "pastel-sec",
-      "title": "Tigre",
-      "description": "Dry pastel"
-    },
-    {
-      "filename": "pastel-sec/l'abeille.jpg",
-      "category": "pastel-sec",
-      "title": "The bee",
-      "description": "Dry pastel"
-    },
-    {
-      "filename": "pastel-sec/lagirafeetsongirafon.jpg",
-      "category": "pastel-sec",
-      "title": "The giraffe and her calf",
-      "description": "Dry pastel"
-    },
-    {
-      "filename": "pastel-sec/le chat.png",
-      "category": "pastel-sec",
-      "title": "The cat",
-      "description": "Dry pastel"
-    },
-    {
-      "filename": "pastel-sec/lecabanon.jpg",
-      "category": "pastel-sec",
-      "title": "The shed",
-      "description": "Dry pastel"
-    },
-    {
-      "filename": "pastel-sec/lechien.jpg",
-      "category": "pastel-sec",
-      "title": "The dog",
-      "description": "Dry pastel"
-    },
-    {
-      "filename": "pastel-sec/les petites cabannes.jpg",
-      "category": "pastel-sec",
-      "title": "The little cabins",
-      "description": "Dry pastel"
-    },
-    {
-      "filename": "pastel-sec/regard.jpg",
-      "category": "pastel-sec",
-      "title": "Gaze",
-      "description": "Dry pastel"
-    },
-    {
-      "filename": "pastel-sec/rochideeetpriere.jpg",
-      "category": "pastel-sec",
-      "title": "Rock, idea and prayer",
-      "description": "Dry pastel"
-    },
-    {
-      "filename": "pastel-sec/yang.jpg",
-      "category": "pastel-sec",
-      "title": "Yang",
-      "description": "Dry pastel"
-    },
-    {
-      filename: "logo/logo-cllisto.png",
-      category: "logo",
-      title: "Logo Callisto",
-      isLogo: true,
-    },
-  ],
+  images: [],
 };
 
 // Categories from JSON (id -> label), used for filter labels and the lightbox
@@ -1193,6 +403,30 @@ function extractYoutubeId(urlOrId) {
 
 function getYoutubeThumbnailUrl(youtubeId) {
   return `https://img.youtube.com/vi/${youtubeId}/hqdefault.jpg`;
+}
+
+/**
+ * Images HTTPS tierces (YouTube, Demozoo…) : requête sans cookies d’identification
+ * et referrer minimal — limite les alertes Chrome DevTools (Issues → Cookie) sur ces hôtes.
+ * À appeler **avant** `img.src = …`.
+ */
+function applyThirdPartyImageRequestMode(img, url) {
+  if (!img || !url || typeof url !== "string") return;
+  if (!/^https?:\/\//i.test(url)) return;
+  try {
+    const host = new URL(url).hostname;
+    if (
+      /(^|\.)youtube\.com$/i.test(host) ||
+      /(^|\.)ytimg\.com$/i.test(host) ||
+      /(^|\.)demozoo\.org$/i.test(host) ||
+      /(^|\.)googleusercontent\.com$/i.test(host)
+    ) {
+      img.crossOrigin = "anonymous";
+      img.referrerPolicy = "no-referrer";
+    }
+  } catch (_) {
+    /* URL invalide */
+  }
 }
 
 /** Default label for a category id (e.g. "pastel-sec" -> "Dry pastel"). */
@@ -1368,26 +602,30 @@ function buildPortfolioFilterButtons(categories) {
 }
 
 // ============================================
-// PORTFOLIO LOAD (Simulated fetch)
+// PORTFOLIO JSON (HTTP) — une seule source après loadPortfolioJsonOnce()
+// ============================================
+const PORTFOLIO_JSON_URL = "assets/images/portfolio_images.json?v=1";
+
+async function loadPortfolioJsonOnce() {
+  if (isFileProtocol()) return;
+  try {
+    const res = await fetch(PORTFOLIO_JSON_URL);
+    if (!res.ok) return;
+    const json = await res.json();
+    if (json && Array.isArray(json.images)) {
+      portfolioData = json;
+    }
+  } catch (_) {
+    /* garde categories + images [] */
+  }
+}
+
+// ============================================
+// PORTFOLIO GRID (utilise portfolioData déjà chargé)
 // ============================================
 async function loadPortfolioImages() {
   try {
-    let data = portfolioData;
-    /* On file://, skip fetch (CORS) — use embedded portfolioData */
-    if (!isFileProtocol()) {
-      try {
-        /* Bump ?v= when le JSON change (cache navigateur + CDN) — évite Date.now() / no-store */
-        const res = await fetch(
-          "assets/images/portfolio_images.json?v=1",
-        );
-        if (res.ok) {
-          const json = await res.json();
-          if (json && json.images) data = json;
-        }
-      } catch (_) {
-        /* keep portfolioData as fallback */
-      }
-    }
+    const data = portfolioData;
     const portfolioGrid = document.getElementById("portfolioGrid");
 
     if (!portfolioGrid) return;
@@ -1420,6 +658,7 @@ async function loadPortfolioImages() {
       imageDiv.className = "portfolio-image";
 
       const img = document.createElement("img");
+      applyThirdPartyImageRequestMode(img, thumbSrc);
       img.src = thumbSrc;
       img.alt = buildArtworkAltText(image, category, categoryLabelMap);
       img.loading = "lazy";
@@ -1509,8 +748,7 @@ async function loadPortfolioImages() {
 
     /*
      * Ne pas reconstruire le hero ici : déjà fait au DOMContentLoaded (LCP).
-     * La grille suit le JSON fetché ; le hero suit portfolioData embarqué —
-     * redéployer script.js après mise à jour du JSON pour les aligner.
+     * Grille et hero partagent le même portfolioData (JSON HTTP, une fois).
      */
   } catch (error) {
     console.error("Error loading portfolio images:", error);
@@ -1622,6 +860,8 @@ function openLightbox(item) {
     }
     if (lightboxImage) {
       lightboxImage.style.display = "";
+      lightboxImage.removeAttribute("crossorigin");
+      lightboxImage.referrerPolicy = "";
       const fn = imageData?.filename;
       const lightboxPlaceholderSvg =
         "data:image/svg+xml," +
@@ -1638,7 +878,9 @@ function openLightbox(item) {
       if (fn) {
         const webp = assetImageWebpFullPath(fn);
         const orig = assetImagePath(fn);
-        lightboxImage.src = webp || orig;
+        const firstSrc = webp || orig;
+        applyThirdPartyImageRequestMode(lightboxImage, firstSrc);
+        lightboxImage.src = firstSrc;
         lightboxImage.onerror = function () {
           this.onerror = null;
           if (orig && this.src !== orig) {
@@ -1655,6 +897,7 @@ function openLightbox(item) {
         };
       } else {
         const src = imageData?.thumbnailUrl || img?.src || "";
+        applyThirdPartyImageRequestMode(lightboxImage, src);
         lightboxImage.src = src;
         lightboxImage.onerror = function () {
           this.onerror = null;
@@ -1877,6 +1120,7 @@ function buildHeroSlidesFromPortfolio(data) {
       img.title ||
       img.filename;
     const heroImg = document.createElement("img");
+    applyThirdPartyImageRequestMode(heroImg, url);
     heroImg.src = url;
     heroImg.alt = buildArtworkAltText(img, img.category, heroLabelMap);
     heroImg.className = "hero-image-3d";
@@ -2019,8 +1263,9 @@ const optimizedScrollHandler = debounce(() => {
 // ============================================
 // INITIALIZATION
 // ============================================
-document.addEventListener("DOMContentLoaded", () => {
-  // Hero synchrone → image LCP dans le DOM tout de suite (évite LCP ~10–20s dû aux probes async)
+document.addEventListener("DOMContentLoaded", async () => {
+  await loadPortfolioJsonOnce();
+  /* Hero après JSON : même contenu que la grille ; preload <link as="fetch"> aide le cache */
   buildHeroSlidesFromPortfolio(portfolioData);
   initHeroSlide();
 
