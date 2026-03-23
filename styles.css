@@ -2165,15 +2165,6 @@ body.night .about-card-tag {
 }
 
 /* Animation opt-in: only enabled when JS marks the section as safe to reveal */
-.journey.journey--animated .journey-tl-item {
-  opacity: 0;
-  transform: translateX(-40px);
-}
-
-.journey.journey--animated .journey-tl-item.journey-right {
-  transform: translateX(40px);
-}
-
 .journey-tl-item::before {
   content: "";
   position: absolute;

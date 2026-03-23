@@ -1412,34 +1412,11 @@ function escapeHtmlAttr(s) {
 // JOURNEY TIMELINE (Reveal on scroll)
 // ============================================
 function initJourneyTimeline() {
-  const journeySection = document.getElementById("journey");
   const items = document.querySelectorAll(".journey-tl-item");
   if (!items.length) return;
 
-  const prefersReducedMotion = window.matchMedia(
-    "(prefers-reduced-motion: reduce)",
-  ).matches;
-  const isMobile = window.matchMedia("(max-width: 768px)").matches;
-  if (prefersReducedMotion || isMobile || !("IntersectionObserver" in window)) {
-    // Mobile: garder la timeline visible en permanence (plus robuste qu'un reveal IO).
-    journeySection?.classList.remove("journey--animated");
-    items.forEach((el) => el.classList.add("is-visible"));
-    return;
-  }
-
-  journeySection?.classList.add("journey--animated");
-  const journeyObserver = new IntersectionObserver(
-    (entries, obs) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add("is-visible");
-        obs.unobserve(entry.target);
-      });
-    },
-    { threshold: 0.15 },
-  );
-
-  items.forEach((el) => journeyObserver.observe(el));
+  // Stabilite UX: timeline toujours visible (pas de reveal qui peut flicker).
+  items.forEach((el) => el.classList.add("is-visible"));
 }
 
 // ============================================
