@@ -1390,6 +1390,7 @@ function escapeHtmlAttr(s) {
 // JOURNEY TIMELINE (Reveal on scroll)
 // ============================================
 function initJourneyTimeline() {
+  const journeySection = document.getElementById("journey");
   const items = document.querySelectorAll(".journey-tl-item");
   if (!items.length) return;
 
@@ -1399,10 +1400,12 @@ function initJourneyTimeline() {
   const isMobile = window.matchMedia("(max-width: 768px)").matches;
   if (prefersReducedMotion || isMobile || !("IntersectionObserver" in window)) {
     // Mobile: garder la timeline visible en permanence (plus robuste qu'un reveal IO).
+    journeySection?.classList.remove("journey--animated");
     items.forEach((el) => el.classList.add("is-visible"));
     return;
   }
 
+  journeySection?.classList.add("journey--animated");
   const journeyObserver = new IntersectionObserver(
     (entries, obs) => {
       entries.forEach((entry) => {

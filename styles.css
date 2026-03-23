@@ -2144,8 +2144,8 @@ body.night .about-card-tag {
   padding-right: calc(50% + 40px);
   margin-bottom: 60px;
   position: relative;
-  opacity: 0;
-  transform: translateX(-40px);
+  opacity: 1;
+  transform: translateX(0);
   transition:
     opacity 0.6s ease,
     transform 0.6s ease;
@@ -2156,12 +2156,22 @@ body.night .about-card-tag {
   justify-content: flex-start;
   padding-right: 0;
   padding-left: calc(50% + 40px);
-  transform: translateX(40px);
+  transform: translateX(0);
 }
 
 .journey-tl-item.is-visible {
   opacity: 1;
   transform: translateX(0);
+}
+
+/* Animation opt-in: only enabled when JS marks the section as safe to reveal */
+.journey.journey--animated .journey-tl-item {
+  opacity: 0;
+  transform: translateX(-40px);
+}
+
+.journey.journey--animated .journey-tl-item.journey-right {
+  transform: translateX(40px);
 }
 
 .journey-tl-item::before {
