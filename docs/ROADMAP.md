@@ -19,10 +19,10 @@ Version orientée **ce qu’il reste à faire**.
 
 ## 2) Court terme (maintenance statique v2.x)
 
-- [ ] **Contenu galerie** : ajouter/mettre à jour les œuvres dans `assets/images/portfolio_images.json` (titres génériques, années, descriptions).
-- [ ] **Workflow images** : après ajout massif, regénérer les dérivés (`thumbs/webp`) puis vérifier les fichiers manquants.
-- [ ] **Tests manuels** : garder la checklist de [TEST.md](./TEST.md) à jour (HTTP local, mobile, lightbox, filtres).
-- [ ] **Perf** : re-run Lighthouse en navigation privée et suivre surtout LCP/TBT après chaque lot de changements UI.
+- [x] **Contenu galerie** : ajouter/mettre à jour les œuvres dans `assets/images/portfolio_images.json` (titres génériques, années, descriptions).
+- [x] **Workflow images** : après ajout massif, regénérer les dérivés (`thumbs/webp`) puis vérifier les fichiers manquants.
+- [x] **Tests manuels** : garder la checklist de [TEST.md](./TEST.md) à jour (HTTP local, mobile, lightbox, filtres).
+- [x] **Perf** : re-run Lighthouse en navigation privée et suivre surtout LCP/TBT après chaque lot de changements UI.
 
 Références : [TODO.md](./TODO.md), [GUIDE.md](./GUIDE.md), [PERFORMANCE.md](./PERFORMANCE.md), [TEST.md](./TEST.md)
 
@@ -30,8 +30,8 @@ Références : [TODO.md](./TODO.md), [GUIDE.md](./GUIDE.md), [PERFORMANCE.md](./
 
 ## 3) Backlog utile (non bloquant)
 
-- [ ] Supprimer le CSS devenu inutilisé après retrait du bloc social en bas (allègement).
-- [ ] Option UX mobile : rendre la barre sociale auto-atténuée/auto-masquée pendant le scroll.
+- [x] Supprimer le CSS devenu inutilisé après retrait du bloc social en bas (allègement).
+- [x] Option UX mobile : rendre la barre sociale auto-atténuée/auto-masquée pendant le scroll.
 - [x] Option perf : minification build simple (`script.min.js`, `styles.min.css`) si déploiement figé.
 - [x] Option contenu : micro-copy FR/EN homogène (menus, titres, mentions).
 
