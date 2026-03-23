@@ -2395,6 +2395,15 @@ body.night .about-card-tag {
   }
 }
 
+@media (max-width: 768px) {
+  /* Mobile guardrail: timeline must stay visible even if reveal JS fails. */
+  .journey-tl-item,
+  .journey-tl-item.journey-right {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 /* WCAG — utilisateurs « augmenter le contraste » (Windows / macOS / certains navigateurs) */
 @media (prefers-contrast: more) {
   .journey {

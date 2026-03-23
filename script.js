@@ -1008,7 +1008,7 @@ const observerOptions = {
 // stick (hidden section or thumbs loaded after the observer) and the gallery
 // looks “invisible”.
 const revealTargets = document.querySelectorAll(
-  ".section:not(#portfolio), .glass-card:not(.portfolio-item)",
+  ".section:not(#portfolio):not(#journey), .glass-card:not(.portfolio-item)",
 );
 if ("IntersectionObserver" in window) {
   const observer = new IntersectionObserver((entries) => {
@@ -1231,7 +1231,7 @@ if ("loading" in HTMLImageElement.prototype) {
   images.forEach((img) => {
     img.src = img.src;
   });
-} else {
+} else if ("IntersectionObserver" in window) {
   // Fallback for older browsers
   const imageObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach((entry) => {
@@ -1246,6 +1246,12 @@ if ("loading" in HTMLImageElement.prototype) {
 
   document.querySelectorAll("img.lazy").forEach((img) => {
     imageObserver.observe(img);
+  });
+} else {
+  // Last-resort fallback: load images directly.
+  document.querySelectorAll("img.lazy").forEach((img) => {
+    img.src = img.dataset.src || img.src;
+    img.classList.remove("lazy");
   });
 }
 
