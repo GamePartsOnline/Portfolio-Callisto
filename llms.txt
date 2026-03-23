@@ -1,0 +1,15 @@
+# Callisto Arts — Portfolio
+
+> Official portfolio of Frédérique Charton (Callisto): digital art, demoscene graphics, paintover, and professional work — Manager at GPO SARL, digital artist and AI builder.
+
+This site is a static single-page portfolio (HTML/CSS/JS) hosted on Cloudflare Pages. Sections include hero, portfolio gallery with filters and lightbox, about, journey timeline, and contact. Social links appear in the fixed rail on the right. Image metadata and gallery content are driven by `assets/images/portfolio_images.json`.
+
+## Optional
+
+- [README (repository)](https://github.com/GamePartsOnline/Portfolio-Callisto/blob/main/README.md): setup, structure, and how to add artworks.
+- [Legal notices / cookies](https://portfolio.callistoarts.com/mentions-legales.html): mentions légales and cookie preferences.
+
+## Site map
+
+- [Sitemap](https://portfolio.callistoarts.com/sitemap.xml): URLs for crawlers.
+- [Robots](https://portfolio.callistoarts.com/robots.txt): crawling rules.

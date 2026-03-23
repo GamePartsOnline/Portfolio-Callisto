@@ -1003,27 +1003,36 @@ const observerOptions = {
   rootMargin: "0px 0px -50px 0px",
 };
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.style.opacity = "1";
-      entry.target.style.transform = "translateY(0)";
-    }
-  });
-}, observerOptions);
-
 // Sections and cards — fade-in on scroll.
 // Exclude #portfolio and thumbnails (.portfolio-item): otherwise opacity:0 can
 // stick (hidden section or thumbs loaded after the observer) and the gallery
 // looks “invisible”.
-document
-  .querySelectorAll(".section:not(#portfolio), .glass-card:not(.portfolio-item)")
-  .forEach((el) => {
+const revealTargets = document.querySelectorAll(
+  ".section:not(#portfolio), .glass-card:not(.portfolio-item)",
+);
+if ("IntersectionObserver" in window) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = "1";
+        entry.target.style.transform = "translateY(0)";
+      }
+    });
+  }, observerOptions);
+
+  revealTargets.forEach((el) => {
     el.style.opacity = "0";
     el.style.transform = "translateY(20px)";
     el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
     observer.observe(el);
   });
+} else {
+  // Fallback mobile/anciens navigateurs : jamais laisser les sections cachées.
+  revealTargets.forEach((el) => {
+    el.style.opacity = "1";
+    el.style.transform = "translateY(0)";
+  });
+}
 
 // ============================================
 // NAVBAR SCROLL EFFECT
@@ -1381,7 +1390,9 @@ function initJourneyTimeline() {
   const prefersReducedMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)",
   ).matches;
-  if (prefersReducedMotion) {
+  const isMobile = window.matchMedia("(max-width: 768px)").matches;
+  if (prefersReducedMotion || isMobile || !("IntersectionObserver" in window)) {
+    // Mobile: garder la timeline visible en permanence (plus robuste qu'un reveal IO).
     items.forEach((el) => el.classList.add("is-visible"));
     return;
   }

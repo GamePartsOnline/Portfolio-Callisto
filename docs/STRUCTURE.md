@@ -11,6 +11,7 @@ Portfolio-Callisto/
 ├── content.json               # Textes About/Contact optionnels (fetch HTTP)
 ├── _headers                   # Cache HTTP (Cloudflare Pages)
 ├── robots.txt                 # Directives crawlers (Lighthouse SEO)
+├── llms.txt                   # Manifeste pour assistants / LLMs (racine du site)
 ├── sitemap.xml                # URLs canoniques du site statique
 ├── CNAME                      # Domaine custom GitHub Pages / équivalent
 ├── wrangler.json              # Config CF (si utilisé)
