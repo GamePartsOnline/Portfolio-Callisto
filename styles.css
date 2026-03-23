@@ -1931,6 +1931,7 @@ body.night .about-card-tag {
   color: #0c111a;
   background: linear-gradient(135deg, #00ffe0, #f472b6);
   box-shadow: 0 0 10px rgba(0, 255, 224, 0.2);
+  overflow: hidden;
 }
 
 .about-tool-badge svg {
@@ -1947,6 +1948,24 @@ body.night .about-card-tag {
   min-height: 0.7rem;
   object-fit: contain;
   filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.35));
+}
+
+/* Opera/extension-safe clamp: prevent oversized logos in tool chips */
+.about-tools .about-tool .about-tool-badge {
+  width: 1.12rem !important;
+  height: 1.12rem !important;
+  min-width: 1.12rem !important;
+  min-height: 1.12rem !important;
+}
+
+.about-tools .about-tool .about-tool-badge img {
+  width: 0.7rem !important;
+  height: 0.7rem !important;
+  max-width: 0.7rem !important;
+  max-height: 0.7rem !important;
+  min-width: 0.7rem !important;
+  min-height: 0.7rem !important;
+  flex: 0 0 0.7rem;
 }
 
 .about-tool--illustrator .about-tool-badge {
