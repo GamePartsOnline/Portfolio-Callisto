@@ -2941,149 +2941,10 @@ body.night .about-card-tag {
   margin: 0 auto;
 }
 
-.social-links {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-sm);
-  margin-bottom: var(--spacing-lg);
-}
-
-.social-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: var(--spacing-md);
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  border-radius: 12px;
-  text-align: center;
-  transition:
-    border-color 0.3s,
-    box-shadow 0.3s,
-    transform 0.3s,
-    background 0.3s,
-    color 0.3s;
-  text-decoration: none;
-  color: var(--color-text-primary);
-}
-
-.social-icon {
-  width: 1.25rem;
-  height: 1.25rem;
-  flex-shrink: 0;
-}
-
-.social-link:hover,
-.social-link:focus {
-  transform: translateX(5px);
-}
-
-/* Behance — bleu #1769ff */
-.social-behance {
-  border-color: rgba(23, 105, 255, 0.3);
-}
-.social-behance:hover,
-.social-behance:focus {
-  border-color: #1769ff;
-  box-shadow: 0 0 14px rgba(23, 105, 255, 0.35);
-  color: #1769ff;
-}
-.social-behance .social-icon,
-.social-behance .social-icon path {
-  color: #1769ff;
-  fill: #1769ff;
-}
-.social-behance:hover .social-icon,
-.social-behance:hover .social-icon path,
-.social-behance:focus .social-icon,
-.social-behance:focus .social-icon path {
-  color: #1769ff;
-  fill: #1769ff;
-}
-
-/* Instagram — gradient / pink #E1306C */
-.social-instagram {
-  border-color: rgba(225, 48, 108, 0.3);
-}
-.social-instagram:hover,
-.social-instagram:focus {
-  border-color: #e1306c;
-  box-shadow: 0 0 14px rgba(225, 48, 108, 0.35);
-  color: #e1306c;
-}
-.social-instagram .social-icon {
-  color: #e1306c;
-}
-.social-instagram:hover .social-icon,
-.social-instagram:focus .social-icon {
-  color: #e1306c;
-}
-
-/* LinkedIn — bleu #0A66C2 */
-.social-linkedin {
-  border-color: rgba(10, 102, 194, 0.3);
-}
-.social-linkedin:hover,
-.social-linkedin:focus {
-  border-color: #0a66c2;
-  box-shadow: 0 0 14px rgba(10, 102, 194, 0.35);
-  color: #0a66c2;
-}
-.social-linkedin .social-icon {
-  color: #0a66c2;
-}
-.social-linkedin:hover .social-icon,
-.social-linkedin:focus .social-icon {
-  color: #0a66c2;
-}
-
-/* Facebook — bleu #1877F2 */
-.social-facebook {
-  border-color: rgba(24, 119, 242, 0.3);
-}
-.social-facebook:hover,
-.social-facebook:focus {
-  border-color: #1877f2;
-  box-shadow: 0 0 14px rgba(24, 119, 242, 0.35);
-  color: #1877f2;
-}
-.social-facebook .social-icon {
-  color: #1877f2;
-}
-.social-facebook:hover .social-icon,
-.social-facebook:focus .social-icon {
-  color: #1877f2;
-}
-
-/* Demozoo — orange/ambre #f97316 */
-.social-demozoo {
-  border-color: rgba(249, 115, 22, 0.3);
-}
-.social-demozoo:hover,
-.social-demozoo:focus {
-  border-color: #f97316;
-  box-shadow: 0 0 14px rgba(249, 115, 22, 0.35);
-  color: #f97316;
-}
-.social-demozoo .social-icon {
-  color: #f97316;
-}
-.social-demozoo:hover .social-icon,
-.social-demozoo:focus .social-icon {
-  color: #f97316;
-}
-
 .contact-info {
   text-align: center;
   padding-top: var(--spacing-md);
   border-top: 1px solid rgba(0, 255, 224, 0.2);
-}
-
-@media (min-width: 840px) {
-  .social-links {
-    flex-direction: row;
-  }
 }
 
 /* ============================================
@@ -3096,6 +2957,9 @@ body.night .about-card-tag {
   transform: translateY(-50%);
   z-index: 1002;
   pointer-events: none;
+  transition:
+    opacity 0.22s ease,
+    transform 0.22s ease;
 }
 
 .social-fixed-rail__list {
@@ -3170,65 +3034,47 @@ body.night .social-fixed-rail__link:focus-visible {
     0 6px 22px rgba(0, 0, 0, 0.35);
 }
 
-/*
- * Phone / small tablet: rail centered at bottom. The music player is
- * fixed at the bottom (max z-index, ~150–170px tall): it covered the icons
- * when bottom was too low. The bottom of the social rail must sit ABOVE
- * the top of the player → bottom ≥ ~180px + safe-area.
- */
+/* Phone / small tablet: keep social rail on the right side. */
 @media (max-width: 768px) {
   .social-fixed-rail {
-    top: auto;
-    bottom: max(
-      11.5rem,
-      calc(185px + env(safe-area-inset-bottom, 0px))
-    );
-    left: 50%;
-    right: auto;
-    transform: translateX(-50%);
-    /* Below player (2147483647) but above content — geometry is enough */
+    top: 56%;
+    right: max(6px, env(safe-area-inset-right, 0px));
+    left: auto;
+    bottom: auto;
+    transform: translateY(-50%);
     z-index: 1002;
   }
 
+  body.is-scrolling-mobile .social-fixed-rail {
+    opacity: 0.18;
+    transform: translateY(-50%) translateX(12px) scale(0.96);
+    pointer-events: none;
+  }
+
   .social-fixed-rail__list {
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: center;
-    gap: 0.4rem;
-    max-width: min(96vw, 400px);
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    padding: 0.2rem 0.25rem;
-    scrollbar-width: thin;
+    flex-direction: column;
+    gap: 0.45rem;
+    max-width: none;
+    overflow: visible;
+    padding: 0;
   }
 
   .social-fixed-rail__link {
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
+    width: 38px;
+    height: 38px;
+    border-radius: 9px;
     flex-shrink: 0;
   }
 
   .social-fixed-rail__icon {
-    width: 20px;
-    height: 20px;
-  }
-
-  /* Player + social rail + margin — keeps footer clear of fixed UI */
-  body {
-    padding-bottom: max(
-      13rem,
-      calc(220px + env(safe-area-inset-bottom, 0px))
-    );
+    width: 18px;
+    height: 18px;
   }
 }
 
 @media (max-width: 480px) {
   .social-fixed-rail {
-    bottom: max(
-      11.25rem,
-      calc(180px + env(safe-area-inset-bottom, 0px))
-    );
+    right: max(4px, env(safe-area-inset-right, 0px));
   }
 
   .social-fixed-rail__list {
@@ -3756,8 +3602,7 @@ body.night .filter-btn.active {
   box-shadow: 0 0 12px rgba(255, 157, 58, 0.2);
 }
 body.night .portfolio-item:hover,
-body.night .contact-card,
-body.night .social-link:hover {
+body.night .contact-card {
   border-color: rgba(255, 157, 58, 0.25);
   box-shadow: 0 0 18px rgba(255, 157, 58, 0.08);
 }

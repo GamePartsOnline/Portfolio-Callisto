@@ -1,65 +1,62 @@
 # ROADMAP — Portfolio Callisto Arts
 
-**Principe :** peu d’étapes, chaque étape livrable. Deux horizons : **site statique** (maintenant) et **éventuelle app Rails** (plus tard).
+Version orientée **ce qu’il reste à faire**.
 
 ---
 
-## Court terme — site statique (HTML / CSS / JS)
+## 1) Priorité immédiate (cette semaine)
 
-*Maintenance continue, sans changer de stack.*
-
-| Priorité | Piste | Détail |
-|----------|--------|--------|
-| Données | **JSON & fichiers** | `portfolio_images.json` (source liste) ; `script.js` = catégories seulement — voir [TODO.md](./TODO.md) |
-| Contenu | **Œuvres** | Nouvelles images, catégories, `hidden`, renommages — [GUIDE.md](./GUIDE.md), index [portfolio_images_INDEX.md](./portfolio_images_INDEX.md) |
-| Qualité | **Tests manuels** | Mobile, lightbox, filtres, `file://` vs serveur local — [TEST.md](./TEST.md) |
-| Perf / UX | **Optionnel** | Délégation d’événements sur les filtres (éviter doublons), lazy-load affiné, WebP si pipeline |
-
-**Hors scope immédiat :** refonte lourde du JS, second framework front.
+- [x] **Valider en prod mobile** les derniers correctifs UI :
+  - timeline visible sur téléphone
+  - barre sociale fixe à droite sur mobile
+  - bannière cookies sans warning focus/`aria-hidden`
+- [x] **Passer un cycle QA rapide** (Android + iPhone si possible) :
+  - navigation, hero, filtres portfolio, lightbox, contact, cookies
+  - pas de régression sur desktop
+- [x] **Nettoyer le cache CDN/navigateur** après bump `?v=` si un rendu ancien persiste.
 
 ---
 
-## Moyen terme — migration Rails 8 *(optionnelle)*
+## 2) Court terme (maintenance statique v2.x)
 
-**Principe :** peu d’étapes, chaque étape livrable. Voir aussi [SITE.md](./SITE.md), [ARCHITECTURE.md](./ARCHITECTURE.md), [HOSTING.md](./HOSTING.md).
+- [ ] **Contenu galerie** : ajouter/mettre à jour les œuvres dans `assets/images/portfolio_images.json` (titres génériques, années, descriptions).
+- [ ] **Workflow images** : après ajout massif, regénérer les dérivés (`thumbs/webp`) puis vérifier les fichiers manquants.
+- [ ] **Tests manuels** : garder la checklist de [TEST.md](./TEST.md) à jour (HTTP local, mobile, lightbox, filtres).
+- [ ] **Perf** : re-run Lighthouse en navigation privée et suivre surtout LCP/TBT après chaque lot de changements UI.
 
-### État actuel — v2.x (statique) ✅
-
-Site **statique** (HTML/CSS/JS), données dans `portfolio_images.json` + `content.json`, déploiement type **IONOS mutualisé** ou **Cloudflare Pages** selon [DEPLOY.md](./DEPLOY.md).
-
----
-
-### Phase 1 — App Rails + admin galerie
-
-- [ ] Projet **Rails 8** avec **SQLite**, **Tailwind**, **importmap**, **Hotwire**
-- [ ] Modèles **Category**, **Work** + **Active Storage** pour les images
-- [ ] **Authentification** admin (`rails generate authentication`)
-- [ ] Interface **/admin** : CRUD œuvres + CRUD catégories
-- [ ] Page publique **portfolio** (grille + filtres) reprenant le comportement actuel
+Références : [TODO.md](./TODO.md), [GUIDE.md](./GUIDE.md), [PERFORMANCE.md](./PERFORMANCE.md), [TEST.md](./TEST.md)
 
 ---
 
-### Phase 2 — Textes des pages
+## 3) Backlog utile (non bloquant)
 
-- [ ] Modèle ou clés **SiteContent** (hero, about, contact, footer…)
-- [ ] Formulaires admin pour éditer ces textes (Action Text ou simple `textarea` au début)
-- [ ] Brancher les vues publiques sur ces contenus
-
----
-
-### Phase 3 — Finitions (optionnel)
-
-- [ ] Timeline **journey** éditable en base (si tu veux tout changer sans toucher aux vues)
-- [ ] **i18n** FR/EN si besoin
-- [ ] Recréer effets forts (background animé, mode Nuit d’Atelier, curseur) en Tailwind + Stimulus
-- [ ] Choix **hébergement** Rails (VPS, Fly.io, etc.) + déploiement — voir [HOSTING.md](./HOSTING.md)
+- [ ] Supprimer le CSS devenu inutilisé après retrait du bloc social en bas (allègement).
+- [ ] Option UX mobile : rendre la barre sociale auto-atténuée/auto-masquée pendant le scroll.
+- [x] Option perf : minification build simple (`script.min.js`, `styles.min.css`) si déploiement figé.
+- [x] Option contenu : micro-copy FR/EN homogène (menus, titres, mentions).
 
 ---
 
-## Hors périmètre « simple »
+## 4) Moyen terme (optionnel) — migration Rails 8
 
-- Pas de Next.js, pas de deuxième stack front.
-- Pas d’obligation Docker / MinIO pour une première mise en ligne.
+À lancer seulement si besoin d’un **admin dynamique** :
+
+- [ ] App Rails 8 + auth admin
+- [ ] CRUD catégories/œuvres + upload images
+- [ ] édition des textes de pages
+- [ ] reprise du rendu public (hero, filtres, lightbox, timeline)
+
+Détails d’architecture : [SITE.md](./SITE.md), [ARCHITECTURE.md](./ARCHITECTURE.md), [HOSTING.md](./HOSTING.md)
+
+---
+
+## 5) Fait récemment (rappel)
+
+- [x] Chargement galerie via JSON (allègement JS principal).
+- [x] Ajout de `llms.txt` + cache header.
+- [x] Fix timeline mobile (visibilité par défaut + animation opt-in desktop).
+- [x] Fix a11y cookies (`aria-hidden`/focus).
+- [x] Suppression du doublon social dans la section Contact.
 
 ---
 

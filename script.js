@@ -1059,6 +1059,28 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // ============================================
+// MOBILE SOCIAL RAIL — fade while scrolling
+// ============================================
+let socialRailScrollTimer = null;
+let socialRailScrollRaf = 0;
+window.addEventListener(
+  "scroll",
+  () => {
+    if (!window.matchMedia("(max-width: 768px)").matches) return;
+    if (socialRailScrollRaf) return;
+    socialRailScrollRaf = requestAnimationFrame(() => {
+      socialRailScrollRaf = 0;
+      document.body.classList.add("is-scrolling-mobile");
+      if (socialRailScrollTimer) clearTimeout(socialRailScrollTimer);
+      socialRailScrollTimer = setTimeout(() => {
+        document.body.classList.remove("is-scrolling-mobile");
+      }, 240);
+    });
+  },
+  { passive: true },
+);
+
+// ============================================
 // HERO SCROLL BUTTON
 // ============================================
 const heroScroll = document.querySelector(".hero-scroll");
