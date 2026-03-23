@@ -13,12 +13,14 @@
     if (!banner) return;
     banner.hidden = true;
     banner.setAttribute("aria-hidden", "true");
+    banner.setAttribute("inert", "");
   }
 
   function showBanner(banner) {
     if (!banner) return;
     banner.hidden = false;
     banner.setAttribute("aria-hidden", "false");
+    banner.removeAttribute("inert");
   }
 
   function saveConsent(value) {

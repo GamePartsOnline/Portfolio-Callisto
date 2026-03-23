@@ -50,17 +50,30 @@
     />
 
     <title>Callisto Arts - Portfolio 2026</title>
-    <link rel="stylesheet" href="styles.css?v=37" />
+    <!-- Aide « LCP request discovery » : miniature légère (générer les thumbs si 404) -->
+    <link
+      rel="preload"
+      as="image"
+      fetchpriority="high"
+      href="assets/images/thumbs/graphics/sky_code-thumb.webp"
+      type="image/webp"
+    />
+    <link rel="stylesheet" href="styles.css?v=40" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Single font request + non-blocking load (reduces render-blocking vs two stylesheet links) -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Cinzel:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap"
+      />
+    </noscript>
   </head>
 
   <body>
@@ -268,7 +281,11 @@
             >
               ›
             </button>
-            <div class="hero-slide-dots" aria-hidden="true"></div>
+            <div
+              class="hero-slide-dots"
+              role="group"
+              aria-label="Navigation des images du carrousel"
+            ></div>
             <div class="glass-shine"></div>
           </div>
         </div>
@@ -902,15 +919,24 @@
       aria-modal="true"
       aria-labelledby="lightbox-title"
       aria-hidden="true"
+      inert
     >
       <button class="lightbox-close" aria-label="Close">×</button>
       <p class="lightbox-kicker" id="lightbox-kicker"></p>
       <div class="lightbox-content">
-        <img id="lightbox-image" src="" alt="" />
+        <img
+          id="lightbox-image"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+          alt=""
+          width="800"
+          height="600"
+          decoding="async"
+        />
         <iframe
           id="lightbox-video"
           class="lightbox-video"
           title="YouTube"
+          src="about:blank"
           loading="lazy"
           allow="
             accelerometer;
@@ -1004,6 +1030,7 @@
       aria-label="Information cookies"
       aria-hidden="true"
       hidden
+      inert
     >
       <div class="cookie-banner__inner container">
         <p class="cookie-banner__text">
@@ -1035,9 +1062,10 @@
       </div>
     </div>
 
-    <script src="assets/js/cookie-consent.js?v=1" defer></script>
-    <script src="script.js?v=94"></script>
-    <script src="assets/js/cursor-callisto.js?v=63"></script>
+    <script src="assets/js/cookie-consent.js?v=2" defer></script>
+    <!-- script.js sans defer : enregistre DOMContentLoaded avant la fin du parse -->
+    <script src="script.js?v=99"></script>
+    <script src="assets/js/cursor-callisto.js?v=63" defer></script>
     <script>
       (function () {
         var audio = document.getElementById("bg-music");

@@ -36,6 +36,11 @@ npm-debug.log*
 *.temp
 .cache/
 
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
 # Images (optionnel - à adapter selon vos besoins)
 # assets/images/*.jpg
 # assets/images/*.png

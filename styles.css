@@ -930,6 +930,17 @@ a:focus-visible {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--color-border);
+  transition:
+    background 0.2s ease,
+    backdrop-filter 0.2s ease,
+    -webkit-backdrop-filter 0.2s ease;
+}
+
+/* État scroll — appliqué par script.js (évite setProperty inline à chaque scroll) */
+.nav.nav--scrolled {
+  background: rgba(26, 26, 26, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
 
 .nav-container {
@@ -1360,7 +1371,8 @@ a:focus-visible {
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 20px;
   transform-style: preserve-3d;
-  transform: rotateX(10deg);
+  /* translateZ(0) : couche composée — aide Lighthouse « non-composited animations » sur le hover scale */
+  transform: rotateX(10deg) translateZ(0);
   transition: transform 0.5s ease;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
   overflow: hidden;
@@ -1469,7 +1481,7 @@ a:focus-visible {
 }
 
 .glass-3d-card:hover {
-  transform: rotateX(0deg) scale(1.5);
+  transform: rotateX(0deg) scale(1.5) translateZ(0);
   box-shadow:
     0 40px 70px rgba(0, 0, 0, 0.6),
     0 0 30px rgba(255, 255, 255, 0.2);
@@ -1963,7 +1975,8 @@ body.night .about-card-tag {
   --journey-rose: #f472b6;
   --journey-dark: #060a10;
   --journey-dark2: rgba(13, 21, 32, 0.5);
-  --journey-text: #c8d8e8;
+  /* Body copy on glass cards — solid color for WCAG AA vs dark blue-gray */
+  --journey-text: #d6e4f0;
   --journey-line: rgba(0, 255, 224, 0.25);
   background: transparent;
 }
@@ -2036,7 +2049,7 @@ body.night .about-card-tag {
 .journey-header p {
   margin-top: 16px;
   margin-bottom: 0;
-  color: rgba(200, 216, 232, 0.55);
+  color: var(--color-text-tertiary, #c4c4c4);
   letter-spacing: 0.15em;
   font-size: 0.85rem;
   font-family: "Share Tech Mono", monospace;
@@ -2069,10 +2082,10 @@ body.night .about-card-tag {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   letter-spacing: 0.1em;
   font-family: "Share Tech Mono", monospace;
-  color: rgba(200, 216, 232, 0.5);
+  color: var(--color-text-tertiary, #c4c4c4);
 }
 
 .journey-legend-dot {
@@ -2284,15 +2297,15 @@ body.night .about-card-tag {
 
 .journey-tl-tag {
   display: inline-block;
-  font-size: 0.65rem;
+  font-size: 0.7rem;
   letter-spacing: 0.12em;
   padding: 2px 8px;
   border-radius: 4px;
   margin-bottom: 12px;
   text-transform: uppercase;
-  background: rgba(0, 255, 224, 0.08);
+  background: rgba(0, 255, 224, 0.12);
   color: var(--journey-neon);
-  border: 1px solid rgba(0, 255, 224, 0.2);
+  border: 1px solid rgba(0, 255, 224, 0.35);
 }
 
 .journey-prize .journey-tl-tag {
@@ -2310,7 +2323,7 @@ body.night .about-card-tag {
 .journey-tl-content {
   font-size: 0.82rem;
   line-height: 1.7;
-  color: rgba(200, 216, 232, 0.75);
+  color: var(--journey-text);
 }
 
 .journey-tl-content strong {
@@ -2331,7 +2344,7 @@ body.night .about-card-tag {
 .journey-prize-list li {
   padding: 3px 0;
   font-size: 0.8rem;
-  color: rgba(200, 216, 232, 0.8);
+  color: var(--journey-text);
   display: flex;
   align-items: baseline;
   gap: 6px;
@@ -2353,8 +2366,9 @@ body.night .about-card-tag {
   color: #c0c0c0 !important;
 }
 
+/* Bronze lisible sur fond carte sombre (AA) */
 .journey-place-3 {
-  color: #cd7f32 !important;
+  color: #e8b078 !important;
 }
 
 @media (max-width: 640px) {
@@ -2391,6 +2405,41 @@ body.night .about-card-tag {
     border-left: 1px solid rgba(0, 255, 224, 0.3);
     border-right: none;
     transform: rotate(-45deg);
+  }
+}
+
+/* WCAG — utilisateurs « augmenter le contraste » (Windows / macOS / certains navigateurs) */
+@media (prefers-contrast: more) {
+  .journey {
+    --journey-text: #f0f6fc;
+  }
+
+  .journey-header p {
+    color: var(--color-text-secondary, #e0e0e0);
+  }
+
+  .journey-tl-content,
+  .journey-prize-list li {
+    color: var(--journey-text);
+  }
+
+  .journey-place-3 {
+    color: #fcd9a8 !important;
+  }
+
+  .journey-tl-tag {
+    font-weight: 600;
+    border-width: 2px;
+  }
+
+  .portfolio-filters .filter-btn {
+    color: var(--color-text-primary);
+    border-width: 2px;
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+
+  .filter-btn:focus-visible {
+    outline-width: 3px;
   }
 }
 
@@ -2443,7 +2492,8 @@ body.night .about-card-tag {
 .filter-btn {
   padding: var(--spacing-xs) var(--spacing-md);
   background: transparent;
-  border: 1px solid var(--color-border);
+  /* Bordure un peu plus marquée que --color-border pour repérer les cibles */
+  border: 1px solid rgba(255, 255, 255, 0.18);
   color: var(--color-text-secondary);
   border-radius: 20px;
   cursor: pointer;

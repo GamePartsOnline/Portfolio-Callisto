@@ -221,22 +221,28 @@ Dans `styles.css`, modifier les durées :
 2. **WAVE** (Extension navigateur)
    - https://wave.webaim.org/
 
-3. **Navigation clavier**
+3. **axe DevTools** (analyse des contrastes et des rôles ARIA)
+   - Extension Chrome / Edge / Firefox — voir la procédure détaillée : [A11Y_AUDIT.md](./A11Y_AUDIT.md)
+
+4. **Navigation clavier**
    - Tab pour naviguer
    - Enter/Espace pour activer
    - Escape pour fermer les modals
 
 ### Checklist WCAG
 
-- ✅ Contraste texte/fond ≥ 7:1 (AAA)
+- ✅ Contraste texte/fond : viser **AA (≥ 4,5:1)** pour le texte courant ; **AAA (≥ 7:1)** quand c’est faisable sans casser la charte néon
 - ✅ Tous les éléments interactifs accessibles au clavier
 - ✅ Labels ARIA présents
 - ✅ Focus visible sur tous les éléments
 - ✅ Images avec attribut `alt` descriptif
 - ✅ Structure sémantique HTML5
 - ✅ Respect de `prefers-reduced-motion`
+- ✅ Renfort si `prefers-contrast: more` (Journey + filtres portfolio)
 
 ## 🚀 Optimiser les performances
+
+> Lighthouse (render-blocking, cache, images, LCP) : voir **[PERFORMANCE.md](./PERFORMANCE.md)** — fichier **`_headers`** (Cloudflare Pages) + bonnes pratiques `script.js`.
 
 ### Images
 
@@ -256,6 +262,7 @@ Dans `styles.css`, modifier les durées :
 1. Garder le fichier `portfolio_images.json` organisé
 2. Supprimer les entrées d'images supprimées
 3. Valider le JSON avant de déployer
+4. Après une mise à jour du JSON en production : **incrémenter** le paramètre `?v=` dans l’URL de fetch (`script.js`, recherche `portfolio_images.json?v=`) pour invalider le cache
 
 ## 🔧 Débogage
 

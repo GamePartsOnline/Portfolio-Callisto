@@ -50,21 +50,24 @@ Clic droit sur `index.html` → Open with Live Server
 
 ### Structure
 
+Vue détaillée : **[docs/STRUCTURE.md](./docs/STRUCTURE.md)** (arborescence, flux JSON, `docs/archive/`).
+
 ```
 Portfolio-Callisto/
-├── index.html                     ← Application complète (SPA)
+├── index.html                     ← Page unique (sections hero, portfolio, about, journey…)
 ├── styles.css                     ← Design system Liquid Glass 2026
-├── script.js                      ← Logique, animations, chargement JSON
-├── content.json                   ← Textes About/Contact éditables
+├── script.js                      ← Logique, données embarquées, fetch JSON
+├── content.json                   ← Textes About/Contact éditables (optionnel)
 ├── start-server.sh                ← Serveur local
 ├── assets/
 │   ├── images/
-│   │   ├── portfolio_images.json  ← Catégories + œuvres (métadonnées)
-│   │   ├── graphics/ …            ← Dossiers par type
+│   │   ├── portfolio_images.json  ← Galerie (source de vérité en HTTP)
+│   │   └── <catégorie>/           ← Fichiers image + thumbs/webp générés
 │   └── js/
-│       └── cursor-callisto.js     ← Curseur pixel art custom
-├── docs/                          ← Documentation (voir docs/INDEX.md)
-│   └── portfolio_images_INDEX.md  ← Tableau catégorie | fichier | titre (régénéré par script)
+│       ├── cookie-consent.js
+│       └── cursor-callisto.js
+├── docs/                          ← Documentation (INDEX.md, GUIDE, PERF, etc.)
+│   └── archive/                   ← Brouillons / captures (non servis)
 └── README.md                      ← Ce fichier
 ```
 

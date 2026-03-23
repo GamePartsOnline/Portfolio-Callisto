@@ -4,6 +4,10 @@ Toutes les modifications notables de ce projet seront documentées dans ce fichi
 
 ## [Unreleased] - 2026-03-02
 
+### Projet
+
+- Nettoyage dépôt : brouillons HTML / captures déplacés vers `docs/archive/workshop-drafts/` ; fragment JSON vers `docs/archive/snippets/` ; `__pycache__` ignoré ; doc **[STRUCTURE.md](./STRUCTURE.md)** (arborescence).
+
 ### Accessibilité
 
 - `buildArtworkAltText()` pour vignettes, hero et lightbox ; logos `alt=""` + `aria-label` nav ; contrastes renforcés (footer, mentions, lecteur). Voir [A11Y.md](./A11Y.md).

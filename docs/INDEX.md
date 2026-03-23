@@ -22,6 +22,7 @@
 
 | Document | Rôle |
 |---|---|
+| **[STRUCTURE.md](./STRUCTURE.md)** | **Arborescence du dépôt** — quoi va où (`assets/` vs `docs/`) |
 | [GUIDE.md](./GUIDE.md) | Ajouter des images / JSON, couleurs, dépannage |
 | [portfolio_images_INDEX.md](./portfolio_images_INDEX.md) | **Tableau** de toutes les œuvres (`portfolio_images.json`) — `python3 scripts/generate_portfolio_index.py` |
 | [BACKGROUND.md](./BACKGROUND.md) | Background animé (couches CSS + particules) |
@@ -34,6 +35,7 @@
 ## Référence
 
 - **[CONTENT.md](./CONTENT.md)** — rappel identité & contenus (non exhaustif)
+- **[archive/](./archive/README.md)** — brouillons HTML / captures (hors site public)
 
 ---
 

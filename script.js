@@ -248,10 +248,17 @@ function syncNavMenuAriaHidden() {
   if (!navToggle || !navMenu) return;
   if (navDesktopMq.matches) {
     navMenu.removeAttribute("aria-hidden");
+    navMenu.removeAttribute("inert");
     return;
   }
   const expanded = navToggle.getAttribute("aria-expanded") === "true";
   navMenu.setAttribute("aria-hidden", expanded ? "false" : "true");
+  /* Exclut les liens du tab order quand le menu est replié (évite aria-hidden + focusables) */
+  if (expanded) {
+    navMenu.removeAttribute("inert");
+  } else {
+    navMenu.setAttribute("inert", "");
+  }
 }
 
 function focusNavToggleIfNeeded() {
@@ -1369,9 +1376,9 @@ async function loadPortfolioImages() {
     /* On file://, skip fetch (CORS) — use embedded portfolioData */
     if (!isFileProtocol()) {
       try {
+        /* Bump ?v= when le JSON change (cache navigateur + CDN) — évite Date.now() / no-store */
         const res = await fetch(
-          "assets/images/portfolio_images.json?t=" + Date.now(),
-          { cache: "no-store" },
+          "assets/images/portfolio_images.json?v=1",
         );
         if (res.ok) {
           const json = await res.json();
@@ -1392,10 +1399,14 @@ async function loadPortfolioImages() {
     const allImages = data.images || [];
     const categoryLabelMap = getCategoryNamesFromData(data);
 
-    // Build portfolio DOM items
+    const toBuild = [];
     allImages.forEach((image) => {
       const info = getPortfolioThumbInfo(image);
       if (!info) return;
+      toBuild.push({ image, info });
+    });
+
+    function createPortfolioItem(image, info) {
       const { thumbSrc, yid, category } = info;
       const item = document.createElement("div");
       item.className = "portfolio-item glass-card";
@@ -1413,6 +1424,10 @@ async function loadPortfolioImages() {
       img.alt = buildArtworkAltText(image, category, categoryLabelMap);
       img.loading = "lazy";
       img.decoding = "async";
+      img.sizes =
+        "(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 25vw";
+      img.setAttribute("width", "400");
+      img.setAttribute("height", "400");
 
       function onImgFinalError() {
         this.onerror = null;
@@ -1425,7 +1440,6 @@ async function loadPortfolioImages() {
 
       img.onerror = function () {
         this.onerror = null;
-        /* YouTube / external URL failed, or rare edge case: try local file. */
         if (image.filename) {
           const full = assetImagePath(image.filename);
           if (full && this.src !== full) {
@@ -1453,7 +1467,6 @@ async function loadPortfolioImages() {
 
       overlay.appendChild(title);
 
-      // Add year when present
       if (image.year) {
         const yearSpan = document.createElement("span");
         yearSpan.className = "portfolio-year";
@@ -1463,7 +1476,6 @@ async function loadPortfolioImages() {
 
       overlay.appendChild(categoryEl);
 
-      // Add award badge when present
       if (image.award) {
         const badge = document.createElement("span");
         badge.className = "portfolio-badge award";
@@ -1473,18 +1485,33 @@ async function loadPortfolioImages() {
 
       imageDiv.appendChild(overlay);
       item.appendChild(imageDiv);
-      portfolioGrid.appendChild(item);
-    });
+      return item;
+    }
 
-    // Re-init filters after load
-    initPortfolioFilters();
+    /* Lots de cartes + rAF → évite un seul long task (main thread / Lighthouse) */
+    const BATCH = 10;
+    let bi = 0;
+    function appendPortfolioBatch() {
+      const end = Math.min(bi + BATCH, toBuild.length);
+      for (; bi < end; bi++) {
+        const { image, info } = toBuild[bi];
+        portfolioGrid.appendChild(createPortfolioItem(image, info));
+      }
+      if (bi < toBuild.length) {
+        requestAnimationFrame(appendPortfolioBatch);
+        return;
+      }
+      initPortfolioFilters();
+      attachLightboxEvents();
+    }
 
-    // Attach lightbox events
-    attachLightboxEvents();
+    appendPortfolioBatch();
 
-    // Hero: rebuild with same data as grid (stay in sync)
-    await buildHeroSlidesFromPortfolio(data);
-    initHeroSlide();
+    /*
+     * Ne pas reconstruire le hero ici : déjà fait au DOMContentLoaded (LCP).
+     * La grille suit le JSON fetché ; le hero suit portfolioData embarqué —
+     * redéployer script.js après mise à jour du JSON pour les aligner.
+     */
   } catch (error) {
     console.error("Error loading portfolio images:", error);
   }
@@ -1545,6 +1572,8 @@ function initPortfolioFilters() {
 const lightbox = document.getElementById("lightbox");
 const lightboxImage = document.getElementById("lightbox-image");
 const lightboxVideo = document.getElementById("lightbox-video");
+/** Jamais src="" sur l’iframe : en file:// le navigateur peut charger la page courante → erreur sécurité */
+const LIGHTBOX_IFRAME_BLANK = "about:blank";
 const lightboxTitle = document.getElementById("lightbox-title");
 const lightboxDescription = document.getElementById("lightbox-description");
 const lightboxKicker = document.getElementById("lightbox-kicker");
@@ -1589,7 +1618,7 @@ function openLightbox(item) {
   } else {
     if (lightboxVideo) {
       lightboxVideo.classList.remove("lightbox-video--visible");
-      lightboxVideo.src = "";
+      lightboxVideo.src = LIGHTBOX_IFRAME_BLANK;
     }
     if (lightboxImage) {
       lightboxImage.style.display = "";
@@ -1659,6 +1688,7 @@ function openLightbox(item) {
   }
 
   if (lightbox) {
+    lightbox.removeAttribute("inert");
     lightbox.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
     lightboxClose?.focus();
@@ -1667,12 +1697,13 @@ function openLightbox(item) {
 
 function closeLightbox() {
   if (lightboxVideo) {
-    lightboxVideo.src = "";
+    lightboxVideo.src = LIGHTBOX_IFRAME_BLANK;
     lightboxVideo.classList.remove("lightbox-video--visible");
   }
   if (lightboxImage) lightboxImage.style.display = "";
   if (lightbox) {
     lightbox.setAttribute("aria-hidden", "true");
+    lightbox.setAttribute("inert", "");
     document.body.style.overflow = "";
   }
 }
@@ -1754,21 +1785,25 @@ document
 // ============================================
 // NAVBAR SCROLL EFFECT
 // ============================================
-let lastScroll = 0;
 const nav = document.querySelector(".nav");
 
-window.addEventListener("scroll", () => {
-  const currentScroll = window.pageYOffset;
-
-  if (currentScroll > 100) {
-    nav?.style.setProperty("background", "rgba(26, 26, 26, 0.95)");
-    nav?.style.setProperty("backdrop-filter", "blur(20px)");
-  } else {
-    nav?.style.setProperty("background", "rgba(26, 26, 26, 0.8)");
-    nav?.style.setProperty("backdrop-filter", "blur(10px)");
-  }
-
-  lastScroll = currentScroll;
+/* rAF : évite lectures/écritures layout synchrones à chaque événement scroll (reflows) */
+let navScrollRaf = 0;
+window.addEventListener(
+  "scroll",
+  () => {
+    if (!nav) return;
+    if (navScrollRaf) return;
+    navScrollRaf = requestAnimationFrame(() => {
+      navScrollRaf = 0;
+      nav.classList.toggle("nav--scrolled", window.pageYOffset > 100);
+    });
+  },
+  { passive: true },
+);
+/* Restauration de scroll / ancre : aligner l’état nav sans attendre un scroll */
+document.addEventListener("DOMContentLoaded", () => {
+  nav?.classList.toggle("nav--scrolled", window.pageYOffset > 100);
 });
 
 // ============================================
@@ -1800,23 +1835,25 @@ function shuffleArray(arr) {
   return a;
 }
 
-/** Pre-check that an image URL loads (avoids empty / broken hero slides). */
-function verifyImageLoads(url) {
-  return new Promise((resolve) => {
-    if (!url) {
-      resolve(false);
-      return;
-    }
-    const probe = new Image();
-    probe.onload = () => resolve(true);
-    probe.onerror = () => resolve(false);
-    probe.src = url;
-  });
+/**
+ * URL d’image pour le hero — synchrone (pas de probes réseau).
+ * Miniature WebP d’abord (poids faible → meilleur LCP), repli via onerror sur l’image.
+ */
+function resolveHeroImageUrl(img) {
+  const yid = img.youtubeId || extractYoutubeId(img.videoUrl);
+  if (yid) return getYoutubeThumbnailUrl(yid);
+  if (img.thumbnailUrl) return img.thumbnailUrl;
+  if (img.filename) {
+    const t = assetImageThumbPath(img.filename);
+    const f = assetImagePath(img.filename);
+    return t || f;
+  }
+  return "";
 }
 
 let heroCarouselIntervalId = null;
 
-async function buildHeroSlidesFromPortfolio(data) {
+function buildHeroSlidesFromPortfolio(data) {
   const container = document.getElementById("heroSlides");
   if (!container || !data || !data.images) return;
   const heroLabelMap = getCategoryNamesFromData(data);
@@ -1825,25 +1862,10 @@ async function buildHeroSlidesFromPortfolio(data) {
   const shuffled = shuffleArray(images);
   const want = Math.min(5, shuffled.length);
   const valid = [];
-  for (const img of shuffled) {
-    if (valid.length >= want) break;
-    const yHero = img.youtubeId || extractYoutubeId(img.videoUrl);
-    let url = "";
-    if (yHero) {
-      url = getYoutubeThumbnailUrl(yHero);
-      if (!(await verifyImageLoads(url))) url = "";
-    } else if (img.thumbnailUrl) {
-      url = img.thumbnailUrl;
-      if (!(await verifyImageLoads(url))) url = "";
-    } else if (img.filename) {
-      /* Fichier d’abord : évite des GET 404 sur les WebP thumbs non générés. */
-      const t = assetImageThumbPath(img.filename);
-      const f = assetImagePath(img.filename);
-      if (await verifyImageLoads(f)) url = f;
-      else if (await verifyImageLoads(t)) url = t;
-    }
-    if (!url) continue;
-    valid.push({ img, url });
+  for (let i = 0; i < shuffled.length && valid.length < want; i++) {
+    const img = shuffled[i];
+    const url = resolveHeroImageUrl(img);
+    if (url) valid.push({ img, url });
   }
   container.innerHTML = "";
   valid.forEach(({ img, url }, i) => {
@@ -1858,6 +1880,19 @@ async function buildHeroSlidesFromPortfolio(data) {
     heroImg.src = url;
     heroImg.alt = buildArtworkAltText(img, img.category, heroLabelMap);
     heroImg.className = "hero-image-3d";
+    /* LCP : premier slide — décodage prioritaire ; les autres en lazy */
+    if (i === 0) {
+      heroImg.decoding = "sync";
+      heroImg.fetchPriority = "high";
+      heroImg.setAttribute("width", "500");
+      heroImg.setAttribute("height", "300");
+    } else {
+      heroImg.decoding = "async";
+      heroImg.loading = "lazy";
+      heroImg.fetchPriority = "low";
+      heroImg.setAttribute("width", "500");
+      heroImg.setAttribute("height", "300");
+    }
     heroImg.onerror = function () {
       this.onerror = null;
       const yH = img.youtubeId || extractYoutubeId(img.videoUrl);
@@ -1984,9 +2019,9 @@ const optimizedScrollHandler = debounce(() => {
 // ============================================
 // INITIALIZATION
 // ============================================
-document.addEventListener("DOMContentLoaded", async () => {
-  // Hero: random portfolio images (then init carousel)
-  await buildHeroSlidesFromPortfolio(portfolioData);
+document.addEventListener("DOMContentLoaded", () => {
+  // Hero synchrone → image LCP dans le DOM tout de suite (évite LCP ~10–20s dû aux probes async)
+  buildHeroSlidesFromPortfolio(portfolioData);
   initHeroSlide();
 
   // Respect reduced-motion preference
@@ -2000,20 +2035,29 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.documentElement.style.setProperty("--transition-slow", "0s");
   }
 
-  // Timeline "Journey" (neon) reveal on scroll
-  initJourneyTimeline();
+  /* Journey : après 1er paint (léger) — pas trop tard pour IntersectionObserver */
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => initJourneyTimeline());
+  });
 
-  // Init background particles
-  initParticles();
+  /* Particules + parallax : idle (gros coût CPU / long tasks) */
+  function bootParticlesAndParallax() {
+    initParticles();
+    initParallax();
+  }
+  if (typeof requestIdleCallback !== "undefined") {
+    requestIdleCallback(bootParticlesAndParallax, { timeout: 1800 });
+  } else {
+    setTimeout(bootParticlesAndParallax, 150);
+  }
 
-  // Init parallax effect
-  initParallax();
-
-  // Load portfolio images from JSON
   loadPortfolioImages();
 
-  // Load editable About / Contact copy from content.json when present
-  loadContentJson();
+  if (typeof requestIdleCallback !== "undefined") {
+    requestIdleCallback(() => loadContentJson(), { timeout: 3500 });
+  } else {
+    setTimeout(() => loadContentJson(), 250);
+  }
 
   console.log("Portfolio Callisto Arts — initialized with animated background");
 });

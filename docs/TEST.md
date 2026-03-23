@@ -83,7 +83,8 @@ fetch('assets/images/portfolio_images.json')
 ## 5. Ce qui ne marche pas en `file://`
 
 - `fetch('assets/images/portfolio_images.json')` → bloqué ou en erreur selon le navigateur.  
-→ Toujours passer par un **serveur HTTP local**.
+→ Toujours passer par un **serveur HTTP local** (ex. `python3 -m http.server 8765`).
+- Une **iframe** avec `src=""` pouvait faire charger `index.html` dans le cadre et déclencher *Unsafe attempt to load URL file://… from frame…* — la lightbox utilise `about:blank` à la place.
 
 ---
 
