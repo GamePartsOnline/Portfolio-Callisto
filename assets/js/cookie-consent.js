@@ -11,6 +11,15 @@
 
   function hideBanner(banner) {
     if (!banner) return;
+    // A11y: never hide an ancestor while one of its descendants keeps focus.
+    var active = document.activeElement;
+    if (active && banner.contains(active)) {
+      if (typeof active.blur === "function") active.blur();
+      var safeFocusTarget = document.querySelector("[data-cookie-open]");
+      if (safeFocusTarget && typeof safeFocusTarget.focus === "function") {
+        safeFocusTarget.focus({ preventScroll: true });
+      }
+    }
     banner.hidden = true;
     banner.setAttribute("aria-hidden", "true");
     banner.setAttribute("inert", "");
