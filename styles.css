@@ -94,15 +94,6 @@ body {
   overflow-x: clip;
 }
 
-/* Pixel cursor canvas (Callisto) — above content, never blocks clicks */
-.cursor-canvas {
-  position: fixed;
-  inset: 0;
-  pointer-events: none !important;
-  z-index: 99999;
-  image-rendering: pixelated;
-}
-
 /* Audio player — above everything (lightbox, canvas) — clicks always work */
 .music-player-wrap {
   --music-bar-fill: var(--color-brand-neon, #00ffe0);
@@ -429,18 +420,6 @@ body.night .music-seek::-webkit-slider-thumb {
     left: 0.625rem;
     bottom: max(0.75rem, env(safe-area-inset-bottom));
   }
-}
-
-/* Hide system cursor when pixel cursor is active */
-.cursor-pixel,
-.cursor-pixel * {
-  cursor: none !important;
-}
-
-/* Music player: normal cursor + overrides rule above */
-html.cursor-pixel .music-player-wrap,
-html.cursor-pixel .music-player-wrap * {
-  cursor: pointer !important;
 }
 
 /* ============================================
@@ -3639,27 +3618,6 @@ body.night #grain {
 }
 body.night #stars-overlay {
   opacity: 1;
-}
-
-/* Workshop cursor (candle) — shown in night mode instead of pixel cursor */
-.atelier-cursor {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 99999;
-  image-rendering: pixelated;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-body.night .atelier-cursor {
-  opacity: 1;
-}
-body.night .cursor-canvas {
-  opacity: 0;
-}
-body.night.cursor-pixel,
-body.night.cursor-pixel * {
-  cursor: none !important;
 }
 
 /* Toggle Mode Atelier */

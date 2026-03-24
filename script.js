@@ -1437,34 +1437,16 @@ function initJourneyTimeline() {
 
 // ============================================
 // WORKSHOP NIGHT MODE (nuit-atelier.html)
-// Toggle, overlays (vignette, candle-light, grain, stars), curseur bougie
+// Toggle, overlays (vignette, candle-light, grain, stars)
 // ============================================
 (function atelierInit() {
   const candleLight = document.getElementById("candle-light");
   const starsCanvas = document.getElementById("stars-overlay");
-  const atelierCursor = document.getElementById("atelier-cursor");
   const toggleBtn = document.getElementById("atelier-toggle-btn");
   const banner = document.getElementById("atelier-banner");
-  if (!candleLight || !atelierCursor) return;
+  if (!candleLight) return;
 
   let isNight = false;
-  let flameT = 0;
-  const trailPts = [];
-  const PX = 3;
-  const FLAME = [
-    "...FF...",
-    "..FFFF..",
-    ".FFFFFF.",
-    ".FWWFF..",
-    "FFWWWFF.",
-    ".FFFFFF.",
-    "..FFFF..",
-    "...CC...",
-    "...CC...",
-    "..CCCC..",
-    "...CC...",
-    "........",
-  ];
 
   // Candle light follows mouse (--lx, --ly in %)
   document.addEventListener("mousemove", function (e) {
@@ -1473,88 +1455,6 @@ function initJourneyTimeline() {
     candleLight.style.setProperty("--lx", lx + "%");
     candleLight.style.setProperty("--ly", ly + "%");
   });
-
-  // Workshop cursor: mouse position + trail for workshop canvas
-  let mx = -100,
-    my = -100;
-  document.addEventListener("mousemove", function (e) {
-    mx = e.clientX;
-    my = e.clientY;
-    trailPts.push({ x: mx, y: my, life: 1 });
-    if (trailPts.length > 20) trailPts.shift();
-  });
-
-  function drawAtelierCursor() {
-    if (!atelierCursor) return;
-    const ctx = atelierCursor.getContext("2d");
-    const W = (atelierCursor.width = window.innerWidth);
-    const H = (atelierCursor.height = window.innerHeight);
-    ctx.clearRect(0, 0, W, H);
-    if (!document.body.classList.contains("night")) {
-      requestAnimationFrame(drawAtelierCursor);
-      return;
-    }
-    // Smoke trail
-    trailPts.forEach(function (p, i) {
-      const a = (i / trailPts.length) * 0.15;
-      ctx.globalAlpha = a;
-      ctx.fillStyle = "rgba(255,157,58,1)";
-      ctx.fillRect(p.x - 1, p.y - 1, 3, 3);
-    });
-    ctx.globalAlpha = 1;
-    // Candle halo
-    const halo = ctx.createRadialGradient(mx, my, 0, mx, my, 40);
-    halo.addColorStop(0, "rgba(255,157,58,0.25)");
-    halo.addColorStop(0.5, "rgba(255,157,58,0.08)");
-    halo.addColorStop(1, "transparent");
-    ctx.fillStyle = halo;
-    ctx.beginPath();
-    ctx.arc(mx, my, 40, 0, Math.PI * 2);
-    ctx.fill();
-    // Pixel flame
-    const wobble = Math.sin(flameT * 0.3) * 1.5;
-    const offsetX = mx - 4 * PX + wobble;
-    const offsetY = my - 10 * PX;
-    FLAME.forEach(function (row, gy) {
-      Array.prototype.forEach.call(row, function (c, gx) {
-        if (c === "F") {
-          const flicker =
-            0.7 + Math.sin(flameT * 0.5 + gx * 0.8 + gy * 0.3) * 0.3;
-          ctx.fillStyle =
-            "rgba(255," +
-            Math.floor(100 + flicker * 100) +
-            ",30," +
-            flicker +
-            ")";
-          ctx.fillRect(
-            Math.round(offsetX + gx * PX),
-            Math.round(offsetY + gy * PX),
-            PX,
-            PX,
-          );
-        } else if (c === "W") {
-          ctx.fillStyle =
-            "rgba(255,240,200," + (0.8 + Math.sin(flameT * 0.7) * 0.2) + ")";
-          ctx.fillRect(
-            Math.round(offsetX + gx * PX),
-            Math.round(offsetY + gy * PX),
-            PX,
-            PX,
-          );
-        } else if (c === "C") {
-          ctx.fillStyle = "rgba(220,180,140,0.9)";
-          ctx.fillRect(
-            Math.round(offsetX + gx * PX),
-            Math.round(offsetY + gy * PX),
-            PX,
-            PX,
-          );
-        }
-      });
-    });
-    flameT++;
-    requestAnimationFrame(drawAtelierCursor);
-  }
 
   let starsData = [];
   function initStars() {
@@ -1620,10 +1520,4 @@ function initJourneyTimeline() {
       }
     }
   };
-
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    atelierCursor.style.display = "none";
-  } else {
-    drawAtelierCursor();
-  }
 })();

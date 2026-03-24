@@ -59,7 +59,7 @@
       type="application/json"
       crossorigin
     />
-    <link rel="stylesheet" href="styles.css?v=53" />
+    <link rel="stylesheet" href="styles.css?v=55" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <!-- Single font request + non-blocking load (reduces render-blocking vs two stylesheet links) -->
@@ -79,11 +79,6 @@
 
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <canvas
-      id="cursor-canvas"
-      class="cursor-canvas"
-      aria-hidden="true"
-    ></canvas>
     <!-- Animated Background -->
     <div class="animated-background" aria-hidden="true">
       <div class="bg-gradient"></div>
@@ -893,11 +888,6 @@
       class="atelier-overlay"
       aria-hidden="true"
     ></canvas>
-    <canvas
-      id="atelier-cursor"
-      class="atelier-cursor"
-      aria-hidden="true"
-    ></canvas>
 
     <!-- Lightbox Modal -->
     <div
@@ -1052,8 +1042,7 @@
 
     <script src="assets/js/cookie-consent.js?v=2" defer></script>
     <!-- script.js sans defer : enregistre DOMContentLoaded avant la fin du parse -->
-    <script src="script.js?v=109"></script>
-    <script src="assets/js/cursor-callisto.js?v=63" defer></script>
+    <script src="script.js?v=110"></script>
     <script>
       (function () {
         var audio = document.getElementById("bg-music");
