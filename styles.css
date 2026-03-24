@@ -1968,6 +1968,20 @@ body.night .about-card-tag {
   flex: 0 0 0.7rem;
 }
 
+/* Extra-strong guard for Opera GX / extension overrides */
+.about-tools .about-tool-list {
+  list-style: none !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.about-tools .about-tool-list > li.about-tool {
+  list-style: none !important;
+  display: inline-flex !important;
+}
+
 .about-tool--illustrator .about-tool-badge {
   background: #ff9a00;
 }
