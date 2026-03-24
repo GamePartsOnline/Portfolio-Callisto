@@ -71,6 +71,8 @@ function assetImageWebpFullPath(filename) {
 function initParticles() {
   const particlesContainer = document.getElementById("bgParticles");
   if (!particlesContainer) return;
+  particlesContainer.innerHTML = "";
+  if (window.innerWidth < 768 || window.matchMedia("(pointer: coarse)").matches) return;
 
   // Verify container existence and set heavy z-index to ensure visibility
   // DO THIS FIRST to ensure it applies even if reduced motion is on
@@ -82,10 +84,18 @@ function initParticles() {
   const prefersReducedMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)",
   ).matches;
-  if (prefersReducedMotion) {
+  const w = window.innerWidth;
+  const coarsePointer = window.matchMedia("(pointer: coarse)").matches;
+  const lowCpu =
+    typeof navigator.hardwareConcurrency === "number" &&
+    navigator.hardwareConcurrency <= 4;
+  const lowMem =
+    typeof navigator.deviceMemory === "number" && navigator.deviceMemory <= 4;
+  const lowPowerMode = coarsePointer || w < 1024 || lowCpu || lowMem;
+
+  if (prefersReducedMotion || lowPowerMode) {
     // Only a few static particles (fewer on phone — less DOM / paint)
-    const w = window.innerWidth;
-    const staticParticles = w < 480 ? 3 : w < 768 ? 5 : 12;
+    const staticParticles = w < 480 ? 2 : w < 1024 ? 3 : 8;
     for (let i = 0; i < staticParticles; i++) {
       const particle = document.createElement("div");
       particle.className = "particle";
@@ -105,8 +115,7 @@ function initParticles() {
 
   // Fewer particles + single rAF loop (avoids 40–80 parallel GPU timers)
   // Phone (<480px): 4 · tablet / large phone (<768px): 6 · desktop: 16
-  const w = window.innerWidth;
-  const particleCount = w < 480 ? 4 : w < 768 ? 6 : 16;
+  const particleCount = w < 480 ? 3 : w < 768 ? 5 : 12;
   const particles = [];
   const states = [];
 
@@ -203,7 +212,14 @@ function initParallax() {
   const prefersReducedMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)",
   ).matches;
-  if (prefersReducedMotion) return;
+  const coarsePointer = window.matchMedia("(pointer: coarse)").matches;
+  const lowCpu =
+    typeof navigator.hardwareConcurrency === "number" &&
+    navigator.hardwareConcurrency <= 4;
+  const lowMem =
+    typeof navigator.deviceMemory === "number" && navigator.deviceMemory <= 4;
+  if (prefersReducedMotion || coarsePointer || window.innerWidth < 1024 || lowCpu || lowMem)
+    return;
 
   const orbs = document.querySelectorAll(".orb");
   const mesh = document.querySelector(".bg-mesh");

@@ -804,6 +804,71 @@ html.cursor-pixel .music-player-wrap * {
   }
 }
 
+/* Tablet/touch performance profile: reduce expensive paints/compositing */
+@media (max-width: 1024px), (pointer: coarse) {
+  .bg-mesh,
+  .bg-grid,
+  .bg-gradient::before,
+  .orb,
+  .orb::after,
+  .particle::before {
+    animation: none !important;
+  }
+
+  .bg-orbs {
+    display: none;
+  }
+
+  .bg-mesh {
+    opacity: 0.28;
+    transform: none !important;
+  }
+
+  .bg-grid {
+    opacity: 0.12;
+  }
+
+  .glass-card,
+  .nav,
+  .music-player-wrap,
+  .cookie-banner,
+  .social-fixed-rail__link {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+}
+
+/* Ultra-lite mobile: static background and no GPU-heavy visual effects */
+@media (max-width: 767px) {
+  .bg-particles,
+  .bg-orbs,
+  .bg-grid {
+    display: none !important;
+  }
+
+  .bg-gradient {
+    animation: none !important;
+    background: linear-gradient(
+      135deg,
+      rgba(20, 22, 28, 0.96) 0%,
+      rgba(24, 27, 34, 0.96) 100%
+    ) !important;
+    background-size: auto !important;
+  }
+
+  .bg-mesh {
+    animation: none !important;
+    transform: none !important;
+    opacity: 0.08 !important;
+  }
+
+  .hero-3d-card,
+  .glass-card:hover {
+    transform: none !important;
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.35) !important;
+  }
+}
+
 /* High performance mode — disable some animations if needed */
 @media (prefers-reduced-motion: no-preference) {
   @media (max-width: 768px) {
