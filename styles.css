@@ -59,12 +59,17 @@
   /* AAA for large text */
   /* Touch targets — WCAG 2.5.5 / Apple HIG (~44px) */
   --touch-target-min: 44px;
+
+  /* Fixed nav: vertical padding + tallest logo (45px @768+) + bottom border */
+  --nav-height: calc(2 * var(--spacing-sm) + 45px + 1px);
 }
 
 html {
   scroll-behavior: smooth;
-  /* Fixed nav (~60px) + encoche — ancres #section */
-  scroll-padding-top: max(72px, env(safe-area-inset-top, 0px));
+  /* Fixed nav + encoche — ancres #section */
+  scroll-padding-top: calc(
+    var(--nav-height) + 0.35rem + env(safe-area-inset-top, 0px)
+  );
   font-size: 16px;
   background-color: var(--color-bg-primary);
   /* Fallback color */
@@ -1191,15 +1196,16 @@ a:focus-visible {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* Clears fixed nav + gray border — otherwise “Welcome to my world” can
-     look cut off by this bar on mobile (two-line text). */
+  /* Clears fixed nav — content must start below bar (padding was ~68px < nav ~78px). */
   padding: var(--spacing-lg) var(--spacing-md);
   padding-top: max(
     var(--spacing-lg),
-    calc(4.25rem + env(safe-area-inset-top, 0px))
+    calc(var(--nav-height) + 0.75rem + env(safe-area-inset-top, 0px))
   );
   box-sizing: border-box;
-  scroll-margin-top: calc(4rem + env(safe-area-inset-top, 0px));
+  scroll-margin-top: calc(
+    var(--nav-height) + 0.5rem + env(safe-area-inset-top, 0px)
+  );
   position: relative;
   /* Background removed to show particles */
 }
@@ -1225,7 +1231,9 @@ a:focus-visible {
   font-weight: 300;
   color: var(--color-text-tertiary);
   margin-bottom: var(--spacing-sm);
+  /* letter-spacing widens glyphs; without word-spacing, gaps between words look too tight */
   letter-spacing: 0.1em;
+  word-spacing: 0.22em;
   text-transform: uppercase;
   text-wrap: balance;
 }
@@ -1592,7 +1600,9 @@ a:focus-visible {
 }
 
 #about {
-  scroll-margin-top: calc(4rem + env(safe-area-inset-top, 0px));
+  scroll-margin-top: calc(
+    var(--nav-height) + 0.5rem + env(safe-area-inset-top, 0px)
+  );
 }
 
 .container {
@@ -1796,6 +1806,18 @@ body.night .about-quote cite {
     background 1.5s,
     border-color 1.5s,
     box-shadow 1.5s;
+}
+a.about-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+a.about-card:focus-visible {
+  outline: 2px solid var(--color-brand-neon, #00ffe0);
+  outline-offset: 3px;
+}
+body.night a.about-card:focus-visible {
+  outline-color: var(--candle, #ff9d3a);
 }
 .about-card:hover {
   border-color: rgba(0, 255, 224, 0.2);
