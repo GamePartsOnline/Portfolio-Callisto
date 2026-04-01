@@ -1,6 +1,6 @@
 /**
- * Bandeau cookies (UE / ePrivacy) — préférence stockée en localStorage.
- * Clé versionnée pour pouvoir re-demander le consentement après changement majeur.
+ * Cookie banner (EU / ePrivacy) — preference stored in localStorage.
+ * Versioned key so consent can be re-requested after a major policy change.
  */
 (function () {
   const STORAGE_KEY = "callisto_cookie_consent_v1";
@@ -36,7 +36,7 @@
     try {
       localStorage.setItem(STORAGE_KEY, value);
     } catch (_) {
-      /* file:// ou mode privé strict */
+      /* file:// or strict private mode */
     }
     hideBanner(getBanner());
     try {

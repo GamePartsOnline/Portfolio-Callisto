@@ -47,6 +47,7 @@ Puis ouvrir `http://127.0.0.1:8080` (ou le port affiché).
 ├── script.js               # Portfolio, filtres, lightbox, hero, mode nuit…
 ├── content.json            # Textes About/Contact (optionnel)
 ├── assets/images/          # JSON galerie + images par catégorie
+├── assets/videos/webm/     # Démos WebM optionnelles (voir docs/MEDIA_WEBM.md)
 ├── assets/icons/           # Icônes « Software » (SVG)
 ├── docs/                   # Documentation ([INDEX.md](docs/INDEX.md))
 └── scripts/                # Utilitaires (miniatures WebP, index Markdown…)
@@ -61,6 +62,7 @@ Détail : [`docs/STRUCTURE.md`](docs/STRUCTURE.md).
 | Besoin | Document |
 |--------|----------|
 | Ajouter ou modifier une œuvre | [`docs/GUIDE.md`](docs/GUIDE.md) |
+| Vidéos démo légères (WebM vs YouTube) | [`docs/MEDIA_WEBM.md`](docs/MEDIA_WEBM.md) |
 | Suivi galerie / tâches | [`docs/TODO.md`](docs/TODO.md) |
 | Analyse fonctionnelle du site | [`docs/SITE.md`](docs/SITE.md) |
 | Piste d’évolution (ex. Rails) | [`docs/ROADMAP.md`](docs/ROADMAP.md) |
@@ -73,7 +75,7 @@ Scripts Python / shell à la racine et dans `scripts/` : génération de vignett
 
 - Hero avec carousel alimenté par le même JSON que la grille.
 - Portfolio filtrable ; **filtre par défaut « Graphics »** pour limiter le chargement initial (onglet « All » pour tout voir).
-- Lightbox, timeline « Journey », mode nuit, accessibilité (ARIA, clavier, `prefers-reduced-motion`).
+- Lightbox (image ou **vidéo WebM** locale si présente, sinon iframe YouTube), timeline « Journey », mode nuit, accessibilité (ARIA, clavier, `prefers-reduced-motion`).
 
 ---
 

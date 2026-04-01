@@ -29,6 +29,7 @@
 | [DESIGN.md](./DESIGN.md) | Rappel du design system (Liquid Glass) |
 | [CHANGELOG.md](./CHANGELOG.md) | Historique des versions v1 / v2 |
 | [TEST.md](./TEST.md) | Tests manuels du site statique |
+| **[MEDIA_WEBM.md](./MEDIA_WEBM.md)** | **Démos en WebM** (lightbox légère vs YouTube) — FFmpeg, `localWebm` / `videoWebm` |
 
 ---
 

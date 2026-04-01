@@ -876,12 +876,74 @@ function initPortfolioFilters() {
 const lightbox = document.getElementById("lightbox");
 const lightboxImage = document.getElementById("lightbox-image");
 const lightboxVideo = document.getElementById("lightbox-video");
+const lightboxVideoNative = document.getElementById("lightbox-video-native");
 /** Jamais src="" sur l’iframe : en file:// le navigateur peut charger la page courante → erreur sécurité */
 const LIGHTBOX_IFRAME_BLANK = "about:blank";
 const lightboxTitle = document.getElementById("lightbox-title");
 const lightboxDescription = document.getElementById("lightbox-description");
 const lightboxKicker = document.getElementById("lightbox-kicker");
 const lightboxClose = document.querySelector(".lightbox-close");
+
+function resetLightboxVideoNative() {
+  if (!lightboxVideoNative) return;
+  lightboxVideoNative.pause();
+  lightboxVideoNative.removeAttribute("src");
+  lightboxVideoNative.load();
+  lightboxVideoNative.classList.remove("lightbox-video-native--visible");
+}
+
+/**
+ * Image statique dans la lightbox (hors iframe / vidéo native).
+ */
+function fillLightboxStillImage(item, imageData, img, title) {
+  if (!lightboxImage) return;
+  lightboxImage.style.display = "";
+  lightboxImage.removeAttribute("crossorigin");
+  lightboxImage.referrerPolicy = "";
+  const fn = imageData?.filename;
+  const lightboxPlaceholderSvg =
+    "data:image/svg+xml," +
+    encodeURIComponent(
+      '<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>',
+    );
+  const catForAlt =
+    (imageData && imageData.category) ||
+    item.getAttribute("data-category") ||
+    "";
+  lightboxImage.alt = imageData
+    ? buildArtworkAltText(imageData, catForAlt, portfolioCategoryNames)
+    : img?.alt || title || "";
+  if (fn) {
+    const webp = assetImageWebpFullPath(fn);
+    const orig = assetImagePath(fn);
+    const firstSrc = webp || orig;
+    applyThirdPartyImageRequestMode(lightboxImage, firstSrc);
+    lightboxImage.src = firstSrc;
+    lightboxImage.onerror = function () {
+      this.onerror = null;
+      if (orig && this.src !== orig) {
+        this.src = orig;
+        this.onerror = function () {
+          this.onerror = null;
+          this.src = lightboxPlaceholderSvg;
+          this.alt = (this.alt || "") + " (image unavailable)";
+        };
+      } else {
+        this.src = lightboxPlaceholderSvg;
+        this.alt = (this.alt || "") + " (image unavailable)";
+      }
+    };
+  } else {
+    const src = imageData?.thumbnailUrl || img?.src || "";
+    applyThirdPartyImageRequestMode(lightboxImage, src);
+    lightboxImage.src = src;
+    lightboxImage.onerror = function () {
+      this.onerror = null;
+      this.src = lightboxPlaceholderSvg;
+      this.alt = (this.alt || "") + " (image unavailable)";
+    };
+  }
+}
 
 function openLightbox(item) {
   const img = item.querySelector("img");
@@ -913,9 +975,51 @@ function openLightbox(item) {
     "";
 
   const yid = imageData?.youtubeId || extractYoutubeId(imageData?.videoUrl);
-  const showYoutubeEmbed = Boolean(yid);
+  let webmUrl = (imageData?.videoWebm || "").trim();
+  if (!webmUrl && imageData?.localWebm === true && yid) {
+    webmUrl = `assets/videos/webm/${yid}.webm`;
+  }
+  const tryNativeWebm = Boolean(webmUrl && lightboxVideoNative);
 
-  if (showYoutubeEmbed && lightboxVideo) {
+  resetLightboxVideoNative();
+
+  if (tryNativeWebm) {
+    if (lightboxImage) lightboxImage.style.display = "none";
+    if (lightboxVideo) {
+      lightboxVideo.classList.remove("lightbox-video--visible");
+      lightboxVideo.src = LIGHTBOX_IFRAME_BLANK;
+    }
+    const v = lightboxVideoNative;
+    v.setAttribute(
+      "aria-label",
+      title ? `${title} — demo video` : "Demoscene demo video",
+    );
+    v.setAttribute("title", title || "");
+
+    const fallbackAfterWebmError = () => {
+      v.removeEventListener("loadeddata", onWebmLoaded);
+      resetLightboxVideoNative();
+      if (yid && lightboxVideo) {
+        lightboxVideo.classList.add("lightbox-video--visible");
+        lightboxVideo.src = `https://www.youtube-nocookie.com/embed/${yid}?rel=0`;
+      } else {
+        fillLightboxStillImage(item, imageData, img, title);
+      }
+    };
+
+    const onWebmLoaded = () => {
+      v.removeEventListener("error", onWebmError);
+      v.classList.add("lightbox-video-native--visible");
+    };
+    const onWebmError = () => {
+      v.removeEventListener("loadeddata", onWebmLoaded);
+      fallbackAfterWebmError();
+    };
+    v.addEventListener("loadeddata", onWebmLoaded, { once: true });
+    v.addEventListener("error", onWebmError, { once: true });
+    v.src = webmUrl;
+    v.load();
+  } else if (yid && lightboxVideo) {
     if (lightboxImage) lightboxImage.style.display = "none";
     lightboxVideo.classList.add("lightbox-video--visible");
     lightboxVideo.src = `https://www.youtube-nocookie.com/embed/${yid}?rel=0`;
@@ -924,54 +1028,7 @@ function openLightbox(item) {
       lightboxVideo.classList.remove("lightbox-video--visible");
       lightboxVideo.src = LIGHTBOX_IFRAME_BLANK;
     }
-    if (lightboxImage) {
-      lightboxImage.style.display = "";
-      lightboxImage.removeAttribute("crossorigin");
-      lightboxImage.referrerPolicy = "";
-      const fn = imageData?.filename;
-      const lightboxPlaceholderSvg =
-        "data:image/svg+xml," +
-        encodeURIComponent(
-          '<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>',
-        );
-      const catForAlt =
-        (imageData && imageData.category) ||
-        item.getAttribute("data-category") ||
-        "";
-      lightboxImage.alt = imageData
-        ? buildArtworkAltText(imageData, catForAlt, portfolioCategoryNames)
-        : img?.alt || title || "";
-      if (fn) {
-        const webp = assetImageWebpFullPath(fn);
-        const orig = assetImagePath(fn);
-        const firstSrc = webp || orig;
-        applyThirdPartyImageRequestMode(lightboxImage, firstSrc);
-        lightboxImage.src = firstSrc;
-        lightboxImage.onerror = function () {
-          this.onerror = null;
-          if (orig && this.src !== orig) {
-            this.src = orig;
-            this.onerror = function () {
-              this.onerror = null;
-              this.src = lightboxPlaceholderSvg;
-              this.alt = (this.alt || "") + " (image non disponible)";
-            };
-          } else {
-            this.src = lightboxPlaceholderSvg;
-            this.alt = (this.alt || "") + " (image non disponible)";
-          }
-        };
-      } else {
-        const src = imageData?.thumbnailUrl || img?.src || "";
-        applyThirdPartyImageRequestMode(lightboxImage, src);
-        lightboxImage.src = src;
-        lightboxImage.onerror = function () {
-          this.onerror = null;
-          this.src = lightboxPlaceholderSvg;
-          this.alt = (this.alt || "") + " (image non disponible)";
-        };
-      }
-    }
+    fillLightboxStillImage(item, imageData, img, title);
   }
 
   if (lightboxTitle) {
@@ -1005,6 +1062,7 @@ function openLightbox(item) {
 }
 
 function closeLightbox() {
+  resetLightboxVideoNative();
   if (lightboxVideo) {
     lightboxVideo.src = LIGHTBOX_IFRAME_BLANK;
     lightboxVideo.classList.remove("lightbox-video--visible");

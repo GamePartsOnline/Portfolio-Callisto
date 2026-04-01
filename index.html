@@ -8,38 +8,60 @@
     />
     <meta
       name="description"
-      content="Callisto Portfolio - Frédérique Charton, Creative artist | Fullstack Developer & AI Builder"
+      content="Callisto Arts — Frédérique Charton: creative artist, full-stack developer & AI builder. Demoscene graphics, digital art, professional work. Châlons-en-Champagne, France."
     />
     <meta
       name="keywords"
-      content="Callisto Arts, Frédérique Charton, digital painting, demoscene, animation, graphics, portfolio artist, full-stack, GPO SARL"
+      content="Callisto Arts, Frédérique Charton, digital painting, demoscene, animation, graphics, portfolio artist, full-stack developer, AI builder, France"
     />
-    <meta name="author" content="Callisto - Frédérique Charton" />
+    <meta name="author" content="Frédérique Charton — Callisto Arts" />
+    <link rel="canonical" href="https://portfolio.callistoarts.com/" />
 
-    <!-- Open Graph / Facebook -->
+    <!-- Open Graph (LinkedIn, Facebook, Slack, etc.) — absolute HTTPS URLs -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://callistoarts.com/" />
-    <meta property="og:title" content="Callisto Arts - Portfolio" />
+    <meta property="og:site_name" content="Callisto Arts" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:url" content="https://portfolio.callistoarts.com/" />
+    <meta
+      property="og:title"
+      content="Callisto Arts — Portfolio | Frédérique Charton"
+    />
     <meta
       property="og:description"
-      content="Callisto Portfolio - Creative artist | Fullstack Developer & AI Builder"
+      content="Creative artist, full-stack developer & AI builder. Portfolio: demoscene graphics, digital art, and client work. Based in Châlons-en-Champagne, France."
     />
     <meta
       property="og:image"
-      content="https://callistoarts.com/assets/images/graphics/Chromatic.jpg"
+      content="https://portfolio.callistoarts.com/assets/images/graphics/Chromatic.jpg"
+    />
+    <meta
+      property="og:image:secure_url"
+      content="https://portfolio.callistoarts.com/assets/images/graphics/Chromatic.jpg"
+    />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta
+      property="og:image:alt"
+      content="Chromatic resonance — graphics artwork, Callisto Arts portfolio"
     />
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://callistoarts.com/" />
-    <meta property="twitter:title" content="Callisto Arts - Portfolio" />
+    <!-- Twitter / X (summary_large_image, aligned with Open Graph) -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://portfolio.callistoarts.com/" />
     <meta
-      property="twitter:description"
-      content="Callisto Portfolio - Creative artist | Fullstack Developer & AI Builder"
+      name="twitter:title"
+      content="Callisto Arts — Portfolio | Frédérique Charton"
     />
     <meta
-      property="twitter:image"
-      content="https://callistoarts.com/assets/images/graphics/Chromatic.jpg"
+      name="twitter:description"
+      content="Creative artist, full-stack developer & AI builder. Demoscene graphics, digital art, and professional work."
+    />
+    <meta
+      name="twitter:image"
+      content="https://portfolio.callistoarts.com/assets/images/graphics/Chromatic.jpg"
+    />
+    <meta
+      name="twitter:image:alt"
+      content="Chromatic resonance — graphics artwork, Callisto Arts portfolio"
     />
 
     <!-- Favicon -->
@@ -49,9 +71,9 @@
       href="assets/images/logo/logo-cllisto.png"
     />
 
-    <title>Callisto Arts - Portfolio</title>
-    <!-- Pas de preload d’image fixe : le hero tire des œuvres au hasard → risque d’avertissement Chrome « preloaded but not used » -->
-    <!-- Données portfolio (hero + grille) : démarrage tôt, même URL que fetch dans script.js -->
+    <title>Callisto Arts — Portfolio | Frédérique Charton</title>
+    <!-- No fixed image preload: hero picks random works → avoids Chrome "preloaded but not used" warning -->
+    <!-- Portfolio data (hero + grid): early start, same URL as fetch in script.js -->
     <link
       rel="preload"
       href="assets/images/portfolio_images.json?v=1"
@@ -59,7 +81,7 @@
       type="application/json"
       crossorigin
     />
-    <link rel="stylesheet" href="styles.css?v=61" />
+    <link rel="stylesheet" href="styles.css?v=63" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <!-- Single font request + non-blocking load (reduces render-blocking vs two stylesheet links) -->
@@ -135,7 +157,7 @@
       </div>
     </nav>
 
-    <!-- Fixed social links (right) — seuls liens réseaux sur la page -->
+    <!-- Fixed social links (right) — only social links on the page -->
     <aside
       class="social-fixed-rail"
       aria-label="Quick links to social networks"
@@ -266,6 +288,12 @@
         </p>
         <div class="hero-subtitle-line" aria-hidden="true"></div>
 
+        <nav class="hero-cta" aria-label="Primary actions">
+          <a href="#portfolio" class="cta-link">View portfolio</a>
+          <a href="#about" class="cta-link">About</a>
+          <a href="#contact" class="cta-link cta-link--primary">Get in touch</a>
+        </nav>
+
         <div class="hero-3d-container">
           <div class="glass-3d-card hero-slide-wrapper">
             <div class="hero-slides" id="heroSlides" aria-live="polite">
@@ -288,7 +316,7 @@
             <div
               class="hero-slide-dots"
               role="group"
-              aria-label="Navigation des images du carrousel"
+              aria-label="Carousel image navigation"
             ></div>
             <div class="glass-shine"></div>
           </div>
@@ -326,16 +354,26 @@
           <div class="section-title-wrap">
             <h2 id="portfolio-title" class="section-title">Portfolio</h2>
           </div>
+          <p class="section-lead portfolio-lead" id="portfolio-lead">
+            Use the filters to explore by category. Click any artwork to open
+            details, images, and videos.
+          </p>
           <div
             class="portfolio-filters"
             id="portfolioFilters"
             role="tablist"
             aria-label="Portfolio filters"
           >
-            <!-- Filter buttons generated by script.js from categories (JSON ou embarqué) -->
+            <!-- Filter buttons generated by script.js from categories (JSON or embedded) -->
           </div>
           <div class="portfolio-grid" id="portfolioGrid">
-            <!-- Images : portfolio_images.json (HTTP) ; vide en file:// -->
+            <!-- Images: portfolio_images.json (HTTP); empty with file:// -->
+          </div>
+          <div class="portfolio-footer-cta">
+            <p class="portfolio-footer-lead">Interested in a collaboration?</p>
+            <a href="#contact" class="cta-link cta-link--primary"
+              >Contact me</a
+            >
           </div>
         </div>
       </section>
@@ -488,6 +526,12 @@
                 </div>
               </div>
             </div>
+            <p class="section-lead about-lead">
+              Want to see more work or start a conversation?
+              <a href="#portfolio">Browse the portfolio</a>
+              ·
+              <a href="#contact">Get in touch</a>
+            </p>
             <div class="about-cards" aria-label="Overview by area">
               <div class="about-card glass-card">
                 <span class="about-card-icon" aria-hidden="true">🎨</span>
@@ -536,9 +580,9 @@
               <strong>demoscene</strong>.
             </p>
 
-            <blockquote class="about-quote" cite="https://callistoarts.com">
+            <blockquote class="about-quote" cite="https://portfolio.callistoarts.com">
               <p>"My fun is DRAWING !!! ALWAYS… and for ever."</p>
-              <cite>— CALLISTO, Charton Frédérique</cite>
+              <cite>— CALLISTO, Frédérique Charton</cite>
             </blockquote>
             <div class="about-cards" aria-label="Overview by area (continued)">
               <div class="about-card glass-card">
@@ -552,10 +596,12 @@
               </div>
               <div class="about-card glass-card">
                 <span class="about-card-icon" aria-hidden="true">💻</span>
-                <h3>Developer in training</h3>
+                <h3>Full-stack &amp; generative AI</h3>
                 <p>
-                  The Hacking Project — Full Stack: HTML, CSS, JS, vibe coding
-                  with AI assistance, Ruby…
+                  Specialization in full-stack architecture and generative AI
+                  integration.<br />
+                  The Hacking Project — stack: HTML, CSS, JavaScript, Ruby,
+                  AI-assisted development…
                 </p>
                 <span class="about-card-tag">THP 2026</span>
               </div>
@@ -590,6 +636,12 @@
               SARL · AI BUILDER
             </p>
             <div class="journey-header-line" aria-hidden="true"></div>
+            <p class="journey-cta">
+              Awards and milestones below —
+              <a href="#portfolio">view current work</a>
+              or
+              <a href="#contact">discuss a project</a>.
+            </p>
           </header>
 
           <div class="journey-legend" aria-label="Timeline legend">
@@ -739,7 +791,7 @@
                   Luxembourg art gallery — 3 digital paintings exhibited.<br />
                   Logo, t-shirts &amp; trophies
                   <strong>Tokyo Demo Fest 2021</strong>.<br />
-                  Video editing training — <strong>Shadow Party</strong>.
+                  Video editing — <strong>Shadow Party</strong>.
                 </div>
               </article>
             </div>
@@ -792,11 +844,11 @@
             >
               <article class="journey-tl-card">
                 <div class="journey-tl-year">2012</div>
-                <span class="journey-tl-tag">GPO &amp; training</span>
+                <span class="journey-tl-tag">GPO &amp; Adobe</span>
                 <div class="journey-tl-content">
                   Creation of <strong>GPO SARL</strong> — repair, sale, rental
                   of arcade games &amp; pinball.<br />
-                  Illustrator &amp; VersaWorks training (Roland VS-640).<br />
+                  Illustrator &amp; VersaWorks (Roland VS-640).<br />
                   Intensive Adobe practice with Franck Payen.
                 </div>
               </article>
@@ -829,7 +881,19 @@
           <div class="contact-content">
             <div class="card glass-card">
               <div class="card-content">
-                <h3>Contact details</h3>
+                <h3>Let’s talk</h3>
+                <p class="contact-lead">
+                  For commissions, freelance art or dev, or demoscene
+                  inquiries — send a message.
+                </p>
+                <p class="contact-cta-wrap">
+                  <a
+                    href="mailto:callisto.gfx@gmail.com"
+                    class="cta-link cta-link--primary"
+                    >Email Callisto</a
+                  >
+                </p>
+                <h4 class="contact-details-heading">Contact details</h4>
                 <div class="contact-info">
                   <p id="contact-company"><strong>GPO SARL</strong></p>
                   <p id="contact-address">
@@ -865,7 +929,7 @@
             decoding="async"
           />
           <div class="footer-text">
-            <p>&copy; 2026 Callisto - Charton Frédérique / GPO</p>
+            <p>&copy; 2026 Callisto — Frédérique Charton / GPO</p>
             <p class="footer-subtitle">
               My fun is DRAWING !!! ALWAYS... and for ever.
             </p>
@@ -910,6 +974,14 @@
           height="600"
           decoding="async"
         />
+        <video
+          id="lightbox-video-native"
+          class="lightbox-video-native"
+          controls
+          playsinline
+          preload="metadata"
+          title=""
+        ></video>
         <iframe
           id="lightbox-video"
           class="lightbox-video"
@@ -997,23 +1069,22 @@
       <p id="music-player-hint" class="music-player-hint" hidden></p>
     </div>
 
-    <!-- Bandeau cookies (RGPD / ePrivacy) — préférence : localStorage -->
+    <!-- Cookie banner (GDPR / ePrivacy) — preference: localStorage -->
     <div
       id="cookie-banner"
       class="cookie-banner"
       role="region"
-      aria-label="Information cookies"
+      aria-label="Cookie notice"
       aria-hidden="true"
       hidden
       inert
     >
       <div class="cookie-banner__inner container">
         <p class="cookie-banner__text">
-          Nous utilisons des cookies et traceurs pour le fonctionnement du site
-          (techniques) et, si vous acceptez, pour des contenus intégrés (ex.
-          vidéos YouTube) et l’amélioration de l’expérience. Vous pouvez refuser
-          les cookies non essentiels ou consulter le détail dans les mentions
-          légales.
+          We use cookies and similar technologies for the site to work
+          (essential cookies) and, if you agree, for embedded content (e.g.
+          YouTube videos) and to improve your experience. You can reject
+          non-essential cookies or read more in the legal notices.
         </p>
         <div class="cookie-banner__actions">
           <button
@@ -1021,14 +1092,14 @@
             id="cookie-reject-nonessential"
             class="cookie-banner__btn cookie-banner__btn--secondary"
           >
-            Refuser les cookies non essentiels
+            Reject non-essential cookies
           </button>
           <button
             type="button"
             id="cookie-accept-all"
             class="cookie-banner__btn cookie-banner__btn--primary"
           >
-            Tout accepter
+            Accept all
           </button>
         </div>
         <p class="cookie-banner__more">
@@ -1037,9 +1108,9 @@
       </div>
     </div>
 
-    <script src="assets/js/cookie-consent.js?v=2" defer></script>
-    <!-- script.js sans defer : enregistre DOMContentLoaded avant la fin du parse -->
-    <script src="script.js?v=112"></script>
+    <script src="assets/js/cookie-consent.js?v=3" defer></script>
+    <!-- script.js without defer: registers DOMContentLoaded before end of parse -->
+    <script src="script.js?v=114"></script>
     <script>
       (function () {
         var audio = document.getElementById("bg-music");
