@@ -1440,21 +1440,12 @@ function initJourneyTimeline() {
 // Toggle, overlays (vignette, candle-light, grain, stars)
 // ============================================
 (function atelierInit() {
-  const candleLight = document.getElementById("candle-light");
   const starsCanvas = document.getElementById("stars-overlay");
   const toggleBtn = document.getElementById("atelier-toggle-btn");
   const banner = document.getElementById("atelier-banner");
-  if (!candleLight) return;
+  if (!starsCanvas) return;
 
   let isNight = false;
-
-  // Candle light follows mouse (--lx, --ly in %)
-  document.addEventListener("mousemove", function (e) {
-    const lx = ((e.clientX / window.innerWidth) * 100).toFixed(1);
-    const ly = ((e.clientY / window.innerHeight) * 100).toFixed(1);
-    candleLight.style.setProperty("--lx", lx + "%");
-    candleLight.style.setProperty("--ly", ly + "%");
-  });
 
   let starsData = [];
   function initStars() {

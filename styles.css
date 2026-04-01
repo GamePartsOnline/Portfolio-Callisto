@@ -626,34 +626,8 @@ body.night .music-seek::-webkit-slider-thumb {
   width: 2px;
   height: 2px;
   background: rgba(255, 255, 255, 1);
-  /* Pure white */
   border-radius: 50%;
   pointer-events: none;
-  box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
-}
-
-.particle::before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: 50%;
-  filter: blur(3px);
-  animation: particlePulse 3s ease-in-out infinite;
-}
-
-@keyframes particlePulse {
-  0%,
-  100% {
-    transform: scale(1);
-    opacity: 0.6;
-  }
-
-  50% {
-    transform: scale(1.5);
-    opacity: 1;
-  }
 }
 
 /* Depth effect with subtle parallax */
@@ -792,8 +766,7 @@ body.night .music-seek::-webkit-slider-thumb {
   .bg-grid,
   .bg-gradient::before,
   .orb,
-  .orb::after,
-  .particle::before {
+  .orb::after {
     animation: none !important;
   }
 
@@ -1367,7 +1340,7 @@ a:focus-visible {
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: none;
   border-radius: 20px;
   transform-style: preserve-3d;
   /* translateZ(0) : couche composée — aide Lighthouse « non-composited animations » sur le hover scale */
@@ -1516,10 +1489,7 @@ a:focus-visible {
 
 .glass-3d-card:hover {
   transform: rotateX(0deg) scale(1.5) translateZ(0);
-  box-shadow:
-    0 40px 70px rgba(0, 0, 0, 0.6),
-    0 0 30px rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 40px 70px rgba(0, 0, 0, 0.6);
   z-index: 10;
 }
 
@@ -2851,8 +2821,7 @@ body.night .about-card-tag {
   min-width: 0;
 }
 
-/* Portfolio image block — square thumbs, 4-column grid */
-/* Timeline-style (neon) border on image cards only */
+/* Portfolio image block — square thumbs (sans contour néon) */
 .portfolio-item {
   display: block;
   aspect-ratio: 1 / 1;
@@ -2864,10 +2833,9 @@ body.night .about-card-tag {
   overflow: hidden;
   position: relative;
   border-radius: 20px;
-  border: 1px solid rgba(0, 255, 224, 0.15);
-  transition:
-    border-color 0.3s,
-    box-shadow 0.3s;
+  border: none;
+  box-shadow: none;
+  transition: opacity 0.3s ease;
   touch-action: manipulation;
   -webkit-tap-highlight-color: rgba(0, 255, 224, 0.15);
 }
@@ -2878,68 +2846,9 @@ body.night .about-card-tag {
   z-index: 1;
 }
 
-/* Default hover (turquoise) */
 .portfolio-item:hover {
-  border-color: var(--color-brand-neon);
-  box-shadow:
-    0 0 20px rgba(0, 255, 224, 0.12),
-    inset 0 0 20px rgba(0, 255, 224, 0.03);
-}
-
-/* Hover border by image category */
-.portfolio-item[data-category="paintover"]:hover {
-  border-color: var(--color-brand-rose);
-  box-shadow:
-    0 0 20px var(--color-brand-rose-glow),
-    inset 0 0 20px rgba(244, 114, 182, 0.03);
-}
-.portfolio-item[data-category="IA"]:hover {
-  border-color: #a78bfa;
-  box-shadow:
-    0 0 20px rgba(167, 139, 250, 0.3),
-    inset 0 0 20px rgba(167, 139, 250, 0.03);
-}
-.portfolio-item[data-category="photo"]:hover {
-  border-color: #fbbf24;
-  box-shadow:
-    0 0 20px rgba(251, 191, 36, 0.3),
-    inset 0 0 20px rgba(251, 191, 36, 0.03);
-}
-.portfolio-item[data-category="gaming"]:hover {
-  border-color: #22d3ee;
-  box-shadow:
-    0 0 20px rgba(34, 211, 238, 0.3),
-    inset 0 0 20px rgba(34, 211, 238, 0.03);
-}
-.portfolio-item[data-category="graphics"]:hover {
-  border-color: #00ffe0;
-  box-shadow:
-    0 0 20px rgba(0, 255, 224, 0.2),
-    inset 0 0 20px rgba(0, 255, 224, 0.03);
-}
-.portfolio-item[data-category="other"]:hover {
-  border-color: rgba(255, 255, 255, 0.4);
-  box-shadow:
-    0 0 20px rgba(255, 255, 255, 0.12),
-    inset 0 0 20px rgba(255, 255, 255, 0.02);
-}
-.portfolio-item[data-category="pastel-sec"]:hover {
-  border-color: #e9d5ff;
-  box-shadow:
-    0 0 20px rgba(233, 213, 255, 0.3),
-    inset 0 0 20px rgba(233, 213, 255, 0.03);
-}
-.portfolio-item[data-category="acrylique"]:hover {
-  border-color: #fcd34d;
-  box-shadow:
-    0 0 20px rgba(252, 211, 77, 0.3),
-    inset 0 0 20px rgba(252, 211, 77, 0.03);
-}
-.portfolio-item[data-category="animation"]:hover {
-  border-color: #06b6d4;
-  box-shadow:
-    0 0 20px rgba(6, 182, 212, 0.3),
-    inset 0 0 20px rgba(6, 182, 212, 0.03);
+  border: none;
+  box-shadow: none;
 }
 
 .portfolio-image {
@@ -3469,7 +3378,8 @@ body.night .social-fixed-rail__link:focus-visible {
   max-height: 70vh;
   max-height: 70dvh;
   object-fit: contain;
-  border-radius: 12px;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 .lightbox-content iframe.lightbox-video {
@@ -3479,8 +3389,8 @@ body.night .social-fixed-rail__link:focus-visible {
   aspect-ratio: 16 / 9;
   max-height: min(70vh, 540px);
   border: none;
-  border-radius: 12px;
-  box-shadow: 0 0 32px rgba(0, 255, 224, 0.08);
+  border-radius: 0;
+  box-shadow: none;
 }
 
 .lightbox-content iframe.lightbox-video.lightbox-video--visible {
@@ -3580,27 +3490,9 @@ body.night #vignette {
   opacity: 1;
 }
 
+/* Lumière sous le curseur (bougie) : désactivée */
 #candle-light {
-  z-index: 8999;
-  background: radial-gradient(
-    ellipse 60% 50% at var(--lx, 50%) var(--ly, 50%),
-    rgba(255, 157, 58, 0.07) 0%,
-    rgba(255, 157, 58, 0.03) 40%,
-    transparent 70%
-  );
-  animation: atelier-flicker 0.1s ease infinite;
-}
-body.night #candle-light {
-  opacity: 1;
-}
-@keyframes atelier-flicker {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.85;
-  }
+  display: none !important;
 }
 
 #grain {
@@ -3773,7 +3665,6 @@ body.night .filter-btn.active {
   color: var(--candle);
   box-shadow: 0 0 12px rgba(255, 157, 58, 0.2);
 }
-body.night .portfolio-item:hover,
 body.night .contact-card {
   border-color: rgba(255, 157, 58, 0.25);
   box-shadow: 0 0 18px rgba(255, 157, 58, 0.08);
