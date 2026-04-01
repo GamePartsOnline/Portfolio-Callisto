@@ -539,6 +539,51 @@ function getCategoriesFromImages(data) {
 
 let portfolioFiltersRebuildRaf = null;
 
+/** Catégorie affichée au chargement (réduit le nombre d’images chargées vs « All »). */
+const DEFAULT_PORTFOLIO_FILTER = "graphics";
+
+/**
+ * Affiche uniquement les vignettes de la catégorie choisie (« all » = tout).
+ * @param {string} filterRaw — id catégorie ou « all » (insensible à la casse)
+ * @param {{ instant?: boolean }} [opts] — sans animation (chargement initial / lots)
+ */
+function applyPortfolioFilter(filterRaw, opts) {
+  const instant = opts && opts.instant === true;
+  const filter = (filterRaw || "all").toLowerCase();
+  const portfolioGrid = document.getElementById("portfolioGrid");
+  const portfolioItems = portfolioGrid
+    ? portfolioGrid.querySelectorAll(".portfolio-item")
+    : document.querySelectorAll(".portfolio-item");
+
+  portfolioItems.forEach((item) => {
+    const cat = (item.getAttribute("data-category") || "").toLowerCase();
+    const show = filter === "all" || cat === filter;
+    if (instant) {
+      if (show) {
+        item.style.display = "";
+        item.style.opacity = "1";
+        item.style.transform = "scale(1)";
+      } else {
+        item.style.display = "none";
+        item.style.opacity = "1";
+        item.style.transform = "scale(1)";
+      }
+      return;
+    }
+    if (show) {
+      item.style.display = "";
+      item.style.opacity = "1";
+      item.style.transform = "scale(1)";
+    } else {
+      item.style.opacity = "0";
+      item.style.transform = "scale(0.8)";
+      setTimeout(() => {
+        item.style.display = "none";
+      }, 300);
+    }
+  });
+}
+
 /**
  * After removing a thumbnail (missing file), rebuild filters to keep only
  * categories still present in the DOM.
@@ -567,6 +612,11 @@ function rebuildPortfolioFiltersFromDom() {
         a.label.localeCompare(b.label, undefined, { sensitivity: "base" }),
       );
     buildPortfolioFilterButtons(list);
+    const active = document.querySelector(
+      "#portfolioFilters .filter-btn.active",
+    );
+    const f = (active?.getAttribute("data-filter") || "all").toLowerCase();
+    applyPortfolioFilter(f, { instant: true });
     initPortfolioFilters();
     attachLightboxEvents();
   });
@@ -591,12 +641,15 @@ function buildPortfolioFilterButtons(categories) {
         { id: "other", label: "Others" },
       ];
   container.innerHTML = "";
+  const hasDefaultCategory = list.some((c) => c.id === DEFAULT_PORTFOLIO_FILTER);
+  const defaultFilterIsAll = !hasDefaultCategory;
+
   const allBtn = document.createElement("button");
   allBtn.type = "button";
-  allBtn.className = "filter-btn active";
+  allBtn.className = defaultFilterIsAll ? "filter-btn active" : "filter-btn";
   allBtn.setAttribute("data-filter", "all");
   allBtn.setAttribute("role", "tab");
-  allBtn.setAttribute("aria-selected", "true");
+  allBtn.setAttribute("aria-selected", defaultFilterIsAll ? "true" : "false");
   const totalCount =
     list.length && list.every((c) => typeof c.count === "number")
       ? list.reduce((sum, c) => sum + c.count, 0)
@@ -607,10 +660,12 @@ function buildPortfolioFilterButtons(categories) {
   list.forEach((cat) => {
     const btn = document.createElement("button");
     btn.type = "button";
-    btn.className = "filter-btn";
+    const isGraphicsDefault =
+      !defaultFilterIsAll && cat.id === DEFAULT_PORTFOLIO_FILTER;
+    btn.className = isGraphicsDefault ? "filter-btn active" : "filter-btn";
     btn.setAttribute("data-filter", cat.id);
     btn.setAttribute("role", "tab");
-    btn.setAttribute("aria-selected", "false");
+    btn.setAttribute("aria-selected", isGraphicsDefault ? "true" : "false");
     btn.textContent =
       typeof cat.count === "number" ? `${cat.label} (${cat.count})` : cat.label;
     container.appendChild(btn);
@@ -746,12 +801,21 @@ async function loadPortfolioImages() {
     /* Lots de cartes + rAF → évite un seul long task (main thread / Lighthouse) */
     const BATCH = 10;
     let bi = 0;
+    const defaultFilterBtn = document.querySelector(
+      "#portfolioFilters .filter-btn.active",
+    );
+    const defaultFilter = (
+      defaultFilterBtn?.getAttribute("data-filter") || "all"
+    ).toLowerCase();
+
     function appendPortfolioBatch() {
       const end = Math.min(bi + BATCH, toBuild.length);
       for (; bi < end; bi++) {
         const { image, info } = toBuild[bi];
         portfolioGrid.appendChild(createPortfolioItem(image, info));
       }
+      /* Masquer tout de suite hors catégorie → moins d’images lazy-loadées qu’avec « All » */
+      applyPortfolioFilter(defaultFilter, { instant: true });
       if (bi < toBuild.length) {
         requestAnimationFrame(appendPortfolioBatch);
         return;
@@ -774,47 +838,33 @@ async function loadPortfolioImages() {
 // ============================================
 // PORTFOLIO FILTERS
 // ============================================
+let portfolioFiltersDelegated = false;
+
 function initPortfolioFilters() {
-  const filterButtons = document.querySelectorAll(".filter-btn");
+  const container = document.getElementById("portfolioFilters");
   const portfolioGrid = document.getElementById("portfolioGrid");
+  if (!container) return;
 
-  filterButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const portfolioItems = portfolioGrid
-        ? portfolioGrid.querySelectorAll(".portfolio-item")
-        : document.querySelectorAll(".portfolio-item");
-      const filter = (
-        button.getAttribute("data-filter") || "all"
-      ).toLowerCase();
-
-      // Activate only the clicked button (filter by category)
+  if (!portfolioFiltersDelegated) {
+    portfolioFiltersDelegated = true;
+    container.addEventListener("click", (e) => {
+      const button = e.target.closest(".filter-btn");
+      if (!button || !container.contains(button)) return;
+      const filterButtons = container.querySelectorAll(".filter-btn");
       filterButtons.forEach((btn) => {
         btn.classList.remove("active");
         btn.setAttribute("aria-selected", "false");
       });
       button.classList.add("active");
       button.setAttribute("aria-selected", "true");
-
-      // Show items in the selected category, hide the rest
-      portfolioItems.forEach((item) => {
-        const cat = (item.getAttribute("data-category") || "").toLowerCase();
-        if (filter === "all" || cat === filter) {
-          item.style.display = "";
-          item.style.opacity = "1";
-          item.style.transform = "scale(1)";
-        } else {
-          item.style.opacity = "0";
-          item.style.transform = "scale(0.8)";
-          setTimeout(() => {
-            item.style.display = "none";
-          }, 300);
-        }
-      });
+      const filter = (button.getAttribute("data-filter") || "all").toLowerCase();
+      applyPortfolioFilter(filter, { instant: false });
     });
-  });
+  }
 
-  // Initialize transition styles
-  const portfolioItems = document.querySelectorAll(".portfolio-item");
+  const portfolioItems = portfolioGrid
+    ? portfolioGrid.querySelectorAll(".portfolio-item")
+    : document.querySelectorAll(".portfolio-item");
   portfolioItems.forEach((item) => {
     item.style.transition = "opacity 0.3s ease, transform 0.3s ease";
   });

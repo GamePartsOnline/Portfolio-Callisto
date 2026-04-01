@@ -40,10 +40,10 @@ Portfolio-Callisto/
 │   ├── A11Y_AUDIT.md
 │   └── …
 │
-├── README.md
-├── TODO.md                    # Renvoie vers docs/TODO.md
-└── TODO-220326.md             # Feuille de route optimisation (séparée)
+└── README.md
 ```
+
+Suivi des tâches galerie : uniquement **[`docs/TODO.md`](./TODO.md)**. Ancienne feuille de route optimisation : [`archive/TODO-220326.md`](./archive/TODO-220326.md).
 
 À la **racine** du dépôt se trouvent aussi des scripts de maintenance ponctuels (ex. `sync_portfolio_from_folders.py`, `update_awards.py`, `download_images.sh`) — non requis pour servir le site.
 

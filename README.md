@@ -1,201 +1,85 @@
 # Callisto Arts — Portfolio
 
-Portfolio professionnel de **Frédérique Charton (CALLISTO)**  
-Graphiste digitale, illustratrice, artiste demoscene, AI builder.
+Site vitrine **statique** pour **Frédérique Charton (CALLISTO)** : graphisme digital, demoscene, vidéo, outils créatifs et IA.
 
-**Site en production :** [portfolio.callistoarts.com](https://portfolio.callistoarts.com)  
-**Dépôt GitHub :** [github.com/GamePartsOnline/Portfolio-Callisto](https://github.com/GamePartsOnline/Portfolio-Callisto)  
-**Behance :** [behance.net/CallistoArtwork](https://www.behance.net/CallistoArtwork) — portfolio Adobe (projets, outils, GPO)  
-**LinkedIn :** [linkedin.com/in/frederique-charton](https://www.linkedin.com/in/frederique-charton)  
-**Suivi galerie :** [docs/TODO.md](./docs/TODO.md) — catégories vides, vignettes, titres, JSON / fallback `script.js`
-
----
-
-## À propos
-
-CALLISTO est une graphiste professionnelle basée à Châlons-en-Champagne, France. Active dans la scène internationale depuis 2015 :
-
-- Primée dans les plus grandes demoparties mondiales (Revision, Rsync, Inercia, Assembly, Tokyo Demo Fest)
-- Manager de GPO SARL, studio de création digitale
-- Membre organisatrice de Shadow Party
-- Certifiée TOSA Illustrator & InDesign
-- Exposée à la Pinacothèque du Luxembourg (2021)
+| | |
+|---|---|
+| **Site en production** | [portfolio.callistoarts.com](https://portfolio.callistoarts.com) |
+| **Dépôt GitHub** | [github.com/GamePartsOnline/Portfolio-Callisto](https://github.com/GamePartsOnline/Portfolio-Callisto) |
+| **Behance** | [behance.net/CallistoArtwork](https://www.behance.net/CallistoArtwork) |
+| **LinkedIn** | [linkedin.com/in/frederique-charton](https://www.linkedin.com/in/frederique-charton) |
 
 ---
 
-## Version actuelle — v2.0.0
+## Aperçu technique
 
-Site statique vanilla (HTML / CSS / JavaScript), **hébergé en production chez IONOS (mutualisé)**. Voir [docs/HOSTING.md](./docs/HOSTING.md) pour le détail et la stratégie pour la future version Rails.
+- **Stack :** HTML, CSS, JavaScript (sans framework de build obligatoire).
+- **Galerie :** `assets/images/portfolio_images.json` + fichiers sous `assets/images/` (chemins relatifs au site).
+- **Textes optionnels :** `content.json` (sections About / Contact, chargement HTTP).
+- **Déploiement :** IONOS (mutualisé) — procédures dans [`docs/DEPLOY.md`](docs/DEPLOY.md), contexte hébergement dans [`docs/HOSTING.md`](docs/HOSTING.md).
 
-### Lancer en local
+---
 
-Le site requiert un serveur HTTP (pas d'ouverture directe de `index.html`).
+## Lancer en local
 
-**Option recommandée — script inclus :**
+Le navigateur doit servir le site en **HTTP(S)** : en ouvrant `index.html` en `file://`, le chargement du JSON portfolio est bloqué ou dégradé.
+
 ```bash
 chmod +x start-server.sh
 ./start-server.sh
 ```
 
-**Option Python :**
+Ou, par exemple :
+
 ```bash
-python3 -m http.server 8765 --bind 0.0.0.0
-# Ouvrir http://127.0.0.1:8765
+python3 -m http.server 8080
 ```
 
-**Option VS Code / Cursor :**  
-Clic droit sur `index.html` → Open with Live Server
+Puis ouvrir `http://127.0.0.1:8080` (ou le port affiché).
 
 ---
 
-### Structure
-
-Vue détaillée : **[docs/STRUCTURE.md](./docs/STRUCTURE.md)** (arborescence, flux JSON, `docs/archive/`).
+## Structure du dépôt (résumé)
 
 ```
-Portfolio-Callisto/
-├── index.html                     ← Page unique (sections hero, portfolio, about, journey…)
-├── styles.css                     ← Design system Liquid Glass 2026
-├── script.js                      ← Logique, données embarquées, fetch JSON
-├── content.json                   ← Textes About/Contact éditables (optionnel)
-├── start-server.sh                ← Serveur local
-├── assets/
-│   ├── images/
-│   │   ├── portfolio_images.json  ← Galerie (source de vérité en HTTP)
-│   │   └── <catégorie>/           ← Fichiers image + thumbs/webp générés
-│   └── js/
-│       ├── cookie-consent.js
-│       └── cursor-callisto.js
-├── docs/                          ← Documentation (INDEX.md, GUIDE, PERF, etc.)
-│   └── archive/                   ← Brouillons / captures (non servis)
-└── README.md                      ← Ce fichier
+├── index.html              # Page unique
+├── styles.css              # Styles
+├── script.js               # Portfolio, filtres, lightbox, hero, mode nuit…
+├── content.json            # Textes About/Contact (optionnel)
+├── assets/images/          # JSON galerie + images par catégorie
+├── assets/icons/           # Icônes « Software » (SVG)
+├── docs/                   # Documentation ([INDEX.md](docs/INDEX.md))
+└── scripts/                # Utilitaires (miniatures WebP, index Markdown…)
 ```
 
----
-
-### Fonctionnalités
-
-**Interface publique**
-- Hero animé avec carousel automatique (5 images aléatoires)
-- Portfolio : grille 24 œuvres, filtres par catégorie
-- Lightbox plein écran avec métadonnées complètes
-- Badges récompense sur les œuvres + détail dans la **timeline** (journey)
-- Timeline chronologique 2011–2026 (style neon)
-- Mode Nuit d'Atelier (ambiance bougie, curseur flamme, étoiles)
-- Curseur pixel art custom avec traînée neon et burst au clic
-- Background animé 5 couches (gradient, mesh, orbes, grille, particules)
-
-**Technique**
-- Design Liquid Glass 2026 (glassmorphism, backdrop-filter)
-- Palette : rose `#f472b6`, turquoise `#00ffe0`, or `#ffd700`
-- WCAG AA/AAA (contraste 7:1, navigation clavier, ARIA complet)
-- Responsive : Mobile < 640px / Tablet 640–1024px / Desktop > 1024px
-- Chargement JSON dynamique avec fallback embarqué
-- `prefers-reduced-motion` respecté (toutes animations désactivées)
+Détail : [`docs/STRUCTURE.md`](docs/STRUCTURE.md).
 
 ---
 
-### Gestion du contenu (v2.0.0)
+## Contenu et maintenance
 
-**Ajouter une œuvre :**
+| Besoin | Document |
+|--------|----------|
+| Ajouter ou modifier une œuvre | [`docs/GUIDE.md`](docs/GUIDE.md) |
+| Suivi galerie / tâches | [`docs/TODO.md`](docs/TODO.md) |
+| Analyse fonctionnelle du site | [`docs/SITE.md`](docs/SITE.md) |
+| Piste d’évolution (ex. Rails) | [`docs/ROADMAP.md`](docs/ROADMAP.md) |
 
-1. Placer l'image dans `assets/images/{categorie}/`
-2. Ajouter l'entrée dans `assets/images/portfolio_images.json` :
-
-```json
-{
-  "filename": "mon-oeuvre.jpg",
-  "category": "graphics",
-  "title": "Titre de l'œuvre",
-  "description": "Description optionnelle",
-  "year": 2026,
-  "award": "1ère place @ Événement 2026"
-}
-```
-
-3. Déployer sur **IONOS** (FTP / gestionnaire de fichiers) — voir [docs/DEPLOY.md](./docs/DEPLOY.md)
-
-**Scripts utilitaires :**
-- `rename_legacy_image_files.sh` — renomme les fichiers **sur le disque** vers des slugs (à n’utiliser **que** si le `portfolio_images.json` pointe déjà vers ces noms cibles ; sinon les images 404). Après renommage, déployer les fichiers + JSON ensemble.
-- `sync_images_to_json.py` — synchronise les fichiers images avec le JSON
-- `sync_portfolio_from_folders.py` — génère le JSON depuis la structure de dossiers
-- `organize_images_by_category.py` — trie les images dans les sous-dossiers
-- `update_awards.py` — met à jour les métadonnées de récompenses
-
-**Catégories disponibles :**
-
-| Catégorie | Description |
-|---|---|
-| `graphics` | Œuvres graphiques pour compétitions (demoparties) |
-| `paintover` | Paintover et retouches artistiques |
-| `photo` | Photographies |
-| `IA` | Créations assistées par IA (prompt art) |
-| `logo` | Logos (exclus de la grille portfolio) |
+Scripts Python / shell à la racine et dans `scripts/` : génération de vignettes WebP, synchronisation JSON, etc. (voir [`docs/GUIDE.md`](docs/GUIDE.md)).
 
 ---
 
-### Récompenses (champ `award` dans le JSON)
+## Fonctionnalités notables (v2)
 
-Les œuvres avec un champ `award` affichent un **badge** sur la grille ; le détail des prix est aussi dans la **timeline** (section Journey).
-
----
-
-## Prochaine version — Rails 8
-
-Refonte vers **Rails 8**, **SQLite**, **Hotwire**, **Tailwind** — même esprit visuel (Liquid Glass), avec une **admin simple** :
-
-- **Galerie** : images, titres, catégories, ordre, champs optionnels (année, ligne récompense)
-- **Textes** : hero, about, contact, footer (sans tout complexifier)
-
-**Voir :** [docs/ROADMAP.md](./docs/ROADMAP.md), [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md), [docs/ADMIN.md](./docs/ADMIN.md)
-
----
-
-## Compatibilité navigateurs
-
-| Navigateur | Support |
-|---|---|
-| Chrome / Edge | Complet |
-| Firefox | Complet |
-| Safari | Complet |
-| Mobile browsers | Optimisé |
-
----
-
-## Documentation
-
-Toute la documentation est dans le dossier [`docs/`](./docs/) :
-
-| Fichier | Contenu |
-|---|---|
-| [docs/INDEX.md](./docs/INDEX.md) | Sommaire de la documentation |
-| [docs/SITE.md](./docs/SITE.md) | **Analyse du site actuel** (structure, JSON, technique) |
-| [docs/STACK.md](./docs/STACK.md) | Rails 8 + SQLite + Hotwire + Tailwind |
-| [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) | Architecture Rails cible (simple) |
-| [docs/ADMIN.md](./docs/ADMIN.md) | Admin : galerie + catégories + textes |
-| [docs/ROADMAP.md](./docs/ROADMAP.md) | Roadmap statique + migration Rails (optionnelle) |
-| [docs/HOSTING.md](./docs/HOSTING.md) | IONOS (actuel) · hébergement Rails (plus tard) |
-| [docs/DEPLOY.md](./docs/DEPLOY.md) | Déploiement statique · Rails à documenter |
-| [docs/DESIGN.md](./docs/DESIGN.md) | Design system Liquid Glass |
-| [docs/CONTENT.md](./docs/CONTENT.md) | Rappel contenus |
-| [docs/GUIDE.md](./docs/GUIDE.md) | Guide maintenance site statique v2 |
-| [docs/BACKGROUND.md](./docs/BACKGROUND.md) | Background animé |
-| [docs/CHANGELOG.md](./docs/CHANGELOG.md) | Historique des versions |
-| [docs/TEST.md](./docs/TEST.md) | Tests manuels v2 |
+- Hero avec carousel alimenté par le même JSON que la grille.
+- Portfolio filtrable ; **filtre par défaut « Graphics »** pour limiter le chargement initial (onglet « All » pour tout voir).
+- Lightbox, timeline « Journey », mode nuit, accessibilité (ARIA, clavier, `prefers-reduced-motion`).
 
 ---
 
 ## Licence
 
-© 2026 CALLISTO — Charton Frédérique / GPO SARL  
-Tous droits réservés. Les œuvres du portfolio appartiennent à leurs auteurs respectifs.
-
----
-
-## Remerciements
-
-Merci à toute la communauté demoscene internationale :
-Revision · Assembly · Syntax · Tokyo Demo Fest · Atascii · Shadow Party · Inercia · Rsync · Sessions · et tous les demosceners
+© 2026 CALLISTO — Frédérique Charton. Tous droits réservés sur les œuvres et le site.
 
 ---
 

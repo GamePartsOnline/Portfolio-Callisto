@@ -24,7 +24,7 @@ Version orientée **ce qu’il reste à faire**.
 - [x] **Tests manuels** : garder la checklist de [TEST.md](./TEST.md) à jour (HTTP local, mobile, lightbox, filtres).
 - [x] **Perf** : re-run Lighthouse en navigation privée et suivre surtout LCP/TBT après chaque lot de changements UI.
 
-Références : [TODO.md](./TODO.md), [GUIDE.md](./GUIDE.md), [PERFORMANCE.md](./PERFORMANCE.md), [TEST.md](./TEST.md)
+Références : [TODO.md](./TODO.md), [GUIDE.md](./GUIDE.md), [PERFORMANCE.md](./PERFORMANCE.md), [TEST.md](./TEST.md) (checklist manuelle).
 
 ---
 

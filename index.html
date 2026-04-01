@@ -8,7 +8,7 @@
     />
     <meta
       name="description"
-      content="Callisto Portfolio - Frédérique Charton, Manager at GPO SARL, Digital Drawing artist and AI Builder"
+      content="Callisto Portfolio - Frédérique Charton, Creative artist | Fullstack Developer & AI Builder"
     />
     <meta
       name="keywords"
@@ -19,10 +19,10 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://callistoarts.com/" />
-    <meta property="og:title" content="Callisto Arts - Portfolio 2026" />
+    <meta property="og:title" content="Callisto Arts - Portfolio" />
     <meta
       property="og:description"
-      content="Callisto Portfolio - Manager at GPO SARL, Digital Drawing artist and AI Builder"
+      content="Callisto Portfolio - Creative artist | Fullstack Developer & AI Builder"
     />
     <meta
       property="og:image"
@@ -32,10 +32,10 @@
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://callistoarts.com/" />
-    <meta property="twitter:title" content="Callisto Arts - Portfolio 2026" />
+    <meta property="twitter:title" content="Callisto Arts - Portfolio" />
     <meta
       property="twitter:description"
-      content="Callisto Portfolio - Manager at GPO SARL, Digital Drawing artist and AI Builder"
+      content="Callisto Portfolio - Creative artist | Fullstack Developer & AI Builder"
     />
     <meta
       property="twitter:image"
@@ -49,7 +49,7 @@
       href="assets/images/logo/logo-cllisto.png"
     />
 
-    <title>Callisto Arts - Portfolio 2026</title>
+    <title>Callisto Arts - Portfolio</title>
     <!-- Pas de preload d’image fixe : le hero tire des œuvres au hasard → risque d’avertissement Chrome « preloaded but not used » -->
     <!-- Données portfolio (hero + grille) : démarrage tôt, même URL que fetch dans script.js -->
     <link
@@ -59,7 +59,7 @@
       type="application/json"
       crossorigin
     />
-    <link rel="stylesheet" href="styles.css?v=59" />
+    <link rel="stylesheet" href="styles.css?v=61" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <!-- Single font request + non-blocking load (reduces render-blocking vs two stylesheet links) -->
@@ -67,7 +67,10 @@
       rel="preload"
       as="style"
       href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap"
-      onload="this.onload=null;this.rel='stylesheet'"
+      onload="
+        this.onload = null;
+        this.rel = 'stylesheet';
+      "
     />
     <noscript>
       <link
@@ -95,7 +98,11 @@
     <!-- Navigation -->
     <nav class="nav" role="navigation" aria-label="Main navigation">
       <div class="nav-container">
-        <a href="#home" class="nav-logo" aria-label="Callisto Arts — back to home">
+        <a
+          href="#home"
+          class="nav-logo"
+          aria-label="Callisto Arts — back to home"
+        >
           <img
             src="assets/images/logo/logo-cllisto.png"
             alt=""
@@ -250,11 +257,12 @@
           <span class="hero-name">Callisto Arts</span>
         </h1>
         <p class="hero-subtitle">
-          <span class="hero-subtitle__item">Owner at GPO SARL</span>
-          <span class="hero-subtitle__sep" aria-hidden="true">|</span>
-          <span class="hero-subtitle__item">Digital Drawing artist</span>
-          <span class="hero-subtitle__sep" aria-hidden="true">|</span>
-          <span class="hero-subtitle__item">AI Builder</span>
+          <span class="hero-subtitle__item"
+            >Creative artist | Fullstack Developer &amp; AI Builder</span
+          >
+        </p>
+        <p class="hero-tagline">
+          I build robust architectures and intelligent visual experiences.
         </p>
         <div class="hero-subtitle-line" aria-hidden="true"></div>
 
@@ -452,6 +460,12 @@
                       </span>
                       GitHub
                     </li>
+                    <li class="about-tool about-tool--trello">
+                      <span class="about-tool-badge" aria-hidden="true">
+                        <img src="assets/icons/trello.svg" alt="" />
+                      </span>
+                      Trello
+                    </li>
                     <li class="about-tool about-tool--vscode">
                       <span class="about-tool-badge" aria-hidden="true">
                         <img src="assets/icons/vscode.svg" alt="" />
@@ -472,14 +486,6 @@
                     </li>
                   </ul>
                 </div>
-                <p
-                  class="about-text"
-                  style="display: none"
-                  aria-hidden="true"
-                  id="remove-me"
-                >
-                  My full timeline (version “neon”) is available just below.
-                </p>
               </div>
             </div>
             <div class="about-cards" aria-label="Overview by area">
@@ -515,7 +521,9 @@
 
             <p class="about-upcoming" role="note">
               <span class="about-upcoming-label">Coming soon · 2026</span>
-              <strong class="about-upcoming-headline">Coming soon: Revision 2026!</strong>
+              <strong class="about-upcoming-headline"
+                >Coming soon: Revision 2026!</strong
+              >
               <strong>CORSICA GAME WEEK</strong> — conference with
               <a
                 href="https://www.mo5.com"
@@ -523,25 +531,22 @@
                 rel="noopener noreferrer"
                 >MO5.com</a
               >
-              &amp; <strong>GPO SARL</strong> —
-              <strong>Callisto</strong> &amp; <strong>Marex</strong>:
-              an introduction to the <strong>demoscene</strong>.
+              &amp; <strong>GPO SARL</strong> — <strong>Callisto</strong> &amp;
+              <strong>Marex</strong>: an introduction to the
+              <strong>demoscene</strong>.
             </p>
 
             <blockquote class="about-quote" cite="https://callistoarts.com">
               <p>"My fun is DRAWING !!! ALWAYS… and for ever."</p>
               <cite>— CALLISTO, Charton Frédérique</cite>
             </blockquote>
-            <div
-              class="about-cards"
-              aria-label="Overview by area (continued)"
-            >
+            <div class="about-cards" aria-label="Overview by area (continued)">
               <div class="about-card glass-card">
                 <span class="about-card-icon" aria-hidden="true">🤖</span>
                 <h3>AI Prompt</h3>
                 <p>
-                  ChatGPT, Perplexity, Gemini, Claude. Exploring and
-                  integrating AI tools into the creative workflow.
+                  ChatGPT, Perplexity, Gemini, Claude. Exploring and integrating
+                  AI tools into the creative workflow.
                 </p>
                 <span class="about-card-tag">AI Builder</span>
               </div>
@@ -619,8 +624,8 @@
                     >MO5.com</a
                   >
                   &amp; <strong>GPO SARL</strong> —
-                  <strong>Callisto</strong> &amp; <strong>Marex</strong>:
-                  an introduction to the <strong>demoscene</strong>.<br /><br />
+                  <strong>Callisto</strong> &amp; <strong>Marex</strong>: an
+                  introduction to the <strong>demoscene</strong>.<br /><br />
                   <strong>AI Builder</strong> — creative workflow &amp; digital
                   tooling.<br />
                   <strong>Rsync</strong> (Belgium) — 5th Modern Graphics —
@@ -662,9 +667,7 @@
                   <li class="journey-place-1">
                     1st @ Rsync — <em>Chromatic resonance</em> (Graphics)
                   </li>
-                  <li>
-                    7th @ Revision — <em>The Pixel Mouse Love Story</em>
-                  </li>
+                  <li>7th @ Revision — <em>The Pixel Mouse Love Story</em></li>
                   <li>12th @ Revision Paintover — <em>Refresh</em></li>
                   <li>18th @ Revision Photo — <em>Convergence</em></li>
                 </ul>
@@ -684,17 +687,15 @@
                     11th Modern Graphics @ Revision —
                     <em>Howl Of The Forest</em>
                   </li>
-                  <li>
-                    16th Photo @ Revision — <em>Balls Of Steel</em>
-                  </li>
+                  <li>16th Photo @ Revision — <em>Balls Of Steel</em></li>
                   <li>
                     5th @ SESSIONS in C4 LAN — <em>Luna Fly</em> (combined
                     graphics)
                   </li>
                 </ul>
                 <div class="journey-tl-content journey-tl-content-spaced">
-                  <strong>InDesign</strong> — MJM certification. First steps with
-                  generative AI.
+                  <strong>InDesign</strong> — MJM certification. First steps
+                  with generative AI.
                 </div>
               </article>
             </div>
@@ -727,12 +728,11 @@
                 <span class="journey-tl-tag">Awards + Certificates</span>
                 <ul class="journey-prize-list">
                   <li class="journey-place-1">
-                    1st @ Assembly Winter Online — <em>You Seem So Delicious</em>
+                    1st @ Assembly Winter Online —
+                    <em>You Seem So Delicious</em>
                     (Graphics)
                   </li>
-                  <li>
-                    5th @ Tokyo Demo Fest — <em>Sharko</em> (Graphics)
-                  </li>
+                  <li>5th @ Tokyo Demo Fest — <em>Sharko</em> (Graphics)</li>
                 </ul>
                 <div class="journey-tl-content journey-tl-content-spaced">
                   <strong>TOSA Illustrator</strong>.<br />
@@ -765,8 +765,8 @@
                 <span class="journey-tl-tag">Breakthrough</span>
                 <ul class="journey-prize-list">
                   <li>
-                    5th @ Revision Modern Graphics — <em>Tigre</em> /
-                    Tiger Eyes (Saarbrücken)
+                    5th @ Revision Modern Graphics — <em>Tigre</em> / Tiger Eyes
+                    (Saarbrücken)
                   </li>
                 </ul>
                 <div class="journey-tl-content journey-tl-content-spaced">
@@ -794,8 +794,8 @@
                 <div class="journey-tl-year">2012</div>
                 <span class="journey-tl-tag">GPO &amp; training</span>
                 <div class="journey-tl-content">
-                  Creation of <strong>GPO SARL</strong> — repair, sale, rental of
-                  arcade games &amp; pinball.<br />
+                  Creation of <strong>GPO SARL</strong> — repair, sale, rental
+                  of arcade games &amp; pinball.<br />
                   Illustrator &amp; VersaWorks training (Roland VS-640).<br />
                   Intensive Adobe practice with Franck Payen.
                 </div>
@@ -949,7 +949,9 @@
           aria-pressed="false"
           aria-label="Play or pause music"
         >
-          <span class="music-btn-icon music-btn-play" aria-hidden="true">▶</span>
+          <span class="music-btn-icon music-btn-play" aria-hidden="true"
+            >▶</span
+          >
           <span class="music-btn-icon music-btn-pause" aria-hidden="true" hidden
             >⏸</span
           >
@@ -986,12 +988,7 @@
           aria-label="Volume"
         />
       </div>
-      <audio
-        id="bg-music"
-        class="music-audio-hidden"
-        preload="auto"
-        loop
-      >
+      <audio id="bg-music" class="music-audio-hidden" preload="auto" loop>
         <source
           src="assets/musique/Doctor%20Gekil%20-%20Stargaze.mp3"
           type="audio/mpeg"
@@ -1042,7 +1039,7 @@
 
     <script src="assets/js/cookie-consent.js?v=2" defer></script>
     <!-- script.js sans defer : enregistre DOMContentLoaded avant la fin du parse -->
-    <script src="script.js?v=111"></script>
+    <script src="script.js?v=112"></script>
     <script>
       (function () {
         var audio = document.getElementById("bg-music");
@@ -1065,8 +1062,12 @@
           if (!seek) return;
           var p = Math.max(0, Math.min(100, pct));
           var st = window.getComputedStyle(seek);
-          var fill = (st.getPropertyValue("--music-bar-fill") || "#00ffe0").trim();
-          var track = (st.getPropertyValue("--music-bar-track") || "rgba(255,255,255,0.12)").trim();
+          var fill = (
+            st.getPropertyValue("--music-bar-fill") || "#00ffe0"
+          ).trim();
+          var track = (
+            st.getPropertyValue("--music-bar-track") || "rgba(255,255,255,0.12)"
+          ).trim();
           seek.style.background =
             "linear-gradient(90deg, " +
             fill +
@@ -1147,7 +1148,9 @@
                 p.then(syncBtn).catch(function (err) {
                   showHint(
                     "Playback failed: " +
-                      (err && err.message ? err.message : "try again or check the MP3 file"),
+                      (err && err.message
+                        ? err.message
+                        : "try again or check the MP3 file"),
                     true,
                   );
                 });
@@ -1192,7 +1195,8 @@
         audio.addEventListener("error", function () {
           var er = audio.error;
           var msg = "Audio file missing or unreadable.";
-          if (er && er.code === 4) msg = "Format not supported by this browser.";
+          if (er && er.code === 4)
+            msg = "Format not supported by this browser.";
           showHint(msg, true);
           if (seek) seek.disabled = true;
         });

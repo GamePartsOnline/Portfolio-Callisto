@@ -36,6 +36,14 @@ npm-debug.log*
 *.temp
 .cache/
 
+# Tests E2E / Playwright (artefacts locaux)
+test-results/
+playwright-report/
+blob-report/
+
+# Sources Adobe Illustrator lourdes (non servies sur le site ; garder hors dépôt)
+assets/Icones/*.ai
+
 # Python
 __pycache__/
 *.py[cod]

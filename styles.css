@@ -1280,6 +1280,21 @@ a:focus-visible {
   user-select: none;
 }
 
+.hero-tagline {
+  max-width: min(36rem, 100%);
+  margin: 0 auto var(--spacing-sm);
+  padding-inline: max(0.75rem, env(safe-area-inset-left, 0px))
+    max(0.75rem, env(safe-area-inset-right, 0px));
+  box-sizing: border-box;
+  font-size: clamp(0.82rem, 2.6vw, 1.05rem);
+  font-weight: 400;
+  line-height: 1.55;
+  letter-spacing: 0.02em;
+  color: var(--color-text-tertiary);
+  text-align: center;
+  text-wrap: balance;
+}
+
 /* Single readable column on very small screens — no text clipped at edges */
 @media (max-width: 520px) {
   .hero-subtitle {
@@ -2013,6 +2028,9 @@ body.night .about-card-tag {
 }
 .about-tool--github .about-tool-badge {
   background: #24292f;
+}
+.about-tool--trello .about-tool-badge {
+  background: #0079bf;
 }
 .about-tool--vscode .about-tool-badge {
   background: #007acc;
@@ -3612,7 +3630,8 @@ body.night .section-title .neon-text {
 }
 
 body.night .hero-title,
-body.night .hero-subtitle {
+body.night .hero-subtitle,
+body.night .hero-tagline {
   color: #ffe8c8 !important;
   text-shadow: none !important;
 }
