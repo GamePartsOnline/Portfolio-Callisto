@@ -1208,7 +1208,7 @@ a:focus-visible {
   width: 100%;
   box-sizing: border-box;
   overflow: visible;
-  /* Margin for title glow + notches (avoids C/S clipped with overflow-x on body) */
+  /* Extra horizontal padding for long lines (avoids clipping with overflow-x on body) */
   padding-left: max(var(--spacing-sm), env(safe-area-inset-left, 0px));
   padding-right: max(var(--spacing-sm), env(safe-area-inset-right, 0px));
 }
@@ -1239,19 +1239,11 @@ a:focus-visible {
   font-size: clamp(1.85rem, 8.5vw, var(--font-size-4xl));
   padding-inline: 0.4em;
   box-sizing: border-box;
-  text-shadow:
-    0 0 14px var(--color-brand-rose-glow),
-    0 0 28px var(--color-brand-rose-glow);
-  transition:
-    color var(--transition-base),
-    text-shadow var(--transition-base);
+  text-shadow: none;
+  transition: color var(--transition-base);
 }
 .hero-name:hover {
   color: var(--color-brand-neon);
-  text-shadow:
-    0 0 18px var(--color-brand-neon-glow),
-    0 0 36px var(--color-brand-neon-glow),
-    0 0 56px rgba(0, 255, 224, 0.22);
 }
 
 .hero-subtitle {
@@ -1567,16 +1559,6 @@ a:focus-visible {
   .hero-name {
     font-size: 5rem;
     padding-inline: 0.2em;
-    text-shadow:
-      0 0 24px var(--color-brand-rose-glow),
-      0 0 48px var(--color-brand-rose-glow);
-  }
-
-  .hero-name:hover {
-    text-shadow:
-      0 0 24px var(--color-brand-neon-glow),
-      0 0 48px var(--color-brand-neon-glow),
-      0 0 72px rgba(0, 255, 224, 0.25);
   }
 
   .hero-greeting {
@@ -3624,11 +3606,15 @@ body.night {
 
 /* Unify titles / neon → candle in night mode */
 body.night .section-title,
-body.night .section-title .neon-text,
+body.night .section-title .neon-text {
+  color: #ffe8c8 !important;
+  text-shadow: 0 0 30px rgba(255, 157, 58, 0.35);
+}
+
 body.night .hero-title,
 body.night .hero-subtitle {
   color: #ffe8c8 !important;
-  text-shadow: 0 0 30px rgba(255, 157, 58, 0.35);
+  text-shadow: none !important;
 }
 
 body.night .hero-subtitle__sep {
