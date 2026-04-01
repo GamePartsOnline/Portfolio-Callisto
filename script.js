@@ -332,9 +332,11 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     const target = document.querySelector(href);
 
     if (target) {
-      const offsetTop = target.offsetTop - 60; // Offset for fixed nav
+      const navOffset = 60;
+      const top =
+        target.getBoundingClientRect().top + window.scrollY - navOffset;
       window.scrollTo({
-        top: offsetTop,
+        top: Math.max(0, top),
         behavior: "smooth",
       });
       /* Skip link + keyboard: move focus to main landmark after scroll */

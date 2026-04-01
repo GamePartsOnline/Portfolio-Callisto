@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta
+      name="description"
+      content="Build Log — Callisto Arts: technical journal and proof of work. How I solve real engineering problems (THP, APIs, performance)."
+    />
+    <link rel="canonical" href="https://portfolio.callistoarts.com/build-log.html" />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:url"
+      content="https://portfolio.callistoarts.com/build-log.html"
+    />
+    <meta property="og:title" content="Build Log | Callisto Arts" />
+    <meta
+      property="og:description"
+      content="Public proof of work: technical problems solved, trade-offs, and lessons learned."
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="assets/images/logo/logo-cllisto.png"
+    />
+    <title>Build Log | Callisto Arts</title>
+    <link rel="stylesheet" href="styles.css?v=71" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
+  </head>
+  <body class="legal-page-body build-log-body">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <div class="animated-background" aria-hidden="true">
+      <div class="bg-gradient"></div>
+      <div class="bg-mesh"></div>
+      <div class="bg-particles" aria-hidden="true"></div>
+      <div class="bg-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+      </div>
+      <div class="bg-grid"></div>
+    </div>
+
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+      <div class="nav-container">
+        <a href="index.html#welcome" class="nav-logo" aria-label="Callisto Arts — Welcome to my world (home)">
+          <img
+            src="assets/images/logo/logo-cllisto.png"
+            alt=""
+            class="logo-img"
+            width="40"
+            height="40"
+            decoding="async"
+          />
+          <span class="logo-text">Callisto Arts</span>
+        </a>
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-label="Open or close menu"
+          aria-controls="navMenu"
+          aria-expanded="false"
+          id="navToggle"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <ul class="nav-menu" id="navMenu">
+          <li>
+            <a
+              href="build-log.html"
+              class="nav-link"
+              aria-current="page"
+              title="Full-stack &amp; AI"
+              >Build Log</a
+            >
+          </li>
+          <li>
+            <a
+              href="index.html#portfolio"
+              class="nav-link"
+              title="Portfolio — demoscene &amp; art"
+              >Portfolio</a
+            >
+          </li>
+          <li>
+            <a
+              href="services.html"
+              class="nav-link"
+              title="GPO &amp; Graph2Print"
+              >Services</a
+            >
+          </li>
+          <li>
+            <a href="index.html#about" class="nav-link">About / Contact</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main id="main-content" class="legal-page-main build-log-main" tabindex="-1">
+      <div class="container">
+        <header class="legal-page-header build-log-header">
+          <h1 class="build-log-title">Build Log</h1>
+          <p class="build-log-subtitle">Build journal — proof of work</p>
+          <p class="build-log-lead">
+            Clients don’t only buy code — they buy your ability to untangle hard
+            problems. This page is my <strong>public engineering journal</strong>:
+            real constraints, failed attempts, and what actually moved the needle.
+            (The Hacking Project / THP is part of how I sharpen that craft.)
+          </p>
+          <p class="legal-page-updated build-log-updated">
+            Updated March 2026 · New entries as I ship them
+          </p>
+        </header>
+
+        <article
+          class="legal-page-article glass-card build-log-entry"
+          itemscope
+          itemtype="https://schema.org/TechArticle"
+        >
+          <h2 itemprop="headline">
+            How I took an OpenAI-style API path from ~5s down to ~1s
+          </h2>
+          <p class="build-log-meta">
+            <span itemprop="author">Callisto</span> · THP / backend focus ·
+            <time itemprop="datePublished" datetime="2026-03-01">March 2026</time>
+          </p>
+          <p itemprop="description">
+            <strong>Context.</strong> A small feature needed a language model to
+            classify user intent before running heavier logic. The first version
+            was “simple”: one HTTP call, wait for the full completion, then branch.
+            In practice, perceived latency hovered around <strong>five seconds</strong>
+            — unacceptable for an interactive flow.
+          </p>
+
+          <h3 class="build-log-h3">What was going wrong</h3>
+          <ul class="build-log-list">
+            <li>
+              I was waiting for a <strong>full completion JSON</strong> before doing
+              anything in the UI — no streaming, no early exit when confidence was
+              already high enough.
+            </li>
+            <li>
+              The prompt carried <strong>redundant context</strong> on every request
+              (static instructions repeated instead of cached or shortened).
+            </li>
+            <li>
+              Downstream work ran <strong>sequentially</strong> after the LLM
+              returned, so the clock kept running even when the model part was done.
+            </li>
+          </ul>
+
+          <h3 class="build-log-h3">What I changed</h3>
+          <ul class="build-log-list">
+            <li>
+              Switched to the API’s <strong>streaming</strong> mode and parsed the
+              first high-confidence label from partial tokens — enough to trigger
+              the next step without waiting for the last byte.
+            </li>
+            <li>
+              Moved stable system instructions to a <strong>minimal template</strong>
+              and stripped examples to what the classifier actually needed (few-shot,
+              not a manual).
+            </li>
+            <li>
+              Where the stack allowed it, ran <strong>independent I/O in parallel</strong>
+              after the first token window (e.g. prefetching data keyed by predicted
+              intent).
+            </li>
+          </ul>
+
+          <h3 class="build-log-h3">Result</h3>
+          <p>
+            End-to-end time for the “happy path” dropped to about
+            <strong>one second</strong> in typical conditions — not magic, just
+            measuring, cutting wasted waits, and refusing to block the UI on a full
+            completion when a partial signal is enough.
+          </p>
+
+          <p class="build-log-takeaway">
+            <strong>Takeaway.</strong> Seniority isn’t only knowing APIs — it’s
+            knowing how to <em>read latency</em>, question sequential habits, and ship
+            incremental fixes you can prove with numbers.
+          </p>
+        </article>
+
+        <p class="build-log-footer-note">
+          More case studies (caching, auth, edge cases) will land here. Want a
+          similar breakdown on your stack?
+          <a href="index.html#contact">Get in touch</a>.
+        </p>
+
+        <p class="legal-page-back">
+          <a href="index.html" class="legal-page-back-link cta-link"
+            >← Back to home</a
+          >
+        </p>
+      </div>
+    </main>
+
+    <footer class="footer footer--subpage" role="contentinfo">
+      <div class="container">
+        <div class="footer-content footer-content--compact">
+          <p class="footer-text footer-text--compact">
+            <a href="index.html">Home</a>
+            <span aria-hidden="true"> · </span>
+            <a href="services.html">Services</a>
+            <span aria-hidden="true"> · </span>
+            <a href="build-log.html">Build Log</a>
+            <span aria-hidden="true"> · </span>
+            <a href="mentions-legales.html">Legal notices</a>
+          </p>
+          <p class="footer-subtitle">&copy; 2026 Callisto Arts</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        var t = document.getElementById("navToggle");
+        var m = document.getElementById("navMenu");
+        var mq = window.matchMedia("(max-width: 767px)");
+        function syncNav() {
+          if (!m) return;
+          if (mq.matches) {
+            var open = t && t.getAttribute("aria-expanded") === "true";
+            m.setAttribute("aria-hidden", open ? "false" : "true");
+          } else {
+            m.removeAttribute("aria-hidden");
+          }
+        }
+        syncNav();
+        mq.addEventListener("change", syncNav);
+        if (t) {
+          t.addEventListener("click", function () {
+            var open = t.getAttribute("aria-expanded") === "true";
+            t.setAttribute("aria-expanded", open ? "false" : "true");
+            syncNav();
+          });
+        }
+      })();
+    </script>
+  </body>
+</html>
