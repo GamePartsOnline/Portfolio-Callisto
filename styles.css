@@ -3972,13 +3972,17 @@ body.night footer {
   margin-top: var(--spacing-sm) !important;
 }
 
-/* Chaque entrée peut avoir deux blocs .build-log-body-locale--fr / --en ; lequel s’affiche suit <html lang> (script.js). */
-html[lang="fr"] .build-log-body-locale--en {
+/* Journal : deux corps FR/EN — FR par défaut (sans quoi les deux blocs peuvent s’afficher si [lang] ne matche pas). */
+.build-log-body-locale--en {
   display: none !important;
 }
 
 html[lang="en"] .build-log-body-locale--fr {
   display: none !important;
+}
+
+html[lang="en"] .build-log-body-locale--en {
+  display: block !important;
 }
 
 .build-log-lang-note {
@@ -4050,16 +4054,30 @@ html[lang="en"] .build-log-body-locale--fr {
 
 .footer-content--compact {
   justify-content: center;
+  align-items: center;
   text-align: center;
+  gap: 0.65rem;
+  width: 100%;
 }
 
 .footer-site-nav {
   margin: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
-.footer-text--compact {
-  margin: 0;
+/* Annule .footer-text { flex-direction: column } : une seule ligne de liens centrée, retour à la ligne si besoin */
+.footer-text.footer-text--compact {
+  display: block;
+  width: 100%;
+  max-width: min(100%, 44rem);
+  margin: 0 auto;
+  padding: 0 var(--spacing-sm);
+  box-sizing: border-box;
   font-size: 0.9rem;
+  line-height: 1.7;
+  text-align: center;
 }
 
 .footer-text--compact a {
@@ -4080,6 +4098,10 @@ html[lang="en"] .build-log-body-locale--fr {
   margin: 0.65rem 0 0;
   font-size: 0.82rem;
   text-align: center;
+}
+
+.footer-content--compact .footer-cookies-line {
+  margin: 0;
 }
 
 .footer-cookies-line a {
