@@ -16,7 +16,35 @@
 | Données | `assets/images/portfolio_images.json` — catégories + liste d’images |
 | Textes éditables | `content.json` — intro About + infos Contact (chargés en JS) ; **le reste du texte est dans le HTML** |
 | Polices | Google Fonts : Inter, Share Tech Mono, Cinzel |
-| Meta / SEO | `index.html` — description, Open Graph, Twitter (URLs `callistoarts.com` dans les balises) |
+| Meta / SEO | Voir [§ Meta / SEO et i18n](#meta-seo-i18n) — `lang`, Open Graph, Twitter |
+
+---
+
+<a id="meta-seo-i18n"></a>
+
+## Meta / SEO et i18n
+
+Le site mélange **HTML par défaut en français** (`index.html`, `lang="fr"`, contenu i18n via `i18n.json`) et des **pages satellites en anglais** (`build-log.html`, `services.html`, `mentions-legales.html`, `lang="en"`). Les **moteurs et réseaux sociaux** lisent surtout le HTML statique : les balises meta doivent refléter la **langue affichée par défaut** de chaque URL et rester cohérentes avec `<html lang>`.
+
+### Règles
+
+| Règle | Détail |
+|--------|--------|
+| **`lang`** | Une valeur par page : `fr` pour l’accueil (contenu initial FR) ; `en` pour les pages entièrement rédigées en anglais. |
+| **`og:locale`** | Aligné sur la langue des champs **og:title** / **og:description** : `fr_FR` pour l’index, `en_US` pour les pages EN. |
+| **`og:locale:alternate`** | Sur l’index uniquement : indiquer l’autre locale (`en_US` si la principale est `fr_FR`) pour signaler le bilinguisme côté partages Open Graph. |
+| **Descriptions** | `meta name="description"`, `og:description`, `twitter:description` : même langue que le périmètre de la page (FR pour l’accueil ; EN pour build-log, services, mentions). |
+
+### État dans le dépôt (référence)
+
+| Page | `<html lang>` | `og:locale` | Remarque |
+|------|----------------|-------------|----------|
+| `index.html` | `fr` | `fr_FR` + `alternate` `en_US` | Métas FR ; visiteur peut passer en EN dans l’UI sans changer l’URL. |
+| `build-log.html` | `en` | `en_US` | Métas EN. |
+| `services.html` | `en` | `en_US` | Métas EN. |
+| `mentions-legales.html` | `en` | — | Pas d’Open Graph obligatoire ; `meta description` EN. |
+
+Après toute modification de titres ou de textes partagés (OG/Twitter), revérifier la cohérence `lang` / locale / langue du snippet. Détail i18n côté JS : [I18N.md](./I18N.md).
 
 ---
 
@@ -60,4 +88,4 @@ La **timeline** (journey) peut rester en second temps (édition HTML → plus ta
 
 ---
 
-*Document généré à partir de l’analyse du dépôt — Mars 2026.*
+*Document généré à partir de l’analyse du dépôt — Avril 2026.*

@@ -12,6 +12,7 @@
     />
     <link rel="canonical" href="https://portfolio.callistoarts.com/build-log.html" />
     <meta property="og:type" content="article" />
+    <meta property="og:locale" content="en_US" />
     <meta
       property="og:url"
       content="https://portfolio.callistoarts.com/build-log.html"
@@ -27,7 +28,7 @@
       href="assets/images/logo/logo-cllisto.png"
     />
     <title>Build Log | Callisto Arts</title>
-    <link rel="stylesheet" href="styles.css?v=71" />
+    <link rel="stylesheet" href="styles.css?v=73" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -84,13 +85,7 @@
         </button>
         <ul class="nav-menu" id="navMenu">
           <li>
-            <a
-              href="build-log.html"
-              class="nav-link"
-              aria-current="page"
-              title="Full-stack &amp; AI"
-              >Build Log</a
-            >
+            <a href="index.html#about" class="nav-link">About / Contact</a>
           </li>
           <li>
             <a
@@ -109,7 +104,13 @@
             >
           </li>
           <li>
-            <a href="index.html#about" class="nav-link">About / Contact</a>
+            <a
+              href="build-log.html"
+              class="nav-link"
+              aria-current="page"
+              title="Full-stack &amp; AI"
+              >Build Log</a
+            >
           </li>
         </ul>
       </div>
@@ -131,6 +132,11 @@
           </p>
         </header>
 
+        <!--
+          New entry: duplicate the <article class="build-log-entry"> block below
+          (newest first if you prefer). Update .build-log-updated, <time datetime>,
+          and bump styles.css?v in <head>. See docs/BUILD_LOG.md.
+        -->
         <article
           class="legal-page-article glass-card build-log-entry"
           itemscope

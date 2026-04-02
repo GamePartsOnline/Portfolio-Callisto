@@ -74,12 +74,6 @@ function initParticles() {
   particlesContainer.innerHTML = "";
   if (window.innerWidth < 768 || window.matchMedia("(pointer: coarse)").matches) return;
 
-  // Verify container existence and set heavy z-index to ensure visibility
-  // DO THIS FIRST to ensure it applies even if reduced motion is on
-  if (particlesContainer) {
-    particlesContainer.style.zIndex = "10"; // Force visibility above other layers
-  }
-
   // Respect prefers-reduced-motion
   const prefersReducedMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)",
@@ -656,8 +650,11 @@ function buildPortfolioFilterButtons(categories) {
     list.length && list.every((c) => typeof c.count === "number")
       ? list.reduce((sum, c) => sum + c.count, 0)
       : null;
+  const allWord = getPortfolioFilterAllWord();
   allBtn.textContent =
-    totalCount != null && totalCount > 0 ? `All (${totalCount})` : "All";
+    totalCount != null && totalCount > 0
+      ? `${allWord} (${totalCount})`
+      : allWord;
   container.appendChild(allBtn);
   list.forEach((cat) => {
     const btn = document.createElement("button");
@@ -1424,9 +1421,165 @@ const optimizedScrollHandler = debounce(() => {
 }, 10);
 
 // ============================================
+// I18N — hybrid: French in HTML; i18n.json supplies English (loadLanguage / localStorage)
+// ============================================
+const I18N_STORAGE_KEY = "callisto-lang";
+const I18N_JSON_URL = "i18n.json?v=2";
+
+let i18nBundle = null;
+const i18nFrSnapshots = new WeakMap();
+
+function getI18nLeaf(bundle, path) {
+  if (!bundle || !path || typeof path !== "string") return null;
+  const parts = path.split(".");
+  let o = bundle;
+  for (let i = 0; i < parts.length; i++) {
+    o = o && o[parts[i]];
+  }
+  if (o && typeof o === "object" && ("en" in o || "fr" in o)) return o;
+  return null;
+}
+
+function getStoredLang() {
+  try {
+    const s = localStorage.getItem(I18N_STORAGE_KEY);
+    if (s === "en" || s === "fr") return s;
+  } catch (_) {}
+  return "fr";
+}
+
+function getPortfolioFilterAllWord() {
+  const lang = getStoredLang();
+  const leaf = i18nBundle && getI18nLeaf(i18nBundle, "portfolio.filterAll");
+  if (leaf) {
+    return lang === "en" ? leaf.en || "All" : leaf.fr || "Tous";
+  }
+  return "All";
+}
+
+function initI18nSnapshots() {
+  document.querySelectorAll("[data-i18n]").forEach((el) => {
+    i18nFrSnapshots.set(el, el.innerHTML);
+  });
+  document.querySelectorAll("[data-i18n-aria]").forEach((el) => {
+    const cur = el.getAttribute("aria-label");
+    if (cur) el.dataset.i18nAriaFr = cur;
+  });
+}
+
+function updateDocumentTitleFromI18n(lang) {
+  const leaf = getI18nLeaf(i18nBundle, "meta.documentTitle");
+  if (leaf && typeof leaf[lang] === "string" && leaf[lang]) {
+    document.title = leaf[lang];
+  }
+}
+
+function refreshPortfolioFilterAllLabel() {
+  const allBtn = document.querySelector('#portfolioFilters [data-filter="all"]');
+  if (!allBtn || !i18nBundle) return;
+  const lang = getStoredLang();
+  const leaf = getI18nLeaf(i18nBundle, "portfolio.filterAll");
+  const allWord =
+    lang === "en" ? leaf?.en || "All" : leaf?.fr || "Tous";
+  const m = allBtn.textContent.match(/\((\d+)\)\s*$/);
+  allBtn.textContent = m ? `${allWord} (${m[1]})` : allWord;
+}
+
+function syncLangSwitchUi(lang) {
+  document.querySelectorAll(".lang-switch [data-lang]").forEach((btn) => {
+    const L = btn.getAttribute("data-lang");
+    const active = L === lang;
+    btn.setAttribute("aria-pressed", active ? "true" : "false");
+    btn.classList.toggle("is-active", active);
+  });
+}
+
+function applyI18nLanguage(lang) {
+  if (!i18nBundle || (lang !== "fr" && lang !== "en")) return;
+  document.documentElement.lang = lang === "fr" ? "fr" : "en";
+
+  document.querySelectorAll("[data-i18n]").forEach((el) => {
+    const path = el.getAttribute("data-i18n");
+    if (!path) return;
+    if (lang === "fr") {
+      const snap = i18nFrSnapshots.get(el);
+      if (snap != null) el.innerHTML = snap;
+      return;
+    }
+    const leaf = getI18nLeaf(i18nBundle, path);
+    const html = leaf && typeof leaf.en === "string" ? leaf.en : "";
+    if (html) el.innerHTML = html;
+  });
+
+  document.querySelectorAll("[data-i18n-aria]").forEach((el) => {
+    const path = el.getAttribute("data-i18n-aria");
+    if (!path) return;
+    const leaf = getI18nLeaf(i18nBundle, path);
+    if (!leaf) return;
+    if (lang === "fr") {
+      const fr = el.dataset.i18nAriaFr;
+      if (fr) el.setAttribute("aria-label", fr);
+    } else if (typeof leaf.en === "string" && leaf.en) {
+      el.setAttribute("aria-label", leaf.en);
+    }
+  });
+
+  updateDocumentTitleFromI18n(lang);
+  refreshPortfolioFilterAllLabel();
+  syncLangSwitchUi(lang);
+}
+
+function bindLangSwitch() {
+  const root = document.querySelector(".lang-switch");
+  if (!root) return;
+  root.querySelectorAll("[data-lang]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const lang = btn.getAttribute("data-lang");
+      if (lang === "fr" || lang === "en") window.loadLanguage(lang);
+    });
+  });
+  syncLangSwitchUi(getStoredLang());
+}
+
+window.loadLanguage = function loadLanguage(lang) {
+  if (lang !== "fr" && lang !== "en") return;
+  try {
+    localStorage.setItem(I18N_STORAGE_KEY, lang);
+  } catch (_) {}
+  if (!i18nBundle) {
+    syncLangSwitchUi(getStoredLang());
+    return;
+  }
+  applyI18nLanguage(lang);
+};
+
+async function initI18nApplyStoredLanguage() {
+  initI18nSnapshots();
+  if (isFileProtocol()) {
+    bindLangSwitch();
+    return;
+  }
+  try {
+    const res = await fetch(I18N_JSON_URL);
+    if (!res.ok) {
+      bindLangSwitch();
+      return;
+    }
+    i18nBundle = await res.json();
+  } catch (_) {
+    bindLangSwitch();
+    return;
+  }
+  const lang = getStoredLang();
+  if (lang === "en") applyI18nLanguage("en");
+  bindLangSwitch();
+}
+
+// ============================================
 // INITIALIZATION
 // ============================================
 document.addEventListener("DOMContentLoaded", async () => {
+  await initI18nApplyStoredLanguage();
   await loadPortfolioJsonOnce();
   /* Hero après JSON : même contenu que la grille ; preload <link as="fetch"> aide le cache */
   buildHeroSlidesFromPortfolio(portfolioData);
@@ -1480,10 +1633,6 @@ async function loadContentJson() {
     if (!res.ok) return;
     const data = await res.json();
     if (!data) return;
-    const aboutIntro = document.getElementById("about-intro");
-    if (aboutIntro && data.about && data.about.intro) {
-      aboutIntro.innerHTML = data.about.intro.replace(/\n/g, "<br>");
-    }
     const contactCompany = document.getElementById("contact-company");
     if (contactCompany && data.contact && data.contact.company) {
       contactCompany.innerHTML =

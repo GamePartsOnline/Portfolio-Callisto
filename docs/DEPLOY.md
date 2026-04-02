@@ -6,7 +6,7 @@
 
 1. Générer les fichiers (HTML, CSS, JS, `assets/`).
 2. Envoyer sur l’hébergement mutualisé (**FTP** ou gestionnaire de fichiers IONOS).
-3. Vérifier que le domaine pointe vers le bon répertoire (`index.html` à la racine du site).
+3. Vérifier que le domaine pointe vers le bon répertoire (`index.html` à la racine du site). Tant que le **DNS** de `portfolio.callistoarts.com` renvoie encore vers l’**ancien** site, seul un test sur l’URL fournie par l’hébergeur (ou un fichier `hosts` local) reflète le v2 — voir [HOSTING.md](./HOSTING.md).
 
 `content.json` et `portfolio_images.json` doivent être **déployés avec** le reste.
 

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta
@@ -8,11 +8,11 @@
     />
     <meta
       name="description"
-      content="Callisto Arts — Frédérique Charton: creative artist, full-stack developer & AI builder. Demoscene graphics, digital art, professional work. Châlons-en-Champagne, France."
+      content="Callisto Arts — Frédérique Charton : artiste créative, développeuse full-stack et créatrice IA. Graphismes demoscene, art numérique, travaux professionnels. Châlons-en-Champagne, France."
     />
     <meta
       name="keywords"
-      content="Callisto Arts, Frédérique Charton, digital painting, demoscene, animation, graphics, portfolio artist, full-stack developer, AI builder, France"
+      content="Callisto Arts, Frédérique Charton, demoscene, art numérique, portfolio, développeuse full-stack, IA, France, Châlons-en-Champagne"
     />
     <meta name="author" content="Frédérique Charton — Callisto Arts" />
     <link rel="canonical" href="https://portfolio.callistoarts.com/" />
@@ -20,7 +20,8 @@
     <!-- Open Graph (LinkedIn, Facebook, Slack, etc.) — absolute HTTPS URLs -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Callisto Arts" />
-    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:locale:alternate" content="en_US" />
     <meta property="og:url" content="https://portfolio.callistoarts.com/" />
     <meta
       property="og:title"
@@ -28,7 +29,7 @@
     />
     <meta
       property="og:description"
-      content="Creative artist, full-stack developer & AI builder. Portfolio: demoscene graphics, digital art, and client work. Based in Châlons-en-Champagne, France."
+      content="Artiste créative, développeuse full-stack et créatrice IA. Portfolio : graphismes demoscene, art numérique et travaux clients. Châlons-en-Champagne, France."
     />
     <meta
       property="og:image"
@@ -41,7 +42,7 @@
     <meta property="og:image:type" content="image/jpeg" />
     <meta
       property="og:image:alt"
-      content="Chromatic resonance — graphics artwork, Callisto Arts portfolio"
+      content="Chromatic resonance — œuvre graphique, portfolio Callisto Arts"
     />
 
     <!-- Twitter / X (summary_large_image, aligned with Open Graph) -->
@@ -53,7 +54,7 @@
     />
     <meta
       name="twitter:description"
-      content="Creative artist, full-stack developer & AI builder. Demoscene graphics, digital art, and professional work."
+      content="Artiste créative, développeuse full-stack et créatrice IA. Graphismes demoscene, art numérique et travaux professionnels."
     />
     <meta
       name="twitter:image"
@@ -61,7 +62,7 @@
     />
     <meta
       name="twitter:image:alt"
-      content="Chromatic resonance — graphics artwork, Callisto Arts portfolio"
+      content="Chromatic resonance — œuvre graphique, portfolio Callisto Arts"
     />
 
     <!-- Favicon -->
@@ -81,7 +82,7 @@
       type="application/json"
       crossorigin
     />
-    <link rel="stylesheet" href="styles.css?v=73" />
+    <link rel="stylesheet" href="styles.css?v=77" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <!-- Single font request + non-blocking load (reduces render-blocking vs two stylesheet links) -->
@@ -103,7 +104,9 @@
   </head>
 
   <body>
-    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <a class="skip-link" href="#main-content" data-i18n="skipLink"
+      >Aller au contenu principal</a
+    >
     <!-- Animated Background -->
     <div class="animated-background" aria-hidden="true">
       <div class="bg-gradient"></div>
@@ -118,12 +121,18 @@
     </div>
 
     <!-- Navigation -->
-    <nav class="nav" role="navigation" aria-label="Main navigation">
+    <nav
+      class="nav"
+      role="navigation"
+      aria-label="Navigation principale"
+      data-i18n-aria="nav.ariaMain"
+    >
       <div class="nav-container">
         <a
           href="#welcome"
           class="nav-logo"
-          aria-label="Callisto Arts — Welcome to my world (home)"
+          aria-label="Callisto Arts — Bienvenue dans mon univers (accueil)"
+          data-i18n-aria="nav.logoHome"
         >
           <img
             src="assets/images/logo/logo-cllisto.png"
@@ -138,7 +147,7 @@
         <button
           class="nav-toggle"
           type="button"
-          aria-label="Open or close menu"
+          aria-label="Ouvrir ou fermer le menu"
           aria-controls="navMenu"
           aria-expanded="false"
           id="navToggle"
@@ -149,11 +158,8 @@
         </button>
         <ul class="nav-menu" id="navMenu">
           <li>
-            <a
-              href="build-log.html"
-              class="nav-link"
-              title="Full-stack &amp; AI"
-              >Build Log</a
+            <a href="#about" class="nav-link" data-i18n="nav.aboutContact"
+              >À propos / Contact</a
             >
           </li>
           <li>
@@ -161,6 +167,7 @@
               href="#portfolio"
               class="nav-link"
               title="Portfolio — demoscene &amp; art"
+              data-i18n="nav.portfolio"
               >Portfolio</a
             >
           </li>
@@ -169,13 +176,46 @@
               href="services.html"
               class="nav-link"
               title="GPO &amp; Graph2Print"
+              data-i18n="nav.services"
               >Services</a
             >
           </li>
           <li>
-            <a href="#about" class="nav-link">About / Contact</a>
+            <a
+              href="build-log.html"
+              class="nav-link"
+              title="Full-stack &amp; IA"
+              data-i18n="nav.buildLog"
+              >Journal technique</a
+            >
           </li>
         </ul>
+        <div
+          class="lang-switch"
+          role="group"
+          aria-label="Choisir la langue du site"
+          data-i18n-aria="langSwitch.aria"
+        >
+          <button
+            type="button"
+            class="lang-switch__btn is-active"
+            data-lang="fr"
+            aria-pressed="true"
+            title="Français"
+          >
+            FR
+          </button>
+          <span class="lang-switch__sep" aria-hidden="true">|</span>
+          <button
+            type="button"
+            class="lang-switch__btn"
+            data-lang="en"
+            aria-pressed="false"
+            title="English"
+          >
+            EN
+          </button>
+        </div>
       </div>
     </nav>
 
@@ -297,23 +337,35 @@
     <section id="welcome" class="hero" role="banner">
       <div class="hero-content">
         <h1 class="hero-title">
-          <span class="hero-greeting">Welcome to my world</span>
+          <span class="hero-greeting" data-i18n="hero.greeting"
+            >Bienvenue dans mon univers</span
+          >
           <span class="hero-name">Callisto Arts</span>
         </h1>
         <p class="hero-subtitle">
-          <span class="hero-subtitle__item"
-            >Creative artist | Fullstack Developer &amp; AI Builder</span
+          <span class="hero-subtitle__item" data-i18n="hero.subtitle"
+            >Artiste numérique | Développeuse full-stack &amp; IA</span
           >
         </p>
-        <p class="hero-tagline">
-          I build robust architectures and intelligent visual experiences.
+        <p class="hero-tagline" data-i18n="hero.tagline">
+          Je conçois des architectures solides et des expériences visuelles
+          intelligentes.
         </p>
         <div class="hero-subtitle-line" aria-hidden="true"></div>
 
-        <nav class="hero-cta" aria-label="Primary actions">
-          <a href="#portfolio" class="cta-link">Portfolio</a>
-          <a href="services.html" class="cta-link">Services</a>
-          <a href="#contact" class="cta-link cta-link--primary">Contact</a>
+        <nav class="hero-cta" aria-label="Actions principales" data-i18n-aria="hero.ctaNav">
+          <a href="#portfolio" class="cta-link" data-i18n="hero.ctaPortfolio"
+            >Portfolio</a
+          >
+          <a href="services.html" class="cta-link" data-i18n="hero.ctaServices"
+            >Services</a
+          >
+          <a
+            href="#contact"
+            class="cta-link cta-link--primary"
+            data-i18n="hero.ctaContact"
+            >Contact</a
+          >
         </nav>
 
         <div class="hero-3d-container">
@@ -324,28 +376,35 @@
             <button
               type="button"
               class="hero-slide-btn hero-slide-prev"
-              aria-label="Previous image"
+              aria-label="Image précédente"
+              data-i18n-aria="hero.carouselPrev"
             >
               ‹
             </button>
             <button
               type="button"
               class="hero-slide-btn hero-slide-next"
-              aria-label="Next image"
+              aria-label="Image suivante"
+              data-i18n-aria="hero.carouselNext"
             >
               ›
             </button>
             <div
               class="hero-slide-dots"
               role="group"
-              aria-label="Carousel image navigation"
+              aria-label="Navigation du carrousel d’images"
+              data-i18n-aria="hero.carouselDotsAria"
             ></div>
             <div class="glass-shine"></div>
           </div>
         </div>
 
-        <div class="hero-scroll" aria-label="Scroll to About">
-          <span>Scroll</span>
+        <div
+          class="hero-scroll"
+          aria-label="Faire défiler vers À propos"
+          data-i18n-aria="hero.scrollAria"
+        >
+          <span data-i18n="hero.scroll">Défiler</span>
           <svg
             width="24"
             height="24"
@@ -368,30 +427,33 @@
       <section id="about" class="about section" aria-labelledby="about-title">
         <div class="container">
           <div class="section-title-wrap">
-            <h2 id="about-title" class="section-title">About</h2>
+            <h2 id="about-title" class="section-title" data-i18n="about.title">
+              À propos
+            </h2>
           </div>
           <div class="about-content">
             <div class="card glass-card">
               <div class="card-content">
                 <h3>Frédérique Charton aka CALLISTO</h3>
-                <p class="about-text" id="about-intro">
-                  I am Callisto, 46 years old, based in Châlons-en-Champagne.<br />
-                  Manager at GPO SARL, Digital Drawing artist & AI Builder.
+                <p class="about-text" id="about-intro" data-i18n="about.intro">
+                  Je suis Callisto, 46 ans, basée à Châlons-en-Champagne.<br />
+                  Gérante chez GPO SARL, artiste du dessin numérique &amp; créatrice
+                  IA.
                 </p>
-                <p class="about-text">
-                  Demoscene:
+                <p class="about-text" data-i18n="about.demoscenePara">
+                  Demoscene :
                   <a
                     href="https://demozoo.org/sceners/57855/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    ><strong>Demozoo profile — Callisto</strong></a
+                    ><strong>Fiche Demozoo — Callisto</strong></a
                   >
-                  (graphics, photos, videos — 66+ productions). Groups include
+                  (graphismes, photos, vidéos — 66+ productions). Groupes notamment
                   <strong>Flush</strong>, <strong>GPO</strong>,
                   <strong>Vital-Motion!</strong>, Syn[Rj], Silicium, New C-Rex,
                   RBBS…
                 </p>
-                <p class="about-text">
+                <p class="about-text" data-i18n="about.behancePara">
                   <a
                     href="https://www.behance.net/CallistoArtwork"
                     class="about-behance-link"
@@ -411,12 +473,18 @@
                     </svg>
                     <strong>Behance — Callisto Artwork</strong>
                   </a>
-                  — Adobe portfolio (demo projects, paintover, pixel art, GPO /
-                  pinball, Inktober…). Tools: Photoshop, Illustrator, Fresco.
-                  Available for freelance work &amp; open to new projects.
+                  — portfolio Adobe (démos, paintover, pixel art, GPO / flippers,
+                  Inktober…). Outils : Photoshop, Illustrator, Fresco. Disponible
+                  en freelance &amp; ouverte à de nouveaux projets.
                 </p>
-                <div class="about-tools" aria-label="Software">
-                  <p class="about-tools-title">Software</p>
+                <div
+                  class="about-tools"
+                  aria-label="Logiciels"
+                  data-i18n-aria="about.toolsAria"
+                >
+                  <p class="about-tools-title" data-i18n="about.toolsTitle">
+                    Logiciels
+                  </p>
                   <ul class="about-tool-list" role="list">
                     <li class="about-tool about-tool--illustrator">
                       <span class="about-tool-badge" aria-hidden="true">
@@ -512,13 +580,13 @@
                 </div>
               </div>
             </div>
-            <p class="section-lead about-lead">
-              Want to see more or start a conversation?
+            <p class="section-lead about-lead" data-i18n="about.lead">
+              Envie d’en voir plus ou d’échanger ?
               <a href="#portfolio">Portfolio</a>
               ·
               <a href="services.html">Services</a>
               ·
-              <a href="build-log.html">Build Log</a>
+              <a href="build-log.html">Journal technique</a>
               ·
               <a href="#contact">Contact</a>
             </p>
@@ -527,12 +595,14 @@
                 class="about-card glass-card"
                 href="#portfolio"
                 ><span class="about-card-icon" aria-hidden="true">🎨</span>
-                <h3>Digital Drawing</h3>
-                <p>
-                  Digital artist since 2011, international competitions, and
-                  passionate about the craft!
+                <h3 data-i18n="about.card.drawingTitle">Dessin numérique</h3>
+                <p data-i18n="about.card.drawingDesc">
+                  Artiste numérique depuis 2011, concours internationaux, et
+                  passionnée par la pratique !
                 </p>
-                <span class="about-card-tag">Portfolio</span>
+                <span class="about-card-tag" data-i18n="about.card.drawingTag"
+                  >Portfolio</span
+                >
               </a>
               <a
                 class="about-card glass-card"
@@ -540,13 +610,15 @@
                 target="_blank"
                 rel="noopener noreferrer"
                 ><span class="about-card-icon" aria-hidden="true">🎰</span>
-                <h3>GPO SARL</h3>
-                <p>
-                  Repair, sales, rentals, and manufacturing of amusement
-                  machines — pinball, foosball, arcade cabinets… Many custom
-                  builds and refurbishments from day one.
+                <h3 data-i18n="about.card.gpoTitle">GPO SARL</h3>
+                <p data-i18n="about.card.gpoDesc">
+                  Réparation, vente, location et fabrication de machines de loisirs
+                  — flippers, baby-foot, bornes d’arcade… Nombreuses créations et
+                  rénovations sur mesure depuis le premier jour.
                 </p>
-                <span class="about-card-tag">GPO SARL</span>
+                <span class="about-card-tag" data-i18n="about.card.gpoTag"
+                  >GPO SARL</span
+                >
               </a>
               <a
                 class="about-card glass-card"
@@ -554,12 +626,14 @@
                 target="_blank"
                 rel="noopener noreferrer"
                 ><span class="about-card-icon" aria-hidden="true">🌌</span>
-                <h3>Demoscene</h3>
-                <p>
-                  Active member since 2015 — Shadow Party, Revision, Rsync,
+                <h3 data-i18n="about.card.demoTitle">Demoscene</h3>
+                <p data-i18n="about.card.demoDesc">
+                  Membre active depuis 2015 — Shadow Party, Revision, Rsync,
                   Inercia, Assembly, Tokyo Demo Fest…
                 </p>
-                <span class="about-card-tag">Scener</span>
+                <span class="about-card-tag" data-i18n="about.card.demoTag"
+                  >Scener</span
+                >
               </a>
             </div>
 
@@ -587,12 +661,14 @@
             <div class="about-cards" aria-label="Overview by area (continued)">
               <a class="about-card glass-card" href="build-log.html"
                 ><span class="about-card-icon" aria-hidden="true">🤖</span>
-                <h3>AI Prompt</h3>
-                <p>
-                  ChatGPT, Perplexity, Gemini, Claude. Exploring and integrating
-                  AI tools into the creative workflow.
+                <h3 data-i18n="about.card.aiTitle">Prompt IA</h3>
+                <p data-i18n="about.card.aiDesc">
+                  ChatGPT, Perplexity, Gemini, Claude. Exploration et intégration
+                  d’outils IA dans le flux créatif.
                 </p>
-                <span class="about-card-tag">AI Builder</span>
+                <span class="about-card-tag" data-i18n="about.card.aiTag"
+                  >Création IA</span
+                >
               </a>
               <a
                 class="about-card glass-card"
@@ -600,14 +676,18 @@
                 target="_blank"
                 rel="noopener noreferrer"
                 ><span class="about-card-icon" aria-hidden="true">💻</span>
-                <h3>Full-stack &amp; generative AI</h3>
-                <p>
-                  Specialization in full-stack architecture and generative AI
-                  integration.<br />
-                  The Hacking Project — stack: HTML, CSS, JavaScript, Ruby,
-                  AI-assisted development…
+                <h3 data-i18n="about.card.devTitle">
+                  Full-stack &amp; IA générative
+                </h3>
+                <p data-i18n="about.card.devDesc">
+                  Spécialisation architecture full-stack et intégration d’IA
+                  générative.<br />
+                  The Hacking Project — stack : HTML, CSS, JavaScript, Ruby,
+                  développement assisté par IA…
                 </p>
-                <span class="about-card-tag">THP 2026</span>
+                <span class="about-card-tag" data-i18n="about.card.devTag"
+                  >THP 2026</span
+                >
               </a>
               <a
                 class="about-card glass-card"
@@ -615,13 +695,16 @@
                 target="_blank"
                 rel="noopener noreferrer"
                 ><span class="about-card-icon" aria-hidden="true">✏️</span>
-                <h3>UI design / Graphic design</h3>
-                <p>
-                  Interfaces and ergonomics, accessibility, websites and
-                  gaming.<br />Illustrator, Photoshop, InDesign, Fresco,
+                <h3 data-i18n="about.card.uxTitle">
+                  UI design / Design graphique
+                </h3>
+                <p data-i18n="about.card.uxDesc">
+                  Interfaces et ergonomie, accessibilité, sites et jeux vidéo.<br />Illustrator, Photoshop, InDesign, Fresco,
                   Procreate …
                 </p>
-                <span class="about-card-tag">UX/UI</span>
+                <span class="about-card-tag" data-i18n="about.card.uxTag"
+                  >UX/UI</span
+                >
               </a>
             </div>
           </div>
@@ -636,17 +719,24 @@
       >
         <div class="container">
           <div class="section-title-wrap">
-            <h2 id="portfolio-title" class="section-title">Portfolio</h2>
+            <h2 id="portfolio-title" class="section-title" data-i18n="portfolio.title">
+              Portfolio
+            </h2>
           </div>
-          <p class="section-lead portfolio-lead" id="portfolio-lead">
-            Use the filters to explore by category. Click any artwork to open
-            details, images, and videos.
+          <p
+            class="section-lead portfolio-lead"
+            id="portfolio-lead"
+            data-i18n="portfolio.lead"
+          >
+            Utilisez les filtres pour explorer par catégorie. Cliquez sur une œuvre
+            pour ouvrir les détails, images et vidéos.
           </p>
           <div
             class="portfolio-filters"
             id="portfolioFilters"
             role="tablist"
-            aria-label="Filters — Portfolio"
+            aria-label="Filtres — Portfolio"
+            data-i18n-aria="portfolio.filtersAria"
           >
             <!-- Filter buttons generated by script.js from categories (JSON or embedded) -->
           </div>
@@ -654,9 +744,14 @@
             <!-- Images: portfolio_images.json (HTTP); empty with file:// -->
           </div>
           <div class="portfolio-footer-cta">
-            <p class="portfolio-footer-lead">Interested in a collaboration?</p>
-            <a href="#contact" class="cta-link cta-link--primary"
-              >Contact me</a
+            <p class="portfolio-footer-lead" data-i18n="portfolio.footerLead">
+              Intéressée par une collaboration ?
+            </p>
+            <a
+              href="#contact"
+              class="cta-link cta-link--primary"
+              data-i18n="portfolio.footerCta"
+              >Me contacter</a
             >
           </div>
         </div>
@@ -918,24 +1013,32 @@
       >
         <div class="container">
           <div class="section-title-wrap">
-            <h2 id="contact-title" class="section-title">Contact</h2>
+            <h2 id="contact-title" class="section-title" data-i18n="contact.title">
+              Contact
+            </h2>
           </div>
           <div class="contact-content">
             <div class="card glass-card">
               <div class="card-content">
-                <h3>Let’s talk</h3>
-                <p class="contact-lead">
-                  For commissions, freelance art or dev, or demoscene
-                  inquiries — send a message.
+                <h3 data-i18n="contact.h3">Discutons-en</h3>
+                <p class="contact-lead" data-i18n="contact.lead">
+                  Pour des commandes, du freelance art ou dev, ou des questions
+                  demoscene — écrivez-moi.
                 </p>
                 <p class="contact-cta-wrap">
                   <a
                     href="mailto:callisto.gfx@gmail.com"
                     class="cta-link cta-link--primary"
-                    >Email Callisto</a
+                    data-i18n="contact.emailCta"
+                    >Écrire à Callisto</a
                   >
                 </p>
-                <h4 class="contact-details-heading">Contact details</h4>
+                <h4
+                  class="contact-details-heading"
+                  data-i18n="contact.detailsHeading"
+                >
+                  Coordonnées
+                </h4>
                 <div class="contact-info">
                   <p id="contact-company"><strong>GPO SARL</strong></p>
                   <p id="contact-address">
@@ -971,18 +1074,24 @@
             decoding="async"
           />
           <div class="footer-text">
-            <p>&copy; 2026 Callisto — Frédérique Charton / GPO</p>
-            <p class="footer-subtitle">
-              My fun is DRAWING !!! ALWAYS... and for ever.
+            <p data-i18n="footer.line1">
+              © 2026 Callisto — Frédérique Charton / GPO
+            </p>
+            <p class="footer-subtitle" data-i18n="footer.subtitle">
+              Mon plaisir, c’est DESSINER !!! TOUJOURS… et pour toujours.
             </p>
             <div class="footer-extra">
               <a href="services.html">Services</a>
               <span aria-hidden="true"> · </span>
-              <a href="build-log.html">Build Log</a>
+              <a href="build-log.html" data-i18n="nav.buildLog">Journal technique</a>
               <span aria-hidden="true"> · </span>
-              <a href="mentions-legales.html">Legal notices</a>
+              <a href="mentions-legales.html" data-i18n="footer.legal"
+                >Mentions légales</a
+              >
               <span aria-hidden="true"> · </span>
-              <a href="#" data-cookie-open>Cookie settings</a>
+              <a href="#" data-cookie-open data-i18n="footer.cookies"
+                >Paramètres des cookies</a
+              >
             </div>
           </div>
         </div>
@@ -1009,7 +1118,13 @@
       aria-hidden="true"
       inert
     >
-      <button class="lightbox-close" aria-label="Close">×</button>
+      <button
+        class="lightbox-close"
+        aria-label="Fermer"
+        data-i18n-aria="lightbox.close"
+      >
+        ×
+      </button>
       <p class="lightbox-kicker" id="lightbox-kicker"></p>
       <div class="lightbox-content">
         <img
@@ -1120,43 +1235,49 @@
       id="cookie-banner"
       class="cookie-banner"
       role="region"
-      aria-label="Cookie notice"
+      aria-label="Bandeau cookies"
+      data-i18n-aria="cookieBanner.aria"
       aria-hidden="true"
       hidden
       inert
     >
       <div class="cookie-banner__inner container">
-        <p class="cookie-banner__text">
-          We use cookies and similar technologies for the site to work
-          (essential cookies) and, if you agree, for embedded content (e.g.
-          YouTube videos) and to improve your experience. You can reject
-          non-essential cookies or read more in the legal notices.
+        <p class="cookie-banner__text" data-i18n="cookieBanner.text">
+          Nous utilisons des cookies et technologies similaires pour le
+          fonctionnement du site (cookies essentiels) et, si vous acceptez, pour
+          les contenus intégrés (ex. vidéos YouTube) et pour améliorer votre
+          expérience. Vous pouvez refuser les cookies non essentiels ou en savoir
+          plus dans les mentions légales.
         </p>
         <div class="cookie-banner__actions">
           <button
             type="button"
             id="cookie-reject-nonessential"
             class="cookie-banner__btn cookie-banner__btn--secondary"
+            data-i18n="cookieBanner.reject"
           >
-            Reject non-essential cookies
+            Refuser les cookies non essentiels
           </button>
           <button
             type="button"
             id="cookie-accept-all"
             class="cookie-banner__btn cookie-banner__btn--primary"
+            data-i18n="cookieBanner.accept"
           >
-            Accept all
+            Tout accepter
           </button>
         </div>
         <p class="cookie-banner__more">
-          <a href="mentions-legales.html#cookies">Legal notices — cookies</a>
+          <a href="mentions-legales.html#cookies" data-i18n="cookieBanner.more"
+            >Mentions légales — cookies</a
+          >
         </p>
       </div>
     </div>
 
     <script src="assets/js/cookie-consent.js?v=3" defer></script>
     <!-- script.js without defer: registers DOMContentLoaded before end of parse -->
-    <script src="script.js?v=117"></script>
+    <script src="script.js?v=118"></script>
     <script>
       (function () {
         var audio = document.getElementById("bg-music");

@@ -1,69 +1,54 @@
-# ARCHITECTURE — App Rails cible (simple)
+# ARCHITECTURE — Portfolio Callisto Arts
 
-**Rails 8 · SQLite · Hotwire (Turbo + Stimulus) · Tailwind CSS · importmap**
-
-Objectif : remplacer le site statique par une application **facile à faire évoluer**, avec une **admin légère** pour la galerie et les textes — sans pile technique inutile.
+Document centré sur le **site statique en production**. La sécurité par couche est détaillée dans [SECURITY.md](./SECURITY.md) et le guide [securite_sites_internet.md](./securite_sites_internet.md).
 
 ---
 
-## Vue d’ensemble
+## Site statique (production actuelle)
 
+**Type** : fichiers servis tels quels (HTML, CSS, JS, images, JSON), **sans runtime serveur** côté site. Hébergement typique : **IONOS mutualisé** — voir [HOSTING.md](./HOSTING.md).
+
+```mermaid
+flowchart LR
+  subgraph client [Navigateur]
+    U[Visiteur]
+  end
+  subgraph cdn [Hébergement statique]
+    HTML[index.html + pages satellites]
+    CSS[styles.css]
+    JS[script.js + scripts utilitaires]
+    DATA[portfolio_images.json, content.json, i18n.json]
+    ASSETS[images WebP, SVG, audio…]
+  end
+  U -->|HTTPS| HTML
+  HTML --> CSS
+  HTML --> JS
+  JS --> DATA
+  JS --> ASSETS
 ```
-Navigateur
-    │
-    ▼
-Rails 8 (Puma)
-    ├── Pages publiques (vues + Hotwire)
-    ├── Zone /admin (authentification Rails 8)
-    ├── SQLite (fichier(s) sous storage/ ou config)
-    └── Active Storage (disque local en dev ; S3-compatible plus tard si besoin)
-```
+
+| Couche | Rôle |
+|--------|------|
+| **Pages** | `index.html` (accueil, sections ancres), `build-log.html`, `services.html`, `mentions-legales.html` |
+| **Présentation** | `styles.css` — thème Liquid Glass, responsive, mode « nuit atelier » |
+| **Comportement** | `script.js` — portfolio (filtres, grille, lightbox), hero, carrousel, i18n hybride, cookies (avec `cookie-consent.js`) |
+| **Données** | `assets/images/portfolio_images.json` (galerie), `content.json` (contact), `i18n.json` (FR/EN) |
+| **Réseaux / tiers** | Google Fonts, YouTube en iframe (lightbox), liens externes (Demozoo, Behance, GPO, etc.) |
+
+**Points clés** : pas de base de données, pas de formulaires traités côté serveur sur ce site — la surface d’attaque **application** est limitée au **front** (XSS via contenus injectés si mal gérés, dépendances CDN). Les en-têtes HTTP et TLS relèvent surtout de **l’hébergeur / configuration** — voir [SECURITY.md](./SECURITY.md).
 
 ---
 
-## Modèles (principe)
+## Liens utiles
 
-| Modèle | Rôle |
-|---|---|
-| **User** | Compte admin (généré par `rails generate authentication`) |
-| **Category** | `slug` + `label` (ex. graphics → « Graphics ») — alimente les filtres |
-| **Work** | Œuvre : titre, catégorie, ordre, texte optionnel, année, ligne « award » optionnelle, `visible` |
-| **Work** + **Active Storage** | Fichier image attaché |
-| **SiteContent** (ou clé/valeur) | Textes éditables : hero, about, contact, footer, etc. (clé + contenu HTML ou texte) |
-
-*La **timeline** (journey) peut être une table séparée dans une phase ultérieure, ou des enregistrements `SiteContent` par bloc — à trancher lors de l’implémentation.*
+| Sujet | Document |
+|-------|----------|
+| Arborescence dépôt | [STRUCTURE.md](./STRUCTURE.md) |
+| Sécurité projet | [SECURITY.md](./SECURITY.md) |
+| Guide sécurité général (6 couches) | [securite_sites_internet.md](./securite_sites_internet.md) |
+| Roadmap | [ROADMAP.md](./ROADMAP.md) |
+| Stack / évolutions possibles (hors périmètre ici) | [STACK.md](./STACK.md), [ADMIN.md](./ADMIN.md) |
 
 ---
 
-## Authentification
-
-- **Rails 8** : `rails generate authentication` — sessions, mot de passe, pas besoin de Devise pour démarrer.
-- Toutes les routes sous `/admin` protégées par un `before_action`.
-
----
-
-## Front public
-
-- **Turbo** : navigations fluides, formulaires sans rechargement complet.
-- **Stimulus** : filtres portfolio, lightbox, toggles (ex. mode atelier si conservé).
-- **Tailwind** : recréer les tokens du design actuel (voir [DESIGN.md](./DESIGN.md) et `styles.css`).
-
----
-
-## Ce qu’on évite (volontairement)
-
-- Pas de Node.js / npm pour le JS (importmap).
-- Pas de Next.js / pas de deuxième base de données.
-- Pas d’admin lourde type moteur CMS complet — **CRUD + éditeur de texte** suffisent.
-
----
-
-## Hébergement
-
-| Aujourd’hui | Demain |
-|---|---|
-| Site statique sur **IONOS mutualisé** | Rails nécessite un **serveur applicatif** (VPS, PaaS type Fly.io, etc.) — voir [HOSTING.md](./HOSTING.md) |
-
----
-
-*Architecture volontairement minimale — Mars 2026.*
+*Révision — Avril 2026*
