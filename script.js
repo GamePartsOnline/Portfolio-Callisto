@@ -1565,6 +1565,9 @@ window.loadLanguage = function loadLanguage(lang) {
 
 async function initI18nApplyStoredLanguage() {
   initI18nSnapshots();
+  /* Aligner <html lang> tout de suite (journal build-log : corps FR/EN via CSS). */
+  const stored = getStoredLang();
+  document.documentElement.lang = stored === "fr" ? "fr" : "en";
   if (isFileProtocol()) {
     bindLangSwitch();
     return;

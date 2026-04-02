@@ -28,7 +28,7 @@
       href="assets/images/logo/logo-cllisto.png"
     />
     <title>Journal technique | Callisto Arts</title>
-    <link rel="stylesheet" href="styles.css?v=82" />
+    <link rel="stylesheet" href="styles.css?v=84" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -181,9 +181,8 @@
         </header>
 
         <p class="build-log-lang-note" data-i18n="buildLogPage.articlesLangNote">
-          Les <strong>titres</strong> d’article suivent FR/EN ; le
-          <strong>corps</strong> (étude de cas) reste en anglais — preuve de travail et
-          lectorat technique internationaux.
+          Chaque article est rédigé en <strong>deux versions</strong> (FR/EN) dans le
+          HTML ; l’affichage suit la langue du site.
         </p>
 
         <!--
@@ -199,64 +198,127 @@
           <h2 itemprop="headline" data-i18n="buildLogArticle.satellite.headline">
             Les pages satellites n’avaient pas de sélecteur de langue — le correctif
           </h2>
-          <p class="build-log-meta">
-            <span itemprop="author">Callisto</span> · Front / i18n ·
-            <time itemprop="datePublished" datetime="2026-04-01">April 2026</time>
-          </p>
-          <p itemprop="description">
-            <strong>Context.</strong> The portfolio home uses a hybrid i18n model
-            (French in HTML, <code>i18n.json</code> for English, language stored in
-            <code>localStorage</code>). The journal, services, and legal pages reused
-            the same nav visually but shipped <strong>without</strong>
-            <code>script.js</code> and <strong>without</strong> the FR/EN control. If you
-            had chosen English on the home page, clicking “Journal technique” landed you
-            on an English-only shell with <strong>no way back</strong> to French from the
-            UI — confusing and easy to mistake for “the whole site is EN only”.
-          </p>
 
-          <h3 class="build-log-h3">What was going wrong</h3>
-          <ul class="build-log-list">
-            <li>
-              Language state lived only where <code>script.js</code> ran (main
-              <code>index.html</code>), not on secondary routes.
-            </li>
-            <li>
-              <code>updateDocumentTitleFromI18n</code> could overwrite satellite page
-              titles with the home meta title when i18n applied — another rough edge.
-            </li>
-          </ul>
+          <div class="build-log-body-locale build-log-body-locale--fr" lang="fr">
+            <p class="build-log-meta">
+              <span itemprop="author">Callisto</span> · Front / i18n ·
+              <time itemprop="datePublished" datetime="2026-04-01">avril 2026</time>
+            </p>
+            <p>
+              <strong>Contexte.</strong> L’accueil du portfolio utilise un modèle i18n
+              hybride (français dans le HTML, <code>i18n.json</code> pour l’anglais,
+              langue stockée dans <code>localStorage</code>). Les pages journal, services
+              et mentions reprenaient la même barre visuellement mais
+              <strong>sans</strong> <code>script.js</code> et <strong>sans</strong>
+              sélecteur FR/EN. Si vous aviez choisi l’anglais sur l’accueil, le clic sur
+              « Journal technique » ouvrait une coquille <strong>uniquement en anglais</strong>,
+              <strong>sans retour</strong> vers le français dans l’interface — déroutant.
+            </p>
 
-          <h3 class="build-log-h3">What I changed</h3>
-          <ul class="build-log-list">
-            <li>
-              Load the same <code>script.js</code> on
-              <code>build-log.html</code>, <code>services.html</code>, and
-              <code>mentions-legales.html</code>, with nav links and footer wired through
-              <code>data-i18n</code> like the home page, plus the FR/EN switch.
-            </li>
-            <li>
-              Added keys in <code>i18n.json</code> (<code>nav.home</code>,
-              <code>nav.toggleAria</code>, <code>subpage.backToHome</code>) and bumped the
-              JSON cache query string.
-            </li>
-            <li>
-              Restricted document-title updates from i18n to the home page (presence of
-              <code>#heroSlides</code>) so “Build Log | …” stays correct.
-            </li>
-          </ul>
+            <h3 class="build-log-h3">Ce qui posait problème</h3>
+            <ul class="build-log-list">
+              <li>
+                L’état de langue ne vivait que là où <code>script.js</code> s’exécutait
+                (<code>index.html</code> principal), pas sur les routes secondaires.
+              </li>
+              <li>
+                <code>updateDocumentTitleFromI18n</code> pouvait écraser les titres des
+                pages satellites avec le méta-titre de l’accueil — autre aspérité.
+              </li>
+            </ul>
 
-          <h3 class="build-log-h3">Result</h3>
-          <p>
-            Users keep one consistent language preference across the static site; the
-            journal content stays English in the body for now, but navigation and chrome
-            follow FR/EN like everywhere else.
-          </p>
+            <h3 class="build-log-h3">Ce que j’ai changé</h3>
+            <ul class="build-log-list">
+              <li>
+                Charger le même <code>script.js</code> sur
+                <code>build-log.html</code>, <code>services.html</code> et
+                <code>mentions-legales.html</code>, avec les liens de nav et le pied de page
+                en <code>data-i18n</code> comme l’accueil, plus le sélecteur FR/EN.
+              </li>
+              <li>
+                Ajout de clés dans <code>i18n.json</code> (<code>nav.home</code>,
+                <code>nav.toggleAria</code>, <code>subpage.backToHome</code>) et
+                incrément du paramètre de cache JSON.
+              </li>
+              <li>
+                Limitation des mises à jour du titre document à l’accueil (présence de
+                <code>#heroSlides</code>) pour que « Build Log | … » reste correct.
+              </li>
+            </ul>
 
-          <p class="build-log-takeaway">
-            <strong>Takeaway.</strong> If you persist UI language client-side, every
-            top-level HTML route that shares chrome must load the same bootstrap — or you
-            ship a trap door.
-          </p>
+            <h3 class="build-log-h3">Résultat</h3>
+            <p>
+              Les visiteurs gardent une préférence de langue cohérente sur le site
+              statique ; la navigation et le chrome suivent FR/EN comme partout ailleurs.
+            </p>
+
+            <p class="build-log-takeaway">
+              <strong>Enseignement.</strong> Si vous persistez la langue d’interface côté
+              client, chaque route HTML qui partage le chrome doit charger le même
+              bootstrap — sinon vous livrez une porte piégée.
+            </p>
+          </div>
+
+          <div class="build-log-body-locale build-log-body-locale--en" lang="en">
+            <p class="build-log-meta">
+              <span>Callisto</span> · Front / i18n ·
+              <time datetime="2026-04-01">April 2026</time>
+            </p>
+            <p itemprop="description">
+              <strong>Context.</strong> The portfolio home uses a hybrid i18n model
+              (French in HTML, <code>i18n.json</code> for English, language stored in
+              <code>localStorage</code>). The journal, services, and legal pages reused
+              the same nav visually but shipped <strong>without</strong>
+              <code>script.js</code> and <strong>without</strong> the FR/EN control. If you
+              had chosen English on the home page, clicking “Journal technique” landed you
+              on an English-only shell with <strong>no way back</strong> to French from the
+              UI — confusing and easy to mistake for “the whole site is EN only”.
+            </p>
+
+            <h3 class="build-log-h3">What was going wrong</h3>
+            <ul class="build-log-list">
+              <li>
+                Language state lived only where <code>script.js</code> ran (main
+                <code>index.html</code>), not on secondary routes.
+              </li>
+              <li>
+                <code>updateDocumentTitleFromI18n</code> could overwrite satellite page
+                titles with the home meta title when i18n applied — another rough edge.
+              </li>
+            </ul>
+
+            <h3 class="build-log-h3">What I changed</h3>
+            <ul class="build-log-list">
+              <li>
+                Load the same <code>script.js</code> on
+                <code>build-log.html</code>, <code>services.html</code>, and
+                <code>mentions-legales.html</code>, with nav links and footer wired through
+                <code>data-i18n</code> like the home page, plus the FR/EN switch.
+              </li>
+              <li>
+                Added keys in <code>i18n.json</code> (<code>nav.home</code>,
+                <code>nav.toggleAria</code>, <code>subpage.backToHome</code>) and bumped the
+                JSON cache query string.
+              </li>
+              <li>
+                Restricted document-title updates from i18n to the home page (presence of
+                <code>#heroSlides</code>) so “Build Log | …” stays correct.
+              </li>
+            </ul>
+
+            <h3 class="build-log-h3">Result</h3>
+            <p>
+              Users keep one consistent language preference across the static site;
+              navigation and chrome follow FR/EN everywhere (including full article bodies
+              in both languages on this page).
+            </p>
+
+            <p class="build-log-takeaway">
+              <strong>Takeaway.</strong> If you persist UI language client-side, every
+              top-level HTML route that shares chrome must load the same bootstrap — or you
+              ship a trap door.
+            </p>
+          </div>
         </article>
 
         <article
@@ -267,67 +329,137 @@
           <h2 itemprop="headline" data-i18n="buildLogArticle.llmLatency.headline">
             D’environ 5&nbsp;s à ~1&nbsp;s sur un appel API type OpenAI
           </h2>
-          <p class="build-log-meta">
-            <span itemprop="author">Callisto</span> · THP / backend focus ·
-            <time itemprop="datePublished" datetime="2026-03-01">March 2026</time>
-          </p>
-          <p itemprop="description">
-            <strong>Context.</strong> A small feature needed a language model to
-            classify user intent before running heavier logic. The first version
-            was “simple”: one HTTP call, wait for the full completion, then branch.
-            In practice, perceived latency hovered around <strong>five seconds</strong>
-            — unacceptable for an interactive flow.
-          </p>
 
-          <h3 class="build-log-h3">What was going wrong</h3>
-          <ul class="build-log-list">
-            <li>
-              I was waiting for a <strong>full completion JSON</strong> before doing
-              anything in the UI — no streaming, no early exit when confidence was
-              already high enough.
-            </li>
-            <li>
-              The prompt carried <strong>redundant context</strong> on every request
-              (static instructions repeated instead of cached or shortened).
-            </li>
-            <li>
-              Downstream work ran <strong>sequentially</strong> after the LLM
-              returned, so the clock kept running even when the model part was done.
-            </li>
-          </ul>
+          <div class="build-log-body-locale build-log-body-locale--fr" lang="fr">
+            <p class="build-log-meta">
+              <span itemprop="author">Callisto</span> · THP / backend ·
+              <time itemprop="datePublished" datetime="2026-03-01">mars 2026</time>
+            </p>
+            <p>
+              <strong>Contexte.</strong> Une petite fonctionnalité devait s’appuyer sur un
+              modèle de langage pour classifier l’intention utilisateur avant d’enchaîner
+              une logique plus lourde. La première version était « simple » : un appel HTTP,
+              attendre la complétion complète, puis bifurquer. En pratique, la latence
+              perçue tournait autour de <strong>cinq secondes</strong> — inacceptable pour
+              un flux interactif.
+            </p>
 
-          <h3 class="build-log-h3">What I changed</h3>
-          <ul class="build-log-list">
-            <li>
-              Switched to the API’s <strong>streaming</strong> mode and parsed the
-              first high-confidence label from partial tokens — enough to trigger
-              the next step without waiting for the last byte.
-            </li>
-            <li>
-              Moved stable system instructions to a <strong>minimal template</strong>
-              and stripped examples to what the classifier actually needed (few-shot,
-              not a manual).
-            </li>
-            <li>
-              Where the stack allowed it, ran <strong>independent I/O in parallel</strong>
-              after the first token window (e.g. prefetching data keyed by predicted
-              intent).
-            </li>
-          </ul>
+            <h3 class="build-log-h3">Ce qui posait problème</h3>
+            <ul class="build-log-list">
+              <li>
+                J’attendais un <strong>JSON de complétion complète</strong> avant toute
+                action dans l’interface — pas de streaming, pas de sortie anticipée quand la
+                confiance était déjà suffisante.
+              </li>
+              <li>
+                Le prompt emportait du <strong>contexte redondant</strong> à chaque requête
+                (instructions statiques répétées au lieu d’être mises en cache ou
+                raccourcies).
+              </li>
+              <li>
+                Le travail en aval s’exécutait <strong>en série</strong> après le retour du
+                LLM : le chronomètre continuait même une fois la partie modèle terminée.
+              </li>
+            </ul>
 
-          <h3 class="build-log-h3">Result</h3>
-          <p>
-            End-to-end time for the “happy path” dropped to about
-            <strong>one second</strong> in typical conditions — not magic, just
-            measuring, cutting wasted waits, and refusing to block the UI on a full
-            completion when a partial signal is enough.
-          </p>
+            <h3 class="build-log-h3">Ce que j’ai changé</h3>
+            <ul class="build-log-list">
+              <li>
+                Passage au mode <strong>streaming</strong> de l’API et lecture du premier
+                libellé à forte confiance à partir de jetons partiels — assez pour
+                enchaîner sans attendre le dernier octet.
+              </li>
+              <li>
+                Instructions système stables regroupées dans un <strong>gabarit
+                minimal</strong> et exemples réduits au strict nécessaire (few-shot, pas un
+                manuel).
+              </li>
+              <li>
+                Là où la stack le permettait, <strong>E/S indépendantes en parallèle</strong>
+                après la première fenêtre de jetons (ex. préchargement selon l’intention
+                prédite).
+              </li>
+            </ul>
 
-          <p class="build-log-takeaway">
-            <strong>Takeaway.</strong> Seniority isn’t only knowing APIs — it’s
-            knowing how to <em>read latency</em>, question sequential habits, and ship
-            incremental fixes you can prove with numbers.
-          </p>
+            <h3 class="build-log-h3">Résultat</h3>
+            <p>
+              Le temps de bout en bout du « happy path » est descendu à environ
+              <strong>une seconde</strong> en conditions typiques — pas de magie : mesurer,
+              supprimer les attentes inutiles, refuser de bloquer l’UI sur une complétion
+              complète quand un signal partiel suffit.
+            </p>
+
+            <p class="build-log-takeaway">
+              <strong>Enseignement.</strong> La maturité technique, ce n’est pas seulement
+              connaître les API — c’est savoir <em>lire la latence</em>, remettre en cause
+              les habitudes séquentielles, et livrer des correctifs incrémentaux que l’on
+              peut prouver avec des chiffres.
+            </p>
+          </div>
+
+          <div class="build-log-body-locale build-log-body-locale--en" lang="en">
+            <p class="build-log-meta">
+              <span>Callisto</span> · THP / backend focus ·
+              <time datetime="2026-03-01">March 2026</time>
+            </p>
+            <p itemprop="description">
+              <strong>Context.</strong> A small feature needed a language model to
+              classify user intent before running heavier logic. The first version
+              was “simple”: one HTTP call, wait for the full completion, then branch.
+              In practice, perceived latency hovered around <strong>five seconds</strong>
+              — unacceptable for an interactive flow.
+            </p>
+
+            <h3 class="build-log-h3">What was going wrong</h3>
+            <ul class="build-log-list">
+              <li>
+                I was waiting for a <strong>full completion JSON</strong> before doing
+                anything in the UI — no streaming, no early exit when confidence was
+                already high enough.
+              </li>
+              <li>
+                The prompt carried <strong>redundant context</strong> on every request
+                (static instructions repeated instead of cached or shortened).
+              </li>
+              <li>
+                Downstream work ran <strong>sequentially</strong> after the LLM
+                returned, so the clock kept running even when the model part was done.
+              </li>
+            </ul>
+
+            <h3 class="build-log-h3">What I changed</h3>
+            <ul class="build-log-list">
+              <li>
+                Switched to the API’s <strong>streaming</strong> mode and parsed the
+                first high-confidence label from partial tokens — enough to trigger
+                the next step without waiting for the last byte.
+              </li>
+              <li>
+                Moved stable system instructions to a <strong>minimal template</strong>
+                and stripped examples to what the classifier actually needed (few-shot,
+                not a manual).
+              </li>
+              <li>
+                Where the stack allowed it, ran <strong>independent I/O in parallel</strong>
+                after the first token window (e.g. prefetching data keyed by predicted
+                intent).
+              </li>
+            </ul>
+
+            <h3 class="build-log-h3">Result</h3>
+            <p>
+              End-to-end time for the “happy path” dropped to about
+              <strong>one second</strong> in typical conditions — not magic, just
+              measuring, cutting wasted waits, and refusing to block the UI on a full
+              completion when a partial signal is enough.
+            </p>
+
+            <p class="build-log-takeaway">
+              <strong>Takeaway.</strong> Seniority isn’t only knowing APIs — it’s
+              knowing how to <em>read latency</em>, question sequential habits, and ship
+              incremental fixes you can prove with numbers.
+            </p>
+          </div>
         </article>
 
         <p class="build-log-footer-note" data-i18n="buildLogPage.footerNote">
@@ -378,6 +510,6 @@
       </div>
     </footer>
 
-    <script src="script.js?v=118"></script>
+    <script src="script.js?v=119"></script>
   </body>
 </html>

@@ -241,8 +241,8 @@
       "en": "Updated April 2026 · New entries as I ship them"
     },
     "articlesLangNote": {
-      "fr": "Les <strong>titres</strong> d’article suivent FR/EN ; le <strong>corps</strong> (étude de cas) reste en anglais — preuve de travail et lectorat technique internationaux.",
-      "en": "Article <strong>headlines</strong> follow FR/EN; the <strong>body</strong> (case study) stays in English — proof of work and international tech audience."
+      "fr": "Chaque article est rédigé en <strong>deux versions</strong> (FR/EN) dans le HTML ; l’affichage suit la langue du site (<code>&lt;html lang&gt;</code>).",
+      "en": "Each article is written in <strong>two versions</strong> (FR/EN) in the HTML; display follows the site language (<code>&lt;html lang&gt;</code>)."
     },
     "footerNote": {
       "fr": "D’autres études de cas (cache, auth, cas limites) seront ajoutées ici. Envie du même type d’analyse sur votre stack ? <a href=\"index.html#contact\">Contact</a>.",
