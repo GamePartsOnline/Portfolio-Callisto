@@ -1,5 +1,13 @@
 {
   "nav": {
+    "home": {
+      "fr": "Accueil",
+      "en": "Home"
+    },
+    "toggleAria": {
+      "fr": "Ouvrir ou fermer le menu",
+      "en": "Open or close menu"
+    },
     "buildLog": {
       "fr": "Journal technique",
       "en": "Build Log"
@@ -22,6 +30,12 @@
   "skipLink": {
     "fr": "Aller au contenu principal",
     "en": "Skip to main content"
+  },
+  "subpage": {
+    "backToHome": {
+      "fr": "← Retour à l'accueil",
+      "en": "← Back to home"
+    }
   },
   "hero": {
     "greeting": {

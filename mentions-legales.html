@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta
@@ -30,19 +30,27 @@
     />
   </head>
   <body class="legal-page-body">
-    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <a class="skip-link" href="#main-content" data-i18n="skipLink"
+      >Aller au contenu principal</a
+    >
     <div class="animated-background" aria-hidden="true">
       <div class="bg-gradient"></div>
       <div class="bg-mesh"></div>
       <div class="bg-grid"></div>
     </div>
 
-    <nav class="nav" role="navigation" aria-label="Main navigation">
+    <nav
+      class="nav"
+      role="navigation"
+      aria-label="Navigation principale"
+      data-i18n-aria="nav.ariaMain"
+    >
       <div class="nav-container">
         <a
           href="index.html#welcome"
           class="nav-logo"
-          aria-label="Callisto Arts — Welcome to my world (home)"
+          aria-label="Callisto Arts — Bienvenue dans mon univers (accueil)"
+          data-i18n-aria="nav.logoHome"
         >
           <img
             src="assets/images/logo/logo-cllisto.png"
@@ -57,10 +65,11 @@
         <button
           class="nav-toggle"
           type="button"
-          aria-label="Open or close menu"
+          aria-label="Ouvrir ou fermer le menu"
           aria-controls="navMenu"
           aria-expanded="false"
           id="navToggle"
+          data-i18n-aria="nav.toggleAria"
         >
           <span></span>
           <span></span>
@@ -68,13 +77,16 @@
         </button>
         <ul class="nav-menu" id="navMenu">
           <li>
-            <a href="index.html#about" class="nav-link">About / Contact</a>
+            <a href="index.html#about" class="nav-link" data-i18n="nav.aboutContact"
+              >À propos / Contact</a
+            >
           </li>
           <li>
             <a
               href="index.html#portfolio"
               class="nav-link"
               title="Portfolio — demoscene &amp; art"
+              data-i18n="nav.portfolio"
               >Portfolio</a
             >
           </li>
@@ -83,6 +95,7 @@
               href="services.html"
               class="nav-link"
               title="GPO &amp; Graph2Print"
+              data-i18n="nav.services"
               >Services</a
             >
           </li>
@@ -90,11 +103,38 @@
             <a
               href="build-log.html"
               class="nav-link"
-              title="Full-stack &amp; AI"
-              >Build Log</a
+              title="Full-stack &amp; IA"
+              data-i18n="nav.buildLog"
+              >Journal technique</a
             >
           </li>
         </ul>
+        <div
+          class="lang-switch"
+          role="group"
+          aria-label="Choisir la langue du site"
+          data-i18n-aria="langSwitch.aria"
+        >
+          <button
+            type="button"
+            class="lang-switch__btn is-active"
+            data-lang="fr"
+            aria-pressed="true"
+            title="Français"
+          >
+            FR
+          </button>
+          <span class="lang-switch__sep" aria-hidden="true">|</span>
+          <button
+            type="button"
+            class="lang-switch__btn"
+            data-lang="en"
+            aria-pressed="false"
+            title="English"
+          >
+            EN
+          </button>
+        </div>
       </div>
     </nav>
 
@@ -275,39 +315,17 @@
             <p>&copy; 2026 Callisto — Frédérique Charton / GPO</p>
             <p class="footer-subtitle">Callisto Arts portfolio</p>
             <div class="footer-extra">
-              <a href="index.html">Portfolio</a>
+              <a href="index.html" data-i18n="nav.home">Accueil</a>
               <span aria-hidden="true"> · </span>
-              <a href="#" data-cookie-open>Cookie settings</a>
+              <a href="#" data-cookie-open data-i18n="footer.cookies"
+                >Paramètres des cookies</a
+              >
             </div>
           </div>
         </div>
       </div>
     </footer>
 
-    <script>
-      (function () {
-        var t = document.getElementById("navToggle");
-        var m = document.getElementById("navMenu");
-        var mq = window.matchMedia("(max-width: 767px)");
-        function syncNav() {
-          if (!m) return;
-          if (mq.matches) {
-            var open = t && t.getAttribute("aria-expanded") === "true";
-            m.setAttribute("aria-hidden", open ? "false" : "true");
-          } else {
-            m.removeAttribute("aria-hidden");
-          }
-        }
-        syncNav();
-        mq.addEventListener("change", syncNav);
-        if (t) {
-          t.addEventListener("click", function () {
-            var open = t.getAttribute("aria-expanded") === "true";
-            t.setAttribute("aria-expanded", open ? "false" : "true");
-            syncNav();
-          });
-        }
-      })();
-    </script>
+    <script src="script.js?v=118"></script>
   </body>
 </html>

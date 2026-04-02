@@ -2,6 +2,13 @@
 
 Page publique : **`build-log.html`** (preuve de travail, études de cas THP / backend / perf).
 
+## Entrées récentes (référence)
+
+| Période | Sujet |
+|---------|--------|
+| **Avril 2026** | Pages satellites : même i18n que l’accueil (`script.js`, sélecteur FR/EN, garde-fou sur le `document.title`) — voir premier `<article>` dans `build-log.html`. |
+| Mars 2026 | Latence API type OpenAI (~5s → ~1s) — voir deuxième article. |
+
 ## À chaque nouvelle entrée
 
 1. **Dupliquer** le bloc `<article class="legal-page-article glass-card build-log-entry" …>` existant (le placer **au-dessus** des articles plus anciens si tu veux un ordre anti-chronologique).

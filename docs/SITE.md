@@ -24,25 +24,27 @@
 
 ## Meta / SEO et i18n
 
-Le site mélange **HTML par défaut en français** (`index.html`, `lang="fr"`, contenu i18n via `i18n.json`) et des **pages satellites en anglais** (`build-log.html`, `services.html`, `mentions-legales.html`, `lang="en"`). Les **moteurs et réseaux sociaux** lisent surtout le HTML statique : les balises meta doivent refléter la **langue affichée par défaut** de chaque URL et rester cohérentes avec `<html lang>`.
+L’**accueil** (`index.html`) est en **français par défaut** avec bascule FR/EN via `i18n.json`. Les **pages satellites** (`build-log`, `services`, `mentions-legales`) partagent la **même barre de navigation** et le **sélecteur FR/EN** : le texte du menu / pied de page suit la langue stockée (`localStorage`). Le **corps** de ces pages reste en **anglais** (articles, services, mentions) ; l’attribut `<html lang>` est mis à jour par le JS (FR ou EN) comme sur l’accueil.
+
+Les **moteurs et réseaux sociaux** lisent surtout le HTML statique : les balises **meta** / Open Graph restent alignées sur la langue du **contenu principal** de chaque URL (voir tableau ci-dessous).
 
 ### Règles
 
 | Règle | Détail |
 |--------|--------|
-| **`lang`** | Une valeur par page : `fr` pour l’accueil (contenu initial FR) ; `en` pour les pages entièrement rédigées en anglais. |
-| **`og:locale`** | Aligné sur la langue des champs **og:title** / **og:description** : `fr_FR` pour l’index, `en_US` pour les pages EN. |
+| **`lang`** | Attribut initial `fr` sur toutes les pages du périmètre ; le JS peut le passer à `en` si l’utilisateur a choisi l’anglais. |
+| **`og:locale`** | Aligné sur la langue des champs **og:title** / **og:description** : `fr_FR` pour l’index ; `en_US` pour les pages dont les métas sont en anglais. |
 | **`og:locale:alternate`** | Sur l’index uniquement : indiquer l’autre locale (`en_US` si la principale est `fr_FR`) pour signaler le bilinguisme côté partages Open Graph. |
-| **Descriptions** | `meta name="description"`, `og:description`, `twitter:description` : même langue que le périmètre de la page (FR pour l’accueil ; EN pour build-log, services, mentions). |
+| **Descriptions** | `meta name="description"`, `og:description`, etc. : cohérents avec la langue du **contenu éditorial** de la page (FR pour l’accueil ; EN pour build-log, services, mentions). |
 
 ### État dans le dépôt (référence)
 
-| Page | `<html lang>` | `og:locale` | Remarque |
-|------|----------------|-------------|----------|
-| `index.html` | `fr` | `fr_FR` + `alternate` `en_US` | Métas FR ; visiteur peut passer en EN dans l’UI sans changer l’URL. |
-| `build-log.html` | `en` | `en_US` | Métas EN. |
-| `services.html` | `en` | `en_US` | Métas EN. |
-| `mentions-legales.html` | `en` | — | Pas d’Open Graph obligatoire ; `meta description` EN. |
+| Page | `<html lang>` (initial) | `og:locale` | Remarque |
+|------|-------------------------|-------------|----------|
+| `index.html` | `fr` | `fr_FR` + `alternate` `en_US` | Métas FR ; bascule FR/EN dans l’UI. |
+| `build-log.html` | `fr` | `en_US` | Métas EN ; nav + sélecteur i18n comme l’accueil. |
+| `services.html` | `fr` | `en_US` | Idem. |
+| `mentions-legales.html` | `fr` | — | Pas d’Open Graph obligatoire ; `meta description` EN. |
 
 Après toute modification de titres ou de textes partagés (OG/Twitter), revérifier la cohérence `lang` / locale / langue du snippet. Détail i18n côté JS : [I18N.md](./I18N.md).
 

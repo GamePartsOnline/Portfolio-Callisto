@@ -31,8 +31,9 @@ Alignement référence : [SECURITY.md](./SECURITY.md), [securite_sites_internet.
 | [x] | UI portfolio : intro sous le titre (ligne, italique, espacement) |
 | [ ] | **En-têtes HTTP** (HSTS, X-Frame-Options, etc.) selon IONOS / `.htaccess` — détail [SECURITY.md § En-têtes HTTP](./SECURITY.md#http-headers-ionos) |
 | [ ] | **CSP** : proposition + tests préprod — détail [SECURITY.md § CSP](./SECURITY.md#csp-proposal) |
-| [ ] | **Meta / SEO** : harmoniser `lang`, `og:locale`, descriptions FR/EN si besoin |
-| [ ] | Poursuivre l’i18n (timeline, métas, libellés filtres depuis JSON si souhaité) |
+| [x] | **Meta / SEO** : [SITE.md § Meta / SEO](./SITE.md#meta-seo-i18n) — `lang`, `og:locale`, descriptions |
+| [x] | **Journal & pages satellites** : sélecteur FR/EN + `script.js` sur `build-log` / `services` / `mentions-legales` (entrée dans [build-log.html](../build-log.html)) |
+| [ ] | Poursuivre l’i18n (timeline, libellés filtres depuis JSON si souhaité) |
 | [ ] | **DNS** : faire pointer **`portfolio.callistoarts.com`** (sous-domaine de **callistoarts.com**) vers l’hébergement **v2** — aujourd’hui le DNS peut encore cibler l’**ancien** site ; suivi [HOSTING.md](./HOSTING.md), [DEPLOY.md](./DEPLOY.md) |
 
 ---
@@ -69,7 +70,9 @@ Uniquement si un besoin métier justifie une **galerie ou des textes éditables*
 - [x] **HOSTING** / **DEPLOY** : `portfolio.callistoarts.com` sur **callistoarts.com**, état DNS (ancien site jusqu’à bascule)
 - [x] Règle **« toujours mettre à jour la ROADMAP »** + entrées HOSTING/DEPLOY dans le tableau des références
 - [x] **Meta / SEO** : [SITE.md](./SITE.md#meta-seo-i18n) — harmonisation **index** (FR + `og:locale` / alternate) ; **build-log** / **services** : `og:locale` `en_US`
+- [x] **Journal technique & pages satellites** : sélecteur **FR/EN** + `script.js` (même i18n que l’accueil) sur `build-log`, `services`, `mentions-legales` ; titre de document non écrasé hors accueil
+- [x] **build-log.html** : nouvelle entrée (avril 2026) — piège i18n pages satellites + correctif ; **BUILD_LOG.md** mis à jour
 
 ---
 
-*Dernière révision — 1er avril 2026 (meta / SEO) · [INDEX.md](./INDEX.md)*
+*Dernière révision — 1er avril 2026 (journal technique + ROADMAP) · [INDEX.md](./INDEX.md)*

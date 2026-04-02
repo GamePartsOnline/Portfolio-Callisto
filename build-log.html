@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta
@@ -28,7 +28,7 @@
       href="assets/images/logo/logo-cllisto.png"
     />
     <title>Build Log | Callisto Arts</title>
-    <link rel="stylesheet" href="styles.css?v=73" />
+    <link rel="stylesheet" href="styles.css?v=78" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -45,7 +45,9 @@
     </noscript>
   </head>
   <body class="legal-page-body build-log-body">
-    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <a class="skip-link" href="#main-content" data-i18n="skipLink"
+      >Aller au contenu principal</a
+    >
     <div class="animated-background" aria-hidden="true">
       <div class="bg-gradient"></div>
       <div class="bg-mesh"></div>
@@ -58,9 +60,19 @@
       <div class="bg-grid"></div>
     </div>
 
-    <nav class="nav" role="navigation" aria-label="Main navigation">
+    <nav
+      class="nav"
+      role="navigation"
+      aria-label="Navigation principale"
+      data-i18n-aria="nav.ariaMain"
+    >
       <div class="nav-container">
-        <a href="index.html#welcome" class="nav-logo" aria-label="Callisto Arts — Welcome to my world (home)">
+        <a
+          href="index.html#welcome"
+          class="nav-logo"
+          aria-label="Callisto Arts — Bienvenue dans mon univers (accueil)"
+          data-i18n-aria="nav.logoHome"
+        >
           <img
             src="assets/images/logo/logo-cllisto.png"
             alt=""
@@ -74,10 +86,11 @@
         <button
           class="nav-toggle"
           type="button"
-          aria-label="Open or close menu"
+          aria-label="Ouvrir ou fermer le menu"
           aria-controls="navMenu"
           aria-expanded="false"
           id="navToggle"
+          data-i18n-aria="nav.toggleAria"
         >
           <span></span>
           <span></span>
@@ -85,13 +98,16 @@
         </button>
         <ul class="nav-menu" id="navMenu">
           <li>
-            <a href="index.html#about" class="nav-link">About / Contact</a>
+            <a href="index.html#about" class="nav-link" data-i18n="nav.aboutContact"
+              >À propos / Contact</a
+            >
           </li>
           <li>
             <a
               href="index.html#portfolio"
               class="nav-link"
               title="Portfolio — demoscene &amp; art"
+              data-i18n="nav.portfolio"
               >Portfolio</a
             >
           </li>
@@ -100,6 +116,7 @@
               href="services.html"
               class="nav-link"
               title="GPO &amp; Graph2Print"
+              data-i18n="nav.services"
               >Services</a
             >
           </li>
@@ -108,11 +125,38 @@
               href="build-log.html"
               class="nav-link"
               aria-current="page"
-              title="Full-stack &amp; AI"
-              >Build Log</a
+              title="Full-stack &amp; IA"
+              data-i18n="nav.buildLog"
+              >Journal technique</a
             >
           </li>
         </ul>
+        <div
+          class="lang-switch"
+          role="group"
+          aria-label="Choisir la langue du site"
+          data-i18n-aria="langSwitch.aria"
+        >
+          <button
+            type="button"
+            class="lang-switch__btn is-active"
+            data-lang="fr"
+            aria-pressed="true"
+            title="Français"
+          >
+            FR
+          </button>
+          <span class="lang-switch__sep" aria-hidden="true">|</span>
+          <button
+            type="button"
+            class="lang-switch__btn"
+            data-lang="en"
+            aria-pressed="false"
+            title="English"
+          >
+            EN
+          </button>
+        </div>
       </div>
     </nav>
 
@@ -128,7 +172,7 @@
             (The Hacking Project / THP is part of how I sharpen that craft.)
           </p>
           <p class="legal-page-updated build-log-updated">
-            Updated March 2026 · New entries as I ship them
+            Updated April 2026 · New entries as I ship them
           </p>
         </header>
 
@@ -137,6 +181,74 @@
           (newest first if you prefer). Update .build-log-updated, <time datetime>,
           and bump styles.css?v in <head>. See docs/BUILD_LOG.md.
         -->
+        <article
+          class="legal-page-article glass-card build-log-entry"
+          itemscope
+          itemtype="https://schema.org/TechArticle"
+        >
+          <h2 itemprop="headline">
+            Satellite pages had no language switch — here is the fix
+          </h2>
+          <p class="build-log-meta">
+            <span itemprop="author">Callisto</span> · Front / i18n ·
+            <time itemprop="datePublished" datetime="2026-04-01">April 2026</time>
+          </p>
+          <p itemprop="description">
+            <strong>Context.</strong> The portfolio home uses a hybrid i18n model
+            (French in HTML, <code>i18n.json</code> for English, language stored in
+            <code>localStorage</code>). The journal, services, and legal pages reused
+            the same nav visually but shipped <strong>without</strong>
+            <code>script.js</code> and <strong>without</strong> the FR/EN control. If you
+            had chosen English on the home page, clicking “Journal technique” landed you
+            on an English-only shell with <strong>no way back</strong> to French from the
+            UI — confusing and easy to mistake for “the whole site is EN only”.
+          </p>
+
+          <h3 class="build-log-h3">What was going wrong</h3>
+          <ul class="build-log-list">
+            <li>
+              Language state lived only where <code>script.js</code> ran (main
+              <code>index.html</code>), not on secondary routes.
+            </li>
+            <li>
+              <code>updateDocumentTitleFromI18n</code> could overwrite satellite page
+              titles with the home meta title when i18n applied — another rough edge.
+            </li>
+          </ul>
+
+          <h3 class="build-log-h3">What I changed</h3>
+          <ul class="build-log-list">
+            <li>
+              Load the same <code>script.js</code> on
+              <code>build-log.html</code>, <code>services.html</code>, and
+              <code>mentions-legales.html</code>, with nav links and footer wired through
+              <code>data-i18n</code> like the home page, plus the FR/EN switch.
+            </li>
+            <li>
+              Added keys in <code>i18n.json</code> (<code>nav.home</code>,
+              <code>nav.toggleAria</code>, <code>subpage.backToHome</code>) and bumped the
+              JSON cache query string.
+            </li>
+            <li>
+              Restricted document-title updates from i18n to the home page (presence of
+              <code>#heroSlides</code>) so “Build Log | …” stays correct.
+            </li>
+          </ul>
+
+          <h3 class="build-log-h3">Result</h3>
+          <p>
+            Users keep one consistent language preference across the static site; the
+            journal content stays English in the body for now, but navigation and chrome
+            follow FR/EN like everywhere else.
+          </p>
+
+          <p class="build-log-takeaway">
+            <strong>Takeaway.</strong> If you persist UI language client-side, every
+            top-level HTML route that shares chrome must load the same bootstrap — or you
+            ship a trap door.
+          </p>
+        </article>
+
         <article
           class="legal-page-article glass-card build-log-entry"
           itemscope
@@ -215,8 +327,11 @@
         </p>
 
         <p class="legal-page-back">
-          <a href="index.html" class="legal-page-back-link cta-link"
-            >← Back to home</a
+          <a
+            href="index.html"
+            class="legal-page-back-link cta-link"
+            data-i18n="subpage.backToHome"
+            >← Retour à l'accueil</a
           >
         </p>
       </div>
@@ -226,43 +341,25 @@
       <div class="container">
         <div class="footer-content footer-content--compact">
           <p class="footer-text footer-text--compact">
-            <a href="index.html">Home</a>
+            <a href="index.html" data-i18n="nav.home">Accueil</a>
             <span aria-hidden="true"> · </span>
-            <a href="services.html">Services</a>
+            <a href="index.html#portfolio" data-i18n="nav.portfolio">Portfolio</a>
             <span aria-hidden="true"> · </span>
-            <a href="build-log.html">Build Log</a>
+            <a href="services.html" data-i18n="nav.services">Services</a>
             <span aria-hidden="true"> · </span>
-            <a href="mentions-legales.html">Legal notices</a>
+            <a href="build-log.html" aria-current="page" data-i18n="nav.buildLog"
+              >Journal technique</a
+            >
+            <span aria-hidden="true"> · </span>
+            <a href="mentions-legales.html" data-i18n="footer.legal"
+              >Mentions légales</a
+            >
           </p>
           <p class="footer-subtitle">&copy; 2026 Callisto Arts</p>
         </div>
       </div>
     </footer>
 
-    <script>
-      (function () {
-        var t = document.getElementById("navToggle");
-        var m = document.getElementById("navMenu");
-        var mq = window.matchMedia("(max-width: 767px)");
-        function syncNav() {
-          if (!m) return;
-          if (mq.matches) {
-            var open = t && t.getAttribute("aria-expanded") === "true";
-            m.setAttribute("aria-hidden", open ? "false" : "true");
-          } else {
-            m.removeAttribute("aria-hidden");
-          }
-        }
-        syncNav();
-        mq.addEventListener("change", syncNav);
-        if (t) {
-          t.addEventListener("click", function () {
-            var open = t.getAttribute("aria-expanded") === "true";
-            t.setAttribute("aria-expanded", open ? "false" : "true");
-            syncNav();
-          });
-        }
-      })();
-    </script>
+    <script src="script.js?v=118"></script>
   </body>
 </html>
