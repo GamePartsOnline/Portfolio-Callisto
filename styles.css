@@ -4134,6 +4134,10 @@ body.night footer {
   text-align: center;
 }
 
+.footer-site-nav {
+  margin: 0;
+}
+
 .footer-text--compact {
   margin: 0;
   font-size: 0.9rem;
