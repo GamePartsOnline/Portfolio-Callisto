@@ -1,109 +1,96 @@
-# ROADMAP — Portfolio Callisto Arts
+# ROADMAP — Migration Next.js (App Router) — Portfolio Callisto Arts
 
-**Priorité** : le **site statique** en production. **Sécurité** et **conformité** en fil continu. Une **app admin (Rails)** reste **optionnelle** — [STACK.md](./STACK.md), [ADMIN.md](./ADMIN.md), pas [ARCHITECTURE.md](./ARCHITECTURE.md) (statique uniquement).
+## Objectif
+Migrer le site actuel vers **Next.js récent** (App Router) en conservant le comportement, les routes, les composants, les styles et les données existants autant que possible.
 
-Alignement : [SECURITY.md](./SECURITY.md), [securite_sites_internet.md](./securite_sites_internet.md).
+## Contraintes (priorité absolue)
+- Préserver le comportement et les IDs/classes attendus par les scripts existants.
+- Minimiser le risque : petites étapes + vérifications à chaque étape.
+- Déployer sur **GitHub Pages** (build statique).
+- Préserver les URLs legacy : `services.html`, `build-log.html`, `mentions-legales.html` via stubs/redirects au build.
 
-**Règle** : toute évolution notable (infra, DNS, déploiement, sécurité, produit, doc structurante) → mettre à jour **cette page** (cases, *Dernières livraisons*, *Dernière révision*).
-
----
-
-## Documents de référence
-
-| Document | Rôle |
-|----------|------|
-| [ARCHITECTURE.md](./ARCHITECTURE.md) | Statique — schéma, pages, données, tiers |
-| [STRUCTURE.md](./STRUCTURE.md) | Arborescence du dépôt |
-| [HOSTING.md](./HOSTING.md) · [DEPLOY.md](./DEPLOY.md) | Domaine, DNS, IONOS, mise en ligne |
-| [SECURITY.md](./SECURITY.md) | Posture sécurité, en-têtes, CSP |
-| [securite_sites_internet.md](./securite_sites_internet.md) | Guide 6 couches |
-| [SITE.md](./SITE.md) | Meta, SEO, i18n |
-| [GUIDE.md](./GUIDE.md) · [TEST.md](./TEST.md) · [PERFORMANCE.md](./PERFORMANCE.md) · [I18N.md](./I18N.md) | Maintenance, perfs, i18n |
+## Stratégie (résumé)
+- Construire une app Next **exportable**.
+- Porter les 4 pages et la structure DOM en JSX.
+- Servir `styles.css`, `script.js`, `i18n.json`, `content.json` et `assets/` depuis `public/`.
+- Charger les scripts avec `defer` (côté client), sans dépendre d’un router SPA.
+- Ajouter la compatibilité legacy `.html` au moment de l’export.
 
 ---
+## Étapes de migration
 
-## Livré (ne pas rouvrir sans raison)
-
-| | |
-|--|--|
-| [x] | i18n hybride (HTML FR + `i18n.json` + client) |
-| [x] | Navigation : accueil · portfolio · services · journal · mentions légales |
-| [x] | UI portfolio (intro, ligne sous le titre) |
-| [x] | Meta / SEO de base ([SITE.md](./SITE.md#meta-seo-i18n) — `lang`, Open Graph, descriptions) |
-| [x] | Pages satellites : FR/EN + `script.js` sur `build-log`, `services`, `mentions-legales` |
-| [x] | Doc sécurité : en-têtes & CSP décrits dans [SECURITY.md](./SECURITY.md) (mise en œuvre serveur = backlog ci-dessous) |
-
----
-
-## Backlog — par axe
-
-### A. Performance & médias
-
+### 0) Cadrage & baseline
 | Statut | Tâche |
 |--------|--------|
-| [x] | **LCP** (côté code) : hero 1ʳᵉ slide `loading="eager"`, `fetchPriority="high"`, preload `<link as="image">` sur l’URL LCP · [PERFORMANCE.md](./PERFORMANCE.md) — *poids global des assets / ~68 fichiers = ligne « Images » ci-dessous* |
-| [ ] | **Images** : ~68 fichiers « surdimensionnés » (~41 Mo d’économie signalés par audit SORANK) — `srcset` / largeurs réelles / pipeline WebP & thumbs existants |
-| [x] | **Lazy** : pas de lazy sur le **hero LCP** ; **3 premières** vignettes portfolio en `eager` (1ʳᵉ en `fetchPriority="high"`) ; iframe lightbox YouTube sans `loading="lazy"` |
-| [x] | **Scripts** : `script.js` en **`defer`** sur toutes les pages ; accueil : `music-player-init.js` extrait et en `defer` après `script.js` |
+| [ ] | Baseline fonctionnelle : i18n, hero/carrousel, portfolio filters + lightbox, timeline, cookie banner, routes. |
+| [ ] | Baseline SEO : title/meta/canonical + OG/twitter par page. |
+| [ ] | Baseline performance : LCP/CLS (au moins une mesure de référence). |
 
-### B. SEO, GEO & contenu (audit SORANK — 2 avr. 2026 : SEO **86** note **B**, GEO **45/100**)
-
+### 1) Setup Next.js
 | Statut | Tâche |
 |--------|--------|
-| [ ] | **Méta description** accueil : **≤ ~160** caractères (audit : **186** — troncature SERP) · `index.html` + [i18n.json](../i18n.json) si applicable |
-| [ ] | **JSON-LD** : `WebSite` / `Person` ou `Organization` (+ œuvres si pertinent) — citabilité IA & résultats enrichis · [SITE.md](./SITE.md) |
-| [ ] | **GEO** : contenus plus factuels et citables (titres clairs, faits vérifiables) ; `llms.txt` déjà présent — compléter si besoin |
-| [ ] | **Titres** : **1** `<h*>` vide signalé — supprimer ou remplir (grid portfolio / modale) |
-| [ ] | **Lien** : **1** lien interne vide — corriger ou retirer |
-| [ ] | **Mots-clés** : densité **> 4 %** sur un terme — alléger sans dénaturer (hero, about, alts) |
-| [ ] | **Lisibilité** : phrases longues / Flesch faible — améliorer si retouche éditoriale |
-| [ ] | **Réseaux sociaux** : confirmer **og:image**, **twitter:** sur l’URL canonique (HTTPS absolu, pas de cache obsolète) |
+| [ ] | Scaffolder Next.js App Router + TypeScript strict. |
+| [ ] | Configurer le build statique compatible GitHub Pages. |
+| [ ] | Vérifier localement : `build` + export. |
 
-### C. Infra, DNS & durcissement
-
+### 2) Layout global (head + base URL)
 | Statut | Tâche |
 |--------|--------|
-| [ ] | **DNS** : `portfolio.callistoarts.com` → hébergement **v2** (basculer depuis l’ancien si encore actif) · [HOSTING.md](./HOSTING.md), [DEPLOY.md](./DEPLOY.md) |
-| [ ] | **En-têtes HTTP** (HSTS, X-Frame-Options, etc.) via IONOS / `.htaccess` · [SECURITY.md § En-têtes](./SECURITY.md#http-headers-ionos) |
-| [ ] | **CSP** : déployer + tests préprod · [SECURITY.md § CSP](./SECURITY.md#csp-proposal) |
-| [ ] | Après changement DNS/hébergeur : **SSL Labs** + **Security Headers** |
+| [ ] | `app/layout.tsx` : `<base href="/">`, `html lang`, head/meta, chargement `styles.css`. |
+| [ ] | Répliquer les conteneurs nécessaires : `#heroSlides`, `#portfolioGrid`, `#lightbox`, etc. |
+| [ ] | Répliquer les métas SEO/OG/twitter au bon niveau (page-level si nécessaire). |
 
-### D. i18n & produit statique (mineur)
-
+### 3) Pages Next (portage DOM 1:1)
 | Statut | Tâche |
 |--------|--------|
-| [ ] | Poursuivre i18n (timeline, filtres depuis JSON, etc.) · [I18N.md](./I18N.md) |
+| [ ] | `app/page.tsx` : migration de `index.html`. |
+| [ ] | `app/services/page.tsx` : migration de `services.html`. |
+| [ ] | `app/build-log/page.tsx` : migration de `build-log.html`. |
+| [ ] | `app/mentions-legales/page.tsx` : migration de `mentions-legales.html`. |
+| [ ] | Conserver les body classes attendues par `script.js` (ex. `legal-page-body`, `build-log-body`, `services-page-body`). |
+
+### 4) Intégration scripts existants (côté client)
+| Statut | Tâche |
+|--------|--------|
+| [ ] | Charger `assets/js/cookie-consent.js` avec `defer` sur toutes les pages. |
+| [ ] | Charger `script.js` avec `defer` sur toutes les pages. |
+| [ ] | Index uniquement : charger `assets/js/music-player-init.js` avec `defer`. |
+| [ ] | Vérifier `fetch` : `assets/images/portfolio_images.json` et `content.json` sous Next. |
+| [ ] | Vérifier i18n : `i18n.json?v=...` + `localStorage` sur toutes les pages. |
+
+### 5) Compatibilité legacy `.html`
+| Statut | Tâche |
+|--------|--------|
+| [ ] | Dans le dossier exporté : générer `services.html`, `build-log.html`, `mentions-legales.html`. |
+| [ ] | Chaque stub redirige vers `/services/`, `/build-log/`, `/mentions-legales/`. |
+| [ ] | Vérifier navigation depuis le footer et les liens existants. |
+
+### 6) SEO/Meta/SEO technique
+| Statut | Tâche |
+|--------|--------|
+| [ ] | `robots.txt`, `sitemap.xml`, `llms.txt` dans `public/`. |
+| [ ] | Vérifier `og:image` et `twitter:*` sur les pages clés. |
+
+### 7) CI/CD GitHub Actions (déploiement)
+| Statut | Tâche |
+|--------|--------|
+| [ ] | Workflow : build + export + deploy GitHub Pages. |
+| [ ] | Smoke test : 4 routes + 3 stubs `.html`. |
+
+### 8) Checklist régression (BUILD)
+| Statut | Tâche |
+|--------|--------|
+| [ ] | Pas d’erreurs console sur desktop + mobile (min. sur les 4 pages). |
+| [ ] | i18n FR/EN OK partout. |
+| [ ] | Hero : carousel + dots + caption OK. |
+| [ ] | Portfolio : filtres + lightbox OK. |
+| [ ] | Cookies : persistance localStorage OK. |
+| [ ] | SEO : title/canonical/OG/twitter conformes. |
 
 ---
-
-## Sécurité & conformité (continu)
-
-| Statut | Tâche |
-|--------|--------|
-| [ ] | Relecture annuelle **mentions légales** / cookies / RGPD aligné au site |
-| [ ] | Pas de données sensibles dans assets ou JSON publics non revus |
-| [ ] | Si **Cloudflare** (ou équivalent) : documenter WAF / cache dans [HOSTING.md](./HOSTING.md) |
+## Journal d’avancement
+- Quand une tâche sera terminée, je mettrai ` [x] ` et je noterai la date en une ligne ici.
 
 ---
-
-## Option — admin dynamique (Rails)
-
-Uniquement si besoin métier (**galerie ou textes** éditables sans Git).
-
-| Statut | Tâche |
-|--------|--------|
-| [ ] | Périmètre & parcours — [ADMIN.md](./ADMIN.md) |
-| [ ] | Stack — [STACK.md](./STACK.md) |
-| [ ] | Checklist serveur — [securite_sites_internet.md](./securite_sites_internet.md) |
-| [ ] | Hébergement — [HOSTING.md](./HOSTING.md), [DEPLOY.md](./DEPLOY.md) |
-
----
-
-## Dernières livraisons (mémo court)
-
-- Avril 2026 : **Performance §A** — LCP (preload + eager hero), 3 vignettes portfolio eager, `defer` sur `script.js` + lecteur audio externalisé ; doc **PERFORMANCE.md**.
-- **audit SORANK** intégré à la roadmap ; **mentions légales** FR + i18n ; **footer** / **hero** (points pagination).
-
----
-
-*Dernière révision — 1er avril 2026 · [INDEX.md](./INDEX.md)*
+## Dernière mise à jour
+- Dernière révision : 2 avril 2026
