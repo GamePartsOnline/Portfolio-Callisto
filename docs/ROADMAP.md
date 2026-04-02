@@ -72,7 +72,8 @@ Uniquement si un besoin métier justifie une **galerie ou des textes éditables*
 - [x] **Meta / SEO** : [SITE.md](./SITE.md#meta-seo-i18n) — harmonisation **index** (FR + `og:locale` / alternate) ; **build-log** / **services** : `og:locale` `en_US`
 - [x] **Journal technique & pages satellites** : sélecteur **FR/EN** + `script.js` (même i18n que l’accueil) sur `build-log`, `services`, `mentions-legales` ; titre de document non écrasé hors accueil
 - [x] **build-log.html** : nouvelle entrée (avril 2026) — piège i18n pages satellites + correctif ; **BUILD_LOG.md** mis à jour
+- [x] **Journal technique — langue** : en-tête bilingue (`buildLogPage.*`), articles EN + encadré explicite ; doc **I18N** / **BUILD_LOG** / **SITE**
 
 ---
 
-*Dernière révision — 1er avril 2026 (journal technique + ROADMAP) · [INDEX.md](./INDEX.md)*
+*Dernière révision — 1er avril 2026 (journal : FR/EN chrome, articles EN) · [INDEX.md](./INDEX.md)*

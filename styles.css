@@ -4061,6 +4061,21 @@ body.night footer {
   margin-top: var(--spacing-sm) !important;
 }
 
+/* Note explicite : articles en anglais, chrome du site bilingue */
+.build-log-lang-note {
+  max-width: 44rem;
+  margin: 0 auto var(--spacing-xl);
+  padding: var(--spacing-md) var(--spacing-lg);
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: #b8c4d0;
+  text-align: center;
+}
+
+.build-log-lang-note strong {
+  color: #e8ecf0;
+}
+
 .build-log-entry .build-log-meta {
   font-size: 0.85rem;
   color: #a8b4c4;

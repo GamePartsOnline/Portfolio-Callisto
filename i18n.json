@@ -217,6 +217,36 @@
     "documentTitle": {
       "fr": "Callisto Arts — Portfolio | Frédérique Charton",
       "en": "Callisto Arts — Portfolio | Frédérique Charton"
+    },
+    "buildLogDocumentTitle": {
+      "fr": "Journal technique | Callisto Arts",
+      "en": "Build Log | Callisto Arts"
+    }
+  },
+  "buildLogPage": {
+    "title": {
+      "fr": "Journal technique",
+      "en": "Build Log"
+    },
+    "subtitle": {
+      "fr": "Journal technique — preuve de travail",
+      "en": "Build journal — proof of work"
+    },
+    "lead": {
+      "fr": "Les clients n’achètent pas seulement du code — ils achètent votre capacité à démêler des problèmes difficiles. Cette page est mon <strong>journal d’ingénierie public</strong> : contraintes réelles, essais infructueux, et ce qui a vraiment fait avancer le projet. (The Hacking Project / THP fait partie de la façon dont j’affine ce métier.)",
+      "en": "Clients don’t only buy code — they buy your ability to untangle hard problems. This page is my <strong>public engineering journal</strong>: real constraints, failed attempts, and what actually moved the needle. (The Hacking Project / THP is part of how I sharpen that craft.)"
+    },
+    "updatedLine": {
+      "fr": "Mis à jour avril 2026 · Nouvelles entrées au fil des livraisons",
+      "en": "Updated April 2026 · New entries as I ship them"
+    },
+    "articlesLangNote": {
+      "fr": "Les <strong>articles</strong> ci-dessous sont rédigés en <strong>anglais</strong> (preuve de travail, lectorat technique international). L’interface du site (menu, titres de page) suit votre choix FR/EN.",
+      "en": "The <strong>articles</strong> below are written in <strong>English</strong> (proof of work, international tech audience). Site chrome (menu, page titles) follows your FR/EN preference."
+    },
+    "footerNote": {
+      "fr": "D’autres études de cas (cache, auth, cas limites) seront ajoutées ici. Envie du même type d’analyse sur votre stack ? <a href=\"index.html#contact\">Contact</a>.",
+      "en": "More case studies (caching, auth, edge cases) will land here. Want a similar breakdown on your stack? <a href=\"index.html#contact\">Get in touch</a>."
     }
   },
   "langSwitch": {

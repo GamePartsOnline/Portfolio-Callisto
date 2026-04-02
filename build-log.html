@@ -27,8 +27,8 @@
       type="image/png"
       href="assets/images/logo/logo-cllisto.png"
     />
-    <title>Build Log | Callisto Arts</title>
-    <link rel="stylesheet" href="styles.css?v=78" />
+    <title>Journal technique | Callisto Arts</title>
+    <link rel="stylesheet" href="styles.css?v=79" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -163,18 +163,31 @@
     <main id="main-content" class="legal-page-main build-log-main" tabindex="-1">
       <div class="container">
         <header class="legal-page-header build-log-header">
-          <h1 class="build-log-title">Build Log</h1>
-          <p class="build-log-subtitle">Build journal — proof of work</p>
-          <p class="build-log-lead">
-            Clients don’t only buy code — they buy your ability to untangle hard
-            problems. This page is my <strong>public engineering journal</strong>:
-            real constraints, failed attempts, and what actually moved the needle.
-            (The Hacking Project / THP is part of how I sharpen that craft.)
+          <h1 class="build-log-title" data-i18n="buildLogPage.title">
+            Journal technique
+          </h1>
+          <p class="build-log-subtitle" data-i18n="buildLogPage.subtitle">
+            Journal technique — preuve de travail
           </p>
-          <p class="legal-page-updated build-log-updated">
-            Updated April 2026 · New entries as I ship them
+          <p class="build-log-lead" data-i18n="buildLogPage.lead">
+            Les clients n’achètent pas seulement du code — ils achètent votre
+            capacité à démêler des problèmes difficiles. Cette page est mon
+            <strong>journal d’ingénierie public</strong> : contraintes réelles,
+            essais infructueux, et ce qui a vraiment fait avancer le projet.
+            (The Hacking Project / THP fait partie de la façon dont j’affine ce
+            métier.)
+          </p>
+          <p class="legal-page-updated build-log-updated" data-i18n="buildLogPage.updatedLine">
+            Mis à jour avril 2026 · Nouvelles entrées au fil des livraisons
           </p>
         </header>
+
+        <p class="build-log-lang-note" data-i18n="buildLogPage.articlesLangNote">
+          Les <strong>articles</strong> ci-dessous sont rédigés en
+          <strong>anglais</strong> (preuve de travail, lectorat technique
+          international). L’interface du site (menu, titres de page) suit votre choix
+          FR/EN.
+        </p>
 
         <!--
           New entry: duplicate the <article class="build-log-entry"> block below
@@ -320,10 +333,10 @@
           </p>
         </article>
 
-        <p class="build-log-footer-note">
-          More case studies (caching, auth, edge cases) will land here. Want a
-          similar breakdown on your stack?
-          <a href="index.html#contact">Get in touch</a>.
+        <p class="build-log-footer-note" data-i18n="buildLogPage.footerNote">
+          D’autres études de cas (cache, auth, cas limites) seront ajoutées ici.
+          Envie du même type d’analyse sur votre stack ?
+          <a href="index.html#contact">Contact</a>.
         </p>
 
         <p class="legal-page-back">

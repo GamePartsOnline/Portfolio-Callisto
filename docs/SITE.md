@@ -24,7 +24,7 @@
 
 ## Meta / SEO et i18n
 
-L’**accueil** (`index.html`) est en **français par défaut** avec bascule FR/EN via `i18n.json`. Les **pages satellites** (`build-log`, `services`, `mentions-legales`) partagent la **même barre de navigation** et le **sélecteur FR/EN** : le texte du menu / pied de page suit la langue stockée (`localStorage`). Le **corps** de ces pages reste en **anglais** (articles, services, mentions) ; l’attribut `<html lang>` est mis à jour par le JS (FR ou EN) comme sur l’accueil.
+L’**accueil** (`index.html`) est en **français par défaut** avec bascule FR/EN via `i18n.json`. Les **pages satellites** partagent la **même navigation** et le **sélecteur FR/EN**. Le **journal technique** (`build-log.html`) : l’**en-tête** (titres, chapô, encadré explicatif) est **bilingue** (`buildLogPage.*`) ; les **articles** du journal restent en **anglais** par choix éditorial — voir [BUILD_LOG.md § Langue](./BUILD_LOG.md). `services` et `mentions` : contenu principal surtout en anglais dans le HTML statique.
 
 Les **moteurs et réseaux sociaux** lisent surtout le HTML statique : les balises **meta** / Open Graph restent alignées sur la langue du **contenu principal** de chaque URL (voir tableau ci-dessous).
 
