@@ -28,7 +28,7 @@
       href="assets/images/logo/logo-cllisto.png"
     />
     <title>Journal technique | Callisto Arts</title>
-    <link rel="stylesheet" href="styles.css?v=79" />
+    <link rel="stylesheet" href="styles.css?v=81" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -45,9 +45,7 @@
     </noscript>
   </head>
   <body class="legal-page-body build-log-body">
-    <a class="skip-link" href="#main-content" data-i18n="skipLink"
-      >Aller au contenu principal</a
-    >
+    <a class="skip-link" href="#main-content" data-i18n="skipLink">Aller au contenu principal</a>
     <div class="animated-background" aria-hidden="true">
       <div class="bg-gradient"></div>
       <div class="bg-mesh"></div>
@@ -183,10 +181,9 @@
         </header>
 
         <p class="build-log-lang-note" data-i18n="buildLogPage.articlesLangNote">
-          Les <strong>articles</strong> ci-dessous sont rédigés en
-          <strong>anglais</strong> (preuve de travail, lectorat technique
-          international). L’interface du site (menu, titres de page) suit votre choix
-          FR/EN.
+          Les <strong>titres</strong> d’article suivent FR/EN ; le
+          <strong>corps</strong> (étude de cas) reste en anglais — preuve de travail et
+          lectorat technique internationaux.
         </p>
 
         <!--
@@ -199,8 +196,8 @@
           itemscope
           itemtype="https://schema.org/TechArticle"
         >
-          <h2 itemprop="headline">
-            Satellite pages had no language switch — here is the fix
+          <h2 itemprop="headline" data-i18n="buildLogArticle.satellite.headline">
+            Les pages satellites n’avaient pas de sélecteur de langue — le correctif
           </h2>
           <p class="build-log-meta">
             <span itemprop="author">Callisto</span> · Front / i18n ·
@@ -267,8 +264,8 @@
           itemscope
           itemtype="https://schema.org/TechArticle"
         >
-          <h2 itemprop="headline">
-            How I took an OpenAI-style API path from ~5s down to ~1s
+          <h2 itemprop="headline" data-i18n="buildLogArticle.llmLatency.headline">
+            D’environ 5&nbsp;s à ~1&nbsp;s sur un appel API type OpenAI
           </h2>
           <p class="build-log-meta">
             <span itemprop="author">Callisto</span> · THP / backend focus ·
@@ -354,7 +351,7 @@
       <div class="container">
         <div class="footer-content footer-content--compact">
           <p class="footer-text footer-text--compact">
-            <a href="index.html" data-i18n="nav.home">Accueil</a>
+            <a href="index.html#welcome" data-i18n="nav.home">Accueil</a>
             <span aria-hidden="true"> · </span>
             <a href="index.html#portfolio" data-i18n="nav.portfolio">Portfolio</a>
             <span aria-hidden="true"> · </span>
@@ -368,7 +365,7 @@
               >Mentions légales</a
             >
           </p>
-          <p class="footer-subtitle">&copy; 2026 Callisto Arts</p>
+          <p class="footer-subtitle footer-subtitle--copyright">&copy; 2026 Callisto Arts</p>
         </div>
       </div>
     </footer>

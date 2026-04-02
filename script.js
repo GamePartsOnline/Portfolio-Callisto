@@ -1424,7 +1424,7 @@ const optimizedScrollHandler = debounce(() => {
 // I18N — hybrid: French in HTML; i18n.json supplies English (loadLanguage / localStorage)
 // ============================================
 const I18N_STORAGE_KEY = "callisto-lang";
-const I18N_JSON_URL = "i18n.json?v=4";
+const I18N_JSON_URL = "i18n.json?v=5";
 
 let i18nBundle = null;
 const i18nFrSnapshots = new WeakMap();
@@ -1581,7 +1581,9 @@ async function initI18nApplyStoredLanguage() {
     return;
   }
   const lang = getStoredLang();
-  if (lang === "en") applyI18nLanguage("en");
+  /* Toujours appliquer la langue stockée (fr ou en) : sinon l’UI pouvait rester en anglais
+   * alors que FR était choisi (snapshots / titre / aria non resynchronisés au chargement). */
+  applyI18nLanguage(lang);
   bindLangSwitch();
 }
 

@@ -82,7 +82,7 @@
       type="application/json"
       crossorigin
     />
-    <link rel="stylesheet" href="styles.css?v=77" />
+    <link rel="stylesheet" href="styles.css?v=81" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <!-- Single font request + non-blocking load (reduces render-blocking vs two stylesheet links) -->
@@ -1062,39 +1062,29 @@
       </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="footer" role="contentinfo">
+    <!-- Footer — même ligne de navigation sur tout le site -->
+    <footer class="footer footer--subpage" role="contentinfo">
       <div class="container">
-        <div class="footer-content">
-          <img
-            src="assets/images/logo/logo-cllisto.png"
-            alt=""
-            class="footer-logo"
-            width="80"
-            height="80"
-            decoding="async"
-          />
-          <div class="footer-text">
-            <p data-i18n="footer.line1">
-              © 2026 Callisto — Frédérique Charton / GPO
-            </p>
-            <p class="footer-subtitle" data-i18n="footer.subtitle">
-              Mon plaisir, c’est DESSINER !!! TOUJOURS… et pour toujours.
-            </p>
-            <div class="footer-extra">
-              <a href="services.html">Services</a>
-              <span aria-hidden="true"> · </span>
-              <a href="build-log.html" data-i18n="nav.buildLog">Journal technique</a>
-              <span aria-hidden="true"> · </span>
-              <a href="mentions-legales.html" data-i18n="footer.legal"
-                >Mentions légales</a
-              >
-              <span aria-hidden="true"> · </span>
-              <a href="#" data-cookie-open data-i18n="footer.cookies"
-                >Paramètres des cookies</a
-              >
-            </div>
-          </div>
+        <div class="footer-content footer-content--compact">
+          <p class="footer-text footer-text--compact">
+            <a href="#welcome" aria-current="page" data-i18n="nav.home">Accueil</a>
+            <span aria-hidden="true"> · </span>
+            <a href="#portfolio" data-i18n="nav.portfolio">Portfolio</a>
+            <span aria-hidden="true"> · </span>
+            <a href="services.html" data-i18n="nav.services">Services</a>
+            <span aria-hidden="true"> · </span>
+            <a href="build-log.html" data-i18n="nav.buildLog">Journal technique</a>
+            <span aria-hidden="true"> · </span>
+            <a href="mentions-legales.html" data-i18n="footer.legal"
+              >Mentions légales</a
+            >
+          </p>
+          <p class="footer-cookies-line">
+            <a href="#" data-cookie-open data-i18n="footer.cookies"
+              >Paramètres des cookies</a
+            >
+          </p>
+          <p class="footer-subtitle footer-subtitle--copyright">&copy; 2026 Callisto Arts</p>
         </div>
       </div>
     </footer>

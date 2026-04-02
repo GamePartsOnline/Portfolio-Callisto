@@ -7,7 +7,7 @@ Page publique : **`build-log.html`** (preuve de travail, études de cas THP / ba
 | Zone | Règle |
 |------|--------|
 | **Chrome** (titre H1, sous-titre, chapô, ligne « Mis à jour », encadré langue, note avant contact, `<title>`) | Bilingue **FR/EN** via `buildLogPage.*` et `meta.buildLogDocumentTitle` dans **`i18n.json`** (même mécanisme que le reste du site). |
-| **Articles** (`<article class="build-log-entry">`) | Rédaction en **anglais** par défaut (preuve de travail, audience internationale). Pour une entrée bilingue, dupliquer le bloc ou ajouter des sections FR selon le besoin. |
+| **Articles** (`<article class="build-log-entry">`) | **Titres** (`<h2 data-i18n="buildLogArticle.…">`) : FR dans le HTML par défaut, **EN** dans `i18n.json` sous la même clé. **Corps** : anglais par défaut (preuve de travail). |
 
 ## Entrées récentes (référence)
 

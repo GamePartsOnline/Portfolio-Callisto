@@ -4148,6 +4148,33 @@ body.night footer {
   color: var(--color-brand-neon);
 }
 
+.footer-text--compact a[aria-current="page"] {
+  color: var(--color-brand-neon, #00ffe0);
+  font-weight: 700;
+}
+
+.footer-cookies-line {
+  margin: 0.65rem 0 0;
+  font-size: 0.82rem;
+  text-align: center;
+}
+
+.footer-cookies-line a {
+  color: var(--color-text-muted, #a8b4c4);
+  text-decoration: none;
+}
+
+.footer-cookies-line a:hover {
+  color: var(--color-brand-rose, #f472b6);
+}
+
+.footer-subtitle--copyright {
+  margin-top: var(--spacing-sm) !important;
+  margin-bottom: 0 !important;
+  font-size: 0.85rem !important;
+  color: var(--color-text-muted, #8a96a8) !important;
+}
+
 .nav-link[aria-current="page"] {
   color: var(--color-brand-neon, #00ffe0);
   font-weight: 700;

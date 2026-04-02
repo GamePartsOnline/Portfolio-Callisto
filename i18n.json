@@ -241,12 +241,26 @@
       "en": "Updated April 2026 · New entries as I ship them"
     },
     "articlesLangNote": {
-      "fr": "Les <strong>articles</strong> ci-dessous sont rédigés en <strong>anglais</strong> (preuve de travail, lectorat technique international). L’interface du site (menu, titres de page) suit votre choix FR/EN.",
-      "en": "The <strong>articles</strong> below are written in <strong>English</strong> (proof of work, international tech audience). Site chrome (menu, page titles) follows your FR/EN preference."
+      "fr": "Les <strong>titres</strong> d’article suivent FR/EN ; le <strong>corps</strong> (étude de cas) reste en anglais — preuve de travail et lectorat technique internationaux.",
+      "en": "Article <strong>headlines</strong> follow FR/EN; the <strong>body</strong> (case study) stays in English — proof of work and international tech audience."
     },
     "footerNote": {
       "fr": "D’autres études de cas (cache, auth, cas limites) seront ajoutées ici. Envie du même type d’analyse sur votre stack ? <a href=\"index.html#contact\">Contact</a>.",
       "en": "More case studies (caching, auth, edge cases) will land here. Want a similar breakdown on your stack? <a href=\"index.html#contact\">Get in touch</a>."
+    }
+  },
+  "buildLogArticle": {
+    "satellite": {
+      "headline": {
+        "fr": "Les pages satellites n’avaient pas de sélecteur de langue — le correctif",
+        "en": "Satellite pages had no language switch — here is the fix"
+      }
+    },
+    "llmLatency": {
+      "headline": {
+        "fr": "D’environ 5&nbsp;s à ~1&nbsp;s sur un appel API type OpenAI",
+        "en": "How I took an OpenAI-style API path from ~5s down to ~1s"
+      }
     }
   },
   "langSwitch": {
