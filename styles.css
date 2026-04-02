@@ -1452,6 +1452,8 @@ a:focus-visible {
   height: auto;
   object-fit: cover;
   object-position: center center;
+  /* Aligne le média sur le border-radius du cadre glass (overflow peut laisser des coins durs sur certains navigateurs) */
+  border-radius: 20px 20px 0 0;
 }
 
 .hero-slide-btn {
@@ -1491,21 +1493,28 @@ a:focus-visible {
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: center;
-  gap: 10px;
-  max-width: calc(100% - 2rem);
+  align-items: center;
+  /* Dans le hero (~500px max), 5 pastilles × 44px + gaps dépassaient la largeur → le 5e point passait à la ligne */
+  gap: clamp(3px, 1vw, 8px);
+  max-width: calc(100% - 0.75rem);
+  padding: 0 2px;
+  box-sizing: border-box;
   z-index: 2;
 }
 
-/* WCAG 2.5.5 / Lighthouse : cible ≥ 44×44 px sur tous les viewports ; pastille via ::after */
+/*
+ * Pastille visuelle via ::after ; la boîte peut rétrécir un peu sur étroits pour tenir 5 points sur une ligne.
+ * Cible tactile : clamp entre ~32px et 44px (le carrousel est une zone déjà large).
+ */
 .hero-slide-dot {
   position: relative;
   box-sizing: border-box;
-  width: var(--touch-target-min, 44px);
-  height: var(--touch-target-min, 44px);
-  min-width: var(--touch-target-min, 44px);
-  min-height: var(--touch-target-min, 44px);
+  width: clamp(32px, 9vw, var(--touch-target-min, 44px));
+  height: clamp(32px, 9vw, var(--touch-target-min, 44px));
+  min-width: clamp(32px, 9vw, var(--touch-target-min, 44px));
+  min-height: clamp(32px, 9vw, var(--touch-target-min, 44px));
   padding: 0;
   border: none;
   border-radius: 50%;

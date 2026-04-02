@@ -714,7 +714,7 @@ async function loadPortfolioImages() {
       toBuild.push({ image, info });
     });
 
-    function createPortfolioItem(image, info) {
+    function createPortfolioItem(image, info, itemIndex) {
       const { thumbSrc, yid, category } = info;
       const item = document.createElement("div");
       item.className = "portfolio-item glass-card";
@@ -731,8 +731,15 @@ async function loadPortfolioImages() {
       applyThirdPartyImageRequestMode(img, thumbSrc);
       img.src = thumbSrc;
       img.alt = buildArtworkAltText(image, category, categoryLabelMap);
-      img.loading = "lazy";
-      img.decoding = "async";
+      /* Audit : pas de lazy sur les ~3 premières vignettes (souvent visibles au 1er écran selon viewport) */
+      if (typeof itemIndex === "number" && itemIndex < 3) {
+        img.loading = "eager";
+        img.decoding = itemIndex === 0 ? "sync" : "async";
+        if (itemIndex === 0) img.fetchPriority = "high";
+      } else {
+        img.loading = "lazy";
+        img.decoding = "async";
+      }
       img.sizes =
         "(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 25vw";
       img.setAttribute("width", "400");
@@ -811,7 +818,7 @@ async function loadPortfolioImages() {
       const end = Math.min(bi + BATCH, toBuild.length);
       for (; bi < end; bi++) {
         const { image, info } = toBuild[bi];
-        portfolioGrid.appendChild(createPortfolioItem(image, info));
+        portfolioGrid.appendChild(createPortfolioItem(image, info, bi));
       }
       /* Masquer tout de suite hors catégorie → moins d’images lazy-loadées qu’avec « All » */
       applyPortfolioFilter(defaultFilter, { instant: true });
@@ -1278,12 +1285,25 @@ function buildHeroSlidesFromPortfolio(data) {
     heroImg.src = url;
     heroImg.alt = buildArtworkAltText(img, img.category, heroLabelMap);
     heroImg.className = "hero-image-3d";
-    /* LCP : premier slide — décodage prioritaire ; les autres en lazy */
+    /* LCP : premier slide — pas de lazy, décodage prioritaire, preload <link> dans <head> */
     if (i === 0) {
+      heroImg.loading = "eager";
       heroImg.decoding = "sync";
       heroImg.fetchPriority = "high";
       heroImg.setAttribute("width", "500");
       heroImg.setAttribute("height", "300");
+      if (url) {
+        let pre = document.getElementById("hero-lcp-preload");
+        if (!pre) {
+          pre = document.createElement("link");
+          pre.id = "hero-lcp-preload";
+          pre.rel = "preload";
+          pre.as = "image";
+          pre.setAttribute("fetchpriority", "high");
+          document.head.appendChild(pre);
+        }
+        pre.href = url;
+      }
     } else {
       heroImg.decoding = "async";
       heroImg.loading = "lazy";

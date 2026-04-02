@@ -5,7 +5,7 @@ Réponses courantes aux alertes **Performance** sur ce site statique.
 ## Render blocking requests
 
 - **`styles.css`** reste bloquant (évite un flash sans style). Le gain principal vient des **polices Google** : une seule URL + chargement **non bloquant** (`preload` → `stylesheet` au `onload`) dans `index.html`.
-- Les scripts en bas de page : **`cursor-callisto.js`** est en `defer` (moins prioritaire que `script.js`).
+- **`script.js`** et le lecteur audio : en **`defer`** (ordre : `cookie-consent.js` → `script.js` → `music-player-init.js`) — le parse HTML n’est plus bloqué par le JS principal ; les handlers `DOMContentLoaded` dans `script.js` s’enregistrent avant l’événement.
 
 ## Use efficient cache lifetimes
 
@@ -15,8 +15,8 @@ Réponses courantes aux alertes **Performance** sur ce site statique.
 
 ## Improve image delivery
 
-- Grille : miniatures WebP générées + `loading="lazy"`, `sizes`, `width`/`height` pour limiter le **CLS**.
-- Hero : premier slide avec `fetchPriority="high"` + dimensions ; les autres en `loading="lazy"` et `fetchPriority="low"`.
+- Grille : miniatures WebP + `sizes`, `width`/`height` ; **`loading="lazy"`** sauf les **3 premières** vignettes (**`eager`**, la 1ʳᵉ avec **`fetchPriority="high"`**) pour coller aux audits « pas de lazy above the fold ».
+- Hero : premier slide **`loading="eager"`**, `fetchPriority="high"`, `decoding="sync"` + **`<link rel="preload" as="image">`** injecté sur l’URL LCP ; les autres slides en `loading="lazy"` et `fetchPriority="low"`.
 
 ## Forced reflow
 
@@ -25,7 +25,7 @@ Réponses courantes aux alertes **Performance** sur ce site statique.
 ## LCP / third parties
 
 - **LCP** : souvent l’image du **hero**. Ne pas enchaîner des **requêtes de vérification** (`Image()` en série) *avant* d’injecter le `<img>` — cela pouvait repousser le LCP à **10–20 s**. Le script pose l’URL tout de suite (miniature WebP en priorité, repli `onerror` vers le fichier d’origine).
-- **Premier slide** : `fetchpriority="high"`, `decoding="sync"`, dimensions `500×300`.
+- **Premier slide** : `loading="eager"`, `fetchpriority="high"`, `decoding="sync"`, dimensions `500×300`, preload `<link>` sur la même URL.
 - **Particules + parallax** : lancés via **`requestIdleCallback`** (repli `setTimeout`) pour moins bloquer le thread principal avant la première peinture.
 - **Google Fonts** : toujours un tiers ; pour supprimer la dépendance, héberger les `.woff2` dans `assets/` et `@font-face` en local (chantier séparé).
 
