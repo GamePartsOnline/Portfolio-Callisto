@@ -4067,12 +4067,23 @@ html[lang="en"] .build-log-body-locale--en {
   justify-content: center;
 }
 
-/* Annule .footer-text { flex-direction: column } : une seule ligne de liens centrée, retour à la ligne si besoin */
+/*
+ * .footer-text = flex column (plusieurs blocs de texte).
+ * Ici le <p> contient uniquement des liens + séparateurs : il faut une rangée, pas une colonne
+ * (sinon chaque <a> et chaque <span>·</span> devient un item empilé).
+ */
+.footer-site-nav .footer-text.footer-text--compact,
 .footer-text.footer-text--compact {
-  display: block;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  row-gap: 0.25rem;
   width: 100%;
   max-width: min(100%, 44rem);
-  margin: 0 auto;
+  margin: 0 auto 0;
   padding: 0 var(--spacing-sm);
   box-sizing: border-box;
   font-size: 0.9rem;

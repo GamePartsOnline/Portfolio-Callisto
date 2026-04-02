@@ -12,8 +12,14 @@
       "fr": "Journal technique",
       "en": "Build Log"
     },
-    "portfolio": { "fr": "Portfolio", "en": "Portfolio" },
-    "services": { "fr": "Services", "en": "Services" },
+    "portfolio": {
+      "fr": "Portfolio",
+      "en": "Portfolio"
+    },
+    "services": {
+      "fr": "Services",
+      "en": "Services"
+    },
     "aboutContact": {
       "fr": "À propos / Contact",
       "en": "About / Contact"
@@ -50,14 +56,26 @@
       "fr": "Je conçois des architectures solides et des expériences visuelles intelligentes.",
       "en": "I build robust architectures and intelligent visual experiences."
     },
-    "ctaPortfolio": { "fr": "Portfolio", "en": "Portfolio" },
-    "ctaServices": { "fr": "Services", "en": "Services" },
-    "ctaContact": { "fr": "Contact", "en": "Contact" },
+    "ctaPortfolio": {
+      "fr": "Portfolio",
+      "en": "Portfolio"
+    },
+    "ctaServices": {
+      "fr": "Services",
+      "en": "Services"
+    },
+    "ctaContact": {
+      "fr": "Contact",
+      "en": "Contact"
+    },
     "ctaNav": {
       "fr": "Actions principales",
       "en": "Primary actions"
     },
-    "scroll": { "fr": "Défiler", "en": "Scroll" },
+    "scroll": {
+      "fr": "Défiler",
+      "en": "Scroll"
+    },
     "scrollAria": {
       "fr": "Faire défiler vers À propos",
       "en": "Scroll to About"
@@ -66,14 +84,20 @@
       "fr": "Image précédente",
       "en": "Previous image"
     },
-    "carouselNext": { "fr": "Image suivante", "en": "Next image" },
+    "carouselNext": {
+      "fr": "Image suivante",
+      "en": "Next image"
+    },
     "carouselDotsAria": {
       "fr": "Navigation du carrousel d’images",
       "en": "Carousel image navigation"
     }
   },
   "about": {
-    "title": { "fr": "À propos", "en": "About" },
+    "title": {
+      "fr": "À propos",
+      "en": "About"
+    },
     "intro": {
       "fr": "Je suis Callisto, 46 ans, basée à Châlons-en-Champagne.<br /> Gérante chez GPO SARL, artiste du dessin numérique &amp; créatrice IA.",
       "en": "I am Callisto, 46 years old, based in Châlons-en-Champagne.<br /> Manager at GPO SARL, Digital Drawing artist &amp; AI Builder."
@@ -86,7 +110,10 @@
       "fr": "<a href=\"https://www.behance.net/CallistoArtwork\" class=\"about-behance-link\" target=\"_blank\" rel=\"noopener noreferrer\"><svg class=\"about-behance-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\"><path fill=\"currentColor\" d=\"M22 7h-7V5h7v2zM15 15.5c0-1.33.47-2.29 1.42-2.86C17.37 11.94 18.7 11.5 20 11.5v2.5c-1.2 0-2.27.35-2.7.9-.43.56-.43 1.3 0 1.86.43.55 1.5.9 2.7.9h.3v2.31c-.55.17-1.14.26-1.74.26-2.21 0-3.86-1.44-3.86-3.5zM9 8H2v2h5v2H2v2h7v-8zm4.5 0H11v8h2.5c1.38 0 2.5-1.12 2.5-2.5S16.88 8 15.5 8h-.5zM15.5 12c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z\"/></svg><strong>Behance — Callisto Artwork</strong></a> — portfolio Adobe (démos, paintover, pixel art, GPO / flippers, Inktober…). Outils : Photoshop, Illustrator, Fresco. Disponible en freelance &amp; ouverte à de nouveaux projets.",
       "en": "<a href=\"https://www.behance.net/CallistoArtwork\" class=\"about-behance-link\" target=\"_blank\" rel=\"noopener noreferrer\"><svg class=\"about-behance-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\"><path fill=\"currentColor\" d=\"M22 7h-7V5h7v2zM15 15.5c0-1.33.47-2.29 1.42-2.86C17.37 11.94 18.7 11.5 20 11.5v2.5c-1.2 0-2.27.35-2.7.9-.43.56-.43 1.3 0 1.86.43.55 1.5.9 2.7.9h.3v2.31c-.55.17-1.14.26-1.74.26-2.21 0-3.86-1.44-3.86-3.5zM9 8H2v2h5v2H2v2h7v-8zm4.5 0H11v8h2.5c1.38 0 2.5-1.12 2.5-2.5S16.88 8 15.5 8h-.5zM15.5 12c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z\"/></svg><strong>Behance — Callisto Artwork</strong></a> — Adobe portfolio (demo projects, paintover, pixel art, GPO / pinball, Inktober…). Tools: Photoshop, Illustrator, Fresco. Available for freelance work &amp; open to new projects."
     },
-    "toolsTitle": { "fr": "Logiciels", "en": "Software" },
+    "toolsTitle": {
+      "fr": "Logiciels",
+      "en": "Software"
+    },
     "toolsAria": {
       "fr": "Logiciels",
       "en": "Software"
@@ -96,30 +123,54 @@
       "en": "Want to see more or start a conversation? <a href=\"#portfolio\">Portfolio</a> · <a href=\"services.html\">Services</a> · <a href=\"build-log.html\">Build Log</a> · <a href=\"#contact\">Contact</a>"
     },
     "card": {
-      "drawingTitle": { "fr": "Dessin numérique", "en": "Digital Drawing" },
+      "drawingTitle": {
+        "fr": "Dessin numérique",
+        "en": "Digital Drawing"
+      },
       "drawingDesc": {
         "fr": "Artiste numérique depuis 2011, concours internationaux, et passionnée par la pratique !",
         "en": "Digital artist since 2011, international competitions, and passionate about the craft!"
       },
-      "drawingTag": { "fr": "Portfolio", "en": "Portfolio" },
-      "gpoTitle": { "fr": "GPO SARL", "en": "GPO SARL" },
+      "drawingTag": {
+        "fr": "Portfolio",
+        "en": "Portfolio"
+      },
+      "gpoTitle": {
+        "fr": "GPO SARL",
+        "en": "GPO SARL"
+      },
       "gpoDesc": {
         "fr": "Réparation, vente, location et fabrication de machines de loisirs — flippers, baby-foot, bornes d’arcade… Nombreuses créations et rénovations sur mesure depuis le premier jour.",
         "en": "Repair, sales, rentals, and manufacturing of amusement machines — pinball, foosball, arcade cabinets… Many custom builds and refurbishments from day one."
       },
-      "gpoTag": { "fr": "GPO SARL", "en": "GPO SARL" },
-      "demoTitle": { "fr": "Demoscene", "en": "Demoscene" },
+      "gpoTag": {
+        "fr": "GPO SARL",
+        "en": "GPO SARL"
+      },
+      "demoTitle": {
+        "fr": "Demoscene",
+        "en": "Demoscene"
+      },
       "demoDesc": {
         "fr": "Membre active depuis 2015 — Shadow Party, Revision, Rsync, Inercia, Assembly, Tokyo Demo Fest…",
         "en": "Active member since 2015 — Shadow Party, Revision, Rsync, Inercia, Assembly, Tokyo Demo Fest…"
       },
-      "demoTag": { "fr": "Scener", "en": "Scener" },
-      "aiTitle": { "fr": "Prompt IA", "en": "AI Prompt" },
+      "demoTag": {
+        "fr": "Scener",
+        "en": "Scener"
+      },
+      "aiTitle": {
+        "fr": "Prompt IA",
+        "en": "AI Prompt"
+      },
       "aiDesc": {
         "fr": "ChatGPT, Perplexity, Gemini, Claude. Exploration et intégration d’outils IA dans le flux créatif.",
         "en": "ChatGPT, Perplexity, Gemini, Claude. Exploring and integrating AI tools into the creative workflow."
       },
-      "aiTag": { "fr": "Création IA", "en": "AI Builder" },
+      "aiTag": {
+        "fr": "Création IA",
+        "en": "AI Builder"
+      },
       "devTitle": {
         "fr": "Full-stack &amp; IA générative",
         "en": "Full-stack &amp; generative AI"
@@ -128,7 +179,10 @@
         "fr": "Spécialisation architecture full-stack et intégration d’IA générative.<br /> The Hacking Project — stack : HTML, CSS, JavaScript, Ruby, développement assisté par IA…",
         "en": "Specialization in full-stack architecture and generative AI integration.<br /> The Hacking Project — stack: HTML, CSS, JavaScript, Ruby, AI-assisted development…"
       },
-      "devTag": { "fr": "THP 2026", "en": "THP 2026" },
+      "devTag": {
+        "fr": "THP 2026",
+        "en": "THP 2026"
+      },
       "uxTitle": {
         "fr": "UI design / Design graphique",
         "en": "UI design / Graphic design"
@@ -137,11 +191,17 @@
         "fr": "Interfaces et ergonomie, accessibilité, sites et jeux vidéo.<br /> Illustrator, Photoshop, InDesign, Fresco, Procreate …",
         "en": "Interfaces and ergonomics, accessibility, websites and gaming.<br /> Illustrator, Photoshop, InDesign, Fresco, Procreate …"
       },
-      "uxTag": { "fr": "UX/UI", "en": "UX/UI" }
+      "uxTag": {
+        "fr": "UX/UI",
+        "en": "UX/UI"
+      }
     }
   },
   "portfolio": {
-    "title": { "fr": "Portfolio", "en": "Portfolio" },
+    "title": {
+      "fr": "Portfolio",
+      "en": "Portfolio"
+    },
     "lead": {
       "fr": "Utilisez les filtres pour explorer par catégorie. Cliquez sur une œuvre pour ouvrir les détails, images et vidéos.",
       "en": "Use the filters to explore by category. Click any artwork to open details, images, and videos."
@@ -154,12 +214,24 @@
       "fr": "Intéressée par une collaboration ?",
       "en": "Interested in a collaboration?"
     },
-    "footerCta": { "fr": "Me contacter", "en": "Contact me" },
-    "filterAll": { "fr": "Tous", "en": "All" }
+    "footerCta": {
+      "fr": "Me contacter",
+      "en": "Contact me"
+    },
+    "filterAll": {
+      "fr": "Tous",
+      "en": "All"
+    }
   },
   "contact": {
-    "title": { "fr": "Contact", "en": "Contact" },
-    "h3": { "fr": "Discutons-en", "en": "Let’s talk" },
+    "title": {
+      "fr": "Contact",
+      "en": "Contact"
+    },
+    "h3": {
+      "fr": "Discutons-en",
+      "en": "Let’s talk"
+    },
     "lead": {
       "fr": "Pour des commandes, du freelance art ou dev, ou des questions demoscene — écrivez-moi.",
       "en": "For commissions, freelance art or dev, or demoscene inquiries — send a message."
@@ -200,7 +272,10 @@
       "fr": "Refuser les cookies non essentiels",
       "en": "Reject non-essential cookies"
     },
-    "accept": { "fr": "Tout accepter", "en": "Accept all" },
+    "accept": {
+      "fr": "Tout accepter",
+      "en": "Accept all"
+    },
     "more": {
       "fr": "Mentions légales — cookies",
       "en": "Legal notices — cookies"
@@ -211,7 +286,10 @@
     }
   },
   "lightbox": {
-    "close": { "fr": "Fermer", "en": "Close" }
+    "close": {
+      "fr": "Fermer",
+      "en": "Close"
+    }
   },
   "meta": {
     "documentTitle": {
@@ -221,6 +299,10 @@
     "buildLogDocumentTitle": {
       "fr": "Journal technique | Callisto Arts",
       "en": "Build Log | Callisto Arts"
+    },
+    "legalDocumentTitle": {
+      "fr": "Mentions légales | Callisto Arts",
+      "en": "Legal notices | Callisto Arts"
     }
   },
   "buildLogPage": {
@@ -267,6 +349,23 @@
     "aria": {
       "fr": "Choisir la langue du site",
       "en": "Choose site language"
+    }
+  },
+  "legalPage": {
+    "title": {
+      "fr": "Mentions légales",
+      "en": "Legal notices"
+    },
+    "updated": {
+      "fr": "Dernière mise à jour : mars 2026",
+      "en": "Last updated: March 2026"
+    },
+    "backLink": {
+      "fr": "← Retour au portfolio",
+      "en": "← Back to portfolio"
+    },
+    "article": {
+      "en": "          <h2>1. Publisher</h2>\n          <p>\n            This website is published by <strong>GPO SARL</strong>, with share\n            capital of <strong>€1,000</strong>, represented by\n            <strong>Frédérique Charton</strong> as <strong>managing director</strong>.\n          </p>\n          <p>\n            <strong>Registered office:</strong><br />\n            4&nbsp;rue des Jardins<br />\n            51330 Givry-en-Argonne, France\n          </p>\n          <p>\n            <strong>SIREN:</strong> 539&nbsp;937&nbsp;912<br />\n            <strong>SIRET:</strong> 539&nbsp;937&nbsp;912&nbsp;00027<br />\n            <strong\n              >RCS Châlons-en-Champagne B 539&nbsp;937&nbsp;912</strong\n            >\n          </p>\n          <p>\n            <strong>Contact:</strong><br />\n            Email:\n            <a href=\"mailto:callisto.gfx@gmail.com\">callisto.gfx@gmail.com</a>\n            <br />\n            Phone:\n            <a href=\"tel:+33673540394\">06&nbsp;73&nbsp;54&nbsp;03&nbsp;94</a>\n            (France)<br />\n            Useful links on the portfolio:\n            <a href=\"index.html#contact\">Contact section</a>,\n            <a href=\"https://www.behance.net/CallistoArtwork\" rel=\"noopener noreferrer\"\n              >Behance</a\n            >.\n          </p>\n\n          <h2>2. Publication director</h2>\n          <p>\n            <strong>Frédérique Charton</strong> — activity and brand\n            <strong>Callisto Arts</strong>.\n          </p>\n\n          <h2>3. Hosting</h2>\n          <p>\n            The site is hosted by <strong>IONOS SE</strong> (shared hosting).\n          </p>\n          <p>\n            <strong>IONOS SE</strong><br />\n            Elgendorfer Str. 57, 56410 Montabaur, Germany<br />\n            Website: <a href=\"https://www.ionos.com/\" rel=\"noopener noreferrer\">ionos.com</a>\n          </p>\n\n          <h2>4. Intellectual property</h2>\n          <p>\n            All content on this site (text, visuals, graphics, logo, structure,\n            code) is protected by copyright and, where applicable, trademark law.\n            Any reproduction, display, or use without permission is prohibited\n            unless agreed in writing by the publisher or rights holders.\n          </p>\n          <p>\n            Portfolio works are the property of their author or subject to\n            third-party rights (clients, partners) where applicable.\n          </p>\n\n          <h2>5. Personal data (GDPR)</h2>\n          <p>\n            The site is mainly informational. Contact details (email, phone) in\n            these notices allow you to exercise your rights and reach the\n            publisher. Messages sent by email or social channels are processed\n            to respond to your request (legitimate interest or pre-contractual /\n            contractual measures as applicable).\n          </p>\n          <p>\n            For any question about your personal data, write to\n            <a href=\"mailto:callisto.gfx@gmail.com\">callisto.gfx@gmail.com</a>.\n            You have rights of access, rectification, erasure, restriction,\n            objection, and portability under Regulation (EU) 2016/679 (GDPR).\n          </p>\n          <p>\n            Complaint to the supervisory authority:\n            <a href=\"https://www.cnil.fr\" rel=\"noopener noreferrer\">CNIL</a> —\n            www.cnil.fr\n          </p>\n\n          <h2 id=\"cookies\">6. Cookies and trackers</h2>\n          <p>\n            This site aims to limit cookies to what is strictly necessary.\n            Third-party embeds (e.g. YouTube videos in iframes, Google Fonts)\n            may set cookies or collect data under their own policies.\n          </p>\n          <p>\n            A <strong>consent banner</strong> is shown on the first visit: you\n            can accept all cookies and trackers offered, or refuse those that\n            are not strictly necessary. Your choice is stored locally on your\n            device (<code>localStorage</code>). You can change it anytime via the\n            “Cookie settings” link in the portfolio footer.\n          </p>\n\n          <h2>7. Limitation of liability</h2>\n          <p>\n            The publisher strives to keep published information accurate but\n            cannot be held liable for errors, omissions, or temporary\n            unavailability of the site. External links (Behance, social networks,\n            etc.) point to third-party sites whose content is outside the\n            publisher’s control.\n          </p>\n"
     }
   }
 }

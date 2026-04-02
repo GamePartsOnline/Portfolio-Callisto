@@ -1424,7 +1424,7 @@ const optimizedScrollHandler = debounce(() => {
 // I18N — hybrid: French in HTML; i18n.json supplies English (loadLanguage / localStorage)
 // ============================================
 const I18N_STORAGE_KEY = "callisto-lang";
-const I18N_JSON_URL = "i18n.json?v=5";
+const I18N_JSON_URL = "i18n.json?v=6";
 
 let i18nBundle = null;
 const i18nFrSnapshots = new WeakMap();
@@ -1471,6 +1471,17 @@ function updateDocumentTitleFromI18n(lang) {
   if (!i18nBundle) return;
   if (document.getElementById("heroSlides")) {
     const leaf = getI18nLeaf(i18nBundle, "meta.documentTitle");
+    if (leaf && typeof leaf[lang] === "string" && leaf[lang]) {
+      document.title = leaf[lang];
+    }
+    return;
+  }
+  if (
+    document.body.classList.contains("legal-page-body") &&
+    !document.body.classList.contains("build-log-body") &&
+    !document.body.classList.contains("services-page-body")
+  ) {
+    const leaf = getI18nLeaf(i18nBundle, "meta.legalDocumentTitle");
     if (leaf && typeof leaf[lang] === "string" && leaf[lang]) {
       document.title = leaf[lang];
     }
