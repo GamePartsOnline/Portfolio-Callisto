@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes Collections Web3</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            margin: 0;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            padding: 40px 0;
+        }
+        .header h1 {
+            margin-bottom: 10px;
+            color: #00d2ff;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .nft-card {
+            background-color: #1e1e1e;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            text-align: center;
+            padding-bottom: 20px;
+        }
+        .nft-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 210, 255, 0.2);
+        }
+        .nft-card img {
+            width: 100%;
+            height: auto;
+            border-bottom: 2px solid #333;
+        }
+        .nft-info {
+            padding: 15px;
+        }
+        .btn-opensea {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #2081e2;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+        .btn-opensea:hover {
+            background-color: #1868b7;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Galerie d'Art & Web3</h1>
+        <p>Découvrez mes collections d'aquarelles numériques sur le réseau Base.</p>
+    </div>
+
+    <div class="gallery-grid">
+        <!-- Carte pour la collection principale -->
+        <div class="nft-card">
+            <!-- Remplacez le lien src par l'image de votre choix -->
+            <img src="chemin/vers/votre/image-aquarelle.jpg" alt="Aquarelle">
+            <div class="nft-info">
+                <h3>Aqua-R-L Collections</h3>
+                <p>Édition limitée</p>
+                <a href="https://opensea.io/fr/collection/aqua-r-l-collections" target="_blank" class="btn-opensea">
+                    Voir sur OpenSea
+                </a>
+            </div>
+        </div>
+
+        <!-- Vous pouvez copier-coller le bloc .nft-card ci-dessus pour ajouter d'autres œuvres -->
+    </div>
+
+</body>
+</html>
