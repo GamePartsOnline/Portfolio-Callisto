@@ -1,90 +1,308 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mes Collections Web3</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #121212;
-            color: #ffffff;
-            margin: 0;
-            padding: 20px;
-        }
-        .header {
-            text-align: center;
-            padding: 40px 0;
-        }
-        .header h1 {
-            margin-bottom: 10px;
-            color: #00d2ff;
-        }
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .nft-card {
-            background-color: #1e1e1e;
-            border-radius: 12px;
-            overflow: hidden;
-            transition: transform 0.3s ease;
-            text-align: center;
-            padding-bottom: 20px;
-        }
-        .nft-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 210, 255, 0.2);
-        }
-        .nft-card img {
-            width: 100%;
-            height: auto;
-            border-bottom: 2px solid #333;
-        }
-        .nft-info {
-            padding: 15px;
-        }
-        .btn-opensea {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 10px 20px;
-            background-color: #2081e2;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: bold;
-        }
-        .btn-opensea:hover {
-            background-color: #1868b7;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Callisto Arts — NFT | Frédérique Charton</title>
+  <link rel="icon" type="image/png" href="assets/images/logo/logo-cllisto.png" />
+  <link rel="stylesheet" href="styles.css?v=88" />
 </head>
 <body>
-
-    <div class="header">
-        <h1>Galerie d'Art & Web3</h1>
-        <p>Découvrez mes collections d'aquarelles numériques sur le réseau Base.</p>
+  <a class="skip-link" href="#main-content">Aller au contenu principal</a>
+  <div class="animated-background" aria-hidden="true">
+    <div class="bg-gradient"></div>
+    <div class="bg-mesh"></div>
+    <div class="bg-particles" aria-hidden="true"></div>
+    <div class="bg-orbs">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
     </div>
+    <div class="bg-grid"></div>
+  </div>
 
-    <div class="gallery-grid">
-        <!-- Carte pour la collection principale -->
-        <div class="nft-card">
-            <!-- Remplacez le lien src par l'image de votre choix -->
-            <img src="chemin/vers/votre/image-aquarelle.jpg" alt="Aquarelle">
-            <div class="nft-info">
-                <h3>Aqua-R-L Collections</h3>
-                <p>Édition limitée</p>
-                <a href="https://opensea.io/fr/collection/aqua-r-l-collections" target="_blank" class="btn-opensea">
-                    Voir sur OpenSea
-                </a>
-            </div>
-        </div>
-
-        <!-- Vous pouvez copier-coller le bloc .nft-card ci-dessus pour ajouter d'autres œuvres -->
+  <nav
+    class="nav"
+    role="navigation"
+    aria-label="Navigation principale"
+    data-i18n-aria="nav.ariaMain"
+  >
+    <div class="nav-container">
+      <a
+        href="index.html#welcome"
+        class="nav-logo"
+        aria-label="Callisto Arts — Bienvenue dans mon univers (accueil)"
+        data-i18n-aria="nav.logoHome"
+      >
+        <img
+          src="assets/images/logo/logo-cllisto.png"
+          alt=""
+          class="logo-img"
+          width="40"
+          height="40"
+          decoding="async"
+        />
+        <span class="logo-text">Callisto Arts</span>
+      </a>
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-label="Ouvrir ou fermer le menu"
+        aria-controls="navMenu"
+        aria-expanded="false"
+        id="navToggle"
+        data-i18n-aria="nav.toggleAria"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-menu" id="navMenu">
+        <li>
+          <a href="index.html#about" class="nav-link" data-i18n="nav.aboutContact"
+            >À propos / Contact</a
+          >
+        </li>
+        <li>
+          <a
+            href="index.html#portfolio"
+            class="nav-link"
+            title="Portfolio — demoscene &amp; art"
+            data-i18n="nav.portfolio"
+            >Portfolio</a
+          >
+        </li>
+        <li>
+          <a
+            href="nft.html"
+            class="nav-link"
+            title="NFT"
+            data-i18n="nav.nft"
+            >NFT</a
+          >
+        </li>
+        <li>
+          <a
+            href="services.html"
+            class="nav-link"
+            title="GPO &amp; Graph2Print"
+            data-i18n="nav.services"
+            >Services</a
+          >
+        </li>
+        <li>
+          <a
+            href="build-log.html"
+            class="nav-link"
+            title="Full-stack &amp; IA"
+            data-i18n="nav.buildLog"
+            >Journal technique</a
+          >
+        </li>
+      </ul>
+      <div
+        class="lang-switch"
+        role="group"
+        aria-label="Choisir la langue du site"
+        data-i18n-aria="langSwitch.aria"
+      >
+        <button
+          type="button"
+          class="lang-switch__btn is-active"
+          data-lang="fr"
+          aria-pressed="true"
+          title="Français"
+        >
+          FR
+        </button>
+        <span class="lang-switch__sep" aria-hidden="true">|</span>
+        <button
+          type="button"
+          class="lang-switch__btn"
+          data-lang="en"
+          aria-pressed="false"
+          title="English"
+        >
+          EN
+        </button>
+      </div>
     </div>
+  </nav>
 
+  <aside
+    class="social-fixed-rail"
+    aria-label="Quick links to social networks"
+  >
+    <ul class="social-fixed-rail__list" role="list">
+      <li>
+        <a
+          href="https://www.behance.net/CallistoArtwork"
+          class="social-fixed-rail__link"
+          aria-label="Behance"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <svg
+            class="social-fixed-rail__icon"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <rect width="24" height="24" fill="none" />
+            <text
+              x="50%"
+              y="57%"
+              text-anchor="middle"
+              dominant-baseline="middle"
+              font-family="Inter, Arial, sans-serif"
+              font-size="10"
+              font-weight="700"
+              fill="currentColor"
+            >
+              BE
+            </text>
+          </svg>
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://x.com/callistoarts"
+          class="social-fixed-rail__link"
+          aria-label="Twitter"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <svg
+            class="social-fixed-rail__icon"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path
+              fill="currentColor"
+              d="M23.954 4.569c-.885.392-1.83.656-2.825.775 1.014-.609 1.794-1.574 2.163-2.724-.95.564-2.005.974-3.127 1.195-.896-.955-2.173-1.55-3.591-1.55-2.717 0-4.92 2.203-4.92 4.917 0 .39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475 0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.315 0-.623-.03-.924-.086.624 1.951 2.432 3.377 4.576 3.417-1.676 1.313-3.787 2.097-6.078 2.097-.395 0-.786-.023-1.17-.069 2.179 1.397 4.768 2.212 7.548 2.212 9.057 0 14.01-7.506 14.01-14.01 0-.213-.004-.425-.014-.636.962-.695 1.797-1.562 2.457-2.549z"
+            />
+          </svg>
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://www.instagram.com/callisto_artwork/"
+          class="social-fixed-rail__link"
+          aria-label="Instagram"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <svg
+            class="social-fixed-rail__icon"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path
+              fill="currentColor"
+              d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"
+            />
+          </svg>
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://www.facebook.com/callistoarts"
+          class="social-fixed-rail__link"
+          aria-label="Facebook"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <svg
+            class="social-fixed-rail__icon"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path
+              fill="currentColor"
+              d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
+            />
+          </svg>
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://www.linkedin.com/in/callistoarts/"
+          class="social-fixed-rail__link"
+          aria-label="LinkedIn"
+          title="LinkedIn"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <svg
+            class="social-fixed-rail__icon"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path
+              fill="currentColor"
+              d="M22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0zM7.12 20.45H3.56V9h3.56v11.45zM5.34 7.64a2.07 2.07 0 110-4.14 2.07 2.07 0 010 4.14zm15.11 12.81h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67h-3.56V9h3.42v1.56h.05c.48-.9 1.65-1.85 3.39-1.85 3.63 0 4.3 2.39 4.3 5.48v6.78z"
+            />
+          </svg>
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://demozoo.org/sceners/57855/"
+          class="social-fixed-rail__link"
+          aria-label="Demozoo"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <svg
+            class="social-fixed-rail__icon"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path
+              fill="currentColor"
+              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"
+            />
+          </svg>
+        </a>
+      </li>
+    </ul>
+  </aside>
+
+  <main id="main-content" tabindex="-1">
+    <section class="hero" role="banner">
+      <div class="hero-content">
+        <h1 class="hero-title">
+          <span class="hero-greeting">NFT</span>
+          <span class="hero-name">Callisto Arts</span>
+        </h1>
+        <nav class="hero-cta" aria-label="Actions principales">
+          <a href="#nftGallery" class="cta-link">Voir les NFT</a>
+        </nav>
+      </div>
+    </section>
+
+    <section id="nftGallery" class="section">
+      <div class="nft-gallery-glued">
+        <a href="https://opensea.io/fr/collection/aqua-r-l-collections" target="_blank" class="nft-thumb">
+          <img src="assets/images/thumbs/aquarelle/Latortue-thumb.webp" alt="Aquarelle Animalière 1" />
+          <div class="nft-overlay">Voir sur OpenSea</div>
+        </a>
+        <a href="https://opensea.io/fr/collection/aqua-r-l-collections" target="_blank" class="nft-thumb">
+          <img src="assets/images/thumbs/aquarelle/Le_cheval_blanc-thumb.webp" alt="Aquarelle Animalière 2" />
+          <div class="nft-overlay">Voir sur OpenSea</div>
+        </a>
+        <a href="https://opensea.io/fr/collection/aqua-r-l-collections" target="_blank" class="nft-thumb">
+          <img src="assets/images/thumbs/aquarelle/Promenade-thumb.webp" alt="Aquarelle Animalière 3" />
+          <div class="nft-overlay">Voir sur OpenSea</div>
+        </a>
+      </div>
+    </section>
+
+  </main>
 </body>
 </html>

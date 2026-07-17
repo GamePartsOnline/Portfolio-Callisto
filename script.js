@@ -769,6 +769,18 @@ async function loadPortfolioImages() {
 
       imageDiv.appendChild(img);
 
+      const isNFT =
+        image.nft === true ||
+        category.toLowerCase() === "ia" ||
+        String(image.filename || "").startsWith("IA/");
+
+      if (isNFT) {
+        const nftBadge = document.createElement("span");
+        nftBadge.className = "portfolio-nft-badge";
+        nftBadge.textContent = "NFT";
+        imageDiv.appendChild(nftBadge);
+      }
+
       const overlay = document.createElement("div");
       overlay.className = "portfolio-overlay";
 
