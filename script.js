@@ -380,11 +380,11 @@ let openSeaGalleryItems = null;
 function getOpenSeaConfig() {
   if (openSeaConfig !== null) return openSeaConfig;
   openSeaConfig = {
-    mode: "local",
+    mode: "",
     limit: 24,
     collectionSlug: "",
     apiKey: "",
-    localJsonUrl: "assets/images/opensea_export.json",
+    localJsonUrl: "",
   };
   const element = document.querySelector("#openSeaConfig");
   if (!element) return openSeaConfig;
@@ -403,7 +403,10 @@ function hasOpenSeaConfig() {
   if (config.mode === "local") {
     return typeof config.localJsonUrl === "string" && config.localJsonUrl.trim() !== "";
   }
-  return typeof config.collectionSlug === "string" && config.collectionSlug.trim() !== "";
+  if (config.mode === "api") {
+    return typeof config.collectionSlug === "string" && config.collectionSlug.trim() !== "";
+  }
+  return false;
 }
 
 function getOpenSeaHeaders() {
@@ -541,9 +544,15 @@ function buildNftGalleryFromOpenSea() {
   return true;
 }
 
-function buildNftGallery() {
+function getNftGalleryBuildMode() {
   const config = getOpenSeaConfig();
-  if (config && config.mode) {
+  if (!config || !config.mode) return "portfolio";
+  return config.mode === "api" || config.mode === "local" ? "opensea" : "portfolio";
+}
+
+function buildNftGallery() {
+  const mode = getNftGalleryBuildMode();
+  if (mode === "opensea") {
     if (Array.isArray(openSeaGalleryItems) && openSeaGalleryItems.length > 0) {
       return buildNftGalleryFromOpenSea();
     }
@@ -1940,6 +1949,11 @@ function buildNftGalleryFromPortfolio() {
 }
 
 async function initNftGalleryAutoRefresh() {
+  const container = document.getElementById("nftGalleryThumbs");
+  if (container && container.querySelector(".nft-thumb")) {
+    return;
+  }
+
   await loadOpenSeaGallery();
   buildNftGallery();
 

@@ -1299,8 +1299,54 @@ a:focus-visible {
   text-shadow: none;
   transition: color var(--transition-base);
 }
+.nft-page .hero-name {
+  font-size: 1.2rem !important;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  padding-inline: 0.2em;
+  line-height: 1.1;
+}
+.nft-page .hero-name:hover {
+  color: var(--color-brand-rose);
+}
 .hero-name:hover {
   color: var(--color-brand-neon);
+}
+
+.nft-page .hero {
+  min-height: auto !important;
+  height: auto !important;
+  padding-top: calc(var(--nav-height) + 0.75rem + env(safe-area-inset-top, 0px)) !important;
+  padding-bottom: var(--spacing-md) !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.nft-page .hero-title {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem;
+  font-size: 0;
+  margin: 0;
+}
+
+.nft-page .hero-greeting,
+.nft-page .hero-name {
+  font-size: 1rem !important;
+  line-height: 1.2;
+  margin: 0;
+  padding: 0;
+}
+
+.nft-page .hero-greeting {
+  color: var(--color-text-secondary);
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.nft-page .hero-name {
+  font-weight: 700 !important;
 }
 
 .hero-subtitle {
@@ -1642,6 +1688,10 @@ a:focus-visible {
     padding-inline: 0.2em;
   }
 
+  .nft-page .hero-name {
+    font-size: 1.2rem !important;
+  }
+
   .hero-greeting {
     font-size: var(--font-size-xl);
   }
@@ -1653,6 +1703,12 @@ a:focus-visible {
 .section {
   padding: var(--spacing-xl) var(--spacing-md);
   min-height: 50vh;
+}
+
+#nftGallery {
+  padding-top: 0;
+  padding-bottom: 0;
+  min-height: auto;
 }
 
 #about {
@@ -2991,25 +3047,41 @@ body.night .about-card-tag {
 }
 
 .nft-gallery-glued {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: var(--spacing-md);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0;
   width: 100%;
-  max-width: 1240px;
-  justify-items: center;
+  overflow-x: auto;
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
+  -webkit-overflow-scrolling: touch;
 }
 
 .nft-gallery-center {
-  display: flex;
-  justify-content: center;
-  width: 100%;
+  display: none;
 }
 
 .nft-gallery-meta {
-  margin-top: var(--spacing-md);
-  text-align: center;
-  color: rgba(255, 255, 255, 0.72);
-  font-size: 0.95rem;
+  display: none !important;
+}
+
+body.nft-page #main-content {
+  padding-top: calc(var(--nav-height) + var(--spacing-sm)) !important;
+}
+
+.nft-page .section {
+  padding-top: 0 !important;
+  padding-bottom: var(--spacing-md);
+  min-height: auto;
+}
+
+.nft-page .hero,
+.nft-page .section-title-wrap,
+.nft-page .nft-gallery-meta {
+  display: none !important;
 }
 
 .nft-gallery-empty {
@@ -3023,27 +3095,41 @@ body.night .about-card-tag {
   position: relative;
   overflow: hidden;
   display: block;
-  width: 100%;
+  width: clamp(100px, 12vw, 160px);
+  aspect-ratio: 1 / 1;
   background: transparent;
   border: none;
   box-shadow: none;
+  border-radius: 0;
+  text-decoration: none;
 }
 
 .nft-thumb img {
   width: 100%;
+  height: 100%;
   display: block;
   object-fit: cover;
   object-position: center;
-  transition: transform 0.35s ease;
+  transition: none;
+}
+
+.nft-page .nft-thumb {
+  box-shadow: none;
+  background: transparent;
+  border: none;
 }
 
 .nft-thumb:hover img,
 .nft-thumb:focus-visible img {
-  transform: scale(1.05);
+  transform: none;
 }
 
-.nft-overlay {
-  display: none;
+.nft-thumb *:not(img),
+.nft-thumb::before,
+.nft-thumb::after,
+.nft-thumb .nft-overlay {
+  display: none !important;
+  content: none !important;
 }
 
 .nft-thumb:hover .nft-overlay,
