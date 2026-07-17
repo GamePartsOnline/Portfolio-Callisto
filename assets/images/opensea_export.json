@@ -1,0 +1,37 @@
+{
+  "assets": [
+    {
+      "name": "Silhouette Féline",
+      "token_id": "3",
+      "permalink": "https://opensea.io/item/base/0x989bbb5f7a11b0e1baec5cb300f28b47fb515725/3",
+      "image_url": "https://opensea.io/item/base/0x989bbb5f7a11b0e1baec5cb300f28b47fb515725/3/opengraph-image?ts=29737946",
+      "image_preview_url": "https://opensea.io/item/base/0x989bbb5f7a11b0e1baec5cb300f28b47fb515725/3/opengraph-image?ts=29737946",
+      "image_thumbnail_url": "https://opensea.io/item/base/0x989bbb5f7a11b0e1baec5cb300f28b47fb515725/3/opengraph-image?ts=29737946",
+      "collection": {
+        "name": "Callisto_gfx"
+      }
+    },
+    {
+      "name": "L'Oie Bibi",
+      "token_id": "6",
+      "permalink": "https://opensea.io/item/base/0x989bbb5f7a11b0e1baec5cb300f28b47fb515725/6",
+      "image_url": "https://opensea.io/item/base/0x989bbb5f7a11b0e1baec5cb300f28b47fb515725/6/opengraph-image?ts=29737949",
+      "image_preview_url": "https://opensea.io/item/base/0x989bbb5f7a11b0e1baec5cb300f28b47fb515725/6/opengraph-image?ts=29737949",
+      "image_thumbnail_url": "https://opensea.io/item/base/0x989bbb5f7a11b0e1baec5cb300f28b47fb515725/6/opengraph-image?ts=29737949",
+      "collection": {
+        "name": "Callisto_gfx"
+      }
+    },
+     {
+      "name": "L'Oie Bibi",
+      "token_id": "6",
+      "permalink": "https://opensea.io/item/base/0x989bbb5f7a11b0e1baec5cb300f28b47fb515725/4",
+      "image_url": "https://opensea.io/item/base/0x989bbb5f7a11b0e1baec5cb300f28b47fb515725/4/opengraph-image?ts=29737949",
+      "image_preview_url": "https://opensea.io/item/base/0x989bbb5f7a11b0e1baec5cb300f28b47fb515725/4 ",
+      "image_thumbnail_url": "https://opensea.io/item/base/0x989bbb5f7a11b0e1baec5cb300f28b47fb515725/4",
+      "collection": {
+        "name": "Callisto_gfx"
+      }
+    }
+  ]
+}

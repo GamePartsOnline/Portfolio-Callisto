@@ -287,22 +287,27 @@
     </section>
 
     <section id="nftGallery" class="section">
-      <div class="nft-gallery-glued">
-        <a href="https://opensea.io/fr/collection/aqua-r-l-collections" target="_blank" class="nft-thumb">
-          <img src="assets/images/thumbs/aquarelle/Latortue-thumb.webp" alt="Aquarelle Animalière 1" />
-          <div class="nft-overlay">Voir sur OpenSea</div>
-        </a>
-        <a href="https://opensea.io/fr/collection/aqua-r-l-collections" target="_blank" class="nft-thumb">
-          <img src="assets/images/thumbs/aquarelle/Le_cheval_blanc-thumb.webp" alt="Aquarelle Animalière 2" />
-          <div class="nft-overlay">Voir sur OpenSea</div>
-        </a>
-        <a href="https://opensea.io/fr/collection/aqua-r-l-collections" target="_blank" class="nft-thumb">
-          <img src="assets/images/thumbs/aquarelle/Promenade-thumb.webp" alt="Aquarelle Animalière 3" />
-          <div class="nft-overlay">Voir sur OpenSea</div>
-        </a>
+      <div class="section-title-wrap">
+        <h2 class="section-title">Galerie NFT</h2>
+        </div>
+      <div class="nft-gallery-center">
+        <div id="nftGalleryThumbs" class="nft-gallery-glued" aria-live="polite">
+          <div class="nft-gallery-empty">Chargement de la galerie NFT...</div>
+        </div>
       </div>
+      <div id="nftGalleryMeta" class="nft-gallery-meta" aria-live="polite"></div>
     </section>
 
   </main>
+  <script id="openSeaConfig" type="application/json">
+    {
+      "mode": "local",
+      "collectionSlug": "aqua-r-l-collections",
+      "limit": 3,
+      "apiKey": "",
+      "localJsonUrl": "assets/images/opensea_export.json"
+    }
+  </script>
+  <script src="script.js?v=121" defer></script>
 </body>
 </html>

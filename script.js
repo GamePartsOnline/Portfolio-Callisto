@@ -374,6 +374,196 @@ let portfolioData = {
   images: [],
 };
 
+let openSeaConfig = null;
+let openSeaGalleryItems = null;
+
+function getOpenSeaConfig() {
+  if (openSeaConfig !== null) return openSeaConfig;
+  openSeaConfig = {
+    mode: "local",
+    limit: 24,
+    collectionSlug: "",
+    apiKey: "",
+    localJsonUrl: "assets/images/opensea_export.json",
+  };
+  const element = document.querySelector("#openSeaConfig");
+  if (!element) return openSeaConfig;
+  try {
+    const parsed = JSON.parse(element.textContent || element.innerText || "{}");
+    openSeaConfig = Object.assign(openSeaConfig, parsed);
+  } catch (_) {
+    /* garde la configuration par défaut */
+  }
+  return openSeaConfig;
+}
+
+function hasOpenSeaConfig() {
+  const config = getOpenSeaConfig();
+  if (!config) return false;
+  if (config.mode === "local") {
+    return typeof config.localJsonUrl === "string" && config.localJsonUrl.trim() !== "";
+  }
+  return typeof config.collectionSlug === "string" && config.collectionSlug.trim() !== "";
+}
+
+function getOpenSeaHeaders() {
+  const config = getOpenSeaConfig();
+  const headers = new Headers({ Accept: "application/json" });
+  if (config.apiKey) {
+    headers.set("X-API-KEY", config.apiKey);
+  }
+  return headers;
+}
+
+async function fetchOpenSeaAssetsApi() {
+  const config = getOpenSeaConfig();
+  if (!config || !config.collectionSlug) return [];
+  const slug = encodeURIComponent(config.collectionSlug);
+  const limit = Number(config.limit) || 24;
+  const url = `https://api.opensea.io/api/v2/assets?collection_slug=${slug}&limit=${limit}`;
+  const res = await fetch(url, {
+    method: "GET",
+    headers: getOpenSeaHeaders(),
+    cache: "no-store",
+  });
+  if (!res.ok) {
+    throw new Error(`OpenSea fetch failed (${res.status})`);
+  }
+  const json = await res.json();
+  return Array.isArray(json.assets) ? json.assets : [];
+}
+
+async function fetchOpenSeaAssetsLocal() {
+  const config = getOpenSeaConfig();
+  if (!config || !config.localJsonUrl) return [];
+  const res = await fetch(config.localJsonUrl, {
+    method: "GET",
+    cache: "no-store",
+  });
+  if (!res.ok) {
+    throw new Error(`OpenSea local JSON fetch failed (${res.status})`);
+  }
+  const json = await res.json();
+  if (Array.isArray(json.assets)) return json.assets;
+  if (Array.isArray(json)) return json;
+  if (Array.isArray(json.data)) return json.data;
+  return [];
+}
+
+function mapOpenSeaAssetToGalleryItem(asset) {
+  if (!asset) return null;
+  const thumbSrc =
+    asset.image_url ||
+    asset.image_preview_url ||
+    asset.image_thumbnail_url ||
+    asset.image_original_url ||
+    "";
+  if (!thumbSrc) return null;
+  const title =
+    asset.name ||
+    (asset.collection && asset.collection.name
+      ? `${asset.collection.name} #${asset.token_id}`
+      : `NFT #${asset.token_id}`);
+  return {
+    title,
+    thumbSrc,
+    openSeaUrl: asset.permalink || asset.external_link || "#",
+    category: "nft",
+    nft: true,
+  };
+}
+
+async function loadOpenSeaGallery() {
+  if (!hasOpenSeaConfig()) return;
+  showNftGalleryLoading();
+  try {
+    const config = getOpenSeaConfig();
+    const assets =
+      config.mode === "api"
+        ? await fetchOpenSeaAssetsApi()
+        : await fetchOpenSeaAssetsLocal();
+    openSeaGalleryItems = assets
+      .map(mapOpenSeaAssetToGalleryItem)
+      .filter(Boolean);
+  } catch (error) {
+    openSeaGalleryItems = null;
+    console.warn("OpenSea gallery load failed:", error);
+  }
+}
+
+function showNftGalleryLoading() {
+  const container = document.getElementById("nftGalleryThumbs");
+  const meta = document.getElementById("nftGalleryMeta");
+  if (!container) return;
+  container.innerHTML =
+    '<div class="nft-gallery-empty">Chargement de la galerie NFT…</div>';
+  if (meta) {
+    meta.textContent = "Chargement des vignettes OpenSea...";
+  }
+}
+
+function buildNftGalleryFromOpenSea() {
+  const container = document.getElementById("nftGalleryThumbs");
+  const meta = document.getElementById("nftGalleryMeta");
+  const config = getOpenSeaConfig();
+  if (!container || !Array.isArray(openSeaGalleryItems)) return false;
+  if (openSeaGalleryItems.length === 0) return false;
+
+  const maxItems = Math.max(1, Math.min(openSeaGalleryItems.length, Number(config.limit) || openSeaGalleryItems.length));
+  const itemsToShow = openSeaGalleryItems.slice(0, maxItems);
+
+  container.innerHTML = "";
+  itemsToShow.forEach((item) => {
+    const thumbLink = document.createElement("a");
+    thumbLink.className = "nft-thumb";
+    thumbLink.href = item.openSeaUrl;
+    thumbLink.target = "_blank";
+    thumbLink.rel = "noopener noreferrer";
+
+    const img = document.createElement("img");
+    img.src = item.thumbSrc;
+    img.alt = item.title;
+    applyThirdPartyImageRequestMode(img, item.thumbSrc);
+    thumbLink.appendChild(img);
+
+
+    container.appendChild(thumbLink);
+  });
+
+  if (meta) {
+    meta.textContent = `Galerie OpenSea actualisée le ${new Date().toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+    })}`;
+  }
+
+  return true;
+}
+
+function buildNftGallery() {
+  const config = getOpenSeaConfig();
+  if (config && config.mode) {
+    if (Array.isArray(openSeaGalleryItems) && openSeaGalleryItems.length > 0) {
+      return buildNftGalleryFromOpenSea();
+    }
+
+    const container = document.getElementById("nftGalleryThumbs");
+    const meta = document.getElementById("nftGalleryMeta");
+    if (container) {
+      container.innerHTML =
+        '<div class="nft-gallery-empty">Aucune vignette OpenSea trouvée. Vérifie ton export JSON ou ta configuration.</div>';
+    }
+    if (meta) {
+      meta.textContent =
+        "La galerie OpenSea n'a pas été chargée. Le site affiche uniquement la galerie locale si tu n'as pas de données OpenSea valides.";
+    }
+    return false;
+  }
+
+  return buildNftGalleryFromPortfolio();
+}
+
 // Categories from JSON (id -> label), used for filter labels and the lightbox
 let portfolioCategoryNames = {};
 
@@ -1671,6 +1861,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   loadPortfolioImages();
+  initNftGalleryAutoRefresh();
 
   if (typeof requestIdleCallback !== "undefined") {
     requestIdleCallback(() => loadContentJson(), { timeout: 3500 });
@@ -1680,6 +1871,83 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   console.log("Portfolio Callisto Arts — initialized with animated background");
 });
+
+function getNftGalleryItems(data) {
+  if (!data || !Array.isArray(data.images)) return [];
+  return data.images
+    .map((image) => {
+      const info = getPortfolioThumbInfo(image);
+      if (!info) return null;
+      return { image, info };
+    })
+    .filter(Boolean)
+    .sort((a, b) => {
+      const aTitle = String(a.image.title || "").trim();
+      const bTitle = String(b.image.title || "").trim();
+      return aTitle.localeCompare(bTitle, undefined, { sensitivity: "base" });
+    });
+}
+
+function getNftGalleryLink(image, info) {
+  if (image.url) return image.url;
+  if (image.purchaseUrl) return image.purchaseUrl;
+  if (image.externalUrl) return image.externalUrl;
+  if (image.openSeaUrl) return image.openSeaUrl;
+  if (image.filename) return assetImagePath(image.filename);
+  return info.thumbSrc;
+}
+
+function buildNftGalleryFromPortfolio() {
+  const container = document.getElementById("nftGalleryThumbs");
+  const meta = document.getElementById("nftGalleryMeta");
+  if (!container) return;
+  const items = getNftGalleryItems(portfolioData);
+  if (!items.length) {
+    container.innerHTML =
+      '<div class="nft-gallery-empty">Aucune vignette disponible pour le moment.</div>';
+    if (meta) {
+      meta.textContent = "La galerie sera actualisée automatiquement dès que des vignettes seront disponibles.";
+    }
+    return;
+  }
+
+  container.innerHTML = "";
+  items.forEach(({ image, info }) => {
+    const href = getNftGalleryLink(image, info);
+    const thumbLink = document.createElement("a");
+    thumbLink.className = "nft-thumb";
+    thumbLink.href = href;
+    thumbLink.target = "_blank";
+    thumbLink.rel = "noopener noreferrer";
+
+    const img = document.createElement("img");
+    img.src = info.thumbSrc;
+    img.alt = buildArtworkAltText(image, info.category, portfolioCategoryNames);
+    applyThirdPartyImageRequestMode(img, info.thumbSrc);
+    thumbLink.appendChild(img);
+
+
+    container.appendChild(thumbLink);
+  });
+
+  if (meta) {
+    meta.textContent = `Galerie actualisée le ${new Date().toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+    })}`;
+  }
+}
+
+async function initNftGalleryAutoRefresh() {
+  await loadOpenSeaGallery();
+  buildNftGallery();
+
+  setInterval(async () => {
+    await loadOpenSeaGallery();
+    buildNftGallery();
+  }, 30000);
+}
 
 // ============================================
 // CONTENT.JSON (editable About / Contact copy)
