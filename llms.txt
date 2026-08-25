@@ -7,9 +7,9 @@ This site is a static portfolio (HTML/CSS/JS) hosted on Cloudflare Pages. Sectio
 ## Optional
 
 - [README (repository)](https://github.com/GamePartsOnline/Portfolio-Callisto/blob/main/README.md): setup, structure, and how to add artworks.
-- [Legal notices / cookies](https://portfolio.callistoarts.com/mentions-legales.html): mentions légales and cookie preferences.
+- [Legal notices / cookies](https://callistoarts.com/mentions-legales.html): mentions légales and cookie preferences.
 
 ## Site map
 
-- [Sitemap](https://portfolio.callistoarts.com/sitemap.xml): URLs for crawlers.
-- [Robots](https://portfolio.callistoarts.com/robots.txt): crawling rules.
+- [Sitemap](https://callistoarts.com/sitemap.xml): URLs for crawlers.
+- [Robots](https://callistoarts.com/robots.txt): crawling rules.

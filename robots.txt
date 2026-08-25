@@ -5,4 +5,4 @@ User-agent: *
 Allow: /
 
 # Plan du site (voir sitemap.xml)
-Sitemap: https://portfolio.callistoarts.com/sitemap.xml
+Sitemap: https://callistoarts.com/sitemap.xml
