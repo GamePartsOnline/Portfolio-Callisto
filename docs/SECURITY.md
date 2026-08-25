@@ -25,9 +25,9 @@ Ce document **adapte** le guide général [securite_sites_internet.md](./securit
 
 Les seules protections applicables depuis le dépôt sont donc celles qui passent par le HTML : `<meta http-equiv="Content-Security-Policy">`, `rel="noopener noreferrer"` sur les liens externes, et l'absence de scripts tiers. Pour aller plus loin, il faudrait un proxy devant le domaine (Cloudflare) ou un autre hébergeur.
 
-**Ordre recommandé** : valider **HTTPS** + redirection HTTP→HTTPS **avant** d’activer **HSTS** (sinon risque de blocage des visiteurs en cas de mauvaise config TLS).
+Sur GitHub Pages, **HSTS est déjà posé** par la plateforme dès que *Enforce HTTPS* est actif — il n'y a rien à configurer, et l'ordre « valider HTTPS avant d'activer HSTS » est géré par GitHub.
 
-Exemple de base (Apache 2.4, à adapter après test sur préprod) :
+Le bloc ci-dessous ne s'applique donc **pas au site actuel**. Il est conservé comme référence pour un futur hébergeur (VPS, PaaS) ou un proxy placé devant le domaine :
 
 ```apache
 <IfModule mod_headers.c>
@@ -69,7 +69,15 @@ Politique sur **une ligne** (pour en-tête HTTP ou test dans les DevTools) :
 Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://img.youtube.com; media-src 'self'; connect-src 'self'; frame-src https://www.youtube-nocookie.com https://www.youtube.com; frame-ancestors 'self';
 ```
 
-**Exemple Apache** (`mod_headers`), à fusionner avec le bloc des autres en-têtes :
+**Sur GitHub Pages**, la CSP doit passer par une balise dans le `<head>` de chaque page :
+
+```html
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; …" />
+```
+
+Deux directives sont **ignorées** en `<meta>` et ne peuvent pas être appliquées ici : `frame-ancestors` (protection contre le clickjacking) et `report-uri`. Elles exigent un vrai en-tête HTTP.
+
+**Exemple Apache** (`mod_headers`) — pour un futur hébergeur, pas pour la production actuelle :
 
 ```apache
 Header always set Content-Security-Policy "default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://img.youtube.com; media-src 'self'; connect-src 'self'; frame-src https://www.youtube-nocookie.com https://www.youtube.com; frame-ancestors 'self';"

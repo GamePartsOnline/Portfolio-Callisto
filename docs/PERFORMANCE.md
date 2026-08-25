@@ -36,7 +36,7 @@ Réponses courantes aux alertes **Performance** sur ce site statique.
 
 ---
 
-Relancer Lighthouse en **navigation privée** après déploiement pour tenir compte des en-têtes `_headers`.
+Relancer Lighthouse en **navigation privée** après déploiement, pour mesurer le site tel qu'il est servi et non depuis le cache du navigateur.
 
 ## Grille portfolio + hero
 
@@ -57,4 +57,4 @@ npx --yes terser script.js -c -m -o script.min.js
 npx --yes lightningcss --minify styles.css -o styles.min.css
 ```
 
-Puis pointe `index.html` vers `script.min.js` et `styles.min.css` (et `_headers` si besoin).
+Puis pointe `index.html` vers `script.min.js` et `styles.min.css`, en incrémentant le `?v=`.
