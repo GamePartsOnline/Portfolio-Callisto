@@ -2,6 +2,24 @@
 
 Toutes les modifications notables de ce projet seront documentées dans ce fichier.
 
+## [Hébergement] - 2026-08-26
+
+### Infrastructure
+
+- Le site est servi par **GitHub Pages** sur le domaine apex **`callistoarts.com`** (auparavant `portfolio.callistoarts.com`). `www` y est redirigé, TLS Let's Encrypt fourni par GitHub avec *Enforce HTTPS*.
+- DNS chez IONOS : apex sur les 4 A + 4 AAAA de GitHub Pages, `www` en CNAME. IONOS n'héberge plus aucun fichier du site ; la messagerie (MX, SPF, DMARC) y reste inchangée.
+- **Ordre à respecter** pour tout changement de domaine : DNS d'abord, `CNAME` du dépôt ensuite. L'inverse met le site hors ligne — voir [HOSTING.md](./HOSTING.md).
+
+### Documentation
+
+- [HOSTING.md](./HOSTING.md) et [DEPLOY.md](./DEPLOY.md) réécrits : ils décrivaient un déploiement FTP sur IONOS mutualisé qui n'a plus cours. Le déploiement est désormais le `git push`.
+- Correction des URLs de production et des mentions d'hébergeur dans INDEX, SITE, ARCHITECTURE, SECURITY, PERFORMANCE, STRUCTURE, GUIDE, `llms.txt` et le README.
+- Documenté comme **inopérants** les fichiers `_headers` (format Cloudflare Pages) et `wrangler.json` (vide) : GitHub Pages ne les lit pas, et ne permet pas d'en-têtes HTTP personnalisés.
+
+### Légal
+
+- Mentions légales (FR et EN) : hébergeur déclaré corrigé en **GitHub, Inc.**, IONOS restant mentionné comme registrar et gestionnaire DNS/messagerie.
+
 ## [Unreleased] - 2026-03-02
 
 ### Projet

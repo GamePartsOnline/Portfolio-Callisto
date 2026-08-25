@@ -1,5 +1,5 @@
 # SITE — Analyse du site actuel
-**portfolio.callistoarts.com · v2.0.0 (statique)**
+**callistoarts.com · v2.0.0 (statique)**
 
 *Analyse du dépôt local alignée avec la structure publique.*
 

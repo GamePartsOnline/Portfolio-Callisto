@@ -9,7 +9,7 @@ Réponses courantes aux alertes **Performance** sur ce site statique.
 
 ## Use efficient cache lifetimes
 
-- Fichier **`_headers`** à la racine du dépôt (déploiement **Cloudflare Pages**) : TTL plus long pour `assets/`, plus court pour HTML et pour `styles.css` / `script.js` (bust via `?v=` dans `index.html`).
+- ⚠️ Le fichier **`_headers`** à la racine est un **vestige Cloudflare Pages : GitHub Pages ne le lit pas**. Les TTL qu'il décrit ne sont pas appliqués, et GitHub Pages ne permet pas de configurer le cache. Le seul levier réel est le **bust de cache via `?v=`** sur `styles.css` / `script.js` dans les pages HTML.
 - **`portfolio_images.json`** : le fetch utilise `?v=1` — **incrémentez ce numéro** dans `script.js` (`PORTFOLIO_JSON_URL`) **et** dans le `<link rel="preload">` de `index.html` quand vous modifiez le JSON en prod (cache navigateur/CDN). Évitez `Date.now()` ou `cache: no-store` sur chaque visite.
 - **Parse JS** : les images ne sont plus dans `script.js` (objet littéral ~800 lignes) ; elles sont chargées en JSON, ce qui réduit **parsing & compilation** du bundle principal.
 

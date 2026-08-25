@@ -46,7 +46,7 @@ Script d’aide : `scripts/encode_demo_webm.sh` (même logique).
 ## Déploiement
 
 - Déployer le dossier `assets/videos/webm/` avec le reste du site statique.
-- Vérifier que le serveur sert les `.webm` avec un type MIME correct (`video/webm`) — en général OK sur Apache / Nginx / mutualisé.
+- Le type MIME `video/webm` est servi correctement par GitHub Pages, rien à configurer. (Sur un autre hébergeur, le vérifier : c'est une cause classique de vidéo muette.)
 
 ## Comportement du site
 

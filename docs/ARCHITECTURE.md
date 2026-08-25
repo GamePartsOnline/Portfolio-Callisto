@@ -6,7 +6,7 @@ Document centré sur le **site statique en production**. La sécurité par couch
 
 ## Site statique (production actuelle)
 
-**Type** : fichiers servis tels quels (HTML, CSS, JS, images, JSON), **sans runtime serveur** côté site. Hébergement typique : **IONOS mutualisé** — voir [HOSTING.md](./HOSTING.md).
+**Type** : fichiers servis tels quels (HTML, CSS, JS, images, JSON), **sans runtime serveur** côté site. Hébergement : **GitHub Pages**, domaine `callistoarts.com` — voir [HOSTING.md](./HOSTING.md).
 
 ```mermaid
 flowchart LR
