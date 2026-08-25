@@ -1,8 +1,16 @@
-# Callisto Arts — portfolio (statique)
-# https://www.robotstxt.org/
+# Callisto Arts — https://callistoarts.com
+# Portfolio statique de Frédérique Charton (CALLISTO).
+# Référence du format : https://www.robotstxt.org/
 
 User-agent: *
 Allow: /
 
-# Plan du site (voir sitemap.xml)
+# Fichiers de travail sans intérêt pour l'indexation.
+Disallow: /docs/
+Disallow: /scripts/
+
+# Plan du site — toutes les pages indexables.
 Sitemap: https://callistoarts.com/sitemap.xml
+
+# Résumé du site pour les assistants et LLM : /llms.txt
+# (convention https://llmstxt.org, lue à la demande et non par exploration)

@@ -1,15 +1,43 @@
 # Callisto Arts — Portfolio
 
-> Official portfolio of Frédérique Charton (Callisto): digital art, demoscene graphics, paintover, and professional work — Manager at GPO SARL, digital artist and AI builder.
+> Official portfolio of Frédérique Charton, known as **Callisto**: digital artist, demoscene graphician, full-stack developer and AI builder, based in Châlons-en-Champagne, France. Manager of GPO SARL (arcade cabinets, pinball machines and leisure equipment).
 
-This site is a static portfolio (HTML/CSS/JS) hosted on GitHub Pages. Sections include hero, portfolio gallery with filters and lightbox, about, journey timeline, and contact. **Build Log** (`build-log.html`) is a public technical journal — proof-of-work write-ups (problem → approach → result). Social links appear in the fixed rail on the right. Image metadata and gallery content are driven by `assets/images/portfolio_images.json`.
+Static site (HTML/CSS/JS, no build step) served by GitHub Pages at `https://callistoarts.com`. Bilingual French/English: French is in the HTML, English lives in `i18n.json` and is applied client-side; the reader's choice is stored in `localStorage`. Dark theme throughout, plus an alternate "Nuit d'Atelier" night mode.
+
+The home page is a single scrolling document; the four anchors below are its real sections. Three satellite pages complete the site.
+
+## Pages
+
+- [Home](https://callistoarts.com/): hero carousel, portfolio gallery, about, journey timeline and contact, on one page.
+- [About](https://callistoarts.com/#about): who Callisto is — digital drawing since 2011, demoscene since 2015, GPO SARL, AI prompting, full-stack training at The Hacking Project, UI design. Includes the software she works with.
+- [Portfolio](https://callistoarts.com/#portfolio): 134 works, filterable by category, with a lightbox for images and videos.
+- [Journey](https://callistoarts.com/#journey): dated timeline of competition results, awards and certifications, newest first — from the 2011 return to drawing up to Revision 2026.
+- [Contact](https://callistoarts.com/#contact): email, phone and postal address of GPO SARL.
+- [Services](https://callistoarts.com/services.html): GPO SARL (arcade, events, cabinet rentals) and Graph2Print (DTP, visual identity, print).
+- [Build Log](https://callistoarts.com/build-log.html): public engineering journal. Each entry is a proof-of-work write-up — real constraint, what failed, what actually moved the project forward. Written in both languages inside the HTML.
+- [Legal notices](https://callistoarts.com/mentions-legales.html): publisher, host, intellectual property, GDPR and cookie policy.
+
+## Portfolio categories
+
+Counts as of August 2026, from `assets/images/portfolio_images.json`.
+
+- **Graphics** (27): demoscene graphics, the core of the competition work.
+- **Animation** (23): animated pieces and video.
+- **Acrylic** (22) and **Watercolor** (16): traditional painting.
+- **Photos** (14) and **Dry pastel** (14).
+- **Paintover** (8): digital painting over a photographic base.
+- **IA Art** (1), **Gaming Artwork** (1), **Others** (6).
+
+## Profiles and related sites
+
+- [Demozoo — Callisto](https://demozoo.org/sceners/57855/): demoscene record, 66+ productions, groups Flush, GPO, Vital-Motion!, Syn[Rj], Silicium, New C-Rex, RBBS.
+- [Behance — CallistoArtwork](https://www.behance.net/CallistoArtwork): Adobe portfolio — demos, paintover, pixel art, Inktober.
+- [Instagram](https://www.instagram.com/callisto_artwork/), [X](https://x.com/callistoarts), [Facebook](https://www.facebook.com/callistoarts).
+- [GPO SARL](https://gposarl.com/): the company site — repair, sale, rental and building of arcade machines.
+- [The Hacking Project](https://www.thehackingproject.org/): the full-stack programme she trained with.
 
 ## Optional
 
-- [README (repository)](https://github.com/GamePartsOnline/Portfolio-Callisto/blob/main/README.md): setup, structure, and how to add artworks.
-- [Legal notices / cookies](https://callistoarts.com/mentions-legales.html): mentions légales and cookie preferences.
-
-## Site map
-
-- [Sitemap](https://callistoarts.com/sitemap.xml): URLs for crawlers.
-- [Robots](https://callistoarts.com/robots.txt): crawling rules.
+- [Repository](https://github.com/GamePartsOnline/Portfolio-Callisto): source of this site — structure, how artworks are added, and the docs folder.
+- [Sitemap](https://callistoarts.com/sitemap.xml) and [robots.txt](https://callistoarts.com/robots.txt): crawling rules.
+- Gallery data lives in `assets/images/portfolio_images.json` (categories and works), editable copy in `content.json`, English strings in `i18n.json`.
