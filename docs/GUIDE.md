@@ -242,7 +242,7 @@ Dans `styles.css`, modifier les durées :
 
 ## 🚀 Optimiser les performances
 
-> Lighthouse (render-blocking, cache, images, LCP) : voir **[PERFORMANCE.md](./PERFORMANCE.md)** — bonnes pratiques `script.js` (le fichier `_headers` n'est pas lu par GitHub Pages).
+> Lighthouse (render-blocking, cache, images, LCP) : voir **[PERFORMANCE.md](./PERFORMANCE.md)** — bonnes pratiques `script.js` (le cache HTTP n'est pas configurable sur GitHub Pages).
 
 ### Images
 

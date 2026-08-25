@@ -1,8 +1,0 @@
-.git
-.gitignore
-.wrangler
-node_modules
-*.py
-*.sh
-*.md
-wrangler.json

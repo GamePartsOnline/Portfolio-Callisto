@@ -9,7 +9,8 @@ Réponses courantes aux alertes **Performance** sur ce site statique.
 
 ## Use efficient cache lifetimes
 
-- ⚠️ Le fichier **`_headers`** à la racine est un **vestige Cloudflare Pages : GitHub Pages ne le lit pas**. Les TTL qu'il décrit ne sont pas appliqués, et GitHub Pages ne permet pas de configurer le cache. Le seul levier réel est le **bust de cache via `?v=`** sur `styles.css` / `script.js` dans les pages HTML.
+- ⚠️ **Le cache HTTP n'est pas configurable sur GitHub Pages.** Il sert `Cache-Control: max-age=600` sur *tout* — HTML, CSS, JS et images comprises (mesuré en production). Il n'y a donc pas de TTL long à espérer sur `assets/`, et Lighthouse signalera toujours « Use efficient cache lifetimes » sans qu'on puisse y remédier depuis le dépôt.
+- Le seul levier réel est le **bust de cache via `?v=`** sur `styles.css` / `script.js` dans les pages HTML : il force le rechargement quand on publie une modification, ce que `max-age=600` retarderait sinon de dix minutes.
 - **`portfolio_images.json`** : le fetch utilise `?v=1` — **incrémentez ce numéro** dans `script.js` (`PORTFOLIO_JSON_URL`) **et** dans le `<link rel="preload">` de `index.html` quand vous modifiez le JSON en prod (cache navigateur/CDN). Évitez `Date.now()` ou `cache: no-store` sur chaque visite.
 - **Parse JS** : les images ne sont plus dans `script.js` (objet littéral ~800 lignes) ; elles sont chargées en JSON, ce qui réduit **parsing & compilation** du bundle principal.
 
