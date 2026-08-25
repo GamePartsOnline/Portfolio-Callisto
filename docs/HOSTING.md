@@ -50,14 +50,12 @@ La propagation ne concerne que les caches des résolveurs tiers (TTL 3600, soit 
 
 ---
 
-## Fichiers de configuration inopérants
+## Ce que GitHub Pages ne permet pas
 
-Deux fichiers présents à la racine ne sont **pas lus par GitHub Pages** :
+- **Aucun en-tête HTTP personnalisé.** Ni `.htaccess` (pas d'Apache), ni `_headers` (format Cloudflare Pages / Netlify). `Strict-Transport-Security` est posé automatiquement quand *Enforce HTTPS* est actif ; les autres en-têtes de sécurité ne sont pas disponibles depuis le dépôt.
+- **Aucun réglage de cache.** `Cache-Control: max-age=600` est servi sur tout, sans exception — mesuré en production sur le HTML, le CSS et les images. Le seul levier est le bust via `?v=`.
 
-- **`_headers`** — format Cloudflare Pages / Netlify. Les en-têtes de cache qu'il décrit ne sont pas appliqués. GitHub Pages impose son propre `Cache-Control` et ne permet pas de le configurer.
-- **`wrangler.json`** — vide (0 octet), vestige d'une piste Cloudflare Pages.
-
-Ils sont conservés pour l'instant, mais toute documentation qui s'appuie sur eux décrit un comportement qui n'a pas lieu.
+Le dépôt a porté jusqu'en août 2026 des fichiers `_headers`, `wrangler.json` et `.wranglerignore`, vestiges d'une piste Cloudflare Pages abandonnée. Ils étaient sans effet et ont été supprimés. Si un besoin réel d'en-têtes personnalisés apparaît, il faudra un proxy devant le domaine (Cloudflare) ou un autre hébergeur.
 
 ---
 
