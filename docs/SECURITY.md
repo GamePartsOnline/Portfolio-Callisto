@@ -8,20 +8,22 @@ Ce document **adapte** le guide général [securite_sites_internet.md](./securit
 
 | Couche (guide) | Applicabilité | Actions / notes pour Callisto |
 |----------------|---------------|-------------------------------|
-| **1 — Chiffrement & identité** | **Oui — côté hébergeur** | TLS/HTTPS sur le domaine (IONOS / certificat). Vérifier redirection HTTP→HTTPS. [SSL Labs](https://www.ssllabs.com/ssltest/) sur `portfolio.callistoarts.com`. Pas de mots de passe utilisateurs sur ce site statique. |
+| **1 — Chiffrement & identité** | **Oui — côté hébergeur** | TLS/HTTPS **fourni et renouvelé par GitHub Pages** (Let's Encrypt), *Enforce HTTPS* activé — rien à renouveler à la main. [SSL Labs](https://www.ssllabs.com/ssltest/) sur `callistoarts.com`. Pas de mots de passe utilisateurs sur ce site statique. |
 | **2 — Injections, XSS, CSRF** | **Partiel** | Pas de SQL ni de formulaires POST vers un backend maison. **Risque XSS** : contenu injecté en JS (`innerHTML` depuis JSON/i18n) — les fichiers sont **contrôlés par le dépôt** ; ne pas injecter de HTML provenant d’utilisateurs sans échappement. **CSRF** : non applicable aux formulaires serveur absents ; les formulaires futurs Rails devront utiliser les protections framework. |
-| **3 — Infrastructure** | **Oui — hébergement** | Mises à jour **fichiers** du site (déploiement). Pas de PHP/Node sur le mutualisé pour cette app. Option **WAF/CDN** (ex. Cloudflare devant le domaine) si besoin de mitigation DDoS / règles. Permissions fichiers en déploiement (éviter 777). |
-| **4 — En-têtes HTTP** | **Recommandé** | Configurer côté serveur ou `.htaccess` si disponible : `Strict-Transport-Security`, `X-Content-Type-Options`, `X-Frame-Options` ou `frame-ancestors`, `Referrer-Policy`. **CSP** : utile mais à tester (Google Fonts, YouTube, inline scripts éventuels). Vérifier : [Security Headers](https://securityheaders.com). |
+| **3 — Infrastructure** | **Oui — hébergement** | Mises à jour **fichiers** du site via `git push`. Aucun runtime serveur : pas de PHP/Node à tenir à jour. CDN et mitigation DDoS assurés par GitHub Pages. Pas de permissions fichiers à gérer. |
+| **4 — En-têtes HTTP** | **Recommandé** | **Non configurables sur GitHub Pages**, qui impose ses propres en-têtes :  `Strict-Transport-Security`, `X-Content-Type-Options`, `X-Frame-Options` ou `frame-ancestors`, `Referrer-Policy`. **CSP** : utile mais à tester (Google Fonts, YouTube, inline scripts éventuels). Vérifier : [Security Headers](https://securityheaders.com). |
 | **5 — Authentification** | **N/A** (statique) | Pas de compte visiteur. **Back-office** : uniquement lors d’une migration **Rails** — 2FA admin, mots de passe forts, sessions sécurisées (voir guide). |
-| **6 — Monitoring** | **Partiel** | Logs **hébergeur** / statistiques IONOS. Pas d’app logs applicatifs. Après Rails : logging + alertes selon guide. |
+| **6 — Monitoring** | **Partiel** | Aucun log d'accès exposé par GitHub Pages. Pas d'app logs applicatifs. Après Rails : logging + alertes selon guide. |
 
 **Données personnelles** : mentions [RGPD dans les mentions légales](../mentions-legales.html) ; bannière cookies + `localStorage` pour le choix — pas de tracking publicitaire côté code maison documenté.
 
 <a id="http-headers-ionos"></a>
 
-### En-têtes HTTP — IONOS / `.htaccess` (détail)
+### En-têtes HTTP — limite de GitHub Pages (détail)
 
-Sur **mutualisé Apache**, les en-têtes se posent souvent via un **`.htaccess`** à la racine du site (dossier public), **si** l’hébergeur autorise `Header` et `mod_headers`. Sinon, chercher une rubrique **sécurité / en-têtes** dans l’espace client IONOS ou accepter les en-têtes déjà injectés par la plateforme.
+**GitHub Pages ne permet pas de définir d'en-têtes HTTP personnalisés.** Ni `.htaccess` (pas d'Apache), ni `_headers` (format Cloudflare Pages / Netlify, ignoré ici). `Strict-Transport-Security` est posé par GitHub quand *Enforce HTTPS* est actif ; les autres en-têtes ne sont pas disponibles.
+
+Les seules protections applicables depuis le dépôt sont donc celles qui passent par le HTML : `<meta http-equiv="Content-Security-Policy">`, `rel="noopener noreferrer"` sur les liens externes, et l'absence de scripts tiers. Pour aller plus loin, il faudrait un proxy devant le domaine (Cloudflare) ou un autre hébergeur.
 
 **Ordre recommandé** : valider **HTTPS** + redirection HTTP→HTTPS **avant** d’activer **HSTS** (sinon risque de blocage des visiteurs en cas de mauvaise config TLS).
 
@@ -108,7 +110,7 @@ Réutiliser la **checklist « avant déploiement »** du guide [securite_sites_i
 | Document | Contenu |
 |----------|---------|
 | [securite_sites_internet.md](./securite_sites_internet.md) | Guide complet 6 couches, exemples Nginx/PHP, normes |
-| [HOSTING.md](./HOSTING.md) | IONOS mutualisé vs futur PaaS/VPS |
+| [HOSTING.md](./HOSTING.md) | GitHub Pages aujourd'hui · futur PaaS/VPS si Rails |
 | [ARCHITECTURE.md](./ARCHITECTURE.md) | Site statique — périmètre technique |
 | [ROADMAP.md](./ROADMAP.md) | Tâches sécurité & conformité planifiées |
 

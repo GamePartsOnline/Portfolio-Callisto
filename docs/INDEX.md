@@ -1,6 +1,6 @@
 # Documentation — Callisto Arts
 
-**Frédérique Charton (CALLISTO)** · [portfolio.callistoarts.com](https://portfolio.callistoarts.com)
+**Frédérique Charton (CALLISTO)** · [callistoarts.com](https://callistoarts.com)
 
 ---
 
@@ -15,8 +15,8 @@
 | **[ROADMAP.md](./ROADMAP.md)** | **Priorité statique**, sécurité continue, **option Rails** — **à mettre à jour** à chaque évolution notable (règle en tête du fichier) |
 | **[SECURITY.md](./SECURITY.md)** | Sécurité **projet** : mapping des 6 couches du guide → site statique + future app |
 | **[securite_sites_internet.md](./securite_sites_internet.md)** | Guide général **6 couches** (TLS, OWASP, CSP, infra, auth, monitoring) |
-| **[HOSTING.md](./HOSTING.md)** | Production actuelle **IONOS mutualisé** · évolution future |
-| **[DEPLOY.md](./DEPLOY.md)** | Déploiement (statique aujourd’hui · Rails demain, à préciser) |
+| **[HOSTING.md](./HOSTING.md)** | Production actuelle **GitHub Pages** · DNS chez IONOS · TLS |
+| **[DEPLOY.md](./DEPLOY.md)** | Déploiement — **le push est le déploiement** (Rails demain, à préciser) |
 
 ---
 

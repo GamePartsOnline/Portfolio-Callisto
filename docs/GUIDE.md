@@ -242,7 +242,7 @@ Dans `styles.css`, modifier les durées :
 
 ## 🚀 Optimiser les performances
 
-> Lighthouse (render-blocking, cache, images, LCP) : voir **[PERFORMANCE.md](./PERFORMANCE.md)** — fichier **`_headers`** (Cloudflare Pages) + bonnes pratiques `script.js`.
+> Lighthouse (render-blocking, cache, images, LCP) : voir **[PERFORMANCE.md](./PERFORMANCE.md)** — bonnes pratiques `script.js` (le fichier `_headers` n'est pas lu par GitHub Pages).
 
 ### Images
 

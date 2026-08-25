@@ -1,13 +1,28 @@
-# Callisto Arts — Portfolio
+<div align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/logo-callisto-white.svg" />
+    <img src="assets/logo-callisto-black.svg" alt="Callisto Arts logo" width="200" />
+  </picture>
 
-Site vitrine **statique** pour **Frédérique Charton (CALLISTO)** : graphisme digital, demoscene, vidéo, outils créatifs et IA.
+  <p align="center">
+    <img src="https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white" alt="HTML5">
+    <img src="https://img.shields.io/badge/CSS-1572B6?logo=css&logoColor=white" alt="CSS">
+    <img src="https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black" alt="JavaScript">
+    <img src="https://img.shields.io/badge/Sans%20build-6E7681" alt="Sans build">
+    <img src="https://img.shields.io/badge/GitHub%20Pages-222222?logo=githubpages&logoColor=white" alt="GitHub Pages">
+  </p>
 
-| | |
-|---|---|
-| **Site en production** | [portfolio.callistoarts.com](https://portfolio.callistoarts.com) |
-| **Dépôt GitHub** | [github.com/GamePartsOnline/Portfolio-Callisto](https://github.com/GamePartsOnline/Portfolio-Callisto) |
-| **Behance** | [behance.net/CallistoArtwork](https://www.behance.net/CallistoArtwork) |
-| **LinkedIn** | [linkedin.com/in/frederique-charton](https://www.linkedin.com/in/frederique-charton) |
+  <p align="center">
+    <a href="https://www.behance.net/CallistoArtwork"><img src="https://img.shields.io/badge/Behance-1769FF?logo=behance&logoColor=white" alt="Behance"></a>
+    <a href="https://demozoo.org/sceners/57855/"><img src="https://img.shields.io/badge/Demozoo-6E4C9B" alt="Demozoo"></a>
+    <a href="https://www.linkedin.com/in/frederique-charton"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white" alt="LinkedIn"></a>
+  </p>
+
+  <p align="center">
+    <i>Site vitrine statique de Frédérique Charton (CALLISTO) — graphisme digital, demoscene, vidéo, outils créatifs et IA.</i><br>
+    Site <a href="https://callistoarts.com">callistoarts.com</a> · Dépôt <a href="https://github.com/GamePartsOnline/Portfolio-Callisto">GamePartsOnline/Portfolio-Callisto</a>
+  </p>
+</div>
 
 ---
 
@@ -16,7 +31,7 @@ Site vitrine **statique** pour **Frédérique Charton (CALLISTO)** : graphisme d
 - **Stack :** HTML, CSS, JavaScript (sans framework de build obligatoire).
 - **Galerie :** `assets/images/portfolio_images.json` + fichiers sous `assets/images/` (chemins relatifs au site).
 - **Textes optionnels :** `content.json` (sections About / Contact, chargement HTTP).
-- **Déploiement :** IONOS (mutualisé) — procédures dans [`docs/DEPLOY.md`](docs/DEPLOY.md), contexte hébergement dans [`docs/HOSTING.md`](docs/HOSTING.md).
+- **Déploiement :** **GitHub Pages** — un `git push` sur `main` publie le site. Procédure dans [`docs/DEPLOY.md`](docs/DEPLOY.md), DNS et TLS dans [`docs/HOSTING.md`](docs/HOSTING.md).
 
 ---
 
