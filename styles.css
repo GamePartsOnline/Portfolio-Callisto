@@ -1299,55 +1299,14 @@ a:focus-visible {
   text-shadow: none;
   transition: color var(--transition-base);
 }
-.nft-page .hero-name {
-  font-size: 1.2rem !important;
-  font-weight: 600;
-  margin-bottom: 0.3rem;
-  padding-inline: 0.2em;
-  line-height: 1.1;
-}
-.nft-page .hero-name:hover {
-  color: var(--color-brand-rose);
-}
 .hero-name:hover {
   color: var(--color-brand-neon);
 }
 
-.nft-page .hero {
-  min-height: auto !important;
-  height: auto !important;
-  padding-top: calc(var(--nav-height) + 0.75rem + env(safe-area-inset-top, 0px)) !important;
-  padding-bottom: var(--spacing-md) !important;
-  align-items: center !important;
-  justify-content: center !important;
-}
 
-.nft-page .hero-title {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.4rem;
-  font-size: 0;
-  margin: 0;
-}
 
-.nft-page .hero-greeting,
-.nft-page .hero-name {
-  font-size: 1rem !important;
-  line-height: 1.2;
-  margin: 0;
-  padding: 0;
-}
 
-.nft-page .hero-greeting {
-  color: var(--color-text-secondary);
-  font-weight: 500;
-  text-transform: uppercase;
-}
 
-.nft-page .hero-name {
-  font-weight: 700 !important;
-}
 
 .hero-subtitle {
   display: flex;
@@ -1688,9 +1647,6 @@ a:focus-visible {
     padding-inline: 0.2em;
   }
 
-  .nft-page .hero-name {
-    font-size: 1.2rem !important;
-  }
 
   .hero-greeting {
     font-size: var(--font-size-xl);
@@ -1705,11 +1661,6 @@ a:focus-visible {
   min-height: 50vh;
 }
 
-#nftGallery {
-  padding-top: 0;
-  padding-bottom: 0;
-  min-height: auto;
-}
 
 #about {
   scroll-margin-top: calc(
@@ -3046,96 +2997,18 @@ body.night .about-card-tag {
   min-width: 0;
 }
 
-.nft-gallery-glued {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 0;
-  width: 100%;
-  overflow-x: auto;
-  max-width: 100%;
-  padding: 0;
-  margin: 0;
-  -webkit-overflow-scrolling: touch;
-}
 
-.nft-gallery-center {
-  display: none;
-}
 
-.nft-gallery-meta {
-  display: none !important;
-}
 
-body.nft-page #main-content {
-  padding-top: calc(var(--nav-height) + var(--spacing-sm)) !important;
-}
 
-.nft-page .section {
-  padding-top: 0 !important;
-  padding-bottom: var(--spacing-md);
-  min-height: auto;
-}
 
-.nft-page .hero,
-.nft-page .section-title-wrap,
-.nft-page .nft-gallery-meta {
-  display: none !important;
-}
 
-.nft-gallery-empty {
-  width: 100%;
-  padding: var(--spacing-lg) 0;
-  text-align: center;
-  color: rgba(255, 255, 255, 0.72);
-}
 
-.nft-thumb {
-  position: relative;
-  overflow: hidden;
-  display: block;
-  width: clamp(100px, 12vw, 160px);
-  aspect-ratio: 1 / 1;
-  background: transparent;
-  border: none;
-  box-shadow: none;
-  border-radius: 0;
-  text-decoration: none;
-}
 
-.nft-thumb img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-  object-position: center;
-  transition: none;
-}
 
-.nft-page .nft-thumb {
-  box-shadow: none;
-  background: transparent;
-  border: none;
-}
 
-.nft-thumb:hover img,
-.nft-thumb:focus-visible img {
-  transform: none;
-}
 
-.nft-thumb *:not(img),
-.nft-thumb::before,
-.nft-thumb::after,
-.nft-thumb .nft-overlay {
-  display: none !important;
-  content: none !important;
-}
 
-.nft-thumb:hover .nft-overlay,
-.nft-thumb:focus-visible .nft-overlay {
-  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.65) 50%, rgba(0, 0, 0, 0.95) 100%);
-}
 
 /* Portfolio image block — square thumbs (sans contour néon) */
 .portfolio-item {
@@ -3194,27 +3067,6 @@ body.nft-page #main-content {
   transform: scale(1.1);
 }
 
-.portfolio-image .portfolio-nft-badge {
-  position: absolute;
-  top: 0.75rem;
-  right: 0.75rem;
-  z-index: 2;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 2.6rem;
-  height: 2.6rem;
-  padding: 0 0.55rem;
-  background: rgba(0, 0, 0, 0.72);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 999px;
-  color: #ffffff;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  backdrop-filter: blur(6px);
-}
 
 .portfolio-overlay {
   position: absolute;
