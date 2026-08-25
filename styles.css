@@ -1748,66 +1748,13 @@ a:focus-visible {
   gap: var(--spacing-md);
 }
 
-/* Event announcement (e.g. CORSICA GAME WEEK) */
-.about-upcoming {
-  margin: 0;
-  padding: var(--spacing-md) var(--spacing-lg);
-  border-radius: 16px;
-  border: none;
-  background: transparent;
-  box-shadow: none;
-  font-size: var(--font-size-sm);
-  line-height: 1.75;
-  color: var(--color-text-secondary);
-  max-width: min(1100px, 100%);
-  justify-self: center;
-  width: 100%;
-  box-sizing: border-box;
-}
 
-.about-upcoming a {
-  color: var(--color-brand-neon);
-  text-decoration: none;
-  border-bottom: 1px solid rgba(0, 255, 224, 0.35);
-}
 
-.about-upcoming a:hover,
-.about-upcoming a:focus-visible {
-  color: var(--color-brand-rose);
-  border-bottom-color: rgba(244, 114, 182, 0.5);
-}
 
-.about-upcoming-label {
-  display: block;
-  font-size: var(--font-size-xs);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-brand-neon);
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-}
 
-.about-upcoming-headline {
-  display: block;
-  font-size: var(--font-size-lg);
-  color: var(--color-text-primary);
-  margin-bottom: 0.75rem;
-  text-shadow: none;
-}
 
-body.night .about-upcoming {
-  border-color: rgba(255, 157, 58, 0.28);
-  background: rgba(255, 157, 58, 0.06);
-  box-shadow: none;
-}
 
-body.night .about-upcoming-label {
-  color: var(--candle, #ff9d3a);
-}
 
-body.night .about-upcoming-headline {
-  text-shadow: none;
-}
 
 /* Citation About (style nuit-atelier) */
 .about-quote {
