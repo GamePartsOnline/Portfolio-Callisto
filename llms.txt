@@ -4,13 +4,13 @@
 
 Static site (HTML/CSS/JS, no build step) served by GitHub Pages at `https://callistoarts.com`. Bilingual French/English: French is in the HTML, English lives in `i18n.json` and is applied client-side; the reader's choice is stored in `localStorage`. Dark theme throughout, plus an alternate "Nuit d'Atelier" night mode.
 
-The home page is a single scrolling document; the four anchors below are its real sections. Three satellite pages complete the site.
+The home page is a single scrolling document; the five anchors below are its real sections. Three satellite pages complete the site.
 
 ## Pages
 
 - [Home](https://callistoarts.com/): hero carousel, portfolio gallery, about, journey timeline and contact, on one page.
 - [About](https://callistoarts.com/#about): who Callisto is — digital drawing since 2011, demoscene since 2015, GPO SARL, AI prompting, full-stack training at The Hacking Project, UI design. Includes the software she works with.
-- [Portfolio](https://callistoarts.com/#portfolio): 139 visible works, filterable by category, with a fullscreen zoom lightbox for images and videos.
+- [Portfolio](https://callistoarts.com/#portfolio): 138 visible works, filterable by category, with a fullscreen zoom lightbox for images and videos.
 - [Journey](https://callistoarts.com/#journey): dated timeline of competition results, awards and certifications, newest first — from 2011 up to EVOKE 2026 and Shadow Party 2026.
 - [Mentoring](https://callistoarts.com/#teaching): intern mentoring at GPO SARL and knowledge sharing in graphic design, DTP, and digital culture.
 - [Contact](https://callistoarts.com/#contact): email, phone and postal address of GPO SARL.
@@ -22,10 +22,11 @@ The home page is a single scrolling document; the four anchors below are its rea
 
 Counts as of November 2026, from `assets/images/portfolio_images.json`.
 
-- **Graphics** (29): demoscene graphics, brand identity & logo design, the core of the visual work.
+- **Graphics** (27): demoscene graphics, the core of the competition work.
+- **Logos & Branding** (1): client visual identity case study (Melio Pet Sitter).
 - **Animation** (23): animated pieces and video.
 - **Acrylic** (22) and **Watercolor** (16): traditional painting.
-- **Gaming Artwork** (5): 4 grouped pinball and vintage machine restoration galleries (COMET 1934/1935, Shaq Attaq, Firepower, Nineball, Blackout), arcade builds.
+- **Gaming Artwork** (5): 4 grouped pinball and vintage machine restoration galleries (COMET 1934/1935, Firepower, Nineball, Blackout), arcade builds.
 - **Photos** (15) and **Dry pastel** (14).
 - **Paintover** (8): digital painting over a photographic base.
 - **Others** (6), **IA Art** (1).

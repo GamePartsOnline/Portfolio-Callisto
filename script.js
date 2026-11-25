@@ -360,6 +360,7 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
 let portfolioData = {
   categories: [
     { id: "graphics", label: "Graphics" },
+    { id: "branding", label: "Logos & Branding" },
     { id: "paintover", label: "Paintover" },
     { id: "IA", label: "IA Art" },
     { id: "photo", label: "Photos" },
@@ -380,6 +381,7 @@ let portfolioCategoryNames = {};
 function getCategoryNamesFromData(data) {
   const frLabels = {
     graphics: "Graphismes",
+    branding: "Logos & Identité",
     paintover: "Paintover",
     IA: "Art IA",
     photo: "Photos",
@@ -553,14 +555,48 @@ let portfolioFiltersRebuildRaf = null;
 /** Catégorie affichée au chargement (réduit le nombre d’images chargées vs « All »). */
 const DEFAULT_PORTFOLIO_FILTER = "all";
 
+const PORTFOLIO_FILTER_GROUPS = [
+  {
+    id: "fine-arts",
+    fr: "Beaux-arts",
+    en: "Fine Arts",
+    cats: ["acrylique", "aquarelle", "pastel-sec"],
+  },
+  {
+    id: "digital",
+    fr: "Numérique & IA",
+    en: "Digital & AI",
+    cats: ["graphics", "paintover", "animation", "ia"],
+  },
+  {
+    id: "identity-arcade",
+    fr: "Identité & Arcade",
+    en: "Branding & Arcade",
+    cats: ["branding", "gaming"],
+  },
+  {
+    id: "photo-other",
+    fr: "Photos & Autres",
+    en: "Photos & Others",
+    cats: ["photo", "other"],
+  },
+];
+
+function getPortfolioFilterGroupById(groupId) {
+  return PORTFOLIO_FILTER_GROUPS.find((g) => g.id === groupId) || null;
+}
+
 /**
- * Affiche uniquement les vignettes de la catégorie choisie (« all » = tout).
- * @param {string} filterRaw — id catégorie ou « all » (insensible à la casse)
+ * Affiche uniquement les vignettes de la catégorie choisie (« all » = tout, « group:<id> » = groupe).
+ * @param {string} filterRaw — id catégorie, « group:<id> » ou « all » (insensible à la casse)
  * @param {{ instant?: boolean }} [opts] — sans animation (chargement initial / lots)
  */
 function applyPortfolioFilter(filterRaw, opts) {
   const instant = opts && opts.instant === true;
   const filter = (filterRaw || "all").toLowerCase();
+  const groupMatch = filter.startsWith("group:")
+    ? getPortfolioFilterGroupById(filter.slice(6))
+    : null;
   const portfolioGrid = document.getElementById("portfolioGrid");
   const portfolioItems = portfolioGrid
     ? portfolioGrid.querySelectorAll(".portfolio-item")
@@ -568,7 +604,9 @@ function applyPortfolioFilter(filterRaw, opts) {
 
   portfolioItems.forEach((item) => {
     const cat = (item.getAttribute("data-category") || "").toLowerCase();
-    const show = filter === "all" || cat === filter;
+    const show =
+      filter === "all" ||
+      (groupMatch ? groupMatch.cats.includes(cat) : cat === filter);
     if (instant) {
       if (show) {
         item.style.display = "";
@@ -633,10 +671,19 @@ function rebuildPortfolioFiltersFromDom() {
   });
 }
 
+function getGroupLabel(group, lang) {
+  const l = lang || (typeof getStoredLang === "function" ? getStoredLang() : "fr");
+  return l === "en" ? group.en : group.fr;
+}
+
+function getGroupAllWord(lang) {
+  const l = lang || (typeof getStoredLang === "function" ? getStoredLang() : "fr");
+  return l === "en" ? "All in category" : "Tout voir";
+}
+
 function buildPortfolioFilterButtons(categories) {
   const container = document.getElementById("portfolioFilters");
   if (!container) return;
-  /* Empty array = no categories with works (do not fall back to default list). */
   const list = Array.isArray(categories)
     ? categories
     : [
@@ -652,15 +699,19 @@ function buildPortfolioFilterButtons(categories) {
         { id: "other", label: "Others" },
       ];
   container.innerHTML = "";
-  const hasDefaultCategory = list.some((c) => c.id === DEFAULT_PORTFOLIO_FILTER);
-  const defaultFilterIsAll = !hasDefaultCategory;
+  const urlFilter = (
+    new URLSearchParams(window.location.search).get("filter") || ""
+  ).trim();
+  const activeFilter = urlFilter || DEFAULT_PORTFOLIO_FILTER;
+  const activeFilterLower = activeFilter.toLowerCase();
 
   const allBtn = document.createElement("button");
   allBtn.type = "button";
-  allBtn.className = defaultFilterIsAll ? "filter-btn active" : "filter-btn";
+  const isAllActive = activeFilterLower === "all";
+  allBtn.className = isAllActive ? "filter-btn active" : "filter-btn";
   allBtn.setAttribute("data-filter", "all");
   allBtn.setAttribute("role", "tab");
-  allBtn.setAttribute("aria-selected", defaultFilterIsAll ? "true" : "false");
+  allBtn.setAttribute("aria-selected", isAllActive ? "true" : "false");
   const totalCount =
     list.length && list.every((c) => typeof c.count === "number")
       ? list.reduce((sum, c) => sum + c.count, 0)
@@ -671,15 +722,96 @@ function buildPortfolioFilterButtons(categories) {
       ? `${allWord} (${totalCount})`
       : allWord;
   container.appendChild(allBtn);
+
+  const byId = new Map();
   list.forEach((cat) => {
+    byId.set(cat.id.toLowerCase(), cat);
+  });
+  const usedIds = new Set();
+  const lang = typeof getStoredLang === "function" ? getStoredLang() : "fr";
+
+  PORTFOLIO_FILTER_GROUPS.forEach((group) => {
+    const groupCats = group.cats
+      .map((cid) => byId.get(cid.toLowerCase()))
+      .filter(Boolean);
+    if (!groupCats.length) return;
+    groupCats.forEach((c) => usedIds.add(c.id.toLowerCase()));
+
+    const groupTotal = groupCats.reduce(
+      (sum, c) => sum + (typeof c.count === "number" ? c.count : 0),
+      0,
+    );
+    const activeSubCat = groupCats.find(
+      (c) => c.id.toLowerCase() === activeFilterLower,
+    );
+    const isGroupSelfActive = activeFilterLower === `group:${group.id}`;
+    const isGroupActive = Boolean(activeSubCat || isGroupSelfActive);
+
+    const wrap = document.createElement("div");
+    wrap.className = "filter-group";
+    wrap.setAttribute("data-group-id", group.id);
+
+    const groupBtn = document.createElement("button");
+    groupBtn.type = "button";
+    groupBtn.className = isGroupActive
+      ? "filter-btn filter-group-btn active"
+      : "filter-btn filter-group-btn";
+    groupBtn.setAttribute("aria-expanded", "false");
+    groupBtn.setAttribute("aria-haspopup", "true");
+    const baseGroupLabel = getGroupLabel(group, lang);
+    groupBtn.setAttribute("data-group-base-label", baseGroupLabel);
+    groupBtn.innerHTML = activeSubCat
+      ? `<span class="filter-group-btn__label">${baseGroupLabel} · ${activeSubCat.label}</span><span class="filter-group-btn__caret" aria-hidden="true">▾</span>`
+      : `<span class="filter-group-btn__label">${baseGroupLabel} (${groupTotal})</span><span class="filter-group-btn__caret" aria-hidden="true">▾</span>`;
+
+    const submenu = document.createElement("div");
+    submenu.className = "filter-submenu";
+    submenu.setAttribute("role", "menu");
+
+    const groupAllItem = document.createElement("button");
+    groupAllItem.type = "button";
+    groupAllItem.className = isGroupSelfActive
+      ? "filter-btn filter-submenu-item active"
+      : "filter-btn filter-submenu-item";
+    groupAllItem.setAttribute("data-filter", `group:${group.id}`);
+    groupAllItem.setAttribute("data-group-all", group.id);
+    groupAllItem.setAttribute("role", "menuitem");
+    groupAllItem.textContent =
+      groupTotal > 0
+        ? `${getGroupAllWord(lang)} (${groupTotal})`
+        : getGroupAllWord(lang);
+    submenu.appendChild(groupAllItem);
+
+    groupCats.forEach((cat) => {
+      const subBtn = document.createElement("button");
+      subBtn.type = "button";
+      const isSubActive = cat.id.toLowerCase() === activeFilterLower;
+      subBtn.className = isSubActive
+        ? "filter-btn filter-submenu-item active"
+        : "filter-btn filter-submenu-item";
+      subBtn.setAttribute("data-filter", cat.id);
+      subBtn.setAttribute("role", "menuitem");
+      subBtn.textContent =
+        typeof cat.count === "number"
+          ? `${cat.label} (${cat.count})`
+          : cat.label;
+      submenu.appendChild(subBtn);
+    });
+
+    wrap.appendChild(groupBtn);
+    wrap.appendChild(submenu);
+    container.appendChild(wrap);
+  });
+
+  list.forEach((cat) => {
+    if (usedIds.has(cat.id.toLowerCase())) return;
     const btn = document.createElement("button");
     btn.type = "button";
-    const isGraphicsDefault =
-      !defaultFilterIsAll && cat.id === DEFAULT_PORTFOLIO_FILTER;
-    btn.className = isGraphicsDefault ? "filter-btn active" : "filter-btn";
+    const isActive = cat.id.toLowerCase() === activeFilterLower;
+    btn.className = isActive ? "filter-btn active" : "filter-btn";
     btn.setAttribute("data-filter", cat.id);
     btn.setAttribute("role", "tab");
-    btn.setAttribute("aria-selected", isGraphicsDefault ? "true" : "false");
+    btn.setAttribute("aria-selected", isActive ? "true" : "false");
     btn.textContent =
       typeof cat.count === "number" ? `${cat.label} (${cat.count})` : cat.label;
     container.appendChild(btn);
@@ -689,7 +821,7 @@ function buildPortfolioFilterButtons(categories) {
 // ============================================
 // PORTFOLIO JSON (HTTP) — une seule source après loadPortfolioJsonOnce()
 // ============================================
-const PORTFOLIO_JSON_URL = "assets/images/portfolio_images.json?v=4";
+const PORTFOLIO_JSON_URL = "assets/images/portfolio_images.json?v=5";
 
 async function loadPortfolioJsonOnce() {
   if (isFileProtocol()) return;
@@ -842,11 +974,16 @@ async function loadPortfolioImages() {
     /* Lots de cartes + rAF → évite un seul long task (main thread / Lighthouse) */
     const BATCH = 10;
     let bi = 0;
+    const urlFilter = (
+      new URLSearchParams(window.location.search).get("filter") || ""
+    ).trim();
     const defaultFilterBtn = document.querySelector(
-      "#portfolioFilters .filter-btn.active",
+      "#portfolioFilters .filter-btn.active[data-filter]",
     );
     const defaultFilter = (
-      defaultFilterBtn?.getAttribute("data-filter") || "all"
+      urlFilter ||
+      defaultFilterBtn?.getAttribute("data-filter") ||
+      "all"
     ).toLowerCase();
 
     function appendPortfolioBatch() {
@@ -863,6 +1000,15 @@ async function loadPortfolioImages() {
       }
       initPortfolioFilters();
       attachLightboxEvents();
+      const openQ = new URLSearchParams(window.location.search).get("open");
+      if (openQ) {
+        const needle = openQ.trim().toLowerCase();
+        const match = Array.from(document.querySelectorAll(".portfolio-item")).find((el) => {
+          const t = (el.querySelector(".portfolio-title")?.textContent || "").toLowerCase();
+          return t.includes(needle);
+        });
+        if (match) openLightbox(match);
+      }
     }
 
     appendPortfolioBatch();
@@ -881,6 +1027,44 @@ async function loadPortfolioImages() {
 // ============================================
 let portfolioFiltersDelegated = false;
 
+function closeAllFilterSubmenus(exceptGroup) {
+  const container = document.getElementById("portfolioFilters");
+  if (!container) return;
+  container.querySelectorAll(".filter-group.open").forEach((grp) => {
+    if (exceptGroup && grp === exceptGroup) return;
+    grp.classList.remove("open");
+    const grpBtn = grp.querySelector(".filter-group-btn");
+    if (grpBtn) grpBtn.setAttribute("aria-expanded", "false");
+  });
+}
+
+function updateFilterGroupLabels() {
+  const container = document.getElementById("portfolioFilters");
+  if (!container) return;
+  const lang = typeof getStoredLang === "function" ? getStoredLang() : "fr";
+  container.querySelectorAll(".filter-group").forEach((grp) => {
+    const groupId = grp.getAttribute("data-group-id");
+    const group = getPortfolioFilterGroupById(groupId);
+    const grpBtn = grp.querySelector(".filter-group-btn");
+    if (!group || !grpBtn) return;
+    const baseLabel = getGroupLabel(group, lang);
+    const activeSub = grp.querySelector(
+      ".filter-submenu-item.active[data-filter]",
+    );
+    const labelSpan = grpBtn.querySelector(".filter-group-btn__label");
+    if (!labelSpan) return;
+    const groupAllBtn = grp.querySelector(".filter-submenu-item[data-group-all]");
+    const totalMatch = groupAllBtn?.textContent.match(/\((\d+)\)\s*$/);
+    const groupTotalText = totalMatch ? ` (${totalMatch[1]})` : "";
+    if (activeSub && !activeSub.hasAttribute("data-group-all")) {
+      const subClean = activeSub.textContent.replace(/\s*\(\d+\)\s*$/, "");
+      labelSpan.textContent = `${baseLabel} · ${subClean}`;
+    } else {
+      labelSpan.textContent = `${baseLabel}${groupTotalText}`;
+    }
+  });
+}
+
 function initPortfolioFilters() {
   const container = document.getElementById("portfolioFilters");
   const portfolioGrid = document.getElementById("portfolioGrid");
@@ -889,17 +1073,47 @@ function initPortfolioFilters() {
   if (!portfolioFiltersDelegated) {
     portfolioFiltersDelegated = true;
     container.addEventListener("click", (e) => {
-      const button = e.target.closest(".filter-btn");
+      const groupToggle = e.target.closest(".filter-group-btn");
+      if (groupToggle && container.contains(groupToggle)) {
+        const groupEl = groupToggle.closest(".filter-group");
+        const willOpen = groupEl && !groupEl.classList.contains("open");
+        closeAllFilterSubmenus(groupEl);
+        if (groupEl) {
+          groupEl.classList.toggle("open", willOpen);
+          groupToggle.setAttribute("aria-expanded", willOpen ? "true" : "false");
+        }
+        return;
+      }
+
+      const button = e.target.closest(".filter-btn[data-filter]");
       if (!button || !container.contains(button)) return;
-      const filterButtons = container.querySelectorAll(".filter-btn");
-      filterButtons.forEach((btn) => {
+      container.querySelectorAll(".filter-btn").forEach((btn) => {
         btn.classList.remove("active");
         btn.setAttribute("aria-selected", "false");
       });
       button.classList.add("active");
       button.setAttribute("aria-selected", "true");
+
+      const parentGroup = button.closest(".filter-group");
+      if (parentGroup) {
+        const parentBtn = parentGroup.querySelector(".filter-group-btn");
+        if (parentBtn) parentBtn.classList.add("active");
+      }
+      closeAllFilterSubmenus();
+      updateFilterGroupLabels();
+
       const filter = (button.getAttribute("data-filter") || "all").toLowerCase();
       applyPortfolioFilter(filter, { instant: false });
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!container.contains(e.target)) {
+        closeAllFilterSubmenus();
+      }
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeAllFilterSubmenus();
     });
   }
 
@@ -1762,13 +1976,21 @@ function refreshPortfolioFilterAllLabel() {
   }
   if (typeof portfolioData !== "undefined") {
     portfolioCategoryNames = getCategoryNamesFromData(portfolioData);
+    const lang = getStoredLang();
     document.querySelectorAll('#portfolioFilters [data-filter]').forEach((btn) => {
       const cat = btn.getAttribute("data-filter");
       if (!cat || cat === "all") return;
+      if (cat.startsWith("group:")) {
+        const word = getGroupAllWord(lang);
+        const m = btn.textContent.match(/\((\d+)\)\s*$/);
+        btn.textContent = m ? `${word} (${m[1]})` : word;
+        return;
+      }
       const label = portfolioCategoryNames[cat] || humanizeCategoryId(cat);
       const m = btn.textContent.match(/\((\d+)\)\s*$/);
       btn.textContent = m ? `${label} (${m[1]})` : label;
     });
+    updateFilterGroupLabels();
     document.querySelectorAll(".portfolio-item").forEach((item) => {
       const cat = item.getAttribute("data-category");
       if (!cat) return;

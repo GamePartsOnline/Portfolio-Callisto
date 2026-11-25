@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta
+      name="description"
+      content="Portfolio complet de Callisto Arts (Frédérique Charton) : graphismes demoscene, logos et identité visuelle, restaurations GPO SARL, peinture, photo et animation."
+    />
+    <link rel="canonical" href="https://callistoarts.com/portfolio.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Callisto Arts" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:url" content="https://callistoarts.com/portfolio.html" />
+    <meta property="og:title" content="Portfolio | Callisto Arts" />
+    <meta
+      property="og:description"
+      content="Explorez les 138 créations de Callisto Arts par catégorie : graphismes, logos, jeux & arcade, aquarelle, acrylique, pastel sec, photo et animation."
+    />
+    <meta
+      property="og:image"
+      content="https://callistoarts.com/assets/images/graphics/Chromatic.jpg"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Portfolio | Callisto Arts" />
+    <meta
+      name="twitter:description"
+      content="Explorez les créations de Callisto Arts par catégorie, avec visionneuse grand format et zoom."
+    />
+    <meta
+      name="twitter:image"
+      content="https://callistoarts.com/assets/images/graphics/Chromatic.jpg"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="assets/images/logo/logo-cllisto.png"
+    />
+    <title>Portfolio | Callisto Arts</title>
+    <link
+      rel="preload"
+      href="assets/images/portfolio_images.json?v=5"
+      as="fetch"
+      type="application/json"
+      crossorigin
+    />
+    <link rel="stylesheet" href="styles.css?v=95" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
+  </head>
+  <body class="legal-page-body portfolio-page-body">
+    <a class="skip-link" href="#main-content" data-i18n="skipLink"
+      >Aller au contenu principal</a
+    >
+    <div class="animated-background" aria-hidden="true">
+      <div class="bg-gradient"></div>
+      <div class="bg-mesh"></div>
+      <div class="bg-particles" aria-hidden="true"></div>
+      <div class="bg-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+      </div>
+      <div class="bg-grid"></div>
+    </div>
+
+    <nav
+      class="nav"
+      role="navigation"
+      aria-label="Navigation principale"
+      data-i18n-aria="nav.ariaMain"
+    >
+      <div class="nav-container">
+        <a
+          href="index.html#welcome"
+          class="nav-logo"
+          aria-label="Callisto Arts : accueil"
+          data-i18n-aria="nav.logoHome"
+        >
+          <img
+            src="assets/images/logo/logo-cllisto.png"
+            alt=""
+            class="logo-img"
+            width="40"
+            height="40"
+            decoding="async"
+          />
+          <span class="logo-text">Callisto Arts</span>
+        </a>
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-label="Ouvrir ou fermer le menu"
+          aria-controls="navMenu"
+          aria-expanded="false"
+          id="navToggle"
+          data-i18n-aria="nav.toggleAria"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <ul class="nav-menu" id="navMenu">
+          <li>
+            <a href="index.html#about" class="nav-link" data-i18n="nav.aboutContact"
+              >À propos / Contact</a
+            >
+          </li>
+          <li>
+            <a
+              href="portfolio.html"
+              class="nav-link"
+              aria-current="page"
+              title="Portfolio : demoscene et art"
+              data-i18n="nav.portfolio"
+              >Portfolio</a
+            >
+          </li>
+          <li>
+            <a
+              href="index.html#teaching"
+              class="nav-link"
+              title="Transmission &amp; Encadrement"
+              data-i18n="nav.teaching"
+              >Transmission</a
+            >
+          </li>
+          <li>
+            <a
+              href="services.html"
+              class="nav-link"
+              title="GPO &amp; Graph2Print"
+              data-i18n="nav.services"
+              >Services</a
+            >
+          </li>
+        </ul>
+        <div
+          class="lang-switch"
+          role="group"
+          aria-label="Choisir la langue du site"
+          data-i18n-aria="langSwitch.aria"
+        >
+          <button
+            type="button"
+            class="lang-switch__btn is-active"
+            data-lang="fr"
+            aria-pressed="true"
+            title="Français"
+          >
+            FR
+          </button>
+          <span class="lang-switch__sep" aria-hidden="true">|</span>
+          <button
+            type="button"
+            class="lang-switch__btn"
+            data-lang="en"
+            aria-pressed="false"
+            title="English"
+          >
+            EN
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <main id="main-content" class="legal-page-main" tabindex="-1">
+      <section
+        id="portfolio"
+        class="portfolio section"
+        aria-labelledby="portfolio-title"
+      >
+        <div class="container">
+          <div class="section-title-wrap">
+            <h1
+              id="portfolio-title"
+              class="section-title"
+              data-i18n="portfolio.title"
+            >
+              Portfolio
+            </h1>
+          </div>
+          <p
+            class="section-lead portfolio-lead"
+            id="portfolio-lead"
+            data-i18n="portfolio.lead"
+          >
+            Utilisez les filtres pour explorer par catégorie. Cliquez sur une œuvre
+            pour ouvrir les détails, le zoom et les galeries.
+          </p>
+          <div
+            class="portfolio-filters"
+            id="portfolioFilters"
+            role="tablist"
+            aria-label="Filtres du portfolio"
+            data-i18n-aria="portfolio.filtersAria"
+          ></div>
+          <div class="portfolio-grid" id="portfolioGrid"></div>
+          <div class="portfolio-footer-cta">
+            <p class="portfolio-footer-lead" data-i18n="portfolio.footerLead">
+              Intéressée par une collaboration ?
+            </p>
+            <a
+              href="index.html#contact"
+              class="cta-link cta-link--primary"
+              data-i18n="portfolio.footerCta"
+              >Me contacter</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div
+      class="lightbox"
+      id="lightbox"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="lightbox-title"
+      aria-hidden="true"
+      inert
+    >
+      <div class="lightbox-toolbar" id="lightbox-toolbar" aria-label="Outils de zoom" data-i18n-aria="lightbox.zoomToolbarAria">
+        <button type="button" class="lightbox-tool-btn" id="lightbox-zoom-out" aria-label="Dézoomer" data-i18n-aria="lightbox.zoomOut">−</button>
+        <button type="button" class="lightbox-tool-btn lightbox-tool-btn--reset" id="lightbox-zoom-reset" aria-label="Réinitialiser le zoom" data-i18n-aria="lightbox.zoomReset">100%</button>
+        <button type="button" class="lightbox-tool-btn" id="lightbox-zoom-in" aria-label="Zoomer" data-i18n-aria="lightbox.zoomIn">+</button>
+      </div>
+      <button
+        type="button"
+        class="lightbox-nav lightbox-nav--prev"
+        id="lightbox-prev"
+        aria-label="Œuvre précédente"
+        data-i18n-aria="lightbox.prev"
+      >
+        ‹
+      </button>
+      <button
+        type="button"
+        class="lightbox-nav lightbox-nav--next"
+        id="lightbox-next"
+        aria-label="Œuvre suivante"
+        data-i18n-aria="lightbox.next"
+      >
+        ›
+      </button>
+      <button
+        type="button"
+        class="lightbox-close"
+        aria-label="Fermer"
+        data-i18n-aria="lightbox.close"
+      >
+        ×
+      </button>
+      <p class="lightbox-kicker" id="lightbox-kicker"></p>
+      <div class="lightbox-content">
+        <div class="lightbox-stage" id="lightbox-stage">
+          <img
+            id="lightbox-image"
+            src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+            alt=""
+            decoding="async"
+          />
+        </div>
+        <div
+          class="lightbox-gallery-strip"
+          id="lightbox-gallery-strip"
+          hidden
+          aria-label="Images du projet"
+        ></div>
+        <video
+          id="lightbox-video-native"
+          class="lightbox-video-native"
+          controls
+          playsinline
+          preload="metadata"
+          title=""
+        ></video>
+        <iframe
+          id="lightbox-video"
+          class="lightbox-video"
+          title="YouTube"
+          src="about:blank"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
+        <div class="lightbox-info">
+          <h3 id="lightbox-title"></h3>
+          <p id="lightbox-description"></p>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer footer--subpage" role="contentinfo">
+      <div class="container">
+        <div class="footer-content footer-content--compact">
+          <nav class="footer-site-nav" aria-label="Liens du site">
+            <p class="footer-text footer-text--compact">
+              <a href="index.html#welcome" data-i18n="nav.home">Accueil</a>
+              <span aria-hidden="true"> · </span>
+              <a href="portfolio.html" aria-current="page" data-i18n="nav.portfolio">Portfolio</a>
+              <span aria-hidden="true"> · </span>
+              <a href="services.html" data-i18n="nav.services">Services</a>
+              <span aria-hidden="true"> · </span>
+              <a href="build-log.html" data-i18n="nav.buildLog">Journal technique</a>
+              <span aria-hidden="true"> · </span>
+              <a href="mentions-legales.html" data-i18n="footer.legal">Mentions légales</a>
+            </p>
+          </nav>
+          <p class="footer-cookies-line">
+            <a href="mentions-legales.html#cookies" data-i18n="cookieBanner.more">Mentions légales et cookies</a>
+          </p>
+          <p class="footer-subtitle footer-subtitle--copyright">&copy; 2026 Callisto Arts</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js?v=124" defer></script>
+  </body>
+</html>

@@ -110,12 +110,12 @@
     <!-- Portfolio data (hero + grid): early start, same URL as fetch in script.js -->
     <link
       rel="preload"
-      href="assets/images/portfolio_images.json?v=4"
+      href="assets/images/portfolio_images.json?v=5"
       as="fetch"
       type="application/json"
       crossorigin
     />
-    <link rel="stylesheet" href="styles.css?v=90" />
+    <link rel="stylesheet" href="styles.css?v=95" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <!-- Single font request + non-blocking load (reduces render-blocking vs two stylesheet links) -->
@@ -198,7 +198,7 @@
           </li>
           <li>
             <a
-              href="#portfolio"
+              href="portfolio.html"
               class="nav-link"
               title="Portfolio : demoscene et art"
               data-i18n="nav.portfolio"
@@ -221,15 +221,6 @@
               title="GPO &amp; Graph2Print"
               data-i18n="nav.services"
               >Services</a
-            >
-          </li>
-          <li>
-            <a
-              href="build-log.html"
-              class="nav-link"
-              title="Full-stack &amp; IA"
-              data-i18n="nav.buildLog"
-              >Journal technique</a
             >
           </li>
         </ul>
@@ -265,7 +256,7 @@
     <!-- Fixed social links (right) — only social links on the page -->
     <aside
       class="social-fixed-rail"
-      aria-label="Quick links to social networks"
+      aria-label="Liens rapides vers les réseaux sociaux"
     >
       <ul class="social-fixed-rail__list" role="list">
         <li>
@@ -407,7 +398,7 @@
         <div class="hero-subtitle-line" aria-hidden="true"></div>
 
         <nav class="hero-cta" aria-label="Actions principales" data-i18n-aria="hero.ctaNav">
-          <a href="#portfolio" class="cta-link" data-i18n="hero.ctaPortfolio"
+          <a href="portfolio.html" class="cta-link" data-i18n="hero.ctaPortfolio"
             >Portfolio</a
           >
           <a href="services.html" class="cta-link" data-i18n="hero.ctaServices"
@@ -632,7 +623,7 @@
                       <span class="about-tool-badge" aria-hidden="true">
                         <img src="assets/icons/gemini.svg" alt="" />
                       </span>
-                      Gemini, Perplexity, Claude (AI)
+                      Gemini, Perplexity, Claude (IA)
                     </li>
                     <li class="about-tool about-tool--versaworks">
                       <span class="about-tool-badge" aria-hidden="true">VW</span>
@@ -654,21 +645,15 @@
                       <span class="about-tool-badge" aria-hidden="true">&lt;/&gt;</span>
                       HTML / CSS / Ruby
                     </li>
+                    <li class="about-tool about-tool--rust">
+                      <span class="about-tool-badge" aria-hidden="true">Rs</span>
+                      Rust
+                    </li>
                     </ul>
                   </div>
                 </div>
               </div>
             </div>
-            <p class="section-lead about-lead" data-i18n="about.lead">
-              Envie d’en voir plus ou d’échanger ?
-              <a href="#portfolio">Portfolio</a>
-              ·
-              <a href="services.html">Services</a>
-              ·
-              <a href="build-log.html">Journal technique</a>
-              ·
-              <a href="#contact">Contact</a>
-            </p>
             <div class="about-cards" aria-label="Domaines d'activité">
               <a
                 class="about-card glass-card"
@@ -721,7 +706,7 @@
               <cite>CALLISTO, Frédérique Charton</cite>
             </blockquote>
             <div class="about-cards" aria-label="Autres domaines d'activité">
-              <a class="about-card glass-card" href="build-log.html"
+              <a class="about-card glass-card" href="build-log.html#llm-latency"
                 >
                 <h3 data-i18n="about.card.aiTitle">Prompt IA</h3>
                 <p data-i18n="about.card.aiDesc">
@@ -745,7 +730,7 @@
                   Spécialisation architecture full-stack et intégration d’IA
                   générative.<br />
                   The Hacking Project (2026) : HTML, CSS, JavaScript, Ruby,
-                  développement assisté par IA…
+                  Rust, développement assisté par IA…
                 </p>
                 <span class="about-card-tag" data-i18n="about.card.devTag"
                   >THP 2026</span
@@ -773,7 +758,7 @@
         </div>
       </section>
 
-      <!-- Portfolio (after About) -->
+      <!-- Portfolio Preview Showcase (full 138-work gallery on portfolio.html) -->
       <section
         id="portfolio"
         class="portfolio section"
@@ -785,37 +770,61 @@
               Portfolio
             </h2>
           </div>
-          <p
-            class="section-lead portfolio-lead"
-            id="portfolio-lead"
-            data-i18n="portfolio.lead"
-          >
-            Utilisez les filtres pour explorer par catégorie. Cliquez sur une œuvre
-            pour ouvrir les détails, images et vidéos.
+          <p class="section-lead portfolio-showcase-lead" data-i18n="portfolio.homeTeaser">
+            Sélection d'œuvres phares (demoscene, illustration, photo et restauration GPO SARL). Cliquez sur une création pour l'ouvrir en grand format.
           </p>
-          <div
-            class="portfolio-filters"
-            id="portfolioFilters"
-            role="tablist"
-            aria-label="Filtres du portfolio"
-            data-i18n-aria="portfolio.filtersAria"
-          >
-            <!-- Filter buttons generated by script.js from categories (JSON or embedded) -->
+          <div class="portfolio-showcase-grid">
+            <a class="portfolio-showcase-card" href="portfolio.html?open=Sentinel%20of%20Abyss">
+              <img src="assets/images/graphics/sentinel-of-abyss-evoke-2026.jpg" alt="Sentinel of Abyss" loading="lazy" decoding="async" />
+              <div class="portfolio-showcase-meta">
+                <span class="portfolio-showcase-tag">EVOKE 2026</span>
+                <strong>Sentinel of Abyss</strong>
+              </div>
+            </a>
+            <a class="portfolio-showcase-card" href="portfolio.html?open=Chromatic%20resonance">
+              <img src="assets/images/graphics/Chromatic.jpg" alt="Chromatic resonance" loading="lazy" decoding="async" />
+              <div class="portfolio-showcase-meta">
+                <span class="portfolio-showcase-tag">1er prix Riverwash</span>
+                <strong>Chromatic resonance</strong>
+              </div>
+            </a>
+            <a class="portfolio-showcase-card" href="portfolio.html?open=IRL%20Gfx%20Squirrel">
+              <img src="assets/images/graphics/d776.375292.jpg" alt="IRL Gfx Squirrel Is Here" loading="lazy" decoding="async" />
+              <div class="portfolio-showcase-meta">
+                <span class="portfolio-showcase-tag">2e prix Shadow Party 2024</span>
+                <strong>IRL Gfx Squirrel Is Here</strong>
+              </div>
+            </a>
+            <a class="portfolio-showcase-card" href="portfolio.html?open=Symphony%20Of%20The%20Abyss">
+              <img src="assets/images/graphics/abyss_of-symphony.jpg" alt="Symphony of the Abyss" loading="lazy" decoding="async" />
+              <div class="portfolio-showcase-meta">
+                <span class="portfolio-showcase-tag">3e prix · Demoscene 2024</span>
+                <strong>Symphony of the Abyss</strong>
+              </div>
+            </a>
+            <a class="portfolio-showcase-card" href="portfolio.html?open=Floating%20Points">
+              <img src="assets/images/photo/2e70.379233.jpg" alt="Floating Points" loading="lazy" decoding="async" />
+              <div class="portfolio-showcase-meta">
+                <span class="portfolio-showcase-tag">Photo · 3e Under Construction</span>
+                <strong>Floating Points</strong>
+              </div>
+            </a>
+            <a class="portfolio-showcase-card" href="portfolio.html?open=Williams%20Firepower">
+              <img src="assets/images/Restauration/Firepower/eed6a2178828639.64eef8c251048.jpg" alt="Williams Firepower : restauration" loading="lazy" decoding="async" />
+              <div class="portfolio-showcase-meta">
+                <span class="portfolio-showcase-tag">Restauration GPO SARL</span>
+                <strong>Williams Firepower</strong>
+              </div>
+            </a>
           </div>
-          <div class="portfolio-grid" id="portfolioGrid">
-            <!-- Images: portfolio_images.json (HTTP); empty with file:// -->
-          </div>
-          <div class="portfolio-footer-cta">
-            <p class="portfolio-footer-lead" data-i18n="portfolio.footerLead">
-              Intéressée par une collaboration ?
-            </p>
+          <p class="portfolio-showcase-cta">
             <a
-              href="#contact"
+              href="portfolio.html"
               class="cta-link cta-link--primary"
-              data-i18n="portfolio.footerCta"
-              >Me contacter</a
+              data-i18n="portfolio.exploreCta"
+              >Explorer les 138 créations →</a
             >
-          </div>
+          </p>
         </div>
       </section>
 
@@ -867,11 +876,11 @@
                 <span class="journey-tl-tag" data-i18n="journey.y2026.tag">En cours</span>
                 <div class="journey-tl-content" data-i18n="journey.y2026.content">
                   <strong>EVOKE 2026</strong> (août 2026), 8e place :
-                  <em>Sentinel of Abyss</em>.<br />
+                  <a href="portfolio.html?open=Sentinel%20of%20Abyss"><em>Sentinel of Abyss</em></a>.<br />
                   <strong>Shadow Party 2026</strong> (Givry-en-Argonne, juillet 2026) :
-                  <em>Re_soul_tion</em> (Graphismes Newschool),
-                  <em>Missyou_Shadow_and_Callisto</em> (Amiga OCS/ECS Oldschool)
-                  et <em>Farmer work hard @t Givry en argonne !!!</em> (Photo).<br /><br />
+                  <a href="portfolio.html?open=Re_soul_tion"><em>Re_soul_tion</em></a> (Graphismes Newschool),
+                  <a href="portfolio.html?open=Missyou_Shadow_and_Callisto"><em>Missyou_Shadow_and_Callisto</em></a> (Amiga OCS/ECS Oldschool)
+                  et <a href="portfolio.html?open=Farmer%20work%20hard"><em>Farmer work hard @t Givry en argonne !!!</em></a> (Photo).<br /><br />
                   <strong>CORSICA GAME WEEK</strong> (Porto-Vecchio, 17 avril 2026) :
                   conférence demoscene et démonstration shaders / live coding avec
                   <a
@@ -883,26 +892,11 @@
                   <strong>Callisto</strong> (avec <strong>Marex, Robin, Douglas
                   Alves « Doug »</strong>).<br />
                   <strong>Revision 2026</strong> (avril 2026) :
-                  <a
-                    href="https://demozoo.org/productions/390037/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    >Korean Fish</a
-                  >,
-                  <a
-                    href="https://demozoo.org/productions/390057/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    >Serpentin De Moire</a
-                  >,
-                  <a
-                    href="https://demozoo.org/graphics/389721/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    >Floating Points</a
-                  >.<br />
+                  <a href="portfolio.html?open=Korean%20Fish">Korean Fish</a>,
+                  <a href="portfolio.html?open=Serpentin%20De%20Moire">Serpentin De Moire</a>,
+                  <a href="portfolio.html?open=Floating%20Points">Floating Points</a>.<br />
                   <strong>Rsync</strong> (Belgique, janvier 2026), 5e place
-                  Graphismes modernes : <em>IRL Gfx Squirrel Is Here</em>.<br /><br />
+                  Graphismes modernes : <a href="portfolio.html?open=IRL%20Gfx%20Squirrel"><em>IRL Gfx Squirrel Is Here</em></a>.<br /><br />
                   <strong>Création IA</strong> : workflows créatifs et outils
                   numériques.
                 </div>
@@ -918,17 +912,17 @@
                 <span class="journey-tl-tag" data-i18n="journey.y2025.tag">Prix</span>
                 <ul class="journey-prize-list" data-i18n="journey.y2025.list">
                   <li class="journey-place-2">
-                    2e @ Rsync : <em>Symphony of the Abyss</em> (Graphismes)
+                    2e @ Rsync : <a href="portfolio.html?open=Symphony%20Of%20The%20Abyss"><em>Symphony of the Abyss</em></a> (Graphismes)
                   </li>
-                  <li>10e @ Revision : <em>Pascal's Lemur Leap</em></li>
+                  <li>10e @ Revision : <a href="portfolio.html?open=Pascal"><em>Pascal's Lemur Leap</em></a></li>
                   <li>
-                    9e @ Revision : invitation <em>Shadow Party 2025</em>
+                    9e @ Revision : invitation <a href="portfolio.html?open=SHADOW%20PARTY%20INVITATION%202025"><em>Shadow Party 2025</em></a>
                   </li>
-                  <li>Sélection Inércia : <em>Sky Code</em></li>
-                  <li>Inércia genAI : <em>Inercia 2925</em></li>
+                  <li>Sélection Inércia : <a href="portfolio.html?open=Sky%20Code"><em>Sky Code</em></a></li>
+                  <li>Inércia genAI : <a href="portfolio.html?open=Inercia%202925"><em>Inercia 2925</em></a></li>
                   <li>
                     6e @ Shadow Party : Graphismes Oldschool,
-                    <em>Thanks All</em> (Amiga)
+                    <a href="portfolio.html?open=Thanks%20All"><em>Thanks All</em></a> (Amiga)
                   </li>
                 </ul>
               </article>
@@ -940,11 +934,11 @@
                 <span class="journey-tl-tag" data-i18n="journey.y2024.tag">Prix</span>
                 <ul class="journey-prize-list" data-i18n="journey.y2024.list">
                   <li class="journey-place-1">
-                    1re @ Rsync : <em>Chromatic resonance</em> (Graphismes)
+                    1re @ Rsync : <a href="portfolio.html?open=Chromatic%20resonance"><em>Chromatic resonance</em></a> (Graphismes)
                   </li>
-                  <li>7e @ Revision : <em>The Pixel Mouse Love Story</em></li>
-                  <li>12e @ Revision Paintover : <em>Refresh</em></li>
-                  <li>18e @ Revision Photo : <em>Convergence</em></li>
+                  <li>7e @ Revision : <a href="portfolio.html?open=Pixel%20Mouse"><em>The Pixel Mouse Love Story</em></a></li>
+                  <li>12e @ Revision Paintover : <a href="portfolio.html?open=Refresh"><em>Refresh</em></a></li>
+                  <li>18e @ Revision Photo : <a href="portfolio.html?open=Convergence"><em>Convergence</em></a></li>
                 </ul>
               </article>
             </div>
@@ -957,14 +951,14 @@
                 <div class="journey-tl-year">2023</div>
                 <span class="journey-tl-tag" data-i18n="journey.y2023.tag">Prix + Certification</span>
                 <ul class="journey-prize-list" data-i18n="journey.y2023.list">
-                  <li>9e Animation/Vidéo @ Revision : <em>Cyberpin</em></li>
+                  <li>9e Animation/Vidéo @ Revision : <a href="portfolio.html?open=Cyberpin%20by%20Callisto"><em>Cyberpin</em></a></li>
                   <li>
                     11e Graphismes modernes @ Revision :
-                    <em>Howl Of The Forest</em>
+                    <a href="portfolio.html?open=Howl%20Of%20The%20Forest"><em>Howl Of The Forest</em></a>
                   </li>
-                  <li>16e Photo @ Revision : <em>Balls Of Steel</em></li>
+                  <li>16e Photo @ Revision : <a href="portfolio.html?open=Balls%20Of%20Steel"><em>Balls Of Steel</em></a></li>
                   <li>
-                    5e @ SESSIONS in C4 LAN : <em>Luna Fly</em> (graphismes
+                    5e @ SESSIONS in C4 LAN : <a href="portfolio.html?open=Luna%20Fly"><em>Luna Fly</em></a> (graphismes
                     combinés)
                   </li>
                 </ul>
@@ -982,10 +976,10 @@
                 <ul class="journey-prize-list" data-i18n="journey.y2022.list">
                   <li class="journey-place-1">
                     1re Graphismes Freestyle @ Inércia :
-                    <em>Elevation 2079</em>
+                    <a href="portfolio.html?open=Elevation%202079"><em>Elevation 2079</em></a>
                   </li>
                   <li class="journey-place-3">
-                    3e Graphismes Nuskool @ Syntax : <em>Teddy BEER</em>
+                    3e Graphismes Nuskool @ Syntax : <a href="portfolio.html?open=teddy%20BEER"><em>Teddy BEER</em></a>
                   </li>
                 </ul>
                 <div class="journey-tl-content journey-tl-content-spaced" data-i18n="journey.y2022.extra">
@@ -1004,16 +998,16 @@
                 <ul class="journey-prize-list" data-i18n="journey.y2021.list">
                   <li class="journey-place-1">
                     1re @ Assembly Winter Online :
-                    <em>You Seem So Delicious</em>
+                    <a href="portfolio.html?open=You%20Seem%20So%20Delicious"><em>You Seem So Delicious</em></a>
                     (Graphismes)
                   </li>
-                  <li>5e @ Tokyo Demo Fest : <em>Sharko</em> (Graphismes)</li>
+                  <li>5e @ Tokyo Demo Fest : <a href="portfolio.html?open=Sharko"><em>Sharko</em></a> (Graphismes)</li>
                 </ul>
                 <div class="journey-tl-content journey-tl-content-spaced" data-i18n="journey.y2021.extra">
                   <strong>TOSA Illustrator</strong>.<br />
                   Galerie d'art au Luxembourg : 3 peintures numériques exposées.<br />
-                  Logo, t-shirts et trophées
-                  <strong>Tokyo Demo Fest 2021</strong>.<br />
+                  <a href="portfolio.html?open=LOGO%20TOKYO%20DEMO%20FEST%202021">Logo, t-shirts et trophées
+                  <strong>Tokyo Demo Fest 2021</strong></a>.<br />
                   Montage vidéo pour la <strong>Shadow Party</strong>.
                 </div>
               </article>
@@ -1040,7 +1034,7 @@
                 <span class="journey-tl-tag" data-i18n="journey.y2016.tag">Révélation</span>
                 <ul class="journey-prize-list" data-i18n="journey.y2016.list">
                   <li>
-                    5e @ Revision Graphismes modernes : <em>Tigre</em> / Tiger Eyes
+                    5e @ Revision Graphismes modernes : <a href="portfolio.html?open=Tiger"><em>Tigre</em> / Tiger Eyes</a>
                     (Sarrebruck)
                   </li>
                 </ul>
@@ -1193,8 +1187,8 @@
             </h2>
           </div>
           <div class="contact-content">
-            <div class="card glass-card">
-              <div class="card-content">
+            <div class="contact-panel">
+              <div class="contact-panel__main">
                 <h3 data-i18n="contact.h3">Discutons-en</h3>
                 <p class="contact-lead" data-i18n="contact.lead">
                   Pour des commandes, du freelance art ou dev, ou des questions
@@ -1208,6 +1202,8 @@
                     >Écrire à Callisto</a
                   >
                 </p>
+              </div>
+              <div class="contact-panel__details">
                 <h4
                   class="contact-details-heading"
                   data-i18n="contact.detailsHeading"
@@ -1305,6 +1301,7 @@
         ›
       </button>
       <button
+        type="button"
         class="lightbox-close"
         aria-label="Fermer"
         data-i18n-aria="lightbox.close"
@@ -1391,7 +1388,7 @@
             max="100"
             value="0"
             step="0.1"
-            aria-label="Track position"
+            aria-label="Position dans la piste" data-i18n-aria="musicPlayer.seekAria"
             disabled
           />
           <div class="music-time">
@@ -1469,7 +1466,7 @@
     </div>
 
     <script src="assets/js/cookie-consent.js?v=3" defer></script>
-    <script src="script.js?v=122" defer></script>
+    <script src="script.js?v=124" defer></script>
     <script src="assets/js/music-player-init.js?v=1" defer></script>
   </body>
 </html>

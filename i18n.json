@@ -143,6 +143,10 @@
         "fr": "GPO SARL",
         "en": "GPO SARL"
       },
+      "gpoCaption": {
+        "fr": "Flippers · arcade · événementiel",
+        "en": "Pinball · arcade · events"
+      },
       "gpoDesc": {
         "fr": "Réparation, vente, location et restauration esthétique sur mesure de flippers et machines de loisirs (COMET 1934/1935, Shaq Attaq, Firepower, Nineball, Blackout…).",
         "en": "Repair, sales, rentals, and custom aesthetic restoration of pinball and amusement machines (COMET 1934/1935, Shaq Attaq, Firepower, Nineball, Blackout…)."
@@ -180,8 +184,8 @@
         "en": "Full-stack &amp; generative AI"
       },
       "devDesc": {
-        "fr": "Spécialisation architecture full-stack et intégration d’IA générative.<br /> The Hacking Project (2026) : HTML, CSS, JavaScript, Ruby, développement assisté par IA…",
-        "en": "Specialization in full-stack architecture and generative AI integration.<br /> The Hacking Project (2026): HTML, CSS, JavaScript, Ruby, AI-assisted development…"
+        "fr": "Spécialisation architecture full-stack et intégration d’IA générative.<br /> The Hacking Project (2026) : HTML, CSS, JavaScript, Ruby, Rust, développement assisté par IA…",
+        "en": "Specialization in full-stack architecture and generative AI integration.<br /> The Hacking Project (2026): HTML, CSS, JavaScript, Ruby, Rust, AI-assisted development…"
       },
       "devTag": {
         "fr": "THP 2026",
@@ -225,6 +229,14 @@
     "filterAll": {
       "fr": "Tous",
       "en": "All"
+    },
+    "homeTeaser": {
+      "fr": "Découvrez l'ensemble de mes 138 créations classées par année et par médium : graphismes demoscene, logos &amp; identité visuelle, restaurations de flippers GPO SARL, aquarelle, acrylique, pastel sec, photo et animation, avec visionneuse grand format et zoom.",
+      "en": "Explore all 138 works sorted by year and medium: demoscene graphics, logos &amp; branding, GPO SARL pinball restorations, watercolor, acrylic, dry pastel, photography, and animation, with fullscreen zoom viewer."
+    },
+    "exploreCta": {
+      "fr": "Explorer tout le portfolio →",
+      "en": "Explore the full portfolio →"
     }
   },
   "journey": {
@@ -264,7 +276,9 @@
       "content": {
         "fr": "<strong>EVOKE 2026</strong> (août 2026), 8e place : <em>Sentinel of Abyss</em>.<br /><strong>Shadow Party 2026</strong> (Givry-en-Argonne, juillet 2026) : <em>Re_soul_tion</em> (Graphismes Newschool), <em>Missyou_Shadow_and_Callisto</em> (Amiga OCS/ECS Oldschool) et <em>Farmer work hard @t Givry en argonne !!!</em> (Photo).<br /><br /><strong>CORSICA GAME WEEK</strong> (Porto-Vecchio, 17 avril 2026) : conférence demoscene et démonstration shaders / live coding avec <a href=\"https://www.mo5.com\" target=\"_blank\" rel=\"noopener noreferrer\">MO5.com</a>, <strong>Fantasià</strong> et <strong>GPO SARL</strong>, <strong>Callisto</strong> (avec <strong>Marex, Robin, Douglas Alves « Doug »</strong>).<br /><strong>Revision 2026</strong> (avril 2026) : <a href=\"https://demozoo.org/productions/390037/\" target=\"_blank\" rel=\"noopener noreferrer\">Korean Fish</a>, <a href=\"https://demozoo.org/productions/390057/\" target=\"_blank\" rel=\"noopener noreferrer\">Serpentin De Moire</a>, <a href=\"https://demozoo.org/graphics/389721/\" target=\"_blank\" rel=\"noopener noreferrer\">Floating Points</a>.<br /><strong>Rsync</strong> (Belgique, janvier 2026), 5e place Graphismes modernes : <em>IRL Gfx Squirrel Is Here</em>.<br /><br /><strong>Création IA</strong> : workflows créatifs et outils numériques.",
         "en": "<strong>EVOKE 2026</strong> (August 2026), 8th place: <em>Sentinel of Abyss</em>.<br /><strong>Shadow Party 2026</strong> (Givry-en-Argonne, July 2026): <em>Re_soul_tion</em> (Newschool Graphics), <em>Missyou_Shadow_and_Callisto</em> (Amiga OCS/ECS Oldschool), and <em>Farmer work hard @t Givry en argonne !!!</em> (Photo).<br /><br /><strong>CORSICA GAME WEEK</strong> (Porto-Vecchio, April 17, 2026): demoscene talk + live shaders/live coding demo with <a href=\"https://www.mo5.com\" target=\"_blank\" rel=\"noopener noreferrer\">MO5.com</a>, <strong>Fantasià</strong> &amp; <strong>GPO SARL</strong>, <strong>Callisto</strong> (with <strong>Marex, Robin, Douglas Alves “Doug”</strong>).<br /><strong>Revision 2026</strong> (April 2026): <a href=\"https://demozoo.org/productions/390037/\" target=\"_blank\" rel=\"noopener noreferrer\">Korean Fish</a>, <a href=\"https://demozoo.org/productions/390057/\" target=\"_blank\" rel=\"noopener noreferrer\">Serpentin De Moire</a>, <a href=\"https://demozoo.org/graphics/389721/\" target=\"_blank\" rel=\"noopener noreferrer\">Floating Points</a>.<br /><strong>Rsync</strong> (Belgium, January 2026), 5th Modern Graphics: <em>IRL Gfx Squirrel Is Here</em>.<br /><br /><strong>AI Builder</strong>: creative workflow &amp; digital tooling."
-      }
+      },
+      "fr": "<strong>Création de Callisto Arts :</strong> 8 ans d’expériences et de passion réunis en un seul lieu. <strong>EVOKE 2026 (2e place) :</strong> <a href=\"portfolio.html?open=Sentinel%20of%20Abyss\">Sentinel of Abyss</a>. <strong>Shadow Party 2026 :</strong> <a href=\"portfolio.html?open=Re_soul_tion\">Re_soul_tion</a> (6e), <a href=\"portfolio.html?open=Missyou_Shadow_and_Callisto\">Missyou_Shadow_and_Callisto</a> (7e), <a href=\"portfolio.html?open=Farmer%20work%20hard\">Farmer work hard @t Givry en argonne !!!</a> (10e).",
+      "en": "<strong>Launch of Callisto Arts:</strong> 8 years of experience and passion gathered in one place. <strong>EVOKE 2026 (2nd place):</strong> <a href=\"portfolio.html?open=Sentinel%20of%20Abyss\">Sentinel of Abyss</a>. <strong>Shadow Party 2026:</strong> <a href=\"portfolio.html?open=Re_soul_tion\">Re_soul_tion</a> (6th), <a href=\"portfolio.html?open=Missyou_Shadow_and_Callisto\">Missyou_Shadow_and_Callisto</a> (7th), <a href=\"portfolio.html?open=Farmer%20work%20hard\">Farmer work hard @t Givry en argonne !!!</a> (10th)."
     },
     "y2025": {
       "tag": {
@@ -274,7 +288,9 @@
       "list": {
         "fr": "<li class=\"journey-place-2\">2e @ Rsync : <em>Symphony of the Abyss</em> (Graphismes)</li><li>10e @ Revision : <em>Pascal's Lemur Leap</em></li><li>9e @ Revision : invitation <em>Shadow Party 2025</em></li><li>Sélection Inércia : <em>Sky Code</em></li><li>Inércia genAI : <em>Inercia 2925</em></li><li>6e @ Shadow Party : Graphismes Oldschool, <em>Thanks All</em> (Amiga)</li>",
         "en": "<li class=\"journey-place-2\">2nd @ Rsync — <em>Symphony of the Abyss</em> (Graphics)</li><li>10th @ Revision — <em>Pascal's Lemur Leap</em></li><li>9th @ Revision — invitation <em>Shadow Party 2025</em></li><li>Inércia showcase — <em>Sky Code</em></li><li>Inércia genAI — <em>Inercia 2925</em></li><li>6th @ Shadow Party — Oldschool Graphics — <em>Thanks All</em> (Amiga)</li>"
-      }
+      },
+      "fr": "<a href=\"portfolio.html?open=Korean%20Fish\">Korean Fish</a> (1er à Outline), <a href=\"portfolio.html?open=Serpentin%20De%20Moire\">Serpentin De Moire</a> (3e à Inercia), <a href=\"portfolio.html?open=Floating%20Points\">Floating Points</a> (3e à Under Construction) · 85+ cours en graphisme 2D/3D publiés sur Tuto.com (100% d’évaluations positives).",
+      "en": "<a href=\"portfolio.html?open=Korean%20Fish\">Korean Fish</a> (1st at Outline), <a href=\"portfolio.html?open=Serpentin%20De%20Moire\">Serpentin De Moire</a> (3rd at Inercia), <a href=\"portfolio.html?open=Floating%20Points\">Floating Points</a> (3rd at Under Construction) · 85+ 2D/3D graphics courses published on Tuto.com (100% positive ratings)."
     },
     "y2024": {
       "tag": {
@@ -284,7 +300,9 @@
       "list": {
         "fr": "<li class=\"journey-place-1\">1re @ Rsync : <em>Chromatic resonance</em> (Graphismes)</li><li>7e @ Revision : <em>The Pixel Mouse Love Story</em></li><li>12e @ Revision Paintover : <em>Refresh</em></li><li>18e @ Revision Photo : <em>Convergence</em></li>",
         "en": "<li class=\"journey-place-1\">1st @ Rsync — <em>Chromatic resonance</em> (Graphics)</li><li>7th @ Revision — <em>The Pixel Mouse Love Story</em></li><li>12th @ Revision Paintover — <em>Refresh</em></li><li>18th @ Revision Photo — <em>Convergence</em></li>"
-      }
+      },
+      "fr": "7 participations · <a href=\"portfolio.html?open=IRL%20Gfx%20Squirrel\">IRL Gfx Squirrel Is Here</a> (2e à Shadow Party) · <a href=\"portfolio.html?open=Symphony%20Of%20The%20Abyss\">Symphony of the Abyss</a> (3e) · <a href=\"portfolio.html?open=Pascal\">Pascal’s Lemur Leap</a> (3e à Tokyo Demo Fest) · <a href=\"portfolio.html?open=SHADOW%20PARTY%20INVITATION%202025\">Shadow Party 2025</a> (4e à Under Construction) · <a href=\"portfolio.html?open=Sky%20Code\">Sky Code</a> (4e à EVOKE).",
+      "en": "7 entries · <a href=\"portfolio.html?open=IRL%20Gfx%20Squirrel\">IRL Gfx Squirrel Is Here</a> (2nd at Shadow Party) · <a href=\"portfolio.html?open=Symphony%20Of%20The%20Abyss\">Symphony of the Abyss</a> (3rd) · <a href=\"portfolio.html?open=Pascal\">Pascal’s Lemur Leap</a> (3rd at Tokyo Demo Fest) · <a href=\"portfolio.html?open=SHADOW%20PARTY%20INVITATION%202025\">Shadow Party 2025</a> (4th at Under Construction) · <a href=\"portfolio.html?open=Sky%20Code\">Sky Code</a> (4th at EVOKE)."
     },
     "y2023": {
       "tag": {
@@ -298,7 +316,9 @@
       "extra": {
         "fr": "<strong>InDesign</strong> : certification MJM. Premiers pas avec l'IA générative.",
         "en": "<strong>InDesign</strong> — MJM certification. First steps with generative AI."
-      }
+      },
+      "fr": "16 créations · <a href=\"portfolio.html?open=Inercia%202925\">Inercia 2925</a> (1er à Inercia) · <a href=\"portfolio.html?open=Thanks%20All\">Thanks All</a> (1er à Shadow Party) · <a href=\"portfolio.html?open=Chromatic%20resonance\">Chromatic resonance</a> (1er à Riverwash) · <a href=\"portfolio.html?open=Pixel%20Mouse\">The Pixel Mouse Love Story</a> (1er à Syntax Party) · <a href=\"portfolio.html?open=Refresh\">Refresh</a> (2e à Lovebyte) · <a href=\"portfolio.html?open=Convergence\">Convergence</a> (2e à Outline).",
+      "en": "16 works · <a href=\"portfolio.html?open=Inercia%202925\">Inercia 2925</a> (1st at Inercia) · <a href=\"portfolio.html?open=Thanks%20All\">Thanks All</a> (1st at Shadow Party) · <a href=\"portfolio.html?open=Chromatic%20resonance\">Chromatic resonance</a> (1st at Riverwash) · <a href=\"portfolio.html?open=Pixel%20Mouse\">The Pixel Mouse Love Story</a> (1st at Syntax Party) · <a href=\"portfolio.html?open=Refresh\">Refresh</a> (2nd at Lovebyte) · <a href=\"portfolio.html?open=Convergence\">Convergence</a> (2nd at Outline)."
     },
     "y2022": {
       "tag": {
@@ -312,7 +332,9 @@
       "extra": {
         "fr": "Inktober, défis créatifs et participation à Adobe Live.",
         "en": "Inktober, creative challenges &amp; Adobe Live presence."
-      }
+      },
+      "fr": "24 participations · <a href=\"portfolio.html?open=Cyberpin%20by%20Callisto\">Cyberpin</a> (1er à Inercia) · <a href=\"portfolio.html?open=Howl%20Of%20The%20Forest\">Howl Of The Forest</a> (2e à Revision) · <a href=\"portfolio.html?open=Balls%20Of%20Steel\">Balls Of Steel</a> (2e à Outline) · <a href=\"portfolio.html?open=Luna%20Fly\">Luna Fly</a> (2e à Inercia) · <a href=\"portfolio.html?open=Elevation%202079\">Elevation 2079</a> (3e à Nova) · <a href=\"portfolio.html?open=teddy%20BEER\">Teddy BEER</a> (4e à Evoke).",
+      "en": "24 entries · <a href=\"portfolio.html?open=Cyberpin%20by%20Callisto\">Cyberpin</a> (1st at Inercia) · <a href=\"portfolio.html?open=Howl%20Of%20The%20Forest\">Howl Of The Forest</a> (2nd at Revision) · <a href=\"portfolio.html?open=Balls%20Of%20Steel\">Balls Of Steel</a> (2nd at Outline) · <a href=\"portfolio.html?open=Luna%20Fly\">Luna Fly</a> (2nd at Inercia) · <a href=\"portfolio.html?open=Elevation%202079\">Elevation 2079</a> (3rd at Nova) · <a href=\"portfolio.html?open=teddy%20BEER\">Teddy BEER</a> (4th at Evoke)."
     },
     "y2021": {
       "tag": {
@@ -326,7 +348,9 @@
       "extra": {
         "fr": "<strong>TOSA Illustrator</strong>.<br />Galerie d'art au Luxembourg : 3 peintures numériques exposées.<br />Logo, t-shirts et trophées <strong>Tokyo Demo Fest 2021</strong>.<br />Montage vidéo pour la <strong>Shadow Party</strong>.",
         "en": "<strong>TOSA Illustrator</strong>.<br />Luxembourg art gallery — 3 digital paintings exhibited.<br />Logo, t-shirts &amp; trophies <strong>Tokyo Demo Fest 2021</strong>.<br />Video editing — <strong>Shadow Party</strong>."
-      }
+      },
+      "fr": "<a href=\"portfolio.html?open=You%20Seem%20So%20Delicious\">You Seem So Delicious</a> (2e à Outline) · <a href=\"portfolio.html?open=Sharko\">Sharko</a> (3e à Silly Venture) · <a href=\"portfolio.html?open=LOGO%20TOKYO%20DEMO%20FEST%202021\">Logo, t-shirts et trophées Tokyo Demo Fest 2021</a>.",
+      "en": "<a href=\"portfolio.html?open=You%20Seem%20So%20Delicious\">You Seem So Delicious</a> (2nd at Outline) · <a href=\"portfolio.html?open=Sharko\">Sharko</a> (3rd at Silly Venture) · <a href=\"portfolio.html?open=LOGO%20TOKYO%20DEMO%20FEST%202021\">Tokyo Demo Fest 2021 Logo, T-shirts & Trophies</a>."
     },
     "y2020": {
       "tag": {
@@ -350,7 +374,9 @@
       "extra": {
         "fr": "Première reconnaissance internationale majeure sur la demoscene PC.",
         "en": "First major international footprint on the PC demoscene."
-      }
+      },
+      "fr": "Premières participations : <a href=\"portfolio.html?open=Tiger\">Tigre</a> (5e à Revision) et premières créations demoscene.",
+      "en": "First entries: <a href=\"portfolio.html?open=Tiger\">Tiger Eyes</a> (5th at Revision) and early demoscene artworks."
     },
     "y2015": {
       "tag": {
@@ -392,6 +418,10 @@
       "fr": "Liens vers <strong>GPO SARL</strong> et <strong>Graph2Print</strong>.",
       "en": "Links to <strong>GPO SARL</strong> and <strong>Graph2Print</strong>."
     },
+    "gpoCaption": {
+      "fr": "Flippers · arcade · événementiel",
+      "en": "Pinball · arcade · events"
+    },
     "gpoDesc": {
       "fr": "Arcade, événementiel, location et vente de jeux : site officiel.",
       "en": "Arcade, events, cabinet rentals: official website."
@@ -413,6 +443,30 @@
     "close": {
       "fr": "Fermer",
       "en": "Close"
+    },
+    "zoomToolbarAria": {
+      "fr": "Outils de zoom",
+      "en": "Zoom controls"
+    },
+    "zoomOut": {
+      "fr": "Dézoomer",
+      "en": "Zoom out"
+    },
+    "zoomReset": {
+      "fr": "Réinitialiser le zoom",
+      "en": "Reset zoom"
+    },
+    "zoomIn": {
+      "fr": "Zoomer",
+      "en": "Zoom in"
+    },
+    "prev": {
+      "fr": "Œuvre précédente",
+      "en": "Previous artwork"
+    },
+    "next": {
+      "fr": "Œuvre suivante",
+      "en": "Next artwork"
     }
   },
   "musicPlayer": {
@@ -525,6 +579,10 @@
     "cookies": {
       "fr": "Paramètres des cookies",
       "en": "Cookie settings"
+    },
+    "quote": {
+      "fr": "Mon plaisir, c’est DESSINER. TOUJOURS. Et pour toujours.",
+      "en": "My fun is DRAWING. ALWAYS. And forever."
     }
   },
   "cookieBanner": {
@@ -551,8 +609,8 @@
   },
   "meta": {
     "documentTitle": {
-      "fr": "Callisto Arts : Portfolio | Frédérique Charton",
-      "en": "Callisto Arts — Portfolio | Frédérique Charton"
+      "fr": "Callisto Arts | Portfolio Graphisme, UI & IA, Callisto",
+      "en": "Callisto Arts | Graphic Design, UI & AI Portfolio"
     },
     "buildLogDocumentTitle": {
       "fr": "Journal technique | Callisto Arts",

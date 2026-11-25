@@ -9,6 +9,10 @@
       "label": "Paintover"
     },
     {
+      "id": "branding",
+      "label": "Logos & Branding"
+    },
+    {
       "id": "IA",
       "label": "IA Art"
     },
@@ -296,7 +300,7 @@
     },
     {
       "filename": "logo_doc/Melio/a8cba3169577545.644f8b6e2f744.webp",
-      "category": "graphics",
+      "category": "branding",
       "title": "Melio Pet Sitter : identité visuelle & logo",
       "year": 2023,
       "description": "Création complète d'identité visuelle : esquisses crayon, déclinaisons NB/couleur, palette chromatique, carte de visite, carte de fidélité, flyer et mises en situation (mockups).",
@@ -388,14 +392,6 @@
       "year": 2023,
       "award": "5th in the SESSIONS in C4 LAN 2023 SPRING Combined Graphics competition",
       "description": "by Callisto / Flush ^ GPO ^ Vital-Motion!\n\nReleased 29 April 2023."
-    },
-    {
-      "filename": "graphics/armonia.jpg",
-      "category": "graphics",
-      "title": "Aerolia Harmonia by Callisto / Flush ^ Vital Motion Group",
-      "year": 2023,
-      "award": "Inércia Demoparty 2023 Graphics Showcase",
-      "description": "Released 2 December 2023."
     },
     {
       "filename": "photo/312518226_10228185642768590_4918581913671770871_n-1024x652.jpg",
