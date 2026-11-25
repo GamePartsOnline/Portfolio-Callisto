@@ -51,6 +51,13 @@
   ],
   "images": [
     {
+      "filename": "graphics/callistoarts-site.jpg",
+      "category": "graphics",
+      "title": "Callisto Arts — Site vitrine & Portfolio",
+      "year": 2026,
+      "description": "Conception UI et développement front-end (HTML5, CSS3, JavaScript vanilla, bilingue FR/EN, lecteur audio et visionneuse galerie) pour callistoarts.com."
+    },
+    {
       "filename": "graphics/pilote-gpo-app.jpg",
       "category": "graphics",
       "title": "Pilote — Application métier GPO SARL",
