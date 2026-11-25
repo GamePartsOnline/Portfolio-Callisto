@@ -51,6 +51,20 @@
   ],
   "images": [
     {
+      "filename": "graphics/pilote-gpo-app.jpg",
+      "category": "graphics",
+      "title": "Pilote — Application métier GPO SARL",
+      "year": 2026,
+      "description": "Interface web full-stack (React, TypeScript, Express, SQLite) conçue pour le pilotage des dossiers, interventions, tournées et catalogue GPO SARL."
+    },
+    {
+      "filename": "graphics/mockup3d-showroom.jpg",
+      "category": "graphics",
+      "title": "MockUp3D C3 — Studio & Showroom 3D",
+      "year": 2026,
+      "description": "Application web de personnalisation 3D temps réel (Three.js, Node.js, Vite) conçue pour Graph2Print / GPO SARL : showroom interactif, studio simplifié/expert et export BAT. https://mockup3d.gposarl.com"
+    },
+    {
       "filename": "IA/digital/33311e97-6ecf-40d5-a850-a9d2bb54d2d8.webp",
       "category": "IA",
       "title": "Demoscene Ink (IA)",
