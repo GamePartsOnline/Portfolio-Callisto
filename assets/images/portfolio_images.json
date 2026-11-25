@@ -45,6 +45,10 @@
       "label": "Animation"
     },
     {
+      "id": "web",
+      "label": "Websites"
+    },
+    {
       "id": "other",
       "label": "Others"
     }
@@ -52,21 +56,21 @@
   "images": [
     {
       "filename": "graphics/callistoarts-site.jpg",
-      "category": "graphics",
+      "category": "web",
       "title": "Callisto Arts — Site vitrine & Portfolio",
       "year": 2026,
       "description": "Conception UI et développement front-end (HTML5, CSS3, JavaScript vanilla, bilingue FR/EN, lecteur audio et visionneuse galerie) pour callistoarts.com."
     },
     {
       "filename": "graphics/pilote-gpo-app.jpg",
-      "category": "graphics",
+      "category": "web",
       "title": "Pilote — Application métier GPO SARL",
       "year": 2026,
       "description": "Interface web full-stack (React, TypeScript, Express, SQLite) conçue pour le pilotage des dossiers, interventions, tournées et catalogue GPO SARL."
     },
     {
       "filename": "graphics/mockup3d-showroom.jpg",
-      "category": "graphics",
+      "category": "web",
       "title": "MockUp3D C3 — Studio & Showroom 3D",
       "year": 2026,
       "description": "Application web de personnalisation 3D temps réel (Three.js, Node.js, Vite) conçue pour Graph2Print / GPO SARL : showroom interactif, studio simplifié/expert et export BAT. https://mockup3d.gposarl.com"

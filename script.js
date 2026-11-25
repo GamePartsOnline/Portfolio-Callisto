@@ -369,6 +369,7 @@ let portfolioData = {
     { id: "acrylique", label: "Acrylic" },
     { id: "aquarelle", label: "Watercolor" },
     { id: "animation", label: "Animation" },
+    { id: "web", label: "Websites" },
     { id: "other", label: "Others" },
     { id: "logo", label: "Logo (hidden from portfolio)" },
   ],
@@ -390,6 +391,7 @@ function getCategoryNamesFromData(data) {
     acrylique: "Acrylique",
     aquarelle: "Aquarelle",
     animation: "Animation",
+    web: "Sites web",
     other: "Autres",
     logo: "Logo",
   };
@@ -566,7 +568,7 @@ const PORTFOLIO_FILTER_GROUPS = [
     id: "digital",
     fr: "Numérique & IA",
     en: "Digital & AI",
-    cats: ["graphics", "paintover", "animation", "ia"],
+    cats: ["graphics", "paintover", "animation", "ia", "web"],
   },
   {
     id: "identity-arcade",
