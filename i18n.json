@@ -16,6 +16,10 @@
       "fr": "Portfolio",
       "en": "Portfolio"
     },
+    "teaching": {
+      "fr": "Transmission",
+      "en": "Mentoring"
+    },
     "services": {
       "fr": "Services",
       "en": "Services"
@@ -29,7 +33,7 @@
       "en": "Main navigation"
     },
     "logoHome": {
-      "fr": "Callisto Arts — Bienvenue dans mon univers (accueil)",
+      "fr": "Callisto Arts : Bienvenue dans mon univers (accueil)",
       "en": "Callisto Arts — Welcome to my world (home)"
     }
   },
@@ -49,12 +53,12 @@
       "en": "Welcome to my world"
     },
     "subtitle": {
-      "fr": "Artiste numérique | Développeuse full-stack &amp; IA",
-      "en": "Creative artist | Fullstack Developer &amp; AI Builder"
+      "fr": "Artiste numérique | Graphiste &amp; UI Designer | Développeuse full-stack &amp; IA",
+      "en": "Creative artist | Graphic &amp; UI Designer | Full-stack &amp; AI Developer"
     },
     "tagline": {
-      "fr": "Je conçois des architectures solides et des expériences visuelles intelligentes.",
-      "en": "I build robust architectures and intelligent visual experiences."
+      "fr": "Du pinceau à l'atelier, de la demoscene au web : 14 ans de création visuelle, d'impression numérique et d'interfaces.",
+      "en": "From brush to workshop, from demoscene to the web: 14+ years of visual design, digital printing, and interfaces."
     },
     "ctaPortfolio": {
       "fr": "Portfolio",
@@ -99,16 +103,16 @@
       "en": "About"
     },
     "intro": {
-      "fr": "Je suis Callisto, 46 ans, basée à Châlons-en-Champagne.<br /> Gérante chez GPO SARL, artiste du dessin numérique &amp; créatrice IA.",
-      "en": "I am Callisto, 46 years old, based in Châlons-en-Champagne.<br /> Manager at GPO SARL, Digital Drawing artist &amp; AI Builder."
+      "fr": "Basée à Châlons-en-Champagne, je dirige la création graphique chez GPO SARL depuis 2012 : identité visuelle, PAO et impression numérique (Roland VersaWorks), restauration esthétique de flippers, design d'interfaces (UI) et développement full-stack &amp; IA.",
+      "en": "Based in Châlons-en-Champagne, I lead graphic design at GPO SARL since 2012: visual identity, DTP and digital printing (Roland VersaWorks), pinball aesthetic restoration, UI design, and full-stack &amp; AI development."
     },
     "demoscenePara": {
-      "fr": "Demoscene : <a href=\"https://demozoo.org/sceners/57855/\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>Fiche Demozoo — Callisto</strong></a> (graphismes, photos, vidéos — 66+ productions). Groupes notamment <strong>Flush</strong>, <strong>GPO</strong>, <strong>Vital-Motion!</strong>, Syn[Rj], Silicium, New C-Rex, RBBS…",
-      "en": "Demoscene: <a href=\"https://demozoo.org/sceners/57855/\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>Demozoo profile — Callisto</strong></a> (graphics, photos, videos — 66+ productions). Groups include <strong>Flush</strong>, <strong>GPO</strong>, <strong>Vital-Motion!</strong>, Syn[Rj], Silicium, New C-Rex, RBBS…"
+      "fr": "Demoscene : <a href=\"https://demozoo.org/sceners/57855/\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>Fiche Demozoo (Callisto)</strong></a> : graphismes, photos, vidéos (66+ productions). Groupes notamment <strong>Flush</strong>, <strong>GPO</strong>, <strong>Vital-Motion!</strong>, Syn[Rj], Silicium, New C-Rex, RBBS…",
+      "en": "Demoscene: <a href=\"https://demozoo.org/sceners/57855/\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>Demozoo profile (Callisto)</strong></a>: graphics, photos, videos (66+ productions). Groups include <strong>Flush</strong>, <strong>GPO</strong>, <strong>Vital-Motion!</strong>, Syn[Rj], Silicium, New C-Rex, RBBS…"
     },
     "behancePara": {
-      "fr": "<a href=\"https://www.behance.net/CallistoArtwork\" class=\"about-behance-link\" target=\"_blank\" rel=\"noopener noreferrer\"><svg class=\"about-behance-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\"><path fill=\"currentColor\" d=\"M22 7h-7V5h7v2zM15 15.5c0-1.33.47-2.29 1.42-2.86C17.37 11.94 18.7 11.5 20 11.5v2.5c-1.2 0-2.27.35-2.7.9-.43.56-.43 1.3 0 1.86.43.55 1.5.9 2.7.9h.3v2.31c-.55.17-1.14.26-1.74.26-2.21 0-3.86-1.44-3.86-3.5zM9 8H2v2h5v2H2v2h7v-8zm4.5 0H11v8h2.5c1.38 0 2.5-1.12 2.5-2.5S16.88 8 15.5 8h-.5zM15.5 12c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z\"/></svg><strong>Behance — Callisto Artwork</strong></a> — portfolio Adobe (démos, paintover, pixel art, GPO / flippers, Inktober…). Outils : Photoshop, Illustrator, Fresco. Disponible en freelance &amp; ouverte à de nouveaux projets.",
-      "en": "<a href=\"https://www.behance.net/CallistoArtwork\" class=\"about-behance-link\" target=\"_blank\" rel=\"noopener noreferrer\"><svg class=\"about-behance-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\"><path fill=\"currentColor\" d=\"M22 7h-7V5h7v2zM15 15.5c0-1.33.47-2.29 1.42-2.86C17.37 11.94 18.7 11.5 20 11.5v2.5c-1.2 0-2.27.35-2.7.9-.43.56-.43 1.3 0 1.86.43.55 1.5.9 2.7.9h.3v2.31c-.55.17-1.14.26-1.74.26-2.21 0-3.86-1.44-3.86-3.5zM9 8H2v2h5v2H2v2h7v-8zm4.5 0H11v8h2.5c1.38 0 2.5-1.12 2.5-2.5S16.88 8 15.5 8h-.5zM15.5 12c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z\"/></svg><strong>Behance — Callisto Artwork</strong></a> — Adobe portfolio (demo projects, paintover, pixel art, GPO / pinball, Inktober…). Tools: Photoshop, Illustrator, Fresco. Available for freelance work &amp; open to new projects."
+      "fr": "<a href=\"https://www.behance.net/CallistoArtwork\" class=\"about-behance-link\" target=\"_blank\" rel=\"noopener noreferrer\"><svg class=\"about-behance-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\"><path fill=\"currentColor\" d=\"M22 7h-7V5h7v2zM15 15.5c0-1.33.47-2.29 1.42-2.86C17.37 11.94 18.7 11.5 20 11.5v2.5c-1.2 0-2.27.35-2.7.9-.43.56-.43 1.3 0 1.86.43.55 1.5.9 2.7.9h.3v2.31c-.55.17-1.14.26-1.74.26-2.21 0-3.86-1.44-3.86-3.5zM9 8H2v2h5v2H2v2h7v-8zm4.5 0H11v8h2.5c1.38 0 2.5-1.12 2.5-2.5S16.88 8 15.5 8h-.5zM15.5 12c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z\"/></svg><strong>Behance : Callisto Artwork</strong></a> (portfolio Adobe : démos, paintover, pixel art, GPO et flippers, Inktober…). Outils : Photoshop, Illustrator, InDesign, Fresco. Disponible pour des missions, collaborations et interventions.",
+      "en": "<a href=\"https://www.behance.net/CallistoArtwork\" class=\"about-behance-link\" target=\"_blank\" rel=\"noopener noreferrer\"><svg class=\"about-behance-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\"><path fill=\"currentColor\" d=\"M22 7h-7V5h7v2zM15 15.5c0-1.33.47-2.29 1.42-2.86C17.37 11.94 18.7 11.5 20 11.5v2.5c-1.2 0-2.27.35-2.7.9-.43.56-.43 1.3 0 1.86.43.55 1.5.9 2.7.9h.3v2.31c-.55.17-1.14.26-1.74.26-2.21 0-3.86-1.44-3.86-3.5zM9 8H2v2h5v2H2v2h7v-8zm4.5 0H11v8h2.5c1.38 0 2.5-1.12 2.5-2.5S16.88 8 15.5 8h-.5zM15.5 12c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z\"/></svg><strong>Behance: Callisto Artwork</strong></a> (Adobe portfolio: demo projects, paintover, pixel art, GPO / pinball, Inktober…). Tools: Photoshop, Illustrator, InDesign, Fresco. Available for projects, collaborations, and workshops."
     },
     "toolsTitle": {
       "fr": "Logiciels",
@@ -140,8 +144,8 @@
         "en": "GPO SARL"
       },
       "gpoDesc": {
-        "fr": "Réparation, vente, location et fabrication de machines de loisirs — flippers, baby-foot, bornes d’arcade… Nombreuses créations et rénovations sur mesure depuis le premier jour.",
-        "en": "Repair, sales, rentals, and manufacturing of amusement machines — pinball, foosball, arcade cabinets… Many custom builds and refurbishments from day one."
+        "fr": "Réparation, vente, location et restauration esthétique sur mesure de flippers et machines de loisirs (COMET 1934/1935, Shaq Attaq, Firepower, Nineball, Blackout…).",
+        "en": "Repair, sales, rentals, and custom aesthetic restoration of pinball and amusement machines (COMET 1934/1935, Shaq Attaq, Firepower, Nineball, Blackout…)."
       },
       "gpoTag": {
         "fr": "GPO SARL",
@@ -152,8 +156,8 @@
         "en": "Demoscene"
       },
       "demoDesc": {
-        "fr": "Membre active depuis 2015 — Shadow Party, Revision, Rsync, Inercia, Assembly, Tokyo Demo Fest…",
-        "en": "Active member since 2015 — Shadow Party, Revision, Rsync, Inercia, Assembly, Tokyo Demo Fest…"
+        "fr": "Membre active depuis 2015 : Shadow Party, Revision, Rsync, Inercia, Assembly, Tokyo Demo Fest…",
+        "en": "Active member since 2015: Shadow Party, Revision, Rsync, Inercia, Assembly, Tokyo Demo Fest…"
       },
       "demoTag": {
         "fr": "Scener",
@@ -176,8 +180,8 @@
         "en": "Full-stack &amp; generative AI"
       },
       "devDesc": {
-        "fr": "Toujours en formation chez The Hacking Project (THP) : spécialisation architecture full-stack et intégration d’IA générative.<br /> Stack : HTML, CSS, JavaScript, Ruby, développement assisté par IA…",
-        "en": "Still training at The Hacking Project (THP): specialization in full-stack architecture and generative AI integration.<br /> Stack: HTML, CSS, JavaScript, Ruby, AI-assisted development…"
+        "fr": "Spécialisation architecture full-stack et intégration d’IA générative.<br /> The Hacking Project (2026) : HTML, CSS, JavaScript, Ruby, développement assisté par IA…",
+        "en": "Specialization in full-stack architecture and generative AI integration.<br /> The Hacking Project (2026): HTML, CSS, JavaScript, Ruby, AI-assisted development…"
       },
       "devTag": {
         "fr": "THP 2026",
@@ -207,7 +211,7 @@
       "en": "Use the filters to explore by category. Click any artwork to open details, images, and videos."
     },
     "filtersAria": {
-      "fr": "Filtres — Portfolio",
+      "fr": "Filtres : Portfolio",
       "en": "Filters — Portfolio"
     },
     "footerLead": {
@@ -223,6 +227,266 @@
       "en": "All"
     }
   },
+  "journey": {
+    "title": {
+      "fr": "Mon <span>parcours</span>",
+      "en": "My <span>journey</span>"
+    },
+    "subtitle": {
+      "fr": "// CALLISTO · FRÉDÉRIQUE CHARTON · ART NUMÉRIQUE · DEMOSCENE · GPO SARL · CRÉATION IA",
+      "en": "// CALLISTO — FREDERIQUE CHARTON — DIGITAL ART · DEMOSCENE · GPO SARL · AI BUILDER"
+    },
+    "cta": {
+      "fr": "Prix et étapes marquantes ci-dessous : <a href=\"#portfolio\">voir les réalisations</a> ou <a href=\"#contact\">échanger sur un projet</a>.",
+      "en": "Awards and milestones below — <a href=\"#portfolio\">view current work</a> or <a href=\"#contact\">discuss a project</a>."
+    },
+    "legendAria": {
+      "fr": "Légende de la frise",
+      "en": "Timeline legend"
+    },
+    "legendEvent": {
+      "fr": "Événement",
+      "en": "Event"
+    },
+    "legendPrizes": {
+      "fr": "Prix &amp; distinctions",
+      "en": "Prizes &amp; Awards"
+    },
+    "legendCerts": {
+      "fr": "Certifications &amp; diplômes",
+      "en": "Certificates &amp; diplomas"
+    },
+    "y2026": {
+      "tag": {
+        "fr": "En cours",
+        "en": "Now"
+      },
+      "content": {
+        "fr": "<strong>EVOKE 2026</strong> (août 2026), 8e place : <em>Sentinel of Abyss</em>.<br /><strong>Shadow Party 2026</strong> (Givry-en-Argonne, juillet 2026) : <em>Re_soul_tion</em> (Graphismes Newschool), <em>Missyou_Shadow_and_Callisto</em> (Amiga OCS/ECS Oldschool) et <em>Farmer work hard @t Givry en argonne !!!</em> (Photo).<br /><br /><strong>CORSICA GAME WEEK</strong> (Porto-Vecchio, 17 avril 2026) : conférence demoscene et démonstration shaders / live coding avec <a href=\"https://www.mo5.com\" target=\"_blank\" rel=\"noopener noreferrer\">MO5.com</a>, <strong>Fantasià</strong> et <strong>GPO SARL</strong>, <strong>Callisto</strong> (avec <strong>Marex, Robin, Douglas Alves « Doug »</strong>).<br /><strong>Revision 2026</strong> (avril 2026) : <a href=\"https://demozoo.org/productions/390037/\" target=\"_blank\" rel=\"noopener noreferrer\">Korean Fish</a>, <a href=\"https://demozoo.org/productions/390057/\" target=\"_blank\" rel=\"noopener noreferrer\">Serpentin De Moire</a>, <a href=\"https://demozoo.org/graphics/389721/\" target=\"_blank\" rel=\"noopener noreferrer\">Floating Points</a>.<br /><strong>Rsync</strong> (Belgique, janvier 2026), 5e place Graphismes modernes : <em>IRL Gfx Squirrel Is Here</em>.<br /><br /><strong>Création IA</strong> : workflows créatifs et outils numériques.",
+        "en": "<strong>EVOKE 2026</strong> (August 2026), 8th place: <em>Sentinel of Abyss</em>.<br /><strong>Shadow Party 2026</strong> (Givry-en-Argonne, July 2026): <em>Re_soul_tion</em> (Newschool Graphics), <em>Missyou_Shadow_and_Callisto</em> (Amiga OCS/ECS Oldschool), and <em>Farmer work hard @t Givry en argonne !!!</em> (Photo).<br /><br /><strong>CORSICA GAME WEEK</strong> (Porto-Vecchio, April 17, 2026): demoscene talk + live shaders/live coding demo with <a href=\"https://www.mo5.com\" target=\"_blank\" rel=\"noopener noreferrer\">MO5.com</a>, <strong>Fantasià</strong> &amp; <strong>GPO SARL</strong>, <strong>Callisto</strong> (with <strong>Marex, Robin, Douglas Alves “Doug”</strong>).<br /><strong>Revision 2026</strong> (April 2026): <a href=\"https://demozoo.org/productions/390037/\" target=\"_blank\" rel=\"noopener noreferrer\">Korean Fish</a>, <a href=\"https://demozoo.org/productions/390057/\" target=\"_blank\" rel=\"noopener noreferrer\">Serpentin De Moire</a>, <a href=\"https://demozoo.org/graphics/389721/\" target=\"_blank\" rel=\"noopener noreferrer\">Floating Points</a>.<br /><strong>Rsync</strong> (Belgium, January 2026), 5th Modern Graphics: <em>IRL Gfx Squirrel Is Here</em>.<br /><br /><strong>AI Builder</strong>: creative workflow &amp; digital tooling."
+      }
+    },
+    "y2025": {
+      "tag": {
+        "fr": "Prix",
+        "en": "Awards"
+      },
+      "list": {
+        "fr": "<li class=\"journey-place-2\">2e @ Rsync : <em>Symphony of the Abyss</em> (Graphismes)</li><li>10e @ Revision : <em>Pascal's Lemur Leap</em></li><li>9e @ Revision : invitation <em>Shadow Party 2025</em></li><li>Sélection Inércia : <em>Sky Code</em></li><li>Inércia genAI : <em>Inercia 2925</em></li><li>6e @ Shadow Party : Graphismes Oldschool, <em>Thanks All</em> (Amiga)</li>",
+        "en": "<li class=\"journey-place-2\">2nd @ Rsync — <em>Symphony of the Abyss</em> (Graphics)</li><li>10th @ Revision — <em>Pascal's Lemur Leap</em></li><li>9th @ Revision — invitation <em>Shadow Party 2025</em></li><li>Inércia showcase — <em>Sky Code</em></li><li>Inércia genAI — <em>Inercia 2925</em></li><li>6th @ Shadow Party — Oldschool Graphics — <em>Thanks All</em> (Amiga)</li>"
+      }
+    },
+    "y2024": {
+      "tag": {
+        "fr": "Prix",
+        "en": "Awards"
+      },
+      "list": {
+        "fr": "<li class=\"journey-place-1\">1re @ Rsync : <em>Chromatic resonance</em> (Graphismes)</li><li>7e @ Revision : <em>The Pixel Mouse Love Story</em></li><li>12e @ Revision Paintover : <em>Refresh</em></li><li>18e @ Revision Photo : <em>Convergence</em></li>",
+        "en": "<li class=\"journey-place-1\">1st @ Rsync — <em>Chromatic resonance</em> (Graphics)</li><li>7th @ Revision — <em>The Pixel Mouse Love Story</em></li><li>12th @ Revision Paintover — <em>Refresh</em></li><li>18th @ Revision Photo — <em>Convergence</em></li>"
+      }
+    },
+    "y2023": {
+      "tag": {
+        "fr": "Prix + Certification",
+        "en": "Awards + Certificate"
+      },
+      "list": {
+        "fr": "<li>9e Animation/Vidéo @ Revision : <em>Cyberpin</em></li><li>11e Graphismes modernes @ Revision : <em>Howl Of The Forest</em></li><li>16e Photo @ Revision : <em>Balls Of Steel</em></li><li>5e @ SESSIONS in C4 LAN : <em>Luna Fly</em> (graphismes combinés)</li>",
+        "en": "<li>9th Animation/Video @ Revision — <em>Cyberpin</em></li><li>11th Modern Graphics @ Revision — <em>Howl Of The Forest</em></li><li>16th Photo @ Revision — <em>Balls Of Steel</em></li><li>5th @ SESSIONS in C4 LAN — <em>Luna Fly</em> (combined graphics)</li>"
+      },
+      "extra": {
+        "fr": "<strong>InDesign</strong> : certification MJM. Premiers pas avec l'IA générative.",
+        "en": "<strong>InDesign</strong> — MJM certification. First steps with generative AI."
+      }
+    },
+    "y2022": {
+      "tag": {
+        "fr": "Prix",
+        "en": "Awards"
+      },
+      "list": {
+        "fr": "<li class=\"journey-place-1\">1re Graphismes Freestyle @ Inércia : <em>Elevation 2079</em></li><li class=\"journey-place-3\">3e Graphismes Nuskool @ Syntax : <em>Teddy BEER</em></li>",
+        "en": "<li class=\"journey-place-1\">1st Freestyle Graphics @ Inércia — <em>Elevation 2079</em></li><li class=\"journey-place-3\">3rd Nuskool Graphics @ Syntax — <em>Teddy BEER</em></li>"
+      },
+      "extra": {
+        "fr": "Inktober, défis créatifs et participation à Adobe Live.",
+        "en": "Inktober, creative challenges &amp; Adobe Live presence."
+      }
+    },
+    "y2021": {
+      "tag": {
+        "fr": "Prix + Certifications",
+        "en": "Awards + Certificates"
+      },
+      "list": {
+        "fr": "<li class=\"journey-place-1\">1re @ Assembly Winter Online : <em>You Seem So Delicious</em> (Graphismes)</li><li>5e @ Tokyo Demo Fest : <em>Sharko</em> (Graphismes)</li>",
+        "en": "<li class=\"journey-place-1\">1st @ Assembly Winter Online — <em>You Seem So Delicious</em> (Graphics)</li><li>5th @ Tokyo Demo Fest — <em>Sharko</em> (Graphics)</li>"
+      },
+      "extra": {
+        "fr": "<strong>TOSA Illustrator</strong>.<br />Galerie d'art au Luxembourg : 3 peintures numériques exposées.<br />Logo, t-shirts et trophées <strong>Tokyo Demo Fest 2021</strong>.<br />Montage vidéo pour la <strong>Shadow Party</strong>.",
+        "en": "<strong>TOSA Illustrator</strong>.<br />Luxembourg art gallery — 3 digital paintings exhibited.<br />Logo, t-shirts &amp; trophies <strong>Tokyo Demo Fest 2021</strong>.<br />Video editing — <strong>Shadow Party</strong>."
+      }
+    },
+    "y2020": {
+      "tag": {
+        "fr": "Communauté",
+        "en": "Community"
+      },
+      "content": {
+        "fr": "Année COVID : demoparties en ligne.<br />Entrée dans l'administration de <strong>demoscene.fr</strong> et de la <strong>Shadow Party</strong>.",
+        "en": "COVID year: online demoparties.<br />Joined the administration of <strong>demoscene.fr</strong> and <strong>Shadow Party</strong>."
+      }
+    },
+    "y2016": {
+      "tag": {
+        "fr": "Révélation",
+        "en": "Breakthrough"
+      },
+      "list": {
+        "fr": "<li>5e @ Revision Graphismes modernes : <em>Tigre</em> / Tiger Eyes (Sarrebruck)</li>",
+        "en": "<li>5th @ Revision Modern Graphics — <em>Tigre</em> / Tiger Eyes (Saarbrücken)</li>"
+      },
+      "extra": {
+        "fr": "Première reconnaissance internationale majeure sur la demoscene PC.",
+        "en": "First major international footprint on the PC demoscene."
+      }
+    },
+    "y2015": {
+      "tag": {
+        "fr": "Demoparty",
+        "en": "Demoparty"
+      },
+      "content": {
+        "fr": "Première demoparty : la scène devient une véritable passion.<br />Premier <strong>paintover</strong> réalisé sur un coin de table.",
+        "en": "First demoparty — the scene becomes a real passion.<br />First <strong>paintover</strong> on a corner of a table."
+      }
+    },
+    "y2012": {
+      "tag": {
+        "fr": "GPO &amp; Adobe",
+        "en": "GPO &amp; Adobe"
+      },
+      "content": {
+        "fr": "Création de <strong>GPO SARL</strong> : réparation, vente et location de jeux d'arcade et flippers.<br />Illustrator et VersaWorks (Roland VS-640).<br />Pratique intensive d'Adobe avec Franck Payen.",
+        "en": "Creation of <strong>GPO SARL</strong> — repair, sale, rental of arcade games &amp; pinball.<br />Illustrator &amp; VersaWorks (Roland VS-640).<br />Intensive Adobe practice with Franck Payen."
+      }
+    },
+    "y2011": {
+      "tag": {
+        "fr": "Origines",
+        "en": "Origins"
+      },
+      "content": {
+        "fr": "Retour au dessin après une longue pause.<br />Crayon, aquarelle, acrylique, pastels secs…",
+        "en": "Return to drawing after a long break.<br />Pencil, watercolor, acrylic, dry pastels…"
+      }
+    }
+  },
+  "servicesPage": {
+    "title": {
+      "fr": "Services",
+      "en": "Services"
+    },
+    "lead": {
+      "fr": "Liens vers <strong>GPO SARL</strong> et <strong>Graph2Print</strong>.",
+      "en": "Links to <strong>GPO SARL</strong> and <strong>Graph2Print</strong>."
+    },
+    "gpoDesc": {
+      "fr": "Arcade, événementiel, location et vente de jeux : site officiel.",
+      "en": "Arcade, events, cabinet rentals: official website."
+    },
+    "g2pCaption": {
+      "fr": "PAO · sublimation · découpe bois",
+      "en": "DTP · sublimation · wood cutting"
+    },
+    "g2pDesc": {
+      "fr": "Impression, sublimation, découpe bois, logos et catalogues : écrivez-moi pour un devis ou un projet.",
+      "en": "Print, sublimation, wood cutting, logos, and catalogs: email me for a quote or project question."
+    },
+    "g2pCta": {
+      "fr": "Envoyer un e-mail →",
+      "en": "Send an email →"
+    }
+  },
+  "lightbox": {
+    "close": {
+      "fr": "Fermer",
+      "en": "Close"
+    }
+  },
+  "musicPlayer": {
+    "regionAria": {
+      "fr": "Lecteur audio : musique de fond par Doctor Gekil",
+      "en": "Music by Doctor Gekil, background audio"
+    },
+    "playAria": {
+      "fr": "Lire ou mettre en pause la musique",
+      "en": "Play or pause music"
+    },
+    "seekAria": {
+      "fr": "Position dans la piste",
+      "en": "Track position"
+    }
+  },
+  "teaching": {
+    "title": {
+      "fr": "Transmission &amp; Encadrement",
+      "en": "Mentoring &amp; Knowledge Sharing"
+    },
+    "h3": {
+      "fr": "Encadrement de stagiaires (GPO SARL) &amp; partage de savoir-faire",
+      "en": "Intern Mentoring (GPO SARL) &amp; Knowledge Sharing"
+    },
+    "intro": {
+      "fr": "Savoir passer du pinceau et de la restauration d'atelier à la PAO, au code et à l'IA forge une approche concrète et adaptable. Forte de plus de 14 ans de pratique chez GPO SARL (certifiée TOSA Graphic Illustrator), j'encadre des stagiaires en atelier et je partage mon expérience en graphisme, PAO et culture numérique.",
+      "en": "Moving from traditional brush and workshop restoration to DTP, code, and AI builds a grounded, adaptable craft. With over 14 years of studio practice at GPO SARL (TOSA Graphic Illustrator certified), I mentor interns in the workshop and share my experience in graphic design, DTP, and digital culture."
+    },
+    "cta": {
+      "fr": "Échanger sur un projet ou une candidature",
+      "en": "Discuss a project or teaching opportunity"
+    },
+    "cardsAria": {
+      "fr": "Domaines enseignés",
+      "en": "Teaching areas"
+    },
+    "card1Title": {
+      "fr": "PAO, Print &amp; Vectoriel",
+      "en": "DTP, Print &amp; Vector"
+    },
+    "card1Desc": {
+      "fr": "Adobe Illustrator, Photoshop, InDesign : charte graphique, typographie, composition, préparation de fichiers prépresse et impression numérique (VersaWorks).",
+      "en": "Adobe Illustrator, Photoshop, InDesign: brand guidelines, typography, layout composition, prepress file preparation, and digital printing (VersaWorks)."
+    },
+    "card1Tag": {
+      "fr": "Atelier &amp; Print",
+      "en": "Studio &amp; Print"
+    },
+    "card2Title": {
+      "fr": "Illustration, UI &amp; IA",
+      "en": "Illustration, UI &amp; AI"
+    },
+    "card2Desc": {
+      "fr": "Dessin numérique, théorie des couleurs, ergonomie d'interfaces (UI/UX), bases HTML/CSS, culture demoscene et intégration des outils d'IA créative.",
+      "en": "Digital illustration, color theory, UI/UX ergonomics, HTML/CSS fundamentals, demoscene culture, and creative AI workflows."
+    },
+    "card2Tag": {
+      "fr": "Numérique &amp; UI",
+      "en": "Digital &amp; UI"
+    },
+    "card3Title": {
+      "fr": "Pédagogie &amp; Interventions",
+      "en": "Pedagogy &amp; Talks"
+    },
+    "card3Desc": {
+      "fr": "Apprentissage par projets concrets, vulgarisation technique, encadrement d'apprenants et prise de parole (Corsica Game Week 2026 avec MO5.com).",
+      "en": "Project-based learning, technical mentoring, student guidance, and public talks (Corsica Game Week 2026 with MO5.com)."
+    },
+    "card3Tag": {
+      "fr": "Transmission",
+      "en": "Mentoring"
+    }
+  },
   "contact": {
     "title": {
       "fr": "Contact",
@@ -233,7 +497,7 @@
       "en": "Let’s talk"
     },
     "lead": {
-      "fr": "Pour des commandes, du freelance art ou dev, ou des questions demoscene — écrivez-moi.",
+      "fr": "Pour des commandes, du freelance art ou dev, ou des questions demoscene : écrivez-moi.",
       "en": "For commissions, freelance art or dev, or demoscene inquiries — send a message."
     },
     "emailCta": {
@@ -247,7 +511,7 @@
   },
   "footer": {
     "line1": {
-      "fr": "© 2026 Callisto — Frédérique Charton / GPO",
+      "fr": "© 2026 Callisto : Frédérique Charton / GPO",
       "en": "© 2026 Callisto — Frédérique Charton / GPO"
     },
     "subtitle": {
@@ -277,7 +541,7 @@
       "en": "Accept all"
     },
     "more": {
-      "fr": "Mentions légales — cookies",
+      "fr": "Mentions légales : cookies",
       "en": "Legal notices — cookies"
     },
     "aria": {
@@ -285,15 +549,9 @@
       "en": "Cookie notice"
     }
   },
-  "lightbox": {
-    "close": {
-      "fr": "Fermer",
-      "en": "Close"
-    }
-  },
   "meta": {
     "documentTitle": {
-      "fr": "Callisto Arts — Portfolio | Frédérique Charton",
+      "fr": "Callisto Arts : Portfolio | Frédérique Charton",
       "en": "Callisto Arts — Portfolio | Frédérique Charton"
     },
     "buildLogDocumentTitle": {
@@ -311,11 +569,11 @@
       "en": "Build Log"
     },
     "subtitle": {
-      "fr": "Journal technique — preuve de travail",
+      "fr": "Journal technique : preuve de travail",
       "en": "Build journal — proof of work"
     },
     "lead": {
-      "fr": "Les clients n’achètent pas seulement du code — ils achètent votre capacité à démêler des problèmes difficiles. Cette page est mon <strong>journal d’ingénierie public</strong> : contraintes réelles, essais infructueux, et ce qui a vraiment fait avancer le projet. (The Hacking Project / THP fait partie de la façon dont j’affine ce métier.)",
+      "fr": "Les clients n’achètent pas seulement du code : ils achètent votre capacité à démêler des problèmes difficiles. Cette page est mon <strong>journal d’ingénierie public</strong> : contraintes réelles, essais infructueux, et ce qui a vraiment fait avancer le projet. (The Hacking Project / THP fait partie de la façon dont j’affine ce métier.)",
       "en": "Clients don’t only buy code — they buy your ability to untangle hard problems. This page is my <strong>public engineering journal</strong>: real constraints, failed attempts, and what actually moved the needle. (The Hacking Project / THP is part of how I sharpen that craft.)"
     },
     "updatedLine": {
@@ -334,7 +592,7 @@
   "buildLogArticle": {
     "satellite": {
       "headline": {
-        "fr": "Les pages satellites n’avaient pas de sélecteur de langue — le correctif",
+        "fr": "Les pages satellites n’avaient pas de sélecteur de langue : le correctif",
         "en": "Satellite pages had no language switch — here is the fix"
       }
     },

@@ -10,23 +10,25 @@ The home page is a single scrolling document; the four anchors below are its rea
 
 - [Home](https://callistoarts.com/): hero carousel, portfolio gallery, about, journey timeline and contact, on one page.
 - [About](https://callistoarts.com/#about): who Callisto is — digital drawing since 2011, demoscene since 2015, GPO SARL, AI prompting, full-stack training at The Hacking Project, UI design. Includes the software she works with.
-- [Portfolio](https://callistoarts.com/#portfolio): 134 works, filterable by category, with a lightbox for images and videos.
-- [Journey](https://callistoarts.com/#journey): dated timeline of competition results, awards and certifications, newest first — from the 2011 return to drawing up to Revision 2026.
+- [Portfolio](https://callistoarts.com/#portfolio): 139 visible works, filterable by category, with a fullscreen zoom lightbox for images and videos.
+- [Journey](https://callistoarts.com/#journey): dated timeline of competition results, awards and certifications, newest first — from 2011 up to EVOKE 2026 and Shadow Party 2026.
+- [Mentoring](https://callistoarts.com/#teaching): intern mentoring at GPO SARL and knowledge sharing in graphic design, DTP, and digital culture.
 - [Contact](https://callistoarts.com/#contact): email, phone and postal address of GPO SARL.
-- [Services](https://callistoarts.com/services.html): GPO SARL (arcade, events, cabinet rentals) and Graph2Print (DTP, visual identity, print).
+- [Services](https://callistoarts.com/services.html): GPO SARL (arcade, events, cabinet rentals) and Graph2Print (DTP, sublimation, wood cutting, visual identity, catalogs, print).
 - [Build Log](https://callistoarts.com/build-log.html): public engineering journal. Each entry is a proof-of-work write-up — real constraint, what failed, what actually moved the project forward. Written in both languages inside the HTML.
 - [Legal notices](https://callistoarts.com/mentions-legales.html): publisher, host, intellectual property, GDPR and cookie policy.
 
 ## Portfolio categories
 
-Counts as of August 2026, from `assets/images/portfolio_images.json`.
+Counts as of November 2026, from `assets/images/portfolio_images.json`.
 
-- **Graphics** (27): demoscene graphics, the core of the competition work.
+- **Graphics** (29): demoscene graphics, brand identity & logo design, the core of the visual work.
 - **Animation** (23): animated pieces and video.
 - **Acrylic** (22) and **Watercolor** (16): traditional painting.
-- **Photos** (14) and **Dry pastel** (14).
+- **Gaming Artwork** (5): 4 grouped pinball and vintage machine restoration galleries (COMET 1934/1935, Shaq Attaq, Firepower, Nineball, Blackout), arcade builds.
+- **Photos** (15) and **Dry pastel** (14).
 - **Paintover** (8): digital painting over a photographic base.
-- **IA Art** (1), **Gaming Artwork** (1), **Others** (6).
+- **Others** (6), **IA Art** (1).
 
 ## Profiles and related sites
 

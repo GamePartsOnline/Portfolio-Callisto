@@ -47,154 +47,36 @@
   ],
   "images": [
     {
-      "filename": "graphics/339435602_905924634051246_6940335715669469411_n.jpg",
-      "category": "graphics",
-      "title": "Howl Of The Forest",
-      "year": 2023,
-      "award": "11th in the Revision 2023 Modern Graphics competition",
-      "description": "by Callisto / Flush ^ Vital-Motion!\n\nReleased 9 April 2023."
-    },
-    {
-      "filename": "graphics/376688281_353500107001250_6102064824076954240_n.jpg",
-      "category": "graphics",
-      "title": "Between Dream and Reality",
-      "year": 2023,
-      "award": "3rd in the Function 2023 Handdrawn Graphics competition",
-      "description": "by Callisto / Flush ^ Vital-Motion!\n\nReleased 9 September 2023."
-    },
-    {
-      "filename": "graphics/407845946_398297489188178_8033467046376857047_n.jpg",
-      "category": "graphics",
-      "title": "Elevation 2079",
-      "year": 2022,
-      "award": "1st in the Inércia Demoparty 2022 Freestyle Graphics competition",
-      "description": "by Callisto / Flush ^ Vital-Motion!\n\nReleased 5 November 2022."
-    },
-    {
-      "filename": "graphics/teddy-beer-syntax-2022.png",
-      "category": "graphics",
-      "title": "I come with my teddy BEER !!!",
-      "year": 2022,
-      "award": "3rd in the Syntax 2022 Nuskool Graphics competition",
-      "description": "by Callisto / Flush ^ Vital-Motion!\n\nReleased 13 November 2022.\n\nhttps://demozoo.org/graphics/315433/"
-    },
-    {
-      "filename": "graphics/Callisto_Pascals-lemur-leap_step-finale-2048x1152.jpg",
-      "category": "graphics",
-      "title": "Pascal's Lemur Leap",
-      "year": 2025,
-      "award": "10th in the Revision 2025 Modern Graphics competition",
-      "description": "by Callisto / Flush\n\nReleased 20 April 2025."
-    },
-    {
-      "filename": "graphics/Chromatic.jpg",
-      "category": "graphics",
-      "title": "Chromatic resonance",
-      "year": 2024,
-      "award": "1st in the Rsync 2024 Graphics competition",
-      "description": "Chromatic Resonance by Callisto\n\nReleased 5 January 2024."
-    },
-    {
-      "filename": "graphics/oeil_de_tigre.jpg",
-      "category": "graphics",
-      "title": "Tigre by Callisto",
-      "award": "5th in the Revision 2016 Modern Graphics competition",
-      "year": 2016,
-      "description": "Released 27 March 2016 — Windows."
-    },
-    {
-      "filename": "IA/digital/dba8.371782.jpg",
-      "category": "IA",
-      "title": "Inercia 2925 by Callisto",
-      "year": 2025,
-      "award": "Inércia 2025 genAI Showcase",
-      "description": "In the Inércia 2025 genAI Showcase.\n\nReleased 7 December 2025 — Windows."
-    },
-    {
-      "filename": "graphics/Luna-fly-by-callisto-finale-1-scaled.jpg",
-      "category": "graphics",
-      "title": "Luna Fly",
-      "year": 2023,
-      "award": "5th in the SESSIONS in C4 LAN 2023 SPRING Combined Graphics competition",
-      "description": "by Callisto / Flush ^ GPO ^ Vital-Motion!\n\nReleased 29 April 2023."
-    },
-    {
-      "filename": "graphics/b2c6.287706.jpg",
-      "category": "graphics",
-      "title": "You Seem So Delicious",
-      "year": 2021,
-      "award": "1st in the Assembly 2021 Winter Online Graphics competition",
-      "description": "by Callisto / Syn[Rj]\n\nReleased 19 March 2021."
-    },
-    {
-      "filename": "graphics/cropped-elevation-finale-scaled-1.jpg",
-      "category": "graphics",
-      "title": "Elevation 2079",
-      "award": "1st place @ Inercia 2022",
-      "year": 2022
-    },
-    {
-      "filename": "graphics/paintover2024_callisto_refresh_step05.jpg",
-      "category": "paintover",
-      "title": "Refresh",
-      "year": 2024,
-      "award": "12th in the Revision 2024 Paintover competition",
-      "description": "by Callisto / Flush ^ Vital-Motion!\n\nReleased 31 March 2024."
-    },
-    {
-      "filename": "graphics/pixelmouse.jpg",
-      "category": "graphics",
-      "title": "The Pixel Mouse Love Story by Callisto / Flush ^ Vital-Motion!",
-      "year": 2024,
-      "award": "7th in the Revision 2024 Modern Graphics competition",
-      "description": "Released 31 March 2024."
-    },
-    {
-      "filename": "graphics/rift.jpg",
-      "category": "graphics",
-      "title": "The rift",
-      "award": "11th Revision - Saarbrucken - Allemagne",
-      "year": 2021
-    },
-    {
-      "filename": "graphics/sky_code.jpg",
-      "category": "graphics",
-      "title": "Sky Code",
-      "year": 2025,
-      "award": "Inércia 2025 Graphics Showcase",
-      "description": "by Callisto / Flush ^ GPO ^ Silicium\n\nReleased 7 December 2025."
-    },
-    {
-      "filename": "graphics/armonia.jpg",
-      "category": "graphics",
-      "title": "Aerolia Harmonia by Callisto / Flush ^ Vital Motion Group",
-      "year": 2023,
-      "award": "Inércia Demoparty 2023 Graphics Showcase",
-      "description": "Released 2 December 2023."
-    },
-    {
-      "filename": "graphics/5f43.132281.jpg",
-      "category": "graphics",
-      "title": "The Mystic River by Callisto",
-      "year": 2017,
-      "award": "9th in the Revision 2017 Modern Graphics competition",
-      "description": "Released 15 April 2017 — Windows."
-    },
-    {
-      "filename": "graphics/d776.375292.jpg",
-      "category": "graphics",
-      "title": "IRL Gfx Squirrel Is Here",
-      "year": 2026,
-      "award": "5th in the Rsync 2026 Graphics competition",
-      "description": "by Callisto\n\nReleased 9 January 2026."
-    },
-    {
       "filename": "graphics/sentinel-of-abyss-evoke-2026.jpg",
       "category": "graphics",
       "title": "Sentinel of Abyss",
       "year": 2026,
       "award": "8th at EVOKE 2026",
-      "description": "by Callisto\n\nPresented at EVOKE 2026.\n\n8th place."
+      "description": "par Callisto (EVOKE 2026, 8e place)\nIllustration numérique présentée en compétition Modern Graphics : cadrage, atmosphère et maîtrise des valeurs."
+    },
+    {
+      "filename": "graphics/ccef.385140.jpg",
+      "category": "graphics",
+      "title": "Re_soul_tion",
+      "year": 2026,
+      "award": "Shadow Party 2026 Newschool Graphics",
+      "description": "by Callisto / Flush ^ GPO ^ Royal Belgian Beer Squadron (juillet 2026)\nPrésenté à la Shadow Party 2026 (Givry-en-Argonne)."
+    },
+    {
+      "filename": "graphics/bb36.385145.png",
+      "category": "graphics",
+      "title": "Missyou_Shadow_and_Callisto",
+      "year": 2026,
+      "award": "Shadow Party 2026 Amiga OCS/ECS",
+      "description": "by Callisto / Flush ^ GPO ^ Royal Belgian Beer Squadron (juillet 2026)\nGraphisme Oldschool Amiga OCS/ECS (320x256) présenté à la Shadow Party 2026."
+    },
+    {
+      "filename": "photo/1ffa.385137.png",
+      "category": "photo",
+      "title": "Farmer work hard @t Givry en argonne !!!",
+      "year": 2026,
+      "award": "Shadow Party 2026 Photo",
+      "description": "by Callisto / Flush ^ GPO ^ Royal Belgian Beer Squadron (juillet 2026)\nPhoto présentée à la Shadow Party 2026 (Givry-en-Argonne)."
     },
     {
       "filename": "graphics/e69b.379157.jpg",
@@ -217,95 +99,7 @@
       "description": "by Calodox and Rebels — Graphics credit: Callisto.\n\nReleased 5 April 2026.\n\nDemozoo: https://demozoo.org/productions/390057/"
     },
     {
-      "filename": "graphics/abyss_of-symphony.jpg",
-      "category": "graphics",
-      "title": "Symphony Of The Abyss by Callisto",
-      "year": 2025,
-      "award": "2nd in the Rsync 2025 Graphics competition",
-      "description": "Released 10 January 2025."
-    },
-    {
-      "filename": "graphics/paul_le_poulpe.png",
-      "category": "graphics",
-      "title": "Paul the octopus by Callisto",
-      "year": 2024,
-      "award": "Shadow Party 2024 Newschool Graphics competition",
-      "description": "Released 29 June 2024."
-    },
-    {
-      "filename": "logo/logo-cllisto.png",
-      "category": "logo",
-      "title": "Logo Callisto",
-      "isLogo": true
-    },
-    {
-      "filename": "paintover/010d.307657.jpg",
-      "category": "paintover",
-      "title": "Head in the Stars by Callisto / Flush",
-      "year": 2022,
-      "award": "10th in the Revision 2022 Paintover competition",
-      "description": "Invitation for Shadow Party 2022\n\nReleased 17 April 2022."
-    },
-    {
-      "filename": "paintover/25aa.264370.jpg",
-      "category": "paintover",
-      "title": "Fairy Butter Ponny by Callisto",
-      "year": 2020,
-      "award": "16th in the Revision Online 2020 Paintover competition",
-      "description": "Released 12 April 2020."
-    },
-    {
-      "filename": "paintover/c6ce.pl187430.jpg",
-      "category": "paintover",
-      "title": "Sharp Eyes by Callisto",
-      "year": 2016,
-      "award": "9th in the Revision 2016 Paintover competition",
-      "description": "Released 27 March 2016 — Windows."
-    },
-    {
-      "filename": "paintover/76b3.160407.jpg",
-      "category": "paintover",
-      "title": "Sisters and Company",
-      "year": 2018,
-      "award": "8th in the Revision 2018 Paintover competition",
-      "description": "by Callisto\n\nReleased 1 April 2018."
-    },
-    {
-      "filename": "graphics/3f29.85342.jpg",
-      "category": "paintover",
-      "title": "Pac'man to space",
-      "year": 2015,
-      "award": "9th in the Revision 2015 Paintover competition",
-      "description": "by Callisto\n\nReleased 5 April 2015 — Windows."
-    },
-    {
-      "filename": "photo/183407402_10225214914982252_8102507980517360390_n-1024x768.jpg",
-      "category": "photo",
-      "title": "Photo",
-      "year": 2021
-    },
-    {
-      "filename": "photo/183672347_10225215575758771_3763955342084286418_n-1024x690.jpg",
-      "category": "photo",
-      "title": "Photo",
-      "year": 2021
-    },
-    {
-      "filename": "photo/312518226_10228185642768590_4918581913671770871_n-1024x652.jpg",
-      "category": "photo",
-      "title": "Digital Painting",
-      "year": 2023
-    },
-    {
-      "filename": "photo/tettigonia-viridissima.jpg",
-      "category": "photo",
-      "title": "Tettigonia Viridissima",
-      "year": 2022,
-      "award": "5th in the Inércia Demoparty 2022 Photo competition",
-      "description": "by Callisto / Flush ^ Vital-Motion!\n\nReleased 5 November 2022.\n\nhttps://demozoo.org/graphics/314984/"
-    },
-    {
-      "filename": "photo/2e70.379233.png",
+      "filename": "photo/2e70.379233.jpg",
       "category": "photo",
       "title": "Floating Points",
       "year": 2026,
@@ -313,28 +107,44 @@
       "description": "by Callisto\n\nReleased 4 April 2026.\n\nDemozoo: https://demozoo.org/graphics/389721/"
     },
     {
-      "filename": "photo/Callisto_convergence-1024x510.jpg",
-      "category": "photo",
-      "title": "Convergence by Callisto / Flush ^ Vital-Motion!",
-      "year": 2024,
-      "award": "18th in the Revision 2024 Photo competition",
-      "description": "Released 30 March 2024."
+      "filename": "graphics/d776.375292.jpg",
+      "category": "graphics",
+      "title": "IRL Gfx Squirrel Is Here",
+      "year": 2026,
+      "award": "5th in the Rsync 2026 Graphics competition",
+      "description": "by Callisto\n\nReleased 9 January 2026."
     },
     {
-      "filename": "photo/Callisto_photo_revision2023-1024x547.jpg",
-      "category": "photo",
-      "title": "Balls Of Steel by Callisto / Flush ^ Vital-Motion!",
-      "year": 2023,
-      "award": "16th in the Revision 2023 Photo competition",
-      "description": "Released 8 April 2023."
+      "filename": "graphics/Callisto_Pascals-lemur-leap_step-finale-2048x1152.jpg",
+      "category": "graphics",
+      "title": "Pascal's Lemur Leap",
+      "year": 2025,
+      "award": "10th in the Revision 2025 Modern Graphics competition",
+      "description": "by Callisto / Flush\n\nReleased 20 April 2025."
     },
     {
-      "filename": "photo/myhungryman.jpg",
-      "category": "photo",
-      "title": "My Angry Husband by Callisto / Flush ^ Vital-Motion!",
-      "year": 2023,
-      "award": "19th in the Function 2023 Photo competition",
-      "description": "Released 9 September 2023."
+      "filename": "IA/digital/dba8.371782.jpg",
+      "category": "IA",
+      "title": "Inercia 2925 by Callisto",
+      "year": 2025,
+      "award": "Inércia 2025 genAI Showcase",
+      "description": "In the Inércia 2025 genAI Showcase.\n\nReleased 7 December 2025 — Windows."
+    },
+    {
+      "filename": "graphics/sky_code.jpg",
+      "category": "graphics",
+      "title": "Sky Code",
+      "year": 2025,
+      "award": "Inércia 2025 Graphics Showcase",
+      "description": "by Callisto / Flush ^ GPO ^ Silicium\n\nReleased 7 December 2025."
+    },
+    {
+      "filename": "graphics/abyss_of-symphony.jpg",
+      "category": "graphics",
+      "title": "Symphony Of The Abyss by Callisto",
+      "year": 2025,
+      "award": "2nd in the Rsync 2025 Graphics competition",
+      "description": "Symphony Of The Abyss par Callisto (10 janv. 2025)\n2e place Graphics @ Rsync 2025. Composition narrative, gestion des contrastes et travail des textures."
     },
     {
       "filename": "photo/dino.jpg",
@@ -343,38 +153,6 @@
       "year": 2025,
       "award": "9th in the Shadow Party 2025 Photo competition",
       "description": "by Callisto / Flush\n\nReleased 5 July 2025."
-    },
-    {
-      "filename": "photo/da05.354142.jpg",
-      "category": "photo",
-      "title": "Um Toque de Luz with Polo",
-      "year": 2024,
-      "award": "Inércia 2024 Graphics Showcase",
-      "description": "by Callisto and Polo\n\nReleased 7 December 2024."
-    },
-    {
-      "filename": "photo/9013.346292.jpg",
-      "category": "photo",
-      "title": "Snail's Pace by Callisto",
-      "year": 2024,
-      "award": "Shadow Party 2024 Photo competition",
-      "description": "Released 29 June 2024."
-    },
-    {
-      "filename": "other/7a53.346293.png",
-      "category": "other",
-      "title": "Flush by Callisto",
-      "year": 2024,
-      "award": "3rd in the Shadow Party 2024 Sticker competition",
-      "description": "Released 29 June 2024."
-    },
-    {
-      "filename": "other/227e.342096.jpg",
-      "category": "other",
-      "title": "Shadow Party 2022 memories by Callisto / Flush",
-      "year": 2024,
-      "award": "16th in the Revision 2024 Animated GIF competition",
-      "description": "Released 31 March 2024."
     },
     {
       "filename": "other/9513.363339.jpg",
@@ -416,7 +194,88 @@
       "youtubeId": "p6qi_bfKb2s",
       "videoUrl": "https://youtu.be/p6qi_bfKb2s",
       "title": "Invitation SHADOW PARTY 25",
-      "year": 2025
+      "year": 2025,
+      "description": "Vidéo d'invitation pour la Shadow Party 2025."
+    },
+    {
+      "category": "animation",
+      "thumbnailUrl": "https://media.demozoo.org/screens/o/0e/77/2400.363647.png",
+      "title": "Just Mov'It",
+      "year": 2025,
+      "award": "5th in the Shadow Party 2025 Wild Demo competition",
+      "description": "Video — by Callisto, Captain Spinal & Marex.\n\nReleased 5 July 2025.\n\nhttps://demozoo.org/productions/374518/"
+    },
+    {
+      "filename": "graphics/Chromatic.jpg",
+      "category": "graphics",
+      "title": "Chromatic resonance",
+      "year": 2024,
+      "award": "1st in the Rsync 2024 Graphics competition",
+      "description": "Chromatic Resonance par Callisto (5 janv. 2024)\n1re place Graphics @ Rsync 2024. Recherche sur la théorie des couleurs, les contrastes chromatiques et le rendu numérique haute précision."
+    },
+    {
+      "filename": "graphics/paintover2024_callisto_refresh_step05.jpg",
+      "category": "paintover",
+      "title": "Refresh",
+      "year": 2024,
+      "award": "12th in the Revision 2024 Paintover competition",
+      "description": "by Callisto / Flush ^ Vital-Motion!\n\nReleased 31 March 2024."
+    },
+    {
+      "filename": "graphics/pixelmouse.jpg",
+      "category": "graphics",
+      "title": "The Pixel Mouse Love Story by Callisto / Flush ^ Vital-Motion!",
+      "year": 2024,
+      "award": "7th in the Revision 2024 Modern Graphics competition",
+      "description": "Released 31 March 2024."
+    },
+    {
+      "filename": "graphics/paul_le_poulpe.png",
+      "category": "graphics",
+      "title": "Paul the octopus by Callisto",
+      "year": 2024,
+      "award": "Shadow Party 2024 Newschool Graphics competition",
+      "description": "Released 29 June 2024."
+    },
+    {
+      "filename": "photo/Callisto_convergence-1024x510.jpg",
+      "category": "photo",
+      "title": "Convergence by Callisto / Flush ^ Vital-Motion!",
+      "year": 2024,
+      "award": "18th in the Revision 2024 Photo competition",
+      "description": "Released 30 March 2024."
+    },
+    {
+      "filename": "photo/da05.354142.jpg",
+      "category": "photo",
+      "title": "Um Toque de Luz with Polo",
+      "year": 2024,
+      "award": "Inércia 2024 Graphics Showcase",
+      "description": "by Callisto and Polo\n\nReleased 7 December 2024."
+    },
+    {
+      "filename": "photo/9013.346292.jpg",
+      "category": "photo",
+      "title": "Snail's Pace by Callisto",
+      "year": 2024,
+      "award": "Shadow Party 2024 Photo competition",
+      "description": "Released 29 June 2024."
+    },
+    {
+      "filename": "other/7a53.346293.png",
+      "category": "other",
+      "title": "Flush by Callisto",
+      "year": 2024,
+      "award": "3rd in the Shadow Party 2024 Sticker competition",
+      "description": "Released 29 June 2024."
+    },
+    {
+      "filename": "other/227e.342096.jpg",
+      "category": "other",
+      "title": "Shadow Party 2022 memories by Callisto / Flush",
+      "year": 2024,
+      "award": "16th in the Revision 2024 Animated GIF competition",
+      "description": "Released 31 March 2024."
     },
     {
       "category": "animation",
@@ -429,38 +288,137 @@
     },
     {
       "category": "animation",
-      "youtubeId": "GnuswI8YeAM",
-      "videoUrl": "https://youtu.be/GnuswI8YeAM",
-      "title": "Slide Shadow Party"
+      "youtubeId": "c-NTft-ujUY",
+      "videoUrl": "https://youtu.be/c-NTft-ujUY",
+      "title": "Somme Suippe agricultural high school : open house",
+      "description": "Vidéo réalisée pour les portes ouvertes du lycée agricole de Somme-Suippe.",
+      "year": 2024
     },
     {
-      "category": "animation",
-      "youtubeId": "_R6Goi-AO6A",
-      "videoUrl": "https://youtu.be/_R6Goi-AO6A",
-      "title": "Callisto (syn[RJ]) - Invitation Shadow-party 2021",
-      "year": 2021
+      "filename": "logo_doc/Melio/a8cba3169577545.644f8b6e2f744.webp",
+      "category": "graphics",
+      "title": "Melio Pet Sitter : identité visuelle & logo",
+      "year": 2023,
+      "description": "Création complète d'identité visuelle : esquisses crayon, déclinaisons NB/couleur, palette chromatique, carte de visite, carte de fidélité, flyer et mises en situation (mockups).",
+      "gallery": [
+        "logo_doc/Melio/a8cba3169577545.644f8b6e2f744.webp",
+        "logo_doc/Melio/539829169577545.644f8b6e3048a.webp",
+        "logo_doc/Melio/888a26169577545.644fd584054bc.webp",
+        "logo_doc/Melio/b6ffe7169577545.644fe85e44343.webp",
+        "logo_doc/Melio/83713a169577545.644fd58406218.png",
+        "logo_doc/Melio/f6ce91169577545.644f885f44b86.jpg",
+        "logo_doc/Melio/fc7e9c169577545.644f885f468f4.jpg",
+        "logo_doc/Melio/de5567169577545.644f885f45a98.jpg"
+      ]
     },
     {
-      "category": "animation",
-      "youtubeId": "W6ybnfktkRM",
-      "videoUrl": "https://www.youtube.com/watch?v=W6ybnfktkRM",
-      "title": "Shadow Party Invitation 2022 (Alkama, Aubépine, Callisto, CoyHot, p0ke)",
-      "year": 2022,
-      "description": "Invitation for Shadow Party 2022.\n\nReleased 8 May 2022.\n\nhttps://demozoo.org/productions/308487/"
+      "filename": "Restauration/comet/7a20f0180599457.650d512ac33e9.jpg",
+      "category": "gaming",
+      "title": "COMET 1934/1935 : restauration machine à sous",
+      "year": 2023,
+      "description": "Restauration esthétique d'une machine à sous de 1934/1935 chez GPO SARL : fidélité typographique, colorimétrie et décors. Galerie Behance : https://www.behance.net/gallery/180599457/Restauration-dune-machine-a-sous-de-19341935-COMET",
+      "gallery": [
+        "Restauration/comet/7a20f0180599457.650d512ac33e9.jpg",
+        "Restauration/comet/8f8d7c180599457.650d512ac4fe7.jpg",
+        "Restauration/comet/cb4cc9180599457.650d512ac5cc9.jpg"
+      ]
     },
     {
-      "category": "animation",
-      "youtubeId": "epusxPh_dS8",
-      "videoUrl": "https://youtu.be/epusxPh_dS8",
-      "title": "Shadow Party 2022 - Breaking News",
-      "year": 2022
+      "filename": "Restauration/Firepower/eed6a2178828639.64eef8c251048.jpg",
+      "category": "gaming",
+      "title": "Williams Firepower : restauration",
+      "year": 2023,
+      "description": "Restauration esthétique complète chez GPO SARL : décals, plateau, retouche graphique et impression Roland VersaWorks. Galerie Behance : https://www.behance.net/gallery/178828639/FIREPOWER-WILLIAMS-by-GPO-SARL",
+      "gallery": [
+        "Restauration/Firepower/eed6a2178828639.64eef8c251048.jpg",
+        "Restauration/Firepower/1b0b14178828639.64eef8c252b6d.jpg",
+        "Restauration/Firepower/4068a6178828639.64ef117156d8c.jpg",
+        "Restauration/Firepower/668073178828639.64eef8c251d5b.webp",
+        "Restauration/Firepower/74a66e178828639.64ef124127903.jpg",
+        "Restauration/Firepower/83fd51178828639.64eef8c24fb0c.jpg",
+        "Restauration/Firepower/853001178828639.64ef117157b04.jpg",
+        "Restauration/Firepower/86c6ed178828639.64eef8c250568.webp"
+      ]
     },
     {
-      "category": "animation",
-      "youtubeId": "vHEVS7NptKc",
-      "videoUrl": "https://youtu.be/vHEVS7NptKc",
-      "title": "Invitation Shadow Party 2022",
-      "year": 2022
+      "filename": "Restauration/nineball/e0ef31178829897.64eefd4294037.jpg",
+      "category": "gaming",
+      "title": "Stern Nineball : restauration",
+      "year": 2023,
+      "description": "Restauration esthétique complète chez GPO SARL : vectorisation, retouche PAO et impression numérique. Galerie Behance : https://www.behance.net/gallery/178829897/NINEBALL-STERN-by-GPO-SARL",
+      "gallery": [
+        "Restauration/nineball/e0ef31178829897.64eefd4294037.jpg",
+        "Restauration/nineball/b0178b178829897.64eefd4293387.webp",
+        "Restauration/nineball/e51f4a178829897.64eefd4292a69.webp"
+      ]
+    },
+    {
+      "filename": "Restauration/blackout/6aee87178832729.64ef07958fcc5.jpg",
+      "category": "gaming",
+      "title": "Williams Blackout : restauration",
+      "year": 2023,
+      "description": "Restauration esthétique complète chez GPO SARL : vectorisation, retouche PAO et impression numérique. Galerie Behance : https://www.behance.net/gallery/178832729/BLACKOUT-Williams-by-GPO-SARL",
+      "gallery": [
+        "Restauration/blackout/6aee87178832729.64ef07958fcc5.jpg",
+        "Restauration/blackout/395e8e178832729.64ef0795924ab.jpg",
+        "Restauration/blackout/78c938178832729.64ef07959096c.webp",
+        "Restauration/blackout/e31214178832729.64ef07959177f.jpg"
+      ]
+    },
+    {
+      "filename": "graphics/339435602_905924634051246_6940335715669469411_n.jpg",
+      "category": "graphics",
+      "title": "Howl Of The Forest",
+      "year": 2023,
+      "award": "11th in the Revision 2023 Modern Graphics competition",
+      "description": "by Callisto / Flush ^ Vital-Motion!\n\nReleased 9 April 2023."
+    },
+    {
+      "filename": "graphics/376688281_353500107001250_6102064824076954240_n.jpg",
+      "category": "graphics",
+      "title": "Between Dream and Reality",
+      "year": 2023,
+      "award": "3rd in the Function 2023 Handdrawn Graphics competition",
+      "description": "by Callisto / Flush ^ Vital-Motion!\n\nReleased 9 September 2023."
+    },
+    {
+      "filename": "graphics/Luna-fly-by-callisto-finale-1-scaled.jpg",
+      "category": "graphics",
+      "title": "Luna Fly",
+      "year": 2023,
+      "award": "5th in the SESSIONS in C4 LAN 2023 SPRING Combined Graphics competition",
+      "description": "by Callisto / Flush ^ GPO ^ Vital-Motion!\n\nReleased 29 April 2023."
+    },
+    {
+      "filename": "graphics/armonia.jpg",
+      "category": "graphics",
+      "title": "Aerolia Harmonia by Callisto / Flush ^ Vital Motion Group",
+      "year": 2023,
+      "award": "Inércia Demoparty 2023 Graphics Showcase",
+      "description": "Released 2 December 2023."
+    },
+    {
+      "filename": "photo/312518226_10228185642768590_4918581913671770871_n-1024x652.jpg",
+      "category": "photo",
+      "title": "Digital Painting",
+      "year": 2023,
+      "description": "Création numérique (2023)."
+    },
+    {
+      "filename": "photo/Callisto_photo_revision2023-1024x547.jpg",
+      "category": "photo",
+      "title": "Balls Of Steel by Callisto / Flush ^ Vital-Motion!",
+      "year": 2023,
+      "award": "16th in the Revision 2023 Photo competition",
+      "description": "Released 8 April 2023."
+    },
+    {
+      "filename": "photo/myhungryman.jpg",
+      "category": "photo",
+      "title": "My Angry Husband by Callisto / Flush ^ Vital-Motion!",
+      "year": 2023,
+      "award": "19th in the Function 2023 Photo competition",
+      "description": "Released 9 September 2023."
     },
     {
       "category": "animation",
@@ -502,28 +460,72 @@
       "youtubeId": "_XIO12_g-So",
       "videoUrl": "https://youtu.be/_XIO12_g-So",
       "title": "Explosion 2023",
-      "year": 2023
-    },
-    {
-      "category": "animation",
-      "youtubeId": "c-NTft-ujUY",
-      "videoUrl": "https://youtu.be/c-NTft-ujUY",
-      "title": "Somme Suippe agricultural high school — open house"
-    },
-    {
-      "category": "animation",
-      "youtubeId": "Z54V_SABn1U",
-      "videoUrl": "https://youtu.be/Z54V_SABn1U",
-      "title": "RBBS — We Have Accidentally Your Whole Audience",
-      "year": 2015,
-      "award": "16th place — Revision 2015 PC Demo — Royal Belgian Beer Squadron",
-      "description": "[DEMOSCENE] [PC DEMO] Windows — Group: Royal Belgian Beer Squadron — Released 5 April 2015 — 16th in the Revision 2015 PC Demo competition.\n\nCallisto - \"Text (Translation)\""
+      "year": 2023,
+      "description": "Vidéo d'animation demoscene (2023)."
     },
     {
       "category": "gaming",
       "youtubeId": "HLdNMPZUMl4",
       "videoUrl": "https://youtu.be/HLdNMPZUMl4",
-      "title": "GPO — push-push manufacturing"
+      "title": "GPO : push-push manufacturing",
+      "description": "Vidéo de fabrication en atelier chez GPO SARL.",
+      "year": 2023
+    },
+    {
+      "filename": "graphics/407845946_398297489188178_8033467046376857047_n.jpg",
+      "category": "graphics",
+      "title": "Elevation 2079",
+      "year": 2022,
+      "award": "1st in the Inércia Demoparty 2022 Freestyle Graphics competition",
+      "description": "by Callisto / Flush ^ Vital-Motion! (5 nov. 2022)\n1re place Freestyle Graphics @ Inércia 2022. Travail de composition, profondeur et ambiance lumineuse sous contraintes demoscene."
+    },
+    {
+      "filename": "graphics/teddy-beer-syntax-2022.png",
+      "category": "graphics",
+      "title": "I come with my teddy BEER !!!",
+      "year": 2022,
+      "award": "3rd in the Syntax 2022 Nuskool Graphics competition",
+      "description": "by Callisto / Flush ^ Vital-Motion!\n\nReleased 13 November 2022.\n\nhttps://demozoo.org/graphics/315433/"
+    },
+    {
+      "filename": "paintover/010d.307657.jpg",
+      "category": "paintover",
+      "title": "Head in the Stars by Callisto / Flush",
+      "year": 2022,
+      "award": "10th in the Revision 2022 Paintover competition",
+      "description": "Invitation for Shadow Party 2022\n\nReleased 17 April 2022."
+    },
+    {
+      "filename": "photo/tettigonia-viridissima.jpg",
+      "category": "photo",
+      "title": "Tettigonia Viridissima",
+      "year": 2022,
+      "award": "5th in the Inércia Demoparty 2022 Photo competition",
+      "description": "by Callisto / Flush ^ Vital-Motion!\n\nReleased 5 November 2022.\n\nhttps://demozoo.org/graphics/314984/"
+    },
+    {
+      "category": "animation",
+      "youtubeId": "W6ybnfktkRM",
+      "videoUrl": "https://www.youtube.com/watch?v=W6ybnfktkRM",
+      "title": "Shadow Party Invitation 2022 (Alkama, Aubépine, Callisto, CoyHot, p0ke)",
+      "year": 2022,
+      "description": "Invitation for Shadow Party 2022.\n\nReleased 8 May 2022.\n\nhttps://demozoo.org/productions/308487/"
+    },
+    {
+      "category": "animation",
+      "youtubeId": "epusxPh_dS8",
+      "videoUrl": "https://youtu.be/epusxPh_dS8",
+      "title": "Shadow Party 2022 - Breaking News",
+      "year": 2022,
+      "description": "Vidéo Breaking News pour la Shadow Party 2022."
+    },
+    {
+      "category": "animation",
+      "youtubeId": "vHEVS7NptKc",
+      "videoUrl": "https://youtu.be/vHEVS7NptKc",
+      "title": "Invitation Shadow Party 2022",
+      "year": 2022,
+      "description": "Vidéo d'invitation pour la Shadow Party 2022."
     },
     {
       "filename": "other/atari.png",
@@ -556,6 +558,50 @@
       "year": 2022,
       "award": "13th in the Revision 2022 Modern Graphics competition",
       "description": "by Callisto / Flush ^ Vital-Motion!\n\nReleased 17 April 2022.\n\nhttps://demozoo.org/graphics/307449/"
+    },
+    {
+      "category": "animation",
+      "youtubeId": "GnuswI8YeAM",
+      "videoUrl": "https://youtu.be/GnuswI8YeAM",
+      "title": "Slide Shadow Party",
+      "description": "Diaporama vidéo de la Shadow Party.",
+      "year": 2022
+    },
+    {
+      "filename": "graphics/b2c6.287706.jpg",
+      "category": "graphics",
+      "title": "You Seem So Delicious",
+      "year": 2021,
+      "award": "1st in the Assembly 2021 Winter Online Graphics competition",
+      "description": "by Callisto / Syn[Rj] (19 mars 2021)\n1re place @ Assembly Winter Online 2021. Étude de matières, éclairage et rendu détaillé en illustration numérique."
+    },
+    {
+      "filename": "graphics/rift.jpg",
+      "category": "graphics",
+      "title": "The rift",
+      "award": "11th Revision - Saarbrucken - Allemagne",
+      "year": 2021,
+      "description": "Graphisme demoscene (11e place à Revision 2021, Sarrebruck)."
+    },
+    {
+      "filename": "photo/183407402_10225214914982252_8102507980517360390_n-1024x768.jpg",
+      "category": "photo",
+      "title": "Photo",
+      "year": 2021
+    },
+    {
+      "filename": "photo/183672347_10225215575758771_3763955342084286418_n-1024x690.jpg",
+      "category": "photo",
+      "title": "Photo",
+      "year": 2021
+    },
+    {
+      "category": "animation",
+      "youtubeId": "_R6Goi-AO6A",
+      "videoUrl": "https://youtu.be/_R6Goi-AO6A",
+      "title": "Callisto (syn[RJ]) - Invitation Shadow-party 2021",
+      "year": 2021,
+      "description": "Vidéo d'invitation Shadow Party 2021 par Callisto / Syn[Rj]."
     },
     {
       "filename": "graphics/sharko.png",
@@ -598,100 +644,19 @@
       "description": "by Callisto / GPO ^ Syn[Rj]\n\nReleased 3 April 2021.\n\nhttps://demozoo.org/graphics/292233/"
     },
     {
-      "filename": "graphics/474f.282982.jpg",
-      "category": "graphics",
-      "title": "Stoke the flames",
-      "year": 2020,
-      "award": "3rd in the Syntax 2020 Nuskool Pixeled Graphics competition",
-      "description": "by Callisto\n\nReleased 28 November 2020.\n\nhttps://demozoo.org/graphics/287791/"
-    },
-    {
-      "filename": "graphics/shipwerk.jpg",
-      "category": "graphics",
-      "title": "The Shipwrek",
-      "year": 2020,
-      "award": "10th in the Revision Online 2020 Modern Graphics competition",
-      "description": "by Callisto\n\nReleased 12 April 2020.\n\nhttps://demozoo.org/graphics/277112/"
-    },
-    {
-      "filename": "graphics/myprecious.jpg",
-      "category": "graphics",
-      "title": "My precious",
-      "year": 2019,
-      "award": "13th in the Revision 2019 Modern Graphics competition",
-      "description": "by Callisto\n\nReleased 21 April 2019.\n\nhttps://demozoo.org/graphics/202676/"
-    },
-    {
-      "filename": "paintover/thevalley.jpg",
-      "category": "paintover",
-      "title": "The valley",
-      "year": 2019,
-      "award": "8th in the Revision 2019 Paintover competition",
-      "description": "by Callisto\n\nReleased 21 April 2019.\n\nhttps://demozoo.org/graphics/202778/"
-    },
-    {
-      "filename": "graphics/pinkelephant.jpg",
-      "category": "graphics",
-      "title": "Delirium Pink Elefant",
-      "year": 2018,
-      "award": "9th in the Revision 2018 Modern Graphics competition",
-      "description": "by Callisto\n\nReleased 1 April 2018.\n\nhttps://demozoo.org/graphics/185488/"
-    },
-    {
-      "filename": "graphics/bublle.jpg",
-      "category": "paintover",
-      "title": "Bubbles",
-      "year": 2017,
-      "award": "6th in the Revision 2017 Paintover competition",
-      "description": "by Callisto\n\nReleased 16 April 2017.\n\nhttps://demozoo.org/graphics/170857/"
-    },
-    {
-      "category": "animation",
-      "thumbnailUrl": "https://media.demozoo.org/screens/o/0e/77/2400.363647.png",
-      "title": "Just Mov'It",
-      "year": 2025,
-      "award": "5th in the Shadow Party 2025 Wild Demo competition",
-      "description": "Video — by Callisto, Captain Spinal & Marex.\n\nReleased 5 July 2025.\n\nhttps://demozoo.org/productions/374518/"
-    },
-    {
       "category": "animation",
       "youtubeId": "FD3EkxmfiNE",
       "videoUrl": "https://www.youtube.com/watch?v=FD3EkxmfiNE",
-      "title": "J – Coalesce (graphics — Ctrl-Alt-Test)",
+      "title": "J – Coalesce (graphics : Ctrl-Alt-Test)",
       "year": 2021,
       "award": "4th in the Function 2021 Demo competition",
       "description": "Invitation for TokyoDemoFest 2021 — Graphics credit: Callisto & Zavie.\n\nhttps://demozoo.org/productions/299998/"
     },
     {
       "category": "animation",
-      "youtubeId": "72PzTueQykE",
-      "videoUrl": "https://www.youtube.com/watch?v=72PzTueQykE",
-      "title": "The Razor Is Dead (Laboratoire Prout — painting)",
-      "year": 2019,
-      "award": "13th in the Revision 2019 PC Demo competition",
-      "description": "Graphics (Painting): Callisto.\n\nhttps://demozoo.org/productions/202836/"
-    },
-    {
-      "category": "animation",
-      "youtubeId": "mGFi74p3G-Y",
-      "videoUrl": "https://www.youtube.com/watch?v=mGFi74p3G-Y",
-      "title": "revision 2019 in the hurry (Flush — Nintendo Switch)",
-      "year": 2019,
-      "award": "7th in the Revision 2019 Wild competition",
-      "description": "Graphics: Callisto / Flush.\n\nhttps://demozoo.org/productions/202755/"
-    },
-    {
-      "category": "animation",
-      "thumbnailUrl": "https://media.demozoo.org/screens/o/a7/22/03bf.283688.png",
-      "title": "shadow 2021 invitro (GBA — Flush)",
-      "year": 2020,
-      "description": "Graphics: Callisto.\n\nhttps://demozoo.org/productions/288268/"
-    },
-    {
-      "category": "animation",
       "youtubeId": "Ax-XUV7c-1c",
       "videoUrl": "https://www.youtube.com/watch?v=Ax-XUV7c-1c",
-      "title": "Shadow-Party 2021 (Mandarine — invitation demo)",
+      "title": "Shadow-Party 2021 (Mandarine : invitation demo)",
       "year": 2021,
       "award": "2nd in the Assembly 2021 Winter Online Demo competition",
       "description": "Graphics: Callisto, Nytrik, Med…\n\nhttps://demozoo.org/productions/291630/"
@@ -851,184 +816,350 @@
       "description": "Acrylic"
     },
     {
+      "filename": "paintover/25aa.264370.jpg",
+      "category": "paintover",
+      "title": "Fairy Butter Ponny by Callisto",
+      "year": 2020,
+      "award": "16th in the Revision Online 2020 Paintover competition",
+      "description": "Released 12 April 2020."
+    },
+    {
+      "filename": "graphics/474f.282982.jpg",
+      "category": "graphics",
+      "title": "Stoke the flames",
+      "year": 2020,
+      "award": "3rd in the Syntax 2020 Nuskool Pixeled Graphics competition",
+      "description": "by Callisto\n\nReleased 28 November 2020.\n\nhttps://demozoo.org/graphics/287791/"
+    },
+    {
+      "filename": "graphics/shipwerk.jpg",
+      "category": "graphics",
+      "title": "The Shipwrek",
+      "year": 2020,
+      "award": "10th in the Revision Online 2020 Modern Graphics competition",
+      "description": "by Callisto\n\nReleased 12 April 2020.\n\nhttps://demozoo.org/graphics/277112/"
+    },
+    {
+      "category": "animation",
+      "thumbnailUrl": "https://media.demozoo.org/screens/o/a7/22/03bf.283688.png",
+      "title": "shadow 2021 invitro (GBA : Flush)",
+      "year": 2020,
+      "description": "Graphics: Callisto.\n\nhttps://demozoo.org/productions/288268/"
+    },
+    {
       "filename": "aquarelle/Latortue.jpg",
       "category": "aquarelle",
       "title": "The turtle",
-      "description": "Watercolor"
+      "description": "Aquarelle (peinture traditionnelle).",
+      "year": "2018-2020"
     },
     {
       "filename": "aquarelle/Le_cheval_blanc.jpg",
       "category": "aquarelle",
       "title": "The white horse",
-      "description": "Watercolor"
+      "description": "Aquarelle (peinture traditionnelle).",
+      "year": "2018-2020"
     },
     {
       "filename": "aquarelle/Promenade.jpg",
       "category": "aquarelle",
       "title": "Promenade",
-      "description": "Watercolor"
+      "description": "Aquarelle (peinture traditionnelle).",
+      "year": "2018-2020"
     },
     {
       "filename": "aquarelle/cannard.jpg",
       "category": "aquarelle",
       "title": "Cannard",
-      "description": "Watercolor"
+      "description": "Aquarelle (peinture traditionnelle).",
+      "year": "2018-2020"
     },
     {
       "filename": "aquarelle/coquelicot.jpg",
       "category": "aquarelle",
       "title": "Coquelicot",
-      "description": "Watercolor"
+      "description": "Aquarelle (peinture traditionnelle).",
+      "year": "2018-2020"
     },
     {
       "filename": "aquarelle/cygne.jpg",
       "category": "aquarelle",
       "title": "Cygne",
-      "description": "Watercolor"
+      "description": "Aquarelle (peinture traditionnelle).",
+      "year": "2018-2020"
     },
     {
       "filename": "aquarelle/demolion.jpg",
       "category": "aquarelle",
       "title": "The lion",
-      "description": "Watercolor"
+      "description": "Aquarelle (peinture traditionnelle).",
+      "year": "2018-2020"
     },
     {
       "filename": "aquarelle/facecat.jpg",
       "category": "aquarelle",
       "title": "Cat face",
-      "description": "Watercolor"
+      "description": "Aquarelle (peinture traditionnelle).",
+      "year": "2018-2020"
     },
     {
       "filename": "aquarelle/fleuroseauborddeleau.jpg",
       "category": "aquarelle",
       "title": "Pink flower by the water",
-      "description": "Watercolor"
+      "description": "Aquarelle (peinture traditionnelle).",
+      "year": "2018-2020"
     },
     {
       "filename": "aquarelle/heron.jpg",
       "category": "aquarelle",
       "title": "Heron",
-      "description": "Watercolor"
+      "description": "Aquarelle (peinture traditionnelle).",
+      "year": "2018-2020"
     },
     {
       "filename": "aquarelle/lepetit pont .jpg",
       "category": "aquarelle",
       "title": "The little bridge",
-      "description": "Watercolor"
+      "description": "Aquarelle (peinture traditionnelle).",
+      "year": "2018-2020"
     },
     {
       "filename": "aquarelle/levillage.jpg",
       "category": "aquarelle",
       "title": "The village",
-      "description": "Watercolor"
+      "description": "Aquarelle (peinture traditionnelle).",
+      "year": "2018-2020"
     },
     {
       "filename": "aquarelle/ouvaton.jpg",
       "category": "aquarelle",
       "title": "Where are we going?",
-      "description": "Watercolor"
+      "description": "Aquarelle (peinture traditionnelle).",
+      "year": "2018-2020"
     },
     {
       "filename": "aquarelle/plage et city .jpg",
       "category": "aquarelle",
       "title": "Beach and city",
-      "description": "Watercolor"
+      "description": "Aquarelle (peinture traditionnelle).",
+      "year": "2018-2020"
     },
     {
       "filename": "aquarelle/thecat.jpg",
       "category": "aquarelle",
       "title": "The cat",
-      "description": "Watercolor"
+      "description": "Aquarelle (peinture traditionnelle).",
+      "year": "2018-2020"
     },
     {
       "filename": "aquarelle/voyage.jpg",
       "category": "aquarelle",
       "title": "Journey",
-      "description": "Watercolor"
+      "description": "Aquarelle (peinture traditionnelle).",
+      "year": "2018-2020"
     },
     {
       "filename": "pastel-sec/Choucky.png",
       "category": "pastel-sec",
       "title": "Choucky",
-      "description": "Dry pastel"
+      "description": "Pastel sec (technique traditionnelle).",
+      "year": "2018-2020"
     },
     {
       "filename": "pastel-sec/Lestbernarde_son_regard.jpg",
       "category": "pastel-sec",
       "title": "The Saint Bernard and its gaze",
-      "description": "Dry pastel"
+      "description": "Pastel sec (technique traditionnelle).",
+      "year": "2018-2020"
     },
     {
       "filename": "pastel-sec/fred-charton-carla-fini.jpg",
       "category": "pastel-sec",
       "title": "Carla",
-      "description": "Dry pastel"
+      "description": "Pastel sec (technique traditionnelle).",
+      "year": "2018-2020"
     },
     {
       "filename": "pastel-sec/fred-charton-guerriere.jpg",
       "category": "pastel-sec",
       "title": "Callisto the warrior",
-      "description": "Dry pastel"
+      "description": "Pastel sec (technique traditionnelle).",
+      "year": "2018-2020"
     },
     {
       "filename": "pastel-sec/fred-charton-tigre.jpg",
       "category": "pastel-sec",
       "title": "Tigre",
-      "description": "Dry pastel"
+      "description": "Pastel sec (technique traditionnelle).",
+      "year": "2018-2020"
     },
     {
       "filename": "pastel-sec/l'abeille.jpg",
       "category": "pastel-sec",
       "title": "The bee",
-      "description": "Dry pastel"
+      "description": "Pastel sec (technique traditionnelle).",
+      "year": "2018-2020"
     },
     {
       "filename": "pastel-sec/lagirafeetsongirafon.jpg",
       "category": "pastel-sec",
       "title": "The giraffe and her calf",
-      "description": "Dry pastel"
+      "description": "Pastel sec (technique traditionnelle).",
+      "year": "2018-2020"
     },
     {
       "filename": "pastel-sec/le chat.png",
       "category": "pastel-sec",
       "title": "The cat",
-      "description": "Dry pastel"
+      "description": "Pastel sec (technique traditionnelle).",
+      "year": "2018-2020"
     },
     {
       "filename": "pastel-sec/lecabanon.jpg",
       "category": "pastel-sec",
       "title": "The shed",
-      "description": "Dry pastel"
+      "description": "Pastel sec (technique traditionnelle).",
+      "year": "2018-2020"
     },
     {
       "filename": "pastel-sec/lechien.jpg",
       "category": "pastel-sec",
       "title": "The dog",
-      "description": "Dry pastel"
+      "description": "Pastel sec (technique traditionnelle).",
+      "year": "2018-2020"
     },
     {
       "filename": "pastel-sec/les petites cabannes.jpg",
       "category": "pastel-sec",
       "title": "The little cabins",
-      "description": "Dry pastel"
+      "description": "Pastel sec (technique traditionnelle).",
+      "year": "2018-2020"
     },
     {
       "filename": "pastel-sec/regard.jpg",
       "category": "pastel-sec",
       "title": "Gaze",
-      "description": "Dry pastel"
+      "description": "Pastel sec (technique traditionnelle).",
+      "year": "2018-2020"
     },
     {
       "filename": "pastel-sec/rochideeetpriere.jpg",
       "category": "pastel-sec",
       "title": "Rock, idea and prayer",
-      "description": "Dry pastel"
+      "description": "Pastel sec (technique traditionnelle).",
+      "year": "2018-2020"
     },
     {
       "filename": "pastel-sec/yang.jpg",
       "category": "pastel-sec",
       "title": "Yang",
-      "description": "Dry pastel"
+      "description": "Pastel sec (technique traditionnelle).",
+      "year": "2018-2020"
+    },
+    {
+      "filename": "graphics/myprecious.jpg",
+      "category": "graphics",
+      "title": "My precious",
+      "year": 2019,
+      "award": "13th in the Revision 2019 Modern Graphics competition",
+      "description": "by Callisto\n\nReleased 21 April 2019.\n\nhttps://demozoo.org/graphics/202676/"
+    },
+    {
+      "filename": "paintover/thevalley.jpg",
+      "category": "paintover",
+      "title": "The valley",
+      "year": 2019,
+      "award": "8th in the Revision 2019 Paintover competition",
+      "description": "by Callisto\n\nReleased 21 April 2019.\n\nhttps://demozoo.org/graphics/202778/"
+    },
+    {
+      "category": "animation",
+      "youtubeId": "72PzTueQykE",
+      "videoUrl": "https://www.youtube.com/watch?v=72PzTueQykE",
+      "title": "The Razor Is Dead (Laboratoire Prout : painting)",
+      "year": 2019,
+      "award": "13th in the Revision 2019 PC Demo competition",
+      "description": "Graphics (Painting): Callisto.\n\nhttps://demozoo.org/productions/202836/"
+    },
+    {
+      "category": "animation",
+      "youtubeId": "mGFi74p3G-Y",
+      "videoUrl": "https://www.youtube.com/watch?v=mGFi74p3G-Y",
+      "title": "revision 2019 in the hurry (Flush : Nintendo Switch)",
+      "year": 2019,
+      "award": "7th in the Revision 2019 Wild competition",
+      "description": "Graphics: Callisto / Flush.\n\nhttps://demozoo.org/productions/202755/"
+    },
+    {
+      "filename": "paintover/76b3.160407.jpg",
+      "category": "paintover",
+      "title": "Sisters and Company",
+      "year": 2018,
+      "award": "8th in the Revision 2018 Paintover competition",
+      "description": "by Callisto\n\nReleased 1 April 2018."
+    },
+    {
+      "filename": "graphics/pinkelephant.jpg",
+      "category": "graphics",
+      "title": "Delirium Pink Elefant",
+      "year": 2018,
+      "award": "9th in the Revision 2018 Modern Graphics competition",
+      "description": "by Callisto\n\nReleased 1 April 2018.\n\nhttps://demozoo.org/graphics/185488/"
+    },
+    {
+      "filename": "graphics/5f43.132281.jpg",
+      "category": "graphics",
+      "title": "The Mystic River by Callisto",
+      "year": 2017,
+      "award": "9th in the Revision 2017 Modern Graphics competition",
+      "description": "Released 15 April 2017 — Windows."
+    },
+    {
+      "filename": "graphics/bublle.jpg",
+      "category": "paintover",
+      "title": "Bubbles",
+      "year": 2017,
+      "award": "6th in the Revision 2017 Paintover competition",
+      "description": "by Callisto\n\nReleased 16 April 2017.\n\nhttps://demozoo.org/graphics/170857/"
+    },
+    {
+      "filename": "graphics/oeil_de_tigre.jpg",
+      "category": "graphics",
+      "title": "Tigre by Callisto",
+      "award": "5th in the Revision 2016 Modern Graphics competition",
+      "year": 2016,
+      "description": "Released 27 March 2016 — Windows."
+    },
+    {
+      "filename": "paintover/c6ce.pl187430.jpg",
+      "category": "paintover",
+      "title": "Sharp Eyes by Callisto",
+      "year": 2016,
+      "award": "9th in the Revision 2016 Paintover competition",
+      "description": "Released 27 March 2016 — Windows."
+    },
+    {
+      "filename": "graphics/3f29.85342.jpg",
+      "category": "paintover",
+      "title": "Pac'man to space",
+      "year": 2015,
+      "award": "9th in the Revision 2015 Paintover competition",
+      "description": "by Callisto\n\nReleased 5 April 2015 — Windows."
+    },
+    {
+      "category": "animation",
+      "youtubeId": "Z54V_SABn1U",
+      "videoUrl": "https://youtu.be/Z54V_SABn1U",
+      "title": "RBBS : We Have Accidentally Your Whole Audience",
+      "year": 2015,
+      "award": "16th place — Revision 2015 PC Demo — Royal Belgian Beer Squadron",
+      "description": "[DEMOSCENE] [PC DEMO] Windows — Group: Royal Belgian Beer Squadron — Released 5 April 2015 — 16th in the Revision 2015 PC Demo competition.\n\nCallisto - \"Text (Translation)\""
+    },
+    {
+      "filename": "logo/logo-cllisto.png",
+      "category": "logo",
+      "title": "Logo Callisto",
+      "isLogo": true
     }
   ]
 }

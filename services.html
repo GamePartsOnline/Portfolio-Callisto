@@ -8,11 +8,13 @@
     />
     <meta
       name="description"
-      content="Services — GPO SARL and Graph2Print. Links to arcade / events activity and print project inquiries."
+      content="Services Callisto Arts : GPO SARL (flippers, bornes d'arcade, événementiel) et Graph2Print (PAO, identité visuelle, impression numérique)."
     />
     <link rel="canonical" href="https://callistoarts.com/services.html" />
     <meta property="og:type" content="website" />
-    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Callisto Arts" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:locale:alternate" content="en_US" />
     <meta
       property="og:url"
       content="https://callistoarts.com/services.html"
@@ -20,11 +22,26 @@
     <meta property="og:title" content="Services | Callisto Arts" />
     <meta
       property="og:description"
-      content="GPO SARL (arcade, events) and Graph2Print — get in touch for print projects."
+      content="GPO SARL (arcade, flippers, événementiel) et Graph2Print (PAO, identité visuelle et impression numérique)."
     />
     <meta
       property="og:image"
-      content="https://gposarl.com/wp-content/uploads/2025/07/516813484_1787921768795670_1422787699444682706_n.jpg"
+      content="https://callistoarts.com/assets/images/services/gpo-logo.jpg"
+    />
+    <meta
+      property="og:image:alt"
+      content="Logo GPO SARL, bornes d'arcade, flippers et événementiel"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://callistoarts.com/services.html" />
+    <meta name="twitter:title" content="Services | Callisto Arts" />
+    <meta
+      name="twitter:description"
+      content="GPO SARL (arcade, flippers, événementiel) et Graph2Print (PAO, identité visuelle et impression numérique)."
+    />
+    <meta
+      name="twitter:image"
+      content="https://callistoarts.com/assets/images/services/gpo-logo.jpg"
     />
     <link
       rel="icon"
@@ -32,7 +49,7 @@
       href="assets/images/logo/logo-cllisto.png"
     />
     <title>Services | Callisto Arts</title>
-    <link rel="stylesheet" href="styles.css?v=88" />
+    <link rel="stylesheet" href="styles.css?v=90" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -74,7 +91,7 @@
         <a
           href="index.html#welcome"
           class="nav-logo"
-          aria-label="Callisto Arts — Bienvenue dans mon univers (accueil)"
+          aria-label="Callisto Arts : accueil"
           data-i18n-aria="nav.logoHome"
         >
           <img
@@ -110,9 +127,18 @@
             <a
               href="index.html#portfolio"
               class="nav-link"
-              title="Portfolio — demoscene &amp; art"
+              title="Portfolio : demoscene et art"
               data-i18n="nav.portfolio"
               >Portfolio</a
+            >
+          </li>
+          <li>
+            <a
+              href="index.html#teaching"
+              class="nav-link"
+              title="Transmission &amp; Encadrement"
+              data-i18n="nav.teaching"
+              >Transmission</a
             >
           </li>
           <li>
@@ -163,9 +189,9 @@
     <main id="main-content" class="legal-page-main services-page-main" tabindex="-1">
       <div class="container">
         <header class="legal-page-header services-page-header">
-          <h1 class="services-page-title">Services</h1>
-          <p class="legal-page-updated services-page-lead">
-            Links to <strong>GPO SARL</strong> and <strong>Graph2Print</strong>.
+          <h1 class="services-page-title" data-i18n="servicesPage.title">Services</h1>
+          <p class="legal-page-updated services-page-lead" data-i18n="servicesPage.lead">
+            Liens vers <strong>GPO SARL</strong> et <strong>Graph2Print</strong>.
           </p>
         </header>
 
@@ -177,21 +203,12 @@
             rel="noopener noreferrer"
             role="listitem"
           >
-            <div class="services-page-card-media">
-              <img
-                class="services-page-card-cover"
-                src="https://gposarl.com/wp-content/uploads/2025/07/516813484_1787921768795670_1422787699444682706_n.jpg"
-                alt=""
-                width="1063"
-                height="1077"
-                loading="lazy"
-                decoding="async"
-              />
+            <div class="services-page-card-media services-page-card-media--logo-only">
               <div class="services-page-card-logo-wrap">
                 <img
                   class="services-page-card-logo"
-                  src="https://gposarl.com/wp-content/uploads/2022/02/cropped-logo-pour-diffusion.jpg"
-                  alt="GPO SARL logo"
+                  src="assets/images/services/gpo-logo.jpg"
+                  alt="Logo GPO SARL"
                   width="841"
                   height="842"
                   loading="lazy"
@@ -201,52 +218,37 @@
             </div>
             <div class="services-page-card-body">
               <h2 class="services-page-card-title">GPO SARL</h2>
-              <p class="services-page-card-desc">
-                Arcade, events, cabinet rentals — official website.
+              <p class="services-page-card-desc" data-i18n="servicesPage.gpoDesc">
+                Arcade, événementiel, location et vente de jeux : site officiel.
               </p>
               <span class="services-page-card-cta">gposarl.com →</span>
             </div>
           </a>
           <a
             class="glass-card services-page-card"
-            href="mailto:callisto.gfx@gmail.com?subject=Graph2Print%20%E2%80%94%20inquiry"
+            href="mailto:callisto.gfx@gmail.com?subject=Graph2Print%20:%20demande%20de%20projet"
             role="listitem"
           >
             <div
               class="services-page-card-media services-page-card-media--g2p"
               aria-hidden="true"
             >
-              <div class="services-page-card-tools">
+              <div class="services-page-card-logo-wrap services-page-card-logo-wrap--g2p">
                 <img
-                  src="assets/icons/indesign.svg"
-                  alt=""
-                  width="48"
-                  height="48"
-                  decoding="async"
-                />
-                <img
-                  src="assets/icons/illustrator.svg"
-                  alt=""
-                  width="48"
-                  height="48"
-                  decoding="async"
-                />
-                <img
-                  src="assets/icons/photoshop.svg"
-                  alt=""
-                  width="48"
-                  height="48"
+                  class="services-page-card-logo"
+                  src="assets/images/services/g2p-logo.png"
+                  alt="Logo Graph2Print"
                   decoding="async"
                 />
               </div>
-              <p class="services-page-card-tools-caption">DTP · identity · print</p>
+              <p class="services-page-card-tools-caption" data-i18n="servicesPage.g2pCaption">PAO · sublimation · découpe bois</p>
             </div>
             <div class="services-page-card-body">
               <h2 class="services-page-card-title">Graph2Print</h2>
-              <p class="services-page-card-desc">
-                Print and visual communication — email me for a quote or project question.
+              <p class="services-page-card-desc" data-i18n="servicesPage.g2pDesc">
+                Impression, sublimation, découpe bois, logos et catalogues : écrivez-moi pour un devis ou un projet.
               </p>
-              <span class="services-page-card-cta">Send an email →</span>
+              <span class="services-page-card-cta" data-i18n="servicesPage.g2pCta">Envoyer un e-mail →</span>
             </div>
           </a>
         </div>
@@ -271,7 +273,7 @@
             </p>
           </nav>
           <p class="footer-cookies-line">
-            <a href="mentions-legales.html#cookies" data-i18n="cookieBanner.more">Mentions légales — cookies</a>
+            <a href="mentions-legales.html#cookies" data-i18n="cookieBanner.more">Mentions légales et cookies</a>
           </p>
           <p class="footer-subtitle footer-subtitle--copyright">&copy; 2026 Callisto Arts</p>
         </div>
