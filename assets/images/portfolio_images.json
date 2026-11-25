@@ -59,6 +59,20 @@
   ],
   "images": [
     {
+      "filename": "IA/e280ee31-f691-4e89-abf4-cc83f535a766.webp",
+      "category": "IA",
+      "title": "Le Dragon de Cristal (IA)",
+      "year": 2026,
+      "description": "Création IA générative fantasy : face-à-face entre une mage des neiges et un dragon de glace irisé."
+    },
+    {
+      "filename": "IA/05c9299d-066d-4989-80e0-cf093f45e295.webp",
+      "category": "IA",
+      "title": "L'Enchanteresse aux cristaux (IA)",
+      "year": 2026,
+      "description": "Création IA générative fantasy : enchanteresse en robe pourpre entourée de créatures fantastiques et de magie cristalline."
+    },
+    {
       "filename": "graphics/callistoarts-site.jpg",
       "category": "web",
       "title": "Callisto Arts — Site vitrine & Portfolio",
