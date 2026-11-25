@@ -49,6 +49,10 @@
       "label": "Websites"
     },
     {
+      "id": "inktober",
+      "label": "Inktober"
+    },
+    {
       "id": "other",
       "label": "Others"
     }
@@ -360,7 +364,7 @@
     },
     {
       "filename": "Ink october/2023/789bac181260753.651934296cb1b.jpg",
-      "category": "graphics",
+      "category": "inktober",
       "title": "Inktober 2023 (Série complète — 31 dessins)",
       "year": 2023,
       "description": "Série complète des 31 dessins réalisés au fil du défi Inktober 2023 (encre et illustration). Galerie Behance : https://www.behance.net/gallery/181260753/Inktober-2023",
@@ -569,7 +573,7 @@
     },
     {
       "filename": "Ink october/2022 - adobe live france/ade43d154293383.633f2deccf8f7.webp",
-      "category": "graphics",
+      "category": "inktober",
       "title": "Inktober 2022 — Adobe Live France (22 dessins)",
       "year": 2022,
       "description": "Série de 22 dessins réalisés pour le défi Inktober 2022 — Adobe Live France.",
@@ -600,7 +604,7 @@
     },
     {
       "filename": "Ink october/2022/1d6141154503075.6343d6e9b83de.jpg",
-      "category": "graphics",
+      "category": "inktober",
       "title": "Inktober 2022 (Série complète — 5 dessins)",
       "year": 2022,
       "description": "Série complète des 5 dessins réalisés au fil du défi Inktober 2022 (encre et illustration).",
@@ -738,7 +742,7 @@
     },
     {
       "filename": "Ink october/2021/afae30128471671.6160a1e57b572.jpg",
-      "category": "graphics",
+      "category": "inktober",
       "title": "Inktober 2021 (Série complète — 29 dessins)",
       "year": 2021,
       "description": "Série complète des 29 dessins réalisés au fil du défi Inktober 2021.",
