@@ -1,0 +1,488 @@
+/* ============================================
+   MENTIONS LÉGALES (mentions-legales.html)
+   ============================================ */
+.legal-page-body {
+  min-height: 100vh;
+}
+
+.legal-page-main {
+  padding: var(--spacing-xl) var(--spacing-md) var(--spacing-2xl);
+  position: relative;
+  z-index: 1;
+}
+
+.legal-page-header {
+  margin-bottom: var(--spacing-lg);
+  text-align: center;
+}
+
+.legal-page-updated {
+  max-width: 40rem;
+  margin: var(--spacing-sm) auto 0;
+  font-size: 0.9rem;
+  color: #d2dae2;
+  line-height: 1.5;
+}
+
+.legal-page-article {
+  padding: var(--spacing-lg) var(--spacing-md);
+  max-width: 48rem;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.legal-page-article h2 {
+  font-family: var(--font-heading, "Cinzel", serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-brand-neon, #00ffe0);
+  margin: var(--spacing-lg) 0 var(--spacing-sm);
+  text-shadow: none;
+}
+
+.legal-page-article h2:first-of-type {
+  margin-top: 0;
+}
+
+.legal-page-article p {
+  color: #e8ecf0;
+  line-height: 1.65;
+  margin: 0 0 var(--spacing-md);
+  font-size: 1rem;
+}
+
+.legal-page-article a {
+  color: #f472b6;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.legal-page-article a:hover {
+  color: #00ffe0;
+}
+
+.legal-placeholder {
+  padding: 0 0.25rem;
+  background: rgba(255, 200, 100, 0.12);
+  border-radius: 4px;
+  color: #fcd34d;
+}
+
+.legal-note {
+  font-size: 0.9rem;
+  color: #c8d0d8 !important;
+  font-style: italic;
+}
+
+.legal-page-back {
+  text-align: center;
+  margin-top: var(--spacing-xl);
+}
+
+.legal-page-back-link {
+  display: inline-block;
+  font-weight: 600;
+}
+
+/* ============================================
+   BUILD LOG (build-log.html) — proof of work journal
+   ============================================ */
+.build-log-body .build-log-main {
+  padding-top: calc(var(--spacing-xl) + 2rem);
+}
+
+.build-log-header {
+  margin-bottom: var(--spacing-xl);
+}
+
+.build-log-title {
+  font-family: var(--font-heading, "Cinzel", serif);
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-weight: 700;
+  color: var(--color-brand-neon, #00ffe0);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 0 0 var(--spacing-xs);
+}
+
+.build-log-subtitle {
+  margin: 0 0 var(--spacing-md);
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
+  color: var(--color-brand-rose, #f472b6);
+  text-transform: none;
+}
+
+.build-log-lead {
+  max-width: 42rem;
+  margin: 0 auto var(--spacing-sm);
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: #e8ecf0;
+  text-align: center;
+}
+
+.build-log-updated {
+  margin-top: var(--spacing-sm) !important;
+}
+
+/* Journal : deux corps FR/EN — FR par défaut (sans quoi les deux blocs peuvent s’afficher si [lang] ne matche pas). */
+.build-log-body-locale--en {
+  display: none !important;
+}
+
+html[lang="en"] .build-log-body-locale--fr {
+  display: none !important;
+}
+
+html[lang="en"] .build-log-body-locale--en {
+  display: block !important;
+}
+
+.build-log-lang-note {
+  max-width: 44rem;
+  margin: 0 auto var(--spacing-xl);
+  padding: var(--spacing-md) var(--spacing-lg);
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: #b8c4d0;
+  text-align: center;
+}
+
+.build-log-lang-note strong {
+  color: #e8ecf0;
+}
+
+.build-log-entry .build-log-meta {
+  font-size: 0.85rem;
+  color: #a8b4c4;
+  margin: calc(-1 * var(--spacing-sm)) 0 var(--spacing-md);
+}
+
+.build-log-h3 {
+  font-family: var(--font-heading, "Cinzel", serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #f472b6;
+  margin: var(--spacing-lg) 0 var(--spacing-sm);
+  text-shadow: none;
+}
+
+.build-log-list {
+  margin: 0 0 var(--spacing-md);
+  padding-left: 1.35rem;
+  color: #e8ecf0;
+  line-height: 1.65;
+}
+
+.build-log-list li {
+  margin-bottom: 0.5rem;
+}
+
+.build-log-takeaway {
+  margin-top: var(--spacing-lg) !important;
+  padding: var(--spacing-md);
+  border-left: 3px solid rgba(0, 255, 224, 0.45);
+  background: rgba(0, 255, 224, 0.06);
+  border-radius: 0 8px 8px 0;
+}
+
+.build-log-footer-note {
+  text-align: center;
+  max-width: 36rem;
+  margin: var(--spacing-xl) auto var(--spacing-md);
+  color: #c8d0d8;
+  line-height: 1.6;
+}
+
+.build-log-footer-note a {
+  color: #f472b6;
+  font-weight: 600;
+}
+
+.footer--subpage {
+  margin-top: var(--spacing-xl);
+  padding: var(--spacing-lg) 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-content--compact {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.footer-site-nav {
+  margin: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/*
+ * .footer-text = flex column (plusieurs blocs de texte).
+ * Ici le <p> contient uniquement des liens + séparateurs : il faut une rangée, pas une colonne
+ * (sinon chaque <a> et chaque <span>·</span> devient un item empilé).
+ */
+.footer-site-nav .footer-text.footer-text--compact,
+.footer-text.footer-text--compact {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  row-gap: 0.35rem;
+  width: 100%;
+  max-width: min(100%, 48rem);
+  margin: 0 auto;
+  padding: 0 var(--spacing-sm);
+  box-sizing: border-box;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  text-align: center;
+}
+
+.footer-text--compact a {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+}
+
+.footer-text--compact a:hover {
+  color: var(--color-brand-neon);
+}
+
+.footer-text--compact a[aria-current="page"] {
+  color: var(--color-brand-neon, #00ffe0);
+  font-weight: 700;
+}
+
+.footer-cookies-line {
+  margin: 0.65rem 0 0;
+  font-size: 0.82rem;
+  text-align: center;
+}
+
+.footer-content--compact .footer-cookies-line {
+  margin: 0;
+}
+
+.footer-cookies-line a {
+  color: var(--color-text-secondary, #cbd5e1);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.footer-cookies-line a:hover {
+  color: var(--color-brand-rose, #f472b6);
+}
+
+.footer-subtitle--copyright {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  font-size: 0.85rem !important;
+  color: var(--color-text-secondary, #cbd5e1) !important;
+  white-space: nowrap;
+}
+
+.nav-link[aria-current="page"] {
+  color: var(--color-brand-neon, #00ffe0);
+  font-weight: 700;
+}
+
+/* ============================================
+   SERVICES (services.html)
+   ============================================ */
+.services-page-body .services-page-main {
+  padding-top: calc(var(--spacing-xl) + 2rem);
+}
+
+.services-page-header {
+  margin-bottom: var(--spacing-xl);
+  text-align: center;
+}
+
+.services-page-title {
+  font-family: var(--font-heading, "Cinzel", serif);
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-weight: 700;
+  color: var(--color-brand-neon, #00ffe0);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 0 0 var(--spacing-xs);
+}
+
+.services-page-lead {
+  max-width: 36rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.services-page-grid {
+  display: grid;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
+}
+
+@media (min-width: 640px) {
+  .services-page-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.services-page-card {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  overflow: hidden;
+  padding: 0;
+  text-decoration: none;
+  color: inherit;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.services-page-card:hover,
+.services-page-card:focus {
+  transform: translateY(-2px);
+}
+
+.services-page-card:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+}
+
+.services-page-card-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.services-page-card-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.services-page-card-logo-wrap {
+  position: absolute;
+  right: var(--spacing-sm);
+  bottom: var(--spacing-sm);
+  width: min(34%, 140px);
+  border-radius: 10px;
+  padding: 6px;
+  background: rgba(12, 14, 18, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.services-page-card-logo {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 6px;
+}
+
+.services-page-card-media--logo-only {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  background: linear-gradient(
+    145deg,
+    rgba(0, 255, 224, 0.08) 0%,
+    rgba(244, 114, 182, 0.1) 50%,
+    rgba(26, 26, 26, 0.9) 100%
+  );
+}
+
+.services-page-card-media--logo-only .services-page-card-logo-wrap,
+.services-page-card-logo-wrap--g2p {
+  position: static;
+  width: min(46%, 170px);
+}
+
+.services-page-card-logo-wrap--g2p {
+  background: #fff;
+  padding: 10px;
+}
+
+.services-page-card-media--g2p {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  aspect-ratio: 16 / 10;
+  background: linear-gradient(
+    145deg,
+    rgba(244, 114, 182, 0.12) 0%,
+    rgba(0, 255, 224, 0.08) 50%,
+    rgba(26, 26, 26, 0.9) 100%
+  );
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.services-page-card-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1rem, 4vw, 1.75rem);
+}
+
+.services-page-card-tools img {
+  width: clamp(40px, 12vw, 52px);
+  height: auto;
+  opacity: 0.92;
+  filter: none;
+}
+
+.services-page-card-tools-caption {
+  margin: 0;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary, #c4c4c4);
+}
+
+.services-page-card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1;
+  padding: var(--spacing-md) var(--spacing-lg) var(--spacing-lg);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.services-page-card-title {
+  font-family: var(--font-heading, "Cinzel", serif);
+  font-size: 1.35rem;
+  margin: 0 0 var(--spacing-sm);
+  color: var(--color-brand-rose, #f472b6);
+}
+
+.services-page-card-desc {
+  margin: 0 0 var(--spacing-md);
+  color: var(--color-text-secondary);
+  line-height: 1.55;
+  flex: 1;
+}
+
+.services-page-card-cta {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-brand-neon, #00ffe0);
+}
+

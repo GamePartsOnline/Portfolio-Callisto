@@ -1,0 +1,92 @@
+---
+import "../../styles/footer.css";
+
+export interface Props {
+  isHome?: boolean;
+  activeRoute?: "home" | "portfolio" | "services" | "build-log" | "mentions" | "404";
+  hasCookieBanner?: boolean;
+  i18n?: boolean;
+}
+
+const {
+  isHome = false,
+  activeRoute = "home",
+  hasCookieBanner = false,
+  i18n = true,
+} = Astro.props;
+
+const prefix = isHome ? "" : "/index.html";
+---
+
+<footer class="footer footer--subpage" role="contentinfo">
+  <div class="container">
+    <div class="footer-content footer-content--compact">
+      <nav class="footer-site-nav" aria-label="Liens du site">
+        <p class="footer-text footer-text--compact">
+          <a
+            href={`${prefix}#welcome`}
+            aria-current={activeRoute === "home" ? "page" : undefined}
+            data-i18n={i18n ? "nav.home" : undefined}
+          >
+            Accueil
+          </a>
+          <span aria-hidden="true"> · </span>
+          <a
+            href={isHome ? "#portfolio" : "/portfolio.html"}
+            aria-current={activeRoute === "portfolio" ? "page" : undefined}
+            data-i18n={i18n ? "nav.portfolio" : undefined}
+          >
+            Portfolio
+          </a>
+          <span aria-hidden="true"> · </span>
+          <a
+            href="/services.html"
+            aria-current={activeRoute === "services" ? "page" : undefined}
+            data-i18n={i18n ? "nav.services" : undefined}
+          >
+            Services
+          </a>
+          <span aria-hidden="true"> · </span>
+          <a
+            href="/build-log.html"
+            aria-current={activeRoute === "build-log" ? "page" : undefined}
+            data-i18n={i18n ? "nav.buildLog" : undefined}
+          >
+            Journal technique
+          </a>
+          <span aria-hidden="true"> · </span>
+          <a
+            href="/mentions-legales.html"
+            aria-current={activeRoute === "mentions" ? "page" : undefined}
+            data-i18n={i18n ? "footer.legal" : undefined}
+          >
+            Mentions légales
+          </a>
+        </p>
+      </nav>
+      {
+        activeRoute !== "404" && (
+          <p class="footer-cookies-line">
+            {hasCookieBanner ? (
+              <a
+                href="#"
+                data-cookie-open
+                data-i18n={i18n ? "footer.cookies" : undefined}
+              >
+                Paramètres des cookies
+              </a>
+            ) : (
+              <a
+                href="/mentions-legales.html#cookies"
+                data-i18n={i18n ? "cookieBanner.more" : undefined}
+              >
+                Mentions légales et cookies
+              </a>
+            )}
+          </p>
+        )
+      }
+      <p class="footer-subtitle footer-subtitle--copyright">&copy; 2026 Callisto Arts</p>
+    </div>
+  </div>
+</footer>

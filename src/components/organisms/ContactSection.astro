@@ -1,0 +1,56 @@
+---
+import "../../styles/contact.css";
+import SectionTitle from "../atoms/SectionTitle.astro";
+---
+
+<section id="contact" class="contact section" aria-labelledby="contact-title">
+  <div class="container">
+    <SectionTitle id="contact-title" title="Contact" i18nKey="contact.title" />
+    <div class="contact-content">
+      <div class="contact-panel">
+        <div class="contact-panel__main">
+          <h3 data-i18n="contact.h3">Discutons-en</h3>
+          <p class="contact-lead" data-i18n="contact.lead">
+            Pour des commandes, du freelance art ou dev, ou des questions demoscene : écrivez-moi.
+          </p>
+          <p class="contact-cta-wrap">
+            <a
+              href="mailto:callisto.gfx@gmail.com"
+              class="cta-link cta-link--primary"
+              data-i18n="contact.emailCta"
+            >
+              Écrire à Callisto
+            </a>
+            <a
+              href="https://ko-fi.com/callistoarts/"
+              class="cta-link"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-i18n="contact.kofiCta"
+            >
+              Soutenir sur Ko-fi
+            </a>
+          </p>
+        </div>
+        <div class="contact-panel__details">
+          <h4 class="contact-details-heading" data-i18n="contact.detailsHeading">
+            Coordonnées
+          </h4>
+          <div class="contact-info">
+            <p id="contact-company"><strong>GPO SARL</strong></p>
+            <p id="contact-address">
+              4 rue des Jardins<br />
+              51330 Givry-en-Argonne, France
+            </p>
+            <p id="contact-email">
+              <a href="mailto:callisto.gfx@gmail.com">callisto.gfx@gmail.com</a>
+            </p>
+            <p id="contact-phone">
+              <a href="tel:+33673540394">06 73 54 03 94</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

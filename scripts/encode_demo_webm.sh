@@ -12,7 +12,7 @@ if [[ ${#yid} -ne 11 ]]; then
 fi
 
 root="$(cd "$(dirname "$0")/.." && pwd)"
-out_dir="${root}/assets/videos/webm"
+out_dir="${root}/public/assets/videos/webm"
 out="${out_dir}/${yid}.webm"
 
 mkdir -p "${out_dir}"

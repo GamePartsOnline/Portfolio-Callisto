@@ -1,0 +1,226 @@
+/* ============================================
+   MODE NUIT ATELIER (nuit-atelier.html)
+   Overlays, toggle, banner, body.night
+   ============================================ */
+:root {
+  --candle: #ff9d3a;
+  --candle2: #ffcc66;
+  --night-bg: #04030a;
+}
+
+/* Overlays — visibles uniquement en body.night */
+.atelier-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1.5s ease;
+}
+#vignette {
+  z-index: 9000;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 20%,
+    rgba(4, 3, 10, 0.4) 60%,
+    rgba(4, 3, 10, 0.85) 100%
+  );
+}
+body.night #vignette {
+  opacity: 1;
+}
+
+/* Lumière sous le curseur (bougie) : désactivée */
+#candle-light {
+  display: none !important;
+}
+
+#grain {
+  z-index: 9001;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
+  background-size: 256px;
+  mix-blend-mode: overlay;
+}
+body.night #grain {
+  opacity: 1;
+}
+
+#stars-overlay {
+  z-index: 8998;
+}
+body.night #stars-overlay {
+  opacity: 1;
+}
+
+/* Toggle Mode Atelier */
+.atelier-toggle {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+.atelier-toggle-btn {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 157, 58, 0.3);
+  background: rgba(4, 3, 10, 0.8);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+.atelier-toggle-btn:hover {
+  border-color: var(--candle);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+.atelier-toggle-btn.on {
+  border-color: var(--candle);
+  background: rgba(255, 157, 58, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  animation: candleGlow 2s ease-in-out infinite alternate;
+}
+@keyframes candleGlow {
+  from {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  }
+  to {
+    box-shadow: 0 4px 22px rgba(0, 0, 0, 0.55);
+  }
+}
+.toggle-label {
+  font-size: 0.55rem;
+  letter-spacing: 0.14em;
+  color: rgba(200, 216, 232, 0.35);
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: color 0.3s;
+}
+.atelier-toggle-btn.on + .toggle-label {
+  color: var(--candle);
+}
+
+/* Night mode info banner */
+.night-banner {
+  position: fixed;
+  bottom: 110px;
+  right: 32px;
+  max-width: 220px;
+  background: rgba(4, 3, 10, 0.95);
+  border: 1px solid rgba(255, 157, 58, 0.2);
+  border-radius: 6px;
+  padding: 14px 16px;
+  z-index: 9998;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition:
+    opacity 0.5s,
+    transform 0.5s;
+  backdrop-filter: blur(10px);
+}
+.night-banner.vis {
+  opacity: 1;
+  transform: translateY(0);
+}
+.night-banner p {
+  font-size: 0.62rem;
+  line-height: 1.7;
+  color: rgba(255, 200, 120, 0.6);
+  letter-spacing: 0.08em;
+}
+.night-banner strong {
+  color: var(--candle);
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+}
+
+/* Body nuit : fond + filtre global */
+body.night {
+  background: var(--night-bg);
+  filter: sepia(0.15) brightness(0.88);
+  transition:
+    background 1.5s ease,
+    filter 1.5s ease;
+}
+
+/* Unify titles / neon → candle in night mode */
+body.night .section-title,
+body.night .section-title .neon-text {
+  color: #ffe8c8 !important;
+  text-shadow: none;
+}
+
+body.night .hero-title,
+body.night .hero-subtitle,
+body.night .hero-tagline {
+  color: #ffe8c8 !important;
+  text-shadow: none !important;
+}
+
+body.night .hero-subtitle__sep {
+  color: rgba(255, 200, 160, 0.45) !important;
+  text-shadow: none;
+}
+body.night .section-title::after,
+body.night .glow-line {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--candle),
+    transparent
+  ) !important;
+  box-shadow: none !important;
+}
+
+/* Grand trait en mode nuit (teinte bougie) */
+body.night .section-title-wrap::before {
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(255, 200, 120, 0.02) 25%,
+    rgba(255, 180, 80, 0.06) 60%,
+    rgba(255, 157, 58, 0.08) 85%,
+    rgba(255, 180, 80, 0.04) 100%
+  ) !important;
+  border-color: rgba(255, 157, 58, 0.12) !important;
+  box-shadow: none !important;
+}
+body.night .filter-btn:hover,
+body.night .filter-btn.active {
+  border-color: rgba(255, 157, 58, 0.5);
+  color: var(--candle);
+  box-shadow: none;
+}
+body.night .contact-card {
+  border-color: rgba(255, 157, 58, 0.25);
+  box-shadow: none;
+}
+body.night footer {
+  border-top-color: rgba(255, 157, 58, 0.15);
+}
+
+/* Reduced motion for users who prefer less animation */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
+

@@ -1,0 +1,26 @@
+---
+export interface Props {
+  year: string;
+  tag: string;
+  tagI18n: string;
+  variant?: "default" | "prize" | "prize-cert" | "cert";
+  alignRight?: boolean;
+}
+
+const { year, tag, tagI18n, variant = "default", alignRight = false } = Astro.props;
+
+const classes = [
+  "journey-tl-item",
+  (variant === "prize" || variant === "prize-cert") && "journey-prize",
+  (variant === "cert" || variant === "prize-cert") && "journey-certificate",
+  alignRight && "journey-right",
+];
+---
+
+<div class:list={classes} role="listitem">
+  <article class="journey-tl-card">
+    <div class="journey-tl-year">{year}</div>
+    <span class="journey-tl-tag" data-i18n={tagI18n}>{tag}</span>
+    <slot />
+  </article>
+</div>

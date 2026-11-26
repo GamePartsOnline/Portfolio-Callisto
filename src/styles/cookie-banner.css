@@ -1,0 +1,118 @@
+/* ============================================
+   COOKIE BANNER (RGPD)
+   ============================================ */
+.cookie-banner {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10050;
+  padding: var(--spacing-md);
+  background: rgba(12, 14, 20, 0.97);
+  border-top: 1px solid rgba(0, 255, 224, 0.2);
+  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.cookie-banner[hidden] {
+  display: none !important;
+}
+
+.cookie-banner__inner {
+  max-width: 56rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.cookie-banner__text {
+  margin: 0;
+  color: #e8ecf0;
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.cookie-banner__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.cookie-banner__btn {
+  cursor: pointer;
+  font-family: var(--font-family, inherit);
+  font-size: var(--font-size-sm, 0.9rem);
+  font-weight: 600;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  min-height: var(--touch-target-min, 44px);
+  border-radius: 999px;
+  border: 1px solid transparent;
+  transition:
+    color 0.2s,
+    background 0.2s,
+    border-color 0.2s;
+  touch-action: manipulation;
+}
+
+.cookie-banner__btn:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+.cookie-banner__btn--primary {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 255, 224, 0.25),
+    rgba(244, 114, 182, 0.2)
+  );
+  border-color: rgba(0, 255, 224, 0.45);
+  color: #f0fdf4;
+}
+
+.cookie-banner__btn--primary:hover {
+  border-color: var(--color-brand-neon, #00ffe0);
+  box-shadow: none;
+}
+
+.cookie-banner__btn--secondary {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.25);
+  color: #c8d0d8;
+}
+
+.cookie-banner__btn--secondary:hover {
+  border-color: rgba(255, 255, 255, 0.45);
+  color: #fff;
+}
+
+.cookie-banner__more {
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+.cookie-banner__more a {
+  color: #f472b6;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.cookie-banner__more a:hover {
+  color: var(--color-brand-neon, #00ffe0);
+}
+
+@media (max-width: 767px) {
+  .cookie-banner__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .cookie-banner__btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+

@@ -1,0 +1,75 @@
+---
+import "../../styles/hero.css";
+---
+
+<section id="welcome" class="hero">
+  <div class="hero-content">
+    <h1 class="hero-title">
+      <span class="hero-greeting" data-i18n="hero.greeting">
+        Bienvenue dans mon univers
+      </span>
+      <span class="hero-name">Callisto Arts</span>
+    </h1>
+    <p class="hero-subtitle">
+      <span class="hero-subtitle__item" data-i18n="hero.subtitle">
+        Artiste numérique | Graphiste &amp; UI Designer | Développeuse full-stack &amp; IA
+      </span>
+    </p>
+    <p class="hero-tagline" data-i18n="hero.tagline">
+      Du pinceau à l'atelier, de la demoscene au web : 14 ans de création visuelle, d'impression numérique et d'interfaces.
+    </p>
+    <div class="hero-subtitle-line" aria-hidden="true"></div>
+
+    <nav class="hero-cta" aria-label="Actions principales" data-i18n-aria="hero.ctaNav">
+      <a href="/portfolio.html" class="cta-link" data-i18n="hero.ctaPortfolio">Portfolio</a>
+      <a href="/services.html" class="cta-link" data-i18n="hero.ctaServices">Services</a>
+      <a href="#contact" class="cta-link cta-link--primary" data-i18n="hero.ctaContact">Contact</a>
+    </nav>
+
+    <div class="hero-3d-container">
+      <div class="glass-3d-card hero-slide-wrapper">
+        <div class="hero-slides" id="heroSlides" aria-live="polite"></div>
+        <button
+          type="button"
+          class="hero-slide-btn hero-slide-prev"
+          aria-label="Image précédente"
+          data-i18n-aria="hero.carouselPrev"
+        >
+          ‹
+        </button>
+        <button
+          type="button"
+          class="hero-slide-btn hero-slide-next"
+          aria-label="Image suivante"
+          data-i18n-aria="hero.carouselNext"
+        >
+          ›
+        </button>
+        <div
+          class="hero-slide-dots"
+          role="group"
+          aria-label="Navigation du carrousel d’images"
+          data-i18n-aria="hero.carouselDotsAria"
+        ></div>
+        <div class="glass-shine"></div>
+      </div>
+    </div>
+
+    <button
+      type="button"
+      class="hero-scroll"
+      aria-label="Faire défiler vers À propos"
+      data-i18n-aria="hero.scrollAria"
+    >
+      <span data-i18n="hero.scroll">Défiler</span>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path
+          d="M7 13l5 5 5-5M7 6l5 5 5-5"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+        ></path>
+      </svg>
+    </button>
+  </div>
+</section>

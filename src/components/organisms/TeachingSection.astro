@@ -1,0 +1,54 @@
+---
+import SectionTitle from "../atoms/SectionTitle.astro";
+---
+
+<section id="teaching" class="teaching section" aria-labelledby="teaching-title">
+  <div class="container">
+    <SectionTitle
+      id="teaching-title"
+      title="Transmission & Encadrement"
+      i18nKey="teaching.title"
+    />
+    <div class="teaching-content">
+      <div class="card glass-card">
+        <div class="card-content">
+          <h3 data-i18n="teaching.h3">
+            Encadrement de stagiaires (GPO SARL) &amp; partage de savoir-faire
+          </h3>
+          <p class="about-text" data-i18n="teaching.intro">
+            Savoir passer du pinceau et de la restauration d'atelier à la PAO, au code et à l'IA forge une approche concrète et adaptable. Forte de plus de 14 ans de pratique chez GPO SARL (certifiée TOSA Graphic Illustrator), j'encadre des stagiaires en atelier et je partage mon expérience en graphisme, PAO et culture numérique.
+          </p>
+          <p class="teaching-cta-wrap">
+            <a href="#contact" class="cta-link cta-link--primary" data-i18n="teaching.cta">
+              Échanger sur un projet ou une candidature
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <div class="about-cards" aria-label="Domaines enseignés" data-i18n-aria="teaching.cardsAria">
+        <article class="about-card glass-card">
+          <h3 data-i18n="teaching.card1Title">PAO, Print &amp; Vectoriel</h3>
+          <p data-i18n="teaching.card1Desc">
+            Adobe Illustrator, Photoshop, InDesign : charte graphique, typographie, composition, préparation de fichiers prépresse et impression numérique (VersaWorks).
+          </p>
+          <span class="about-card-tag" data-i18n="teaching.card1Tag">Atelier &amp; Print</span>
+        </article>
+        <article class="about-card glass-card">
+          <h3 data-i18n="teaching.card2Title">Illustration, UI &amp; IA</h3>
+          <p data-i18n="teaching.card2Desc">
+            Dessin numérique, théorie des couleurs, ergonomie d'interfaces (UI/UX), bases HTML/CSS, culture demoscene et intégration des outils d'IA créative.
+          </p>
+          <span class="about-card-tag" data-i18n="teaching.card2Tag">Numérique &amp; UI</span>
+        </article>
+        <article class="about-card glass-card">
+          <h3 data-i18n="teaching.card3Title">Pédagogie &amp; Interventions</h3>
+          <p data-i18n="teaching.card3Desc">
+            Apprentissage par projets concrets, vulgarisation technique, encadrement d'apprenants et prise de parole (Corsica Game Week 2026 avec MO5.com).
+          </p>
+          <span class="about-card-tag" data-i18n="teaching.card3Tag">Transmission</span>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,47 @@
+---
+import "../../styles/cookie-banner.css";
+
+export interface Props {
+  moreHref?: string;
+}
+
+const { moreHref = "/mentions-legales.html#cookies" } = Astro.props;
+---
+
+<div
+  id="cookie-banner"
+  class="cookie-banner"
+  role="region"
+  aria-label="Bandeau cookies"
+  data-i18n-aria="cookieBanner.aria"
+  aria-hidden="true"
+  hidden
+  inert
+>
+  <div class="cookie-banner__inner container">
+    <p class="cookie-banner__text" data-i18n="cookieBanner.text">
+      Nous utilisons des cookies et technologies similaires pour le fonctionnement du site (cookies essentiels) et, si vous acceptez, pour les contenus intégrés (ex. vidéos YouTube) et pour améliorer votre expérience. Vous pouvez refuser les cookies non essentiels ou en savoir plus dans les mentions légales.
+    </p>
+    <div class="cookie-banner__actions">
+      <button
+        type="button"
+        id="cookie-reject-nonessential"
+        class="cookie-banner__btn cookie-banner__btn--secondary"
+        data-i18n="cookieBanner.reject"
+      >
+        Refuser les cookies non essentiels
+      </button>
+      <button
+        type="button"
+        id="cookie-accept-all"
+        class="cookie-banner__btn cookie-banner__btn--primary"
+        data-i18n="cookieBanner.accept"
+      >
+        Tout accepter
+      </button>
+    </div>
+    <p class="cookie-banner__more">
+      <a href={moreHref} data-i18n="cookieBanner.more">Mentions légales et cookies</a>
+    </p>
+  </div>
+</div>

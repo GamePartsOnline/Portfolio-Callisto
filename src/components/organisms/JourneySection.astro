@@ -1,0 +1,183 @@
+---
+import "../../styles/journey.css";
+import TimelineItem from "../molecules/TimelineItem.astro";
+---
+
+<section id="journey" class="journey section" aria-labelledby="journey-title">
+  <div class="container">
+    <div class="journey-scanlines" aria-hidden="true"></div>
+
+    <header class="journey-header">
+      <h2 id="journey-title" data-i18n="journey.title">Mon <span>parcours</span></h2>
+      <p data-i18n="journey.subtitle">
+        // CALLISTO · FRÉDÉRIQUE CHARTON · ART NUMÉRIQUE · DEMOSCENE · GPO SARL · CRÉATION IA
+      </p>
+      <div class="journey-header-line" aria-hidden="true"></div>
+      <p class="journey-cta" data-i18n="journey.cta">
+        Prix et étapes marquantes ci-dessous :
+        <a href="#portfolio">voir les réalisations</a>
+        ou
+        <a href="#contact">échanger sur un projet</a>.
+      </p>
+    </header>
+
+    <div class="journey-legend" aria-label="Légende de la frise" data-i18n-aria="journey.legendAria">
+      <div class="journey-legend-item journey-l-neon">
+        <div class="journey-legend-dot" aria-hidden="true"></div>
+        <span data-i18n="journey.legendEvent">Événement</span>
+      </div>
+      <div class="journey-legend-item journey-l-gold">
+        <div class="journey-legend-dot" aria-hidden="true"></div>
+        <span data-i18n="journey.legendPrizes">Prix &amp; distinctions</span>
+      </div>
+      <div class="journey-legend-item journey-l-rose">
+        <div class="journey-legend-dot" aria-hidden="true"></div>
+        <span data-i18n="journey.legendCerts">Certifications &amp; diplômes</span>
+      </div>
+    </div>
+
+    <div class="journey-horizontal-bar" aria-hidden="true"></div>
+
+    <div class="journey-timeline" role="list">
+      <TimelineItem year="2026" tag="En cours" tagI18n="journey.y2026.tag">
+        <div class="journey-tl-content" data-i18n="journey.y2026.content">
+          <strong>EVOKE 2026</strong> (août 2026), 8e place :
+          <a href="/portfolio.html?open=Sentinel%20of%20Abyss"><em>Sentinel of Abyss</em></a>.<br />
+          <strong>Shadow Party 2026</strong> (Givry-en-Argonne, juillet 2026) :
+          <a href="/portfolio.html?open=Re_soul_tion"><em>Re_soul_tion</em></a> (Graphismes Newschool),
+          <a href="/portfolio.html?open=Missyou_Shadow_and_Callisto"><em>Missyou_Shadow_and_Callisto</em></a> (Amiga OCS/ECS Oldschool)
+          et <a href="/portfolio.html?open=Farmer%20work%20hard"><em>Farmer work hard @t Givry en argonne !!!</em></a> (Photo).<br /><br />
+          <strong>CORSICA GAME WEEK</strong> (Porto-Vecchio, 17 avril 2026) :
+          conférence demoscene et démonstration shaders / live coding avec
+          <a href="https://www.mo5.com" target="_blank" rel="noopener noreferrer">MO5.com</a>,
+          <strong>Fantasià</strong> et <strong>GPO SARL</strong>, <strong>Callisto</strong> (avec
+          <strong>Marex, Robin, Douglas Alves « Doug »</strong>).<br />
+          <strong>Revision 2026</strong> (avril 2026) :
+          <a href="/portfolio.html?open=Korean%20Fish">Korean Fish</a>,
+          <a href="/portfolio.html?open=Serpentin%20De%20Moire">Serpentin De Moire</a>,
+          <a href="/portfolio.html?open=Floating%20Points">Floating Points</a>.<br />
+          <strong>Rsync</strong> (Belgique, janvier 2026), 5e place Graphismes modernes :
+          <a href="/portfolio.html?open=IRL%20Gfx%20Squirrel"><em>IRL Gfx Squirrel Is Here</em></a>.<br /><br />
+          <strong>Création &amp; Maîtrise IA</strong> : certification Anthropic Academy (Modèles &amp; Fondamentaux, modèle 4D), workflows créatifs et outils numériques.
+        </div>
+      </TimelineItem>
+
+      <TimelineItem year="2025" tag="Prix" tagI18n="journey.y2025.tag" variant="prize" alignRight>
+        <ul class="journey-prize-list" data-i18n="journey.y2025.list">
+          <li class="journey-place-2">
+            2e @ Rsync : <a href="/portfolio.html?open=Symphony%20Of%20The%20Abyss"><em>Symphony of the Abyss</em></a> (Graphismes)
+          </li>
+          <li>10e @ Revision : <a href="/portfolio.html?open=Pascal"><em>Pascal's Lemur Leap</em></a></li>
+          <li>
+            9e @ Revision : invitation <a href="/portfolio.html?open=SHADOW%20PARTY%20INVITATION%202025"><em>Shadow Party 2025</em></a>
+          </li>
+          <li>Sélection Inércia : <a href="/portfolio.html?open=Sky%20Code"><em>Sky Code</em></a></li>
+          <li>Inércia genAI : <a href="/portfolio.html?open=Inercia%202925"><em>Inercia 2925</em></a></li>
+          <li>
+            6e @ Shadow Party : Graphismes Oldschool,
+            <a href="/portfolio.html?open=Thanks%20All"><em>Thanks All</em></a> (Amiga)
+          </li>
+        </ul>
+      </TimelineItem>
+
+      <TimelineItem year="2024" tag="Prix" tagI18n="journey.y2024.tag" variant="prize">
+        <ul class="journey-prize-list" data-i18n="journey.y2024.list">
+          <li class="journey-place-1">
+            1re @ Rsync : <a href="/portfolio.html?open=Chromatic%20resonance"><em>Chromatic resonance</em></a> (Graphismes)
+          </li>
+          <li>7e @ Revision : <a href="/portfolio.html?open=Pixel%20Mouse"><em>The Pixel Mouse Love Story</em></a></li>
+          <li>12e @ Revision Paintover : <a href="/portfolio.html?open=Refresh"><em>Refresh</em></a></li>
+          <li>18e @ Revision Photo : <a href="/portfolio.html?open=Convergence"><em>Convergence</em></a></li>
+        </ul>
+      </TimelineItem>
+
+      <TimelineItem year="2023" tag="Prix + Certification" tagI18n="journey.y2023.tag" variant="prize-cert" alignRight>
+        <ul class="journey-prize-list" data-i18n="journey.y2023.list">
+          <li>9e Animation/Vidéo @ Revision : <a href="/portfolio.html?open=Cyberpin%20by%20Callisto"><em>Cyberpin</em></a></li>
+          <li>
+            11e Graphismes modernes @ Revision :
+            <a href="/portfolio.html?open=Howl%20Of%20The%20Forest"><em>Howl Of The Forest</em></a>
+          </li>
+          <li>16e Photo @ Revision : <a href="/portfolio.html?open=Balls%20Of%20Steel"><em>Balls Of Steel</em></a></li>
+          <li>
+            5e @ SESSIONS in C4 LAN : <a href="/portfolio.html?open=Luna%20Fly"><em>Luna Fly</em></a> (graphismes combinés)
+          </li>
+        </ul>
+        <div class="journey-tl-content journey-tl-content-spaced" data-i18n="journey.y2023.extra">
+          <strong>InDesign</strong> : certification MJM. Premiers pas avec l'IA générative.
+        </div>
+      </TimelineItem>
+
+      <TimelineItem year="2022" tag="Prix" tagI18n="journey.y2022.tag" variant="prize">
+        <ul class="journey-prize-list" data-i18n="journey.y2022.list">
+          <li class="journey-place-1">
+            1re Graphismes Freestyle @ Inércia :
+            <a href="/portfolio.html?open=Elevation%202079"><em>Elevation 2079</em></a>
+          </li>
+          <li class="journey-place-3">
+            3e Graphismes Nuskool @ Syntax : <a href="/portfolio.html?open=teddy%20BEER"><em>Teddy BEER</em></a>
+          </li>
+        </ul>
+        <div class="journey-tl-content journey-tl-content-spaced" data-i18n="journey.y2022.extra">
+          Inktober, défis créatifs et participation à Adobe Live.
+        </div>
+      </TimelineItem>
+
+      <TimelineItem year="2021" tag="Prix + Certifications" tagI18n="journey.y2021.tag" variant="prize-cert" alignRight>
+        <ul class="journey-prize-list" data-i18n="journey.y2021.list">
+          <li class="journey-place-1">
+            1re @ Assembly Winter Online :
+            <a href="/portfolio.html?open=You%20Seem%20So%20Delicious"><em>You Seem So Delicious</em></a> (Graphismes)
+          </li>
+          <li>5e @ Tokyo Demo Fest : <a href="/portfolio.html?open=Sharko"><em>Sharko</em></a> (Graphismes)</li>
+        </ul>
+        <div class="journey-tl-content journey-tl-content-spaced" data-i18n="journey.y2021.extra">
+          <strong>TOSA Illustrator</strong>.<br />
+          Galerie d'art au Luxembourg : 3 peintures numériques exposées.<br />
+          <a href="/portfolio.html?open=LOGO%20TOKYO%20DEMO%20FEST%202021">Logo, t-shirts et trophées <strong>Tokyo Demo Fest 2021</strong></a>.<br />
+          Montage vidéo pour la <strong>Shadow Party</strong>.
+        </div>
+      </TimelineItem>
+
+      <TimelineItem year="2020" tag="Communauté" tagI18n="journey.y2020.tag">
+        <div class="journey-tl-content" data-i18n="journey.y2020.content">
+          Année COVID : demoparties en ligne.<br />
+          Entrée dans l'administration de <strong>demoscene.fr</strong> et de la <strong>Shadow Party</strong>.
+        </div>
+      </TimelineItem>
+
+      <TimelineItem year="2016" tag="Révélation" tagI18n="journey.y2016.tag" variant="prize" alignRight>
+        <ul class="journey-prize-list" data-i18n="journey.y2016.list">
+          <li>
+            5e @ Revision Graphismes modernes : <a href="/portfolio.html?open=Tiger"><em>Tigre</em> / Tiger Eyes</a> (Sarrebruck)
+          </li>
+        </ul>
+        <div class="journey-tl-content journey-tl-content-spaced" data-i18n="journey.y2016.extra">
+          Première reconnaissance internationale majeure sur la demoscene PC.
+        </div>
+      </TimelineItem>
+
+      <TimelineItem year="2015" tag="Demoparty" tagI18n="journey.y2015.tag">
+        <div class="journey-tl-content" data-i18n="journey.y2015.content">
+          Première demoparty : la scène devient une véritable passion.<br />
+          Premier <strong>paintover</strong> réalisé sur un coin de table.
+        </div>
+      </TimelineItem>
+
+      <TimelineItem year="2012" tag="GPO & Adobe" tagI18n="journey.y2012.tag" variant="cert" alignRight>
+        <div class="journey-tl-content" data-i18n="journey.y2012.content">
+          Création de <strong>GPO SARL</strong> : réparation, vente et location de jeux d'arcade et flippers.<br />
+          Illustrator et VersaWorks (Roland VS-640).<br />
+          Pratique intensive d'Adobe avec Franck Payen.
+        </div>
+      </TimelineItem>
+
+      <TimelineItem year="2011" tag="Origines" tagI18n="journey.y2011.tag">
+        <div class="journey-tl-content" data-i18n="journey.y2011.content">
+          Retour au dessin après une longue pause.<br />
+          Crayon, aquarelle, acrylique, pastels secs…
+        </div>
+      </TimelineItem>
+    </div>
+  </div>
+</section>

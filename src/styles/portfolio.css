@@ -1,0 +1,459 @@
+/* ============================================
+   PORTFOLIO SECTION — neon style (title, line, buttons)
+   ============================================ */
+
+/* Portfolio section title (neon turquoise) */
+.portfolio .section-title {
+  color: var(--color-brand-neon);
+  text-shadow: none;
+}
+
+.portfolio .section-title::after {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-brand-neon),
+    transparent
+  );
+  box-shadow: none;
+}
+
+/* Tighter gap between “Portfolio” title block and filter buttons (global section-title-wrap = 64px bottom + 4rem margin) */
+.portfolio .section-title-wrap {
+  padding: 20px 20px 24px;
+  margin-bottom: var(--spacing-sm);
+}
+
+.portfolio .section-title-wrap::before {
+  min-height: 88px;
+}
+
+.portfolio-filters {
+  position: relative;
+  z-index: 25;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  justify-content: center;
+  align-items: center;
+  margin-bottom: var(--spacing-lg);
+  width: 100%;
+  min-width: 0;
+}
+
+.filter-group {
+  position: relative;
+  display: inline-flex;
+}
+
+.filter-group-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.filter-group-btn__caret {
+  font-size: 0.72em;
+  opacity: 0.75;
+  transition: transform 0.2s ease;
+}
+
+.filter-group.open .filter-group-btn__caret {
+  transform: rotate(180deg);
+}
+
+.filter-submenu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-4px);
+  min-width: 215px;
+  padding: 0.45rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  background: rgba(12, 16, 24, 0.96);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(0, 255, 224, 0.26);
+  border-radius: 14px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
+  z-index: 40;
+}
+
+.filter-group.open .filter-submenu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.filter-submenu-item {
+  width: 100%;
+  text-align: left;
+  border-radius: 10px;
+  border-color: transparent;
+  padding: 0.5rem 0.75rem;
+  white-space: nowrap;
+}
+
+.filter-submenu-item:hover,
+.filter-submenu-item:focus {
+  background: rgba(0, 255, 224, 0.08);
+}
+
+.filter-submenu-item.active {
+  background: rgba(0, 255, 224, 0.14);
+  border-color: rgba(0, 255, 224, 0.45);
+  color: var(--color-brand-neon);
+}
+
+@media (max-width: 640px) {
+  .filter-submenu {
+    left: 0;
+    transform: translateY(-4px);
+  }
+  .filter-group.open .filter-submenu {
+    transform: translateY(0);
+  }
+}
+
+/* Filter buttons: categories = assets/images/ folders, neon outline per color */
+.filter-btn {
+  padding: var(--spacing-xs) var(--spacing-md);
+  background: transparent;
+  /* Bordure un peu plus marquée que --color-border pour repérer les cibles */
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: var(--color-text-secondary);
+  border-radius: 20px;
+  cursor: pointer;
+  transition:
+    border-color 0.3s,
+    color 0.3s,
+    box-shadow 0.3s;
+  font-size: var(--font-size-sm);
+  font-family: var(--font-family);
+}
+
+.filter-btn:hover,
+.filter-btn:focus {
+  color: var(--color-text-primary);
+  /* Default neon outline (new categories = new folders) */
+  border-color: var(--color-brand-neon);
+  box-shadow: none;
+}
+
+.filter-btn:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* Neon outline on hover (inactive) — color per category (overrides above) */
+.filter-btn[data-filter="all"]:hover,
+.filter-btn[data-filter="all"]:focus {
+  border-color: var(--color-brand-neon);
+  color: var(--color-brand-neon);
+  box-shadow: none;
+}
+.filter-btn[data-filter="paintover"]:hover,
+.filter-btn[data-filter="paintover"]:focus {
+  border-color: var(--color-brand-rose);
+  color: var(--color-brand-rose);
+  box-shadow: none;
+}
+.filter-btn[data-filter="IA"]:hover,
+.filter-btn[data-filter="IA"]:focus {
+  border-color: #a78bfa;
+  color: #a78bfa;
+  box-shadow: none;
+}
+.filter-btn[data-filter="photo"]:hover,
+.filter-btn[data-filter="photo"]:focus {
+  border-color: #fbbf24;
+  color: #fbbf24;
+  box-shadow: none;
+}
+.filter-btn[data-filter="gaming"]:hover,
+.filter-btn[data-filter="gaming"]:focus {
+  border-color: #22d3ee;
+  color: #22d3ee;
+  box-shadow: none;
+}
+.filter-btn[data-filter="graphics"]:hover,
+.filter-btn[data-filter="graphics"]:focus {
+  border-color: #00ffe0;
+  color: #00ffe0;
+  box-shadow: none;
+}
+.filter-btn[data-filter="other"]:hover,
+.filter-btn[data-filter="other"]:focus {
+  border-color: var(--color-text-secondary);
+  color: var(--color-text-secondary);
+  box-shadow: none;
+}
+.filter-btn[data-filter="pastel-sec"]:hover,
+.filter-btn[data-filter="pastel-sec"]:focus {
+  border-color: #e9d5ff;
+  color: #e9d5ff;
+  box-shadow: none;
+}
+.filter-btn[data-filter="acrylique"]:hover,
+.filter-btn[data-filter="acrylique"]:focus {
+  border-color: #fcd34d;
+  color: #fcd34d;
+  box-shadow: none;
+}
+.filter-btn[data-filter="animation"]:hover,
+.filter-btn[data-filter="animation"]:focus {
+  border-color: #06b6d4;
+  color: #06b6d4;
+  box-shadow: none;
+}
+
+.filter-btn.active {
+  background: var(--glass-bg);
+  border-color: var(--color-brand-neon);
+  color: var(--color-brand-neon);
+  box-shadow: none;
+}
+
+/* Active neon outline — color per category (assets/images/ folders) */
+.filter-btn.active[data-filter="paintover"] {
+  border-color: var(--color-brand-rose);
+  color: var(--color-brand-rose);
+  box-shadow: none;
+}
+.filter-btn.active[data-filter="IA"] {
+  border-color: #a78bfa;
+  color: #a78bfa;
+  box-shadow: none;
+}
+.filter-btn.active[data-filter="photo"] {
+  border-color: #fbbf24;
+  color: #fbbf24;
+  box-shadow: none;
+}
+.filter-btn.active[data-filter="gaming"] {
+  border-color: #22d3ee;
+  color: #22d3ee;
+  box-shadow: none;
+}
+.filter-btn.active[data-filter="graphics"] {
+  border-color: #00ffe0;
+  color: #00ffe0;
+  box-shadow: none;
+}
+.filter-btn.active[data-filter="other"] {
+  border-color: var(--color-text-secondary);
+  color: var(--color-text-secondary);
+  box-shadow: none;
+}
+.filter-btn.active[data-filter="pastel-sec"] {
+  border-color: #e9d5ff;
+  color: #e9d5ff;
+  box-shadow: none;
+}
+.filter-btn.active[data-filter="acrylique"] {
+  border-color: #fcd34d;
+  color: #fcd34d;
+  box-shadow: none;
+}
+.filter-btn.active[data-filter="animation"] {
+  border-color: #06b6d4;
+  color: #06b6d4;
+  box-shadow: none;
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-md);
+  width: 100%;
+  min-width: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Portfolio image block — square thumbs (bordure blanche au survol) */
+.portfolio-item {
+  display: block;
+  aspect-ratio: 1 / 1;
+  min-height: min(200px, 85vw);
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  border-radius: 20px;
+  border: 2px solid transparent;
+  box-shadow: none;
+  transition: opacity 0.3s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(0, 255, 224, 0.15);
+}
+
+.portfolio-item:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 4px;
+  z-index: 1;
+}
+
+.portfolio-item:hover {
+  border-color: #ffffff;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.35), 0 12px 28px rgba(0, 0, 0, 0.45);
+}
+
+.portfolio-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.portfolio-image picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.portfolio-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  transition: transform var(--transition-slow);
+}
+
+.portfolio-item:hover .portfolio-image img {
+  transform: scale(1.1);
+}
+
+
+.portfolio-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(0, 0, 0, 0.7) 50%,
+    transparent 100%
+  );
+  padding: var(--spacing-md);
+  transform: translateY(100%);
+  transition: transform var(--transition-base);
+}
+
+.portfolio-item:hover .portfolio-overlay {
+  transform: translateY(0);
+}
+
+/* Touch: no hover — show title / category on the thumbnail */
+@media (hover: none) and (pointer: coarse) {
+  .portfolio-overlay {
+    transform: translateY(0);
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.88) 0%,
+      rgba(0, 0, 0, 0.55) 45%,
+      transparent 100%
+    );
+  }
+
+  .portfolio-item:hover .portfolio-image img {
+    transform: none;
+  }
+}
+
+.portfolio-title {
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--spacing-xs);
+}
+
+.portfolio-category {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  font-weight: 500;
+  margin-bottom: var(--spacing-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.portfolio-year {
+  display: inline-block;
+  font-size: var(--font-size-xs);
+  color: var(--color-accent);
+  margin-bottom: var(--spacing-xs);
+  font-weight: 600;
+  opacity: 0.8;
+}
+
+.portfolio-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+.portfolio-badge.award {
+  background: rgba(255, 215, 0, 0.2);
+  border-color: rgba(255, 215, 0, 0.3);
+  color: #ffd700;
+}
+
+@media (min-width: 640px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ——— Portfolio: scrollable filters on very small screens ——— */
+@media (max-width: 480px) {
+  .portfolio-filters {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 6px;
+    /* No negative margins: they extend scrollWidth past the viewport */
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: var(--spacing-sm);
+    padding-right: var(--spacing-sm);
+    scrollbar-width: thin;
+  }
+
+  #portfolio.section {
+    padding-left: max(0.75rem, env(safe-area-inset-left));
+    padding-right: max(0.75rem, env(safe-area-inset-right));
+  }
+}
+

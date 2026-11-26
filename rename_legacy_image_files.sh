@@ -2,7 +2,7 @@
 # Renomme les fichiers locaux pour coller à portfolio_images.json (titres → slugs).
 # Exécuter depuis Portfolio-Callisto/ :  bash rename_legacy_image_files.sh
 set -euo pipefail
-BASE="assets/images"
+BASE="public/assets/images"
 
 mv -v "$BASE/graphics/339435602_905924634051246_6940335715669469411_n.jpg" "$BASE/graphics/howl-of-the-forest-2023.jpg"
 # (doublon Luna Fly retiré du portfolio — fichier 344736827_… supprimé du JSON)

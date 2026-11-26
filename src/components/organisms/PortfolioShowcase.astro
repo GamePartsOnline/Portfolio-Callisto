@@ -1,0 +1,122 @@
+---
+import "../../styles/portfolio.css";
+import SectionTitle from "../atoms/SectionTitle.astro";
+
+export interface Props {
+  mode?: "preview" | "full";
+}
+
+const { mode = "preview" } = Astro.props;
+
+const featuredWorks = [
+  {
+    open: "Sentinel%20of%20Abyss",
+    img: "/assets/images/graphics/sentinel-of-abyss-evoke-2026.jpg",
+    alt: "Sentinel of Abyss",
+    tag: "EVOKE 2026",
+    title: "Sentinel of Abyss",
+  },
+  {
+    open: "Chromatic%20resonance",
+    img: "/assets/images/graphics/Chromatic.jpg",
+    alt: "Chromatic resonance",
+    tag: "1er prix Riverwash",
+    title: "Chromatic resonance",
+  },
+  {
+    open: "IRL%20Gfx%20Squirrel",
+    img: "/assets/images/graphics/d776.375292.jpg",
+    alt: "IRL Gfx Squirrel Is Here",
+    tag: "2e prix Shadow Party 2024",
+    title: "IRL Gfx Squirrel Is Here",
+  },
+  {
+    open: "Symphony%20Of%20The%20Abyss",
+    img: "/assets/images/graphics/abyss_of-symphony.jpg",
+    alt: "Symphony of the Abyss",
+    tag: "3e prix · Demoscene 2024",
+    title: "Symphony of the Abyss",
+  },
+  {
+    open: "Floating%20Points",
+    img: "/assets/images/photo/Paysage/2e70.379233.jpg",
+    alt: "Floating Points",
+    tag: "Photo · 3e Under Construction",
+    title: "Floating Points",
+  },
+  {
+    open: "Williams%20Firepower",
+    img: "/assets/images/Restauration/Firepower/eed6a2178828639.64eef8c251048.jpg",
+    alt: "Williams Firepower : restauration",
+    tag: "Restauration GPO SARL",
+    title: "Williams Firepower",
+  },
+];
+---
+
+<section id="portfolio" class="portfolio section" aria-labelledby="portfolio-title">
+  <div class="container">
+    <SectionTitle
+      id="portfolio-title"
+      title="Portfolio"
+      i18nKey="portfolio.title"
+      tag={mode === "full" ? "h1" : "h2"}
+    />
+
+    {
+      mode === "preview" ? (
+        <>
+          <p class="section-lead portfolio-showcase-lead" data-i18n="portfolio.homeTeaser">
+            Sélection d'œuvres phares (demoscene, illustration, photo et restauration) — la galerie complète et ses filtres sont dédiés à une page séparée pour un chargement instantané.
+          </p>
+          <div class="portfolio-showcase-grid">
+            {featuredWorks.map((work) => (
+              <a class="portfolio-showcase-card" href={`/portfolio.html?open=${work.open}`}>
+                <img src={work.img} alt={work.alt} loading="lazy" decoding="async" />
+                <div class="portfolio-showcase-meta">
+                  <span class="portfolio-showcase-tag">{work.tag}</span>
+                  <strong>{work.title}</strong>
+                </div>
+              </a>
+            ))}
+          </div>
+          <p class="portfolio-showcase-cta">
+            <a
+              href="/portfolio.html"
+              class="cta-link cta-link--primary"
+              data-i18n="portfolio.exploreCta"
+            >
+              Explorer les 138 créations →
+            </a>
+          </p>
+        </>
+      ) : (
+        <>
+          <p class="section-lead portfolio-lead" id="portfolio-lead" data-i18n="portfolio.lead">
+            Utilisez les filtres pour explorer par catégorie. Cliquez sur une œuvre pour ouvrir les détails, le zoom et les galeries.
+          </p>
+          <div
+            class="portfolio-filters"
+            id="portfolioFilters"
+            role="tablist"
+            aria-label="Filtres du portfolio"
+            data-i18n-aria="portfolio.filtersAria"
+          ></div>
+          <div class="portfolio-grid" id="portfolioGrid"></div>
+          <div class="portfolio-footer-cta">
+            <p class="portfolio-footer-lead" data-i18n="portfolio.footerLead">
+              Intéressée par une collaboration ?
+            </p>
+            <a
+              href="/index.html#contact"
+              class="cta-link cta-link--primary"
+              data-i18n="portfolio.footerCta"
+            >
+              Me contacter
+            </a>
+          </div>
+        </>
+      )
+    }
+  </div>
+</section>

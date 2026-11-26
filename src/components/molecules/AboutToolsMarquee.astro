@@ -1,0 +1,54 @@
+---
+interface ToolItem {
+  modifier: string;
+  label: string;
+  icon?: string;
+  badgeText?: string;
+}
+
+const tools: ToolItem[] = [
+  { modifier: "illustrator", label: "Illustrator", icon: "/assets/icons/illustrator.svg" },
+  { modifier: "fresco", label: "Fresco", icon: "/assets/icons/fresco.svg" },
+  { modifier: "photoshop", label: "Photoshop", icon: "/assets/icons/photoshop.svg" },
+  { modifier: "indesign", label: "InDesign", icon: "/assets/icons/indesign.svg" },
+  { modifier: "canva", label: "Canva", icon: "/assets/icons/canva.svg" },
+  { modifier: "firefly", label: "Firefly", icon: "/assets/icons/firefly.svg" },
+  { modifier: "figma", label: "Figma", icon: "/assets/icons/figma.svg" },
+  { modifier: "premiere", label: "Premiere", icon: "/assets/icons/premiere.svg" },
+  { modifier: "davinci", label: "DaVinci Resolve", icon: "/assets/icons/davinci.svg" },
+  { modifier: "obsidian", label: "Obsidian", icon: "/assets/icons/obsidian.svg" },
+  { modifier: "github", label: "GitHub", icon: "/assets/icons/github.svg" },
+  { modifier: "trello", label: "Trello", icon: "/assets/icons/trello.svg" },
+  { modifier: "vscode", label: "VS Code", icon: "/assets/icons/vscode.svg" },
+  { modifier: "cursor", label: "Cursor", icon: "/assets/icons/cursor.svg" },
+  { modifier: "ai", label: "Gemini, Perplexity, Claude (IA)", icon: "/assets/icons/gemini.svg" },
+  { modifier: "versaworks", label: "Roland VersaWorks", badgeText: "VW" },
+  { modifier: "procreate", label: "Procreate", badgeText: "P" },
+  { modifier: "blender", label: "Blender", badgeText: "B" },
+  { modifier: "aftereffects", label: "After Effects", badgeText: "Ae" },
+  { modifier: "web", label: "HTML / CSS / Ruby", badgeText: "</>" },
+  { modifier: "rust", label: "Rust", badgeText: "Rs" },
+];
+---
+
+<div
+  class="about-tools"
+  aria-label="Logiciels"
+  data-i18n-aria="about.toolsAria"
+>
+  <p class="about-tools-title" data-i18n="about.toolsTitle">Logiciels</p>
+  <div class="about-tools-marquee">
+    <ul class="about-tool-list" role="list">
+      {
+        tools.map((tool) => (
+          <li class={`about-tool about-tool--${tool.modifier}`}>
+            <span class="about-tool-badge" aria-hidden="true">
+              {tool.icon ? <img src={tool.icon} alt="" /> : tool.badgeText}
+            </span>
+            {tool.label}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+---
+import "../../styles/social-rail.css";
+import SocialIcon from "../atoms/SocialIcon.astro";
+
+interface SocialLink {
+  href: string;
+  label: string;
+  network: "behance" | "twitter" | "instagram" | "facebook" | "demozoo" | "kofi";
+}
+
+const links: SocialLink[] = [
+  { href: "https://www.behance.net/CallistoArtwork", label: "Behance", network: "behance" },
+  { href: "https://x.com/callistoarts", label: "Twitter", network: "twitter" },
+  { href: "https://www.instagram.com/callisto_artwork/", label: "Instagram", network: "instagram" },
+  { href: "https://www.facebook.com/callistoarts", label: "Facebook", network: "facebook" },
+  { href: "https://demozoo.org/sceners/57855/", label: "Demozoo", network: "demozoo" },
+  { href: "https://ko-fi.com/callistoarts/", label: "Ko-fi", network: "kofi" },
+];
+---
+
+<aside
+  class="social-fixed-rail"
+  aria-label="Liens rapides vers les réseaux sociaux"
+>
+  <ul class="social-fixed-rail__list" role="list">
+    {
+      links.map((item) => (
+        <li>
+          <a
+            href={item.href}
+            class="social-fixed-rail__link"
+            aria-label={item.label}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <SocialIcon network={item.network} />
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</aside>

@@ -1,0 +1,143 @@
+/* ============================================
+   FIXED SOCIAL RAIL (right) — site colors (neon / pink, glass)
+   ============================================ */
+.social-fixed-rail {
+  position: fixed;
+  right: max(10px, env(safe-area-inset-right));
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1002;
+  pointer-events: none;
+  transition:
+    opacity 0.22s ease,
+    transform 0.22s ease;
+}
+
+.social-fixed-rail__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  pointer-events: auto;
+}
+
+.social-fixed-rail__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: var(--color-brand-neon);
+  background: var(--glass-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 4px 18px var(--glass-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  transition:
+    color var(--transition-fast),
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.social-fixed-rail__link:hover,
+.social-fixed-rail__link:focus-visible {
+  color: var(--color-brand-rose);
+  border-color: rgba(244, 114, 182, 0.45);
+  background: rgba(255, 255, 255, 0.09);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transform: scale(1.05);
+  outline: none;
+}
+
+.social-fixed-rail__icon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+
+.social-fixed-rail__link svg text {
+  font-size: 14px;
+}
+
+body.night .social-fixed-rail__link {
+  background: rgba(18, 16, 28, 0.78);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: rgba(180, 255, 245, 0.92);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 200, 160, 0.04);
+}
+
+body.night .social-fixed-rail__link:hover,
+body.night .social-fixed-rail__link:focus-visible {
+  color: var(--color-brand-rose);
+  border-color: rgba(244, 114, 182, 0.4);
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.35);
+}
+
+/* Phone / small tablet: keep social rail on the right side. */
+@media (max-width: 768px) {
+  .social-fixed-rail {
+    top: 56%;
+    right: max(6px, env(safe-area-inset-right, 0px));
+    left: auto;
+    bottom: auto;
+    transform: translateY(-50%);
+    z-index: 1002;
+  }
+
+  body.is-scrolling-mobile .social-fixed-rail {
+    opacity: 0.18;
+    transform: translateY(-50%) translateX(12px) scale(0.96);
+    pointer-events: none;
+  }
+
+
+  .social-fixed-rail__list {
+    flex-direction: column;
+    gap: 0.45rem;
+    max-width: none;
+    overflow: visible;
+    padding: 0;
+  }
+
+  .social-fixed-rail__link {
+    width: 44px;
+    height: 44px;
+    border-radius: 9px;
+    flex-shrink: 0;
+  }
+
+  .social-fixed-rail__icon {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .social-fixed-rail {
+    right: max(4px, env(safe-area-inset-right, 0px));
+  }
+
+  .social-fixed-rail__list {
+    gap: 0.35rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .social-fixed-rail__link {
+    width: 44px;
+    height: 44px;
+    border-radius: 9px;
+  }
+
+  .social-fixed-rail__icon {
+    width: 18px;
+    height: 18px;
+  }
+}
+

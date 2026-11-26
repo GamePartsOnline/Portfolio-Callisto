@@ -1,0 +1,91 @@
+---
+import "../../styles/navigation.css";
+import LangSwitch from "../molecules/LangSwitch.astro";
+
+export interface Props {
+  isHome?: boolean;
+  activeRoute?: "home" | "portfolio" | "services" | "build-log" | "mentions";
+}
+
+const { isHome = false, activeRoute = "home" } = Astro.props;
+const prefix = isHome ? "" : "/index.html";
+---
+
+<nav
+  class="nav"
+  role="navigation"
+  aria-label="Navigation principale"
+  data-i18n-aria="nav.ariaMain"
+>
+  <div class="nav-container">
+    <a
+      href={`${prefix}#welcome`}
+      class="nav-logo"
+      aria-label="Callisto Arts : accueil"
+      data-i18n-aria="nav.logoHome"
+    >
+      <img
+        src="/assets/images/logo/logo-cllisto.png"
+        alt=""
+        class="logo-img"
+        width="40"
+        height="40"
+        decoding="async"
+      />
+      <span class="logo-text">Callisto Arts</span>
+    </a>
+    <button
+      class="nav-toggle"
+      type="button"
+      aria-label="Ouvrir ou fermer le menu"
+      aria-controls="navMenu"
+      aria-expanded="false"
+      id="navToggle"
+      data-i18n-aria="nav.toggleAria"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <ul class="nav-menu" id="navMenu">
+      <li>
+        <a href={`${prefix}#about`} class="nav-link" data-i18n="nav.aboutContact">
+          À propos / Contact
+        </a>
+      </li>
+      <li>
+        <a
+          href="/portfolio.html"
+          class="nav-link"
+          aria-current={activeRoute === "portfolio" ? "page" : undefined}
+          title="Portfolio : demoscene et art"
+          data-i18n="nav.portfolio"
+        >
+          Portfolio
+        </a>
+      </li>
+      <li>
+        <a
+          href={`${prefix}#teaching`}
+          class="nav-link"
+          title="Transmission & Encadrement"
+          data-i18n="nav.teaching"
+        >
+          Transmission
+        </a>
+      </li>
+      <li>
+        <a
+          href="/services.html"
+          class="nav-link"
+          aria-current={activeRoute === "services" ? "page" : undefined}
+          title="GPO & Graph2Print"
+          data-i18n="nav.services"
+        >
+          Services
+        </a>
+      </li>
+    </ul>
+    <LangSwitch />
+  </div>
+</nav>

@@ -1,0 +1,108 @@
+/* ============================================
+   CONTACT SECTION — neon style (title, line, card, buttons)
+   ============================================ */
+
+/* “Contact” title in neon */
+.contact .section-title {
+  color: var(--color-brand-neon);
+  text-shadow: none;
+}
+
+.contact .section-title::after {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-brand-neon),
+    transparent
+  );
+  box-shadow: none;
+}
+
+/* Contact card: neon border */
+.contact .glass-card {
+  border: 1px solid rgba(0, 255, 224, 0.15);
+  transition:
+    border-color 0.3s,
+    box-shadow 0.3s;
+}
+
+.contact .glass-card:hover {
+  border-color: var(--color-brand-neon);
+  box-shadow: none;
+}
+
+.contact-content {
+  width: 100%;
+  max-width: min(920px, calc(100% - 2 * var(--spacing-md)));
+  margin: 0 auto;
+}
+
+.contact-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  gap: var(--spacing-lg);
+  align-items: center;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  background: rgba(12, 16, 24, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+}
+
+.contact-panel__main h3 {
+  margin: 0 0 0.65rem;
+  font-size: clamp(1.25rem, 2.4vw, 1.5rem);
+  color: var(--color-text-primary);
+}
+
+.contact-panel__main .contact-cta-wrap {
+  margin-bottom: 0;
+}
+
+.contact-panel__details {
+  padding-left: var(--spacing-lg);
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: left;
+}
+
+.contact-info {
+  text-align: left;
+  padding-top: 0;
+  border-top: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.contact-info p {
+  margin: 0;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+.contact-info a {
+  color: var(--color-brand-neon);
+  text-decoration: none;
+}
+
+.contact-info a:hover,
+.contact-info a:focus {
+  color: var(--color-brand-rose);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 767px) {
+  .contact-panel {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+  .contact-panel__details {
+    padding-left: 0;
+    padding-top: var(--spacing-md);
+    border-left: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+

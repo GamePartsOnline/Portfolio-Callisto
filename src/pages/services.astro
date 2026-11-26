@@ -1,0 +1,92 @@
+---
+import "../styles/subpages.css";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Services | Callisto Arts"
+  description="Services Callisto Arts : GPO SARL (flippers, bornes d'arcade, événementiel) et Graph2Print (PAO, identité visuelle, impression numérique)."
+  canonical="https://callistoarts.com/services.html"
+  ogUrl="https://callistoarts.com/services.html"
+  ogTitle="Services | Callisto Arts"
+  ogDescription="GPO SARL (arcade, flippers, événementiel) et Graph2Print (PAO, identité visuelle et impression numérique)."
+  ogImage="https://callistoarts.com/assets/images/services/gpo-logo.jpg"
+  ogImageAlt="Logo GPO SARL, bornes d'arcade, flippers et événementiel"
+  bodyClass="legal-page-body services-page-body"
+  mainClass="legal-page-main services-page-main"
+  activeRoute="services"
+>
+  <div class="container">
+    <header class="legal-page-header services-page-header">
+      <h1 class="services-page-title" data-i18n="servicesPage.title">Services</h1>
+      <p class="legal-page-updated services-page-lead" data-i18n="servicesPage.lead">
+        Liens vers <strong>GPO SARL</strong> et <strong>Graph2Print</strong>.
+      </p>
+    </header>
+
+    <div class="services-page-grid" role="list">
+      <a
+        class="glass-card services-page-card"
+        href="https://gposarl.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        role="listitem"
+      >
+        <div class="services-page-card-media services-page-card-media--logo-only">
+          <div class="services-page-card-logo-wrap">
+            <img
+              class="services-page-card-logo"
+              src="/assets/images/services/gpo-logo.jpg"
+              alt="Logo GPO SARL"
+              width="841"
+              height="842"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <p class="services-page-card-tools-caption" data-i18n="servicesPage.gpoCaption">
+            Flippers · arcade · événementiel
+          </p>
+        </div>
+        <div class="services-page-card-body">
+          <h2 class="services-page-card-title">GPO SARL</h2>
+          <p class="services-page-card-desc" data-i18n="servicesPage.gpoDesc">
+            Arcade, événementiel, location et vente de jeux : site officiel.
+          </p>
+          <span class="services-page-card-cta">gposarl.com →</span>
+        </div>
+      </a>
+
+      <a
+        class="glass-card services-page-card"
+        href="mailto:callisto.gfx@gmail.com?subject=Graph2Print%20:%20demande%20de%20projet"
+        role="listitem"
+      >
+        <div class="services-page-card-media services-page-card-media--g2p">
+          <div class="services-page-card-logo-wrap services-page-card-logo-wrap--g2p">
+            <img
+              class="services-page-card-logo"
+              src="/assets/images/services/g2p-logo.png"
+              alt="Logo Graph2Print"
+              width="595"
+              height="421"
+              decoding="async"
+            />
+          </div>
+          <p class="services-page-card-tools-caption" data-i18n="servicesPage.g2pCaption">
+            PAO · sublimation · découpe bois
+          </p>
+        </div>
+        <div class="services-page-card-body">
+          <h2 class="services-page-card-title">Graph2Print</h2>
+          <p class="services-page-card-desc" data-i18n="servicesPage.g2pDesc">
+            Impression, sublimation, découpe bois, logos et catalogues : écrivez-moi pour un devis ou un projet.
+          </p>
+          <span class="services-page-card-cta" data-i18n="servicesPage.g2pCta">
+            Envoyer un e-mail →
+          </span>
+        </div>
+      </a>
+    </div>
+  </div>
+</BaseLayout>

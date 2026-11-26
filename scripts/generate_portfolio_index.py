@@ -8,7 +8,7 @@ from collections import Counter
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-JSON_PATH = ROOT / "assets/images/portfolio_images.json"
+JSON_PATH = ROOT / "public/assets/images/portfolio_images.json"
 OUT_PATH = ROOT / "docs/portfolio_images_INDEX.md"
 
 

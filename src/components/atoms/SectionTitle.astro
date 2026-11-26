@@ -1,0 +1,17 @@
+---
+export interface Props {
+  id?: string;
+  title: string;
+  i18nKey?: string;
+  tag?: "h1" | "h2";
+}
+
+const { id, title, i18nKey, tag = "h2" } = Astro.props;
+const Heading = tag;
+---
+
+<div class="section-title-wrap">
+  <Heading id={id} class="section-title" data-i18n={i18nKey}>
+    {title}
+  </Heading>
+</div>
