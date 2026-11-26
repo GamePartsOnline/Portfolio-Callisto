@@ -2332,6 +2332,9 @@ body.night .about-card-tag {
 }
 
 .contact-cta-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
   margin: 0 0 var(--spacing-lg);
 }
 
