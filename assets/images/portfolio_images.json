@@ -53,6 +53,10 @@
       "label": "Inktober"
     },
     {
+      "id": "vectorisation",
+      "label": "Vector Art"
+    },
+    {
       "id": "other",
       "label": "Others"
     }
@@ -74,7 +78,7 @@
     },
     {
       "filename": "Vectorisation/panda/474432905_18050537378126344_3398185095325139846_n.jpg",
-      "category": "graphics",
+      "category": "vectorisation",
       "title": "Vectorisation Panda (4 visuels)",
       "year": 2025,
       "description": "Série de vectorisations et déclinaisons graphiques Panda.",
@@ -87,14 +91,14 @@
     },
     {
       "filename": "Vectorisation/480704197_673232095028048_8922947262722782192_n.jpg",
-      "category": "graphics",
+      "category": "vectorisation",
       "title": "Vectorisation & Tracés",
       "year": 2025,
       "description": "Travail de vectorisation haute précision sous Adobe Illustrator."
     },
     {
       "filename": "Vectorisation/479852642_673232311694693_6474469961451489789_n.jpg",
-      "category": "graphics",
+      "category": "vectorisation",
       "title": "Vectorisation & Tracés",
       "year": 2025,
       "description": "Travail de vectorisation haute précision sous Adobe Illustrator."

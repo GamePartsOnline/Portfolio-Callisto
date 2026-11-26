@@ -370,6 +370,7 @@ let portfolioData = {
     { id: "aquarelle", label: "Watercolor" },
     { id: "animation", label: "Animation" },
     { id: "inktober", label: "Inktober" },
+    { id: "vectorisation", label: "Vector Art" },
     { id: "web", label: "Websites" },
     { id: "other", label: "Others" },
     { id: "logo", label: "Logo (hidden from portfolio)" },
@@ -393,6 +394,7 @@ function getCategoryNamesFromData(data) {
     aquarelle: "Aquarelle",
     animation: "Animation",
     inktober: "Inktober",
+    vectorisation: "Vectorisation",
     web: "Sites web",
     other: "Autres",
     logo: "Logo",
@@ -570,7 +572,7 @@ const PORTFOLIO_FILTER_GROUPS = [
     id: "digital",
     fr: "Numérique & IA",
     en: "Digital & AI",
-    cats: ["graphics", "paintover", "animation", "ia", "inktober", "web"],
+    cats: ["graphics", "paintover", "animation", "ia", "inktober", "vectorisation", "web"],
   },
   {
     id: "identity-arcade",
@@ -825,7 +827,7 @@ function buildPortfolioFilterButtons(categories) {
 // ============================================
 // PORTFOLIO JSON (HTTP) — une seule source après loadPortfolioJsonOnce()
 // ============================================
-const PORTFOLIO_JSON_URL = "assets/images/portfolio_images.json?v=9";
+const PORTFOLIO_JSON_URL = "assets/images/portfolio_images.json?v=10";
 
 async function loadPortfolioJsonOnce() {
   if (isFileProtocol()) return;
