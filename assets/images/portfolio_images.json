@@ -59,6 +59,54 @@
   ],
   "images": [
     {
+      "filename": "Vectorisation/panda/474432905_18050537378126344_3398185095325139846_n.jpg",
+      "category": "graphics",
+      "title": "Vectorisation Panda (4 visuels)",
+      "year": 2025,
+      "description": "Série de vectorisations et déclinaisons graphiques Panda.",
+      "gallery": [
+        "Vectorisation/panda/474432905_18050537378126344_3398185095325139846_n.jpg",
+        "Vectorisation/panda/474459339_18050537369126344_1999359297022619063_n.jpg",
+        "Vectorisation/panda/475270084_18050537396126344_2603982446345407613_n.jpg",
+        "Vectorisation/panda/476175051_18050537360126344_6831585019507528888_n.jpg"
+      ]
+    },
+    {
+      "filename": "Vectorisation/480704197_673232095028048_8922947262722782192_n.jpg",
+      "category": "graphics",
+      "title": "Vectorisation & Tracés",
+      "year": 2025,
+      "description": "Travail de vectorisation haute précision sous Adobe Illustrator."
+    },
+    {
+      "filename": "Vectorisation/479852642_673232311694693_6474469961451489789_n.jpg",
+      "category": "graphics",
+      "title": "Vectorisation & Tracés",
+      "year": 2025,
+      "description": "Travail de vectorisation haute précision sous Adobe Illustrator."
+    },
+    {
+      "filename": "Carte de visite/475782769_663616269322964_385055638123914704_n.jpg",
+      "category": "branding",
+      "title": "Carte de visite — Création PAO",
+      "year": 2025,
+      "description": "Conception graphique et préparation prépresse de carte de visite."
+    },
+    {
+      "filename": "logo/Sans-titre---3.jpg",
+      "category": "branding",
+      "title": "Logo Callisto (monogramme)",
+      "year": 2024,
+      "description": "Logo monogramme géométrique noir et blanc de Callisto Arts."
+    },
+    {
+      "filename": "logo/PixeLogic.png",
+      "category": "branding",
+      "title": "Logo PixeLogic",
+      "year": 2024,
+      "description": "Création de logo vectoriel et identité visuelle pour PixeLogic."
+    },
+    {
       "filename": "IA/ede64fb5-dcf5-417c-9426-6a9fae4a2877.webp",
       "category": "IA",
       "title": "Cité Alchimique (IA)",
@@ -866,7 +914,7 @@
     },
     {
       "filename": "logo/LOGO TOKYO DEMO FEST 2021.jpg",
-      "category": "logo",
+      "category": "branding",
       "title": "LOGO TOKYO DEMO FEST 2021",
       "year": 2021,
       "award": "9th in the névoke 2021 Hard Mode Graphics competition",
@@ -1431,6 +1479,447 @@
       "category": "logo",
       "title": "Logo Callisto",
       "isLogo": true
+    },
+    {
+      "filename": "photo/482019853_688526740165250_8122463043684283459_n.jpg",
+      "category": "photo",
+      "title": "Photographie",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/482032212_688526736831917_1143089663889746076_n.jpg",
+      "category": "photo",
+      "title": "Photographie",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/482054004_688526803498577_2898125545920298921_n.jpg",
+      "category": "photo",
+      "title": "Photographie",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/482056725_688526976831893_5382869842488663122_n.jpg",
+      "category": "photo",
+      "title": "Photographie",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/483487209_688574503493807_7840711137042846121_n.jpg",
+      "category": "photo",
+      "title": "Photographie",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/483972034_688526630165261_2261176184989331772_n.jpg",
+      "category": "photo",
+      "title": "Photographie",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/484088810_688526640165260_9080244355930817348_n.jpg",
+      "category": "photo",
+      "title": "Photographie",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/485602070_18054867713126344_3386151316806610635_n.jpg",
+      "category": "photo",
+      "title": "Photographie",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/485734560_18054995090126344_1192910441150732460_n.jpg",
+      "category": "photo",
+      "title": "Photographie",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/486420416_18054995294126344_9141010968131170126_n.jpg",
+      "category": "photo",
+      "title": "Photographie",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/488309214_18056082086126344_7981600843182492516_n.jpg",
+      "category": "photo",
+      "title": "Photographie",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/488467002_18056082023126344_3914468091715217384_n.jpg",
+      "category": "photo",
+      "title": "Photographie",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/488828736_18056092163126344_4911881033162376955_n.jpg",
+      "category": "photo",
+      "title": "Photographie",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/491443614_18057814469126344_3518025937793565805_n.jpg",
+      "category": "photo",
+      "title": "Photographie",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/491443708_18058674677126344_4800058873949668054_n.jpg",
+      "category": "photo",
+      "title": "Photographie",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/491449243_18058688522126344_950162285219595006_n.jpg",
+      "category": "photo",
+      "title": "Photographie",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/491518356_18057631442126344_3618738931466666521_n.jpg",
+      "category": "photo",
+      "title": "Photographie",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/494912489_18058689197126344_7638102555651124210_n.jpg",
+      "category": "photo",
+      "title": "Photographie",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/495670596_18059142347126344_308790768998707118_n.jpg",
+      "category": "photo",
+      "title": "Photographie",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/495951057_18059142524126344_7669032868786132918_n.jpg",
+      "category": "photo",
+      "title": "Photographie",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/496256516_18059046026126344_4814726131770256100_n.jpg",
+      "category": "photo",
+      "title": "Photographie",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/496399128_18059045582126344_5078585414893666136_n.jpg",
+      "category": "photo",
+      "title": "Photographie",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/496845559_18059117381126344_7347231958314315352_n.jpg",
+      "category": "photo",
+      "title": "Photographie",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/496932626_18059117684126344_6389581776049899679_n.jpg",
+      "category": "photo",
+      "title": "Photographie",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/499570651_18060353810126344_2080264522883161511_n.jpg",
+      "category": "photo",
+      "title": "Photographie",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/500087513_18060668663126344_3576830413427932175_n.jpg",
+      "category": "photo",
+      "title": "Photographie",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/500233727_18060668591126344_5628939756940742701_n.jpg",
+      "category": "photo",
+      "title": "Photographie",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/520746555_18065847545126344_5061343743933623525_n.jpg",
+      "category": "photo",
+      "title": "Photographie",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/530076666_18068026571126344_7498400725565921165_n.jpg",
+      "category": "photo",
+      "title": "Photographie",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/530656948_18068082611126344_6443361634255895195_n.jpg",
+      "category": "photo",
+      "title": "Photographie",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/531375267_18068084777126344_2323591605744997558_n.jpg",
+      "category": "photo",
+      "title": "Photographie",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/531874559_18068082674126344_17930065010995020_n.jpg",
+      "category": "photo",
+      "title": "Photographie",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/534177784_18068733005126344_6218929665575870724_n.jpg",
+      "category": "photo",
+      "title": "Photographie",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/560395978_18073551674126344_4375060704171982700_n.jpg",
+      "category": "photo",
+      "title": "Photographie",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/566052962_18075435836126344_7585780812169918031_n.jpg",
+      "category": "photo",
+      "title": "Photographie",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/573211676_18076993700126344_3269863045795914086_n.jpg",
+      "category": "photo",
+      "title": "Photographie",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/581393670_18078158600126344_8801801835042263473_n.jpg",
+      "category": "photo",
+      "title": "Photographie",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/632116325_18086749742126344_3956263624993906089_n.jpg",
+      "category": "photo",
+      "title": "Photographie",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/Branches_congelées.jpg",
+      "category": "photo",
+      "title": "Branches congelées",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/Figée_dans_le_marbre_toile_toile.jpg",
+      "category": "photo",
+      "title": "Figée dans le marbre toile toile",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/arbre_eolienne.jpg",
+      "category": "photo",
+      "title": "Arbre eolienne",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/bistror.jpg",
+      "category": "photo",
+      "title": "Bistror",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/corse02.jpg",
+      "category": "photo",
+      "title": "Corse02",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/corse09.jpg",
+      "category": "photo",
+      "title": "Corse09",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/corse10.jpg",
+      "category": "photo",
+      "title": "Corse10",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/corse11.jpg",
+      "category": "photo",
+      "title": "Corse11",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/empreintes.jpg",
+      "category": "photo",
+      "title": "Empreintes",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/escalier.jpg",
+      "category": "photo",
+      "title": "Escalier",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/grille.jpg",
+      "category": "photo",
+      "title": "Grille",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/lesptitesoies.jpg",
+      "category": "photo",
+      "title": "Lesptitesoies",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/moi.jpg",
+      "category": "photo",
+      "title": "Moi",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/palmier.jpg",
+      "category": "photo",
+      "title": "Palmier",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/pandaroux.jpg",
+      "category": "photo",
+      "title": "Pandaroux",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/pantin.jpg",
+      "category": "photo",
+      "title": "Pantin",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/pissenlit.jpg",
+      "category": "photo",
+      "title": "Pissenlit",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/poissons.jpg",
+      "category": "photo",
+      "title": "Poissons",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/quand_leau_se_retire.jpg",
+      "category": "photo",
+      "title": "Quand leau se retire",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/reflet.jpg",
+      "category": "photo",
+      "title": "Reflet",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/silo.jpg",
+      "category": "photo",
+      "title": "Silo",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/tableauX.jpg",
+      "category": "photo",
+      "title": "Tableaux",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/ton_ami_pierre.jpg",
+      "category": "photo",
+      "title": "Ton ami pierre",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/tortue.jpg",
+      "category": "photo",
+      "title": "Tortue",
+      "year": 2025,
+      "description": "Photographie par Callisto."
+    },
+    {
+      "filename": "photo/tortue02.jpg",
+      "category": "photo",
+      "title": "Tortue02",
+      "year": 2025,
+      "description": "Photographie par Callisto."
     }
   ]
 }
