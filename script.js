@@ -825,7 +825,7 @@ function buildPortfolioFilterButtons(categories) {
 // ============================================
 // PORTFOLIO JSON (HTTP) — une seule source après loadPortfolioJsonOnce()
 // ============================================
-const PORTFOLIO_JSON_URL = "assets/images/portfolio_images.json?v=5";
+const PORTFOLIO_JSON_URL = "assets/images/portfolio_images.json?v=6";
 
 async function loadPortfolioJsonOnce() {
   if (isFileProtocol()) return;
