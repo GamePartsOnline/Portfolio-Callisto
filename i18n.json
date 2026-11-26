@@ -470,6 +470,10 @@
     }
   },
   "musicPlayer": {
+    "byline": {
+      "fr": "Musique : Doctor Gekil",
+      "en": "Music by Doctor Gekil"
+    },
     "regionAria": {
       "fr": "Lecteur audio : musique de fond par Doctor Gekil",
       "en": "Music by Doctor Gekil, background audio"

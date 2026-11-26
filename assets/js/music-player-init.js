@@ -1,167 +1,186 @@
 /**
- * Lecteur musique de fond — extrait de index.html pour permettre defer sur script.js (moins de JS bloquant).
+ * Lecteur musique de fond — portage vanilla JS de MusicPlayer.astro.
  */
 (function () {
-  var audio = document.getElementById("bg-music");
-  var btn = document.getElementById("music-play-btn");
-  var hint = document.getElementById("music-player-hint");
-  var seek = document.getElementById("music-seek");
-  var vol = document.getElementById("music-volume");
-  var tCur = document.getElementById("music-time-current");
-  var tDur = document.getElementById("music-time-duration");
-  if (!audio) return;
+  var STORAGE_VOL_KEY = "callisto_music_vol";
 
-  function fmt(t) {
-    if (!isFinite(t) || t < 0) return "0:00";
-    var m = Math.floor(t / 60);
-    var s = Math.floor(t % 60);
-    return m + ":" + (s < 10 ? "0" : "") + s;
+  function formatTime(seconds) {
+    if (!Number.isFinite(seconds) || seconds < 0) return "0:00";
+    var mins = Math.floor(seconds / 60);
+    var secs = Math.floor(seconds % 60);
+    return mins + ":" + (secs < 10 ? "0" : "") + secs;
   }
 
-  function setSeekGradient(pct) {
-    if (!seek) return;
-    var p = Math.max(0, Math.min(100, pct));
-    var st = window.getComputedStyle(seek);
-    var fill = (st.getPropertyValue("--music-bar-fill") || "#00ffe0").trim();
-    var track = (
-      st.getPropertyValue("--music-bar-track") || "rgba(255,255,255,0.12)"
-    ).trim();
-    seek.style.background =
-      "linear-gradient(90deg, " +
-      fill +
-      " 0%, " +
-      fill +
-      " " +
-      p +
-      "%, " +
-      track +
-      " " +
-      p +
-      "%, " +
-      track +
-      " 100%)";
-  }
+  function initMusicPlayers() {
+    document.querySelectorAll("[data-music-player]").forEach(function (root) {
+      if (root.dataset.mpBound === "true") return;
+      root.dataset.mpBound = "true";
 
-  function setVolGradient(v) {
-    if (!vol) return;
-    var pct = Math.max(0, Math.min(100, v * 100));
-    vol.style.background =
-      "linear-gradient(90deg, rgba(244,114,182,0.75) 0%, rgba(244,114,182,0.75) " +
-      pct +
-      "%, rgba(255,255,255,0.1) " +
-      pct +
-      "%, rgba(255,255,255,0.1) 100%)";
-  }
+      var audio = root.querySelector("[data-mp-audio]");
+      var playBtn = root.querySelector("[data-mp-play]");
+      var seekInput = root.querySelector("[data-mp-seek]");
+      var volInput = root.querySelector("[data-mp-vol]");
+      var muteBtn = root.querySelector("[data-mp-mute]");
+      var curEl = root.querySelector("[data-mp-current]");
+      var durEl = root.querySelector("[data-mp-duration]");
+      var hintEl = root.querySelector("[data-mp-hint]");
 
-  function seekFromAudio() {
-    if (!seek || !audio.duration || !isFinite(audio.duration)) return;
-    var pct = (audio.currentTime / audio.duration) * 100;
-    seek.value = String(pct);
-    setSeekGradient(pct);
-    if (tCur) tCur.textContent = fmt(audio.currentTime);
-  }
+      if (!audio || !playBtn || !seekInput || !volInput || !muteBtn) return;
 
-  function showHint(msg, isErr) {
-    if (!hint) return;
-    hint.textContent = msg;
-    hint.hidden = false;
-    hint.classList.toggle("music-player-hint--error", !!isErr);
-  }
-  function clearHint() {
-    if (!hint) return;
-    hint.hidden = true;
-    hint.textContent = "";
-  }
+      var iconPlay = playBtn.querySelector(".mp-icon-play");
+      var iconPause = playBtn.querySelector(".mp-icon-pause");
+      var iconVol = muteBtn.querySelector(".mp-icon-vol");
+      var iconMuted = muteBtn.querySelector(".mp-icon-muted");
 
-  if (window.location.protocol === "file:") {
-    showHint(
-      "Open the site over HTTP (not file://), e.g. python3 -m http.server 8765",
-      true,
-    );
-  }
+      var lastNonZeroVol = Number.parseFloat(volInput.value);
+      if (!Number.isFinite(lastNonZeroVol) || lastNonZeroVol <= 0) {
+        lastNonZeroVol = 0.45;
+      }
 
-  if (vol) {
-    audio.volume = parseFloat(vol.value) || 0.45;
-  } else {
-    audio.volume = 0.45;
-  }
+      function showHint(msg) {
+        if (!hintEl) return;
+        hintEl.textContent = msg;
+        hintEl.hidden = false;
+      }
 
-  function syncBtn() {
-    if (!btn) return;
-    var playing = !audio.paused;
-    btn.setAttribute("aria-pressed", playing ? "true" : "false");
-    var playIc = btn.querySelector(".music-btn-play");
-    var pauseIc = btn.querySelector(".music-btn-pause");
-    if (playIc) playIc.hidden = playing;
-    if (pauseIc) pauseIc.hidden = !playing;
-  }
+      function clearHint() {
+        if (!hintEl) return;
+        hintEl.hidden = true;
+        hintEl.textContent = "";
+      }
 
-  if (btn) {
-    btn.addEventListener("click", function (e) {
-      e.stopPropagation();
-      clearHint();
-      if (audio.paused) {
-        var p = audio.play();
-        if (p && typeof p.then === "function") {
-          p.then(syncBtn).catch(function (err) {
-            showHint(
-              "Playback failed: " +
-                (err && err.message
-                  ? err.message
-                  : "try again or check the MP3 file"),
-              true,
-            );
-          });
+      function syncVolumeUI(vol) {
+        var clamped = Math.min(1, Math.max(0, vol));
+        var pct = Math.round(clamped * 100);
+        audio.volume = clamped;
+        audio.muted = clamped === 0;
+        volInput.value = String(clamped);
+        volInput.setAttribute("aria-valuetext", pct + "%");
+        root.style.setProperty("--mp-vol-pct", pct + "%");
+
+        var isMuted = clamped === 0;
+        muteBtn.setAttribute("aria-pressed", String(isMuted));
+        var muteLabel = isMuted
+          ? root.dataset.labelUnmute || "Unmute"
+          : root.dataset.labelMute || "Mute";
+        muteBtn.setAttribute("aria-label", muteLabel);
+        muteBtn.title = muteLabel;
+        if (iconVol) iconVol.toggleAttribute("hidden", isMuted);
+        if (iconMuted) iconMuted.toggleAttribute("hidden", !isMuted);
+      }
+
+      function syncPlayUI() {
+        var playing = !audio.paused;
+        playBtn.setAttribute("aria-pressed", String(playing));
+        playBtn.setAttribute(
+          "aria-label",
+          playing
+            ? root.dataset.labelPause || "Pause"
+            : root.dataset.labelPlay || "Play",
+        );
+        if (iconPlay) iconPlay.toggleAttribute("hidden", playing);
+        if (iconPause) iconPause.toggleAttribute("hidden", !playing);
+      }
+
+      function syncProgressUI() {
+        var dur = audio.duration;
+        if (!Number.isFinite(dur) || dur <= 0) return;
+        var pct = Math.min(100, Math.max(0, (audio.currentTime / dur) * 100));
+        seekInput.value = String(pct);
+        root.style.setProperty("--mp-seek-pct", pct + "%");
+        var curText = formatTime(audio.currentTime);
+        var durText = formatTime(dur);
+        if (curEl) curEl.textContent = curText;
+        if (durEl) durEl.textContent = durText;
+        seekInput.setAttribute("aria-valuetext", curText + " / " + durText);
+      }
+
+      try {
+        var saved = localStorage.getItem(STORAGE_VOL_KEY);
+        if (saved !== null) {
+          var parsed = Number.parseFloat(saved);
+          if (Number.isFinite(parsed)) {
+            if (parsed > 0) lastNonZeroVol = parsed;
+            syncVolumeUI(parsed);
+          }
         } else {
-          syncBtn();
+          syncVolumeUI(Number.parseFloat(volInput.value));
         }
-      } else {
-        audio.pause();
-        syncBtn();
+      } catch (_e) {
+        syncVolumeUI(Number.parseFloat(volInput.value));
+      }
+
+      playBtn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        clearHint();
+        if (audio.paused) {
+          var p = audio.play();
+          if (p && typeof p.then === "function") {
+            p.then(syncPlayUI).catch(function () {
+              showHint(root.dataset.errPlay || "Playback failed.");
+            });
+          } else {
+            syncPlayUI();
+          }
+        } else {
+          audio.pause();
+          syncPlayUI();
+        }
+      });
+
+      seekInput.addEventListener("input", function () {
+        if (!Number.isFinite(audio.duration) || audio.duration <= 0) return;
+        var pct = Number.parseFloat(seekInput.value);
+        audio.currentTime = (pct / 100) * audio.duration;
+        syncProgressUI();
+      });
+
+      volInput.addEventListener("input", function () {
+        var v = Number.parseFloat(volInput.value);
+        if (Number.isFinite(v)) {
+          if (v > 0) lastNonZeroVol = v;
+          syncVolumeUI(v);
+          try {
+            localStorage.setItem(STORAGE_VOL_KEY, String(v));
+          } catch (_e) {
+            /* ignore storage errors */
+          }
+        }
+      });
+
+      muteBtn.addEventListener("click", function () {
+        var nextVol = audio.volume === 0 || audio.muted ? lastNonZeroVol : 0;
+        syncVolumeUI(nextVol);
+        try {
+          localStorage.setItem(STORAGE_VOL_KEY, String(nextVol));
+        } catch (_e) {
+          /* ignore storage errors */
+        }
+      });
+
+      audio.addEventListener("loadedmetadata", function () {
+        seekInput.disabled = false;
+        syncProgressUI();
+      });
+      audio.addEventListener("timeupdate", syncProgressUI);
+      audio.addEventListener("play", syncPlayUI);
+      audio.addEventListener("pause", syncPlayUI);
+      audio.addEventListener("canplay", clearHint);
+      audio.addEventListener("error", function () {
+        seekInput.disabled = true;
+        showHint(
+          audio.error && audio.error.code === 4
+            ? root.dataset.errFormat || "Unsupported audio format."
+            : root.dataset.errMissing || "Audio file missing.",
+        );
+      });
+
+      if (audio.readyState >= 1) {
+        seekInput.disabled = false;
+        syncProgressUI();
       }
     });
   }
 
-  audio.addEventListener("loadedmetadata", function () {
-    if (seek) seek.disabled = false;
-    if (tDur) tDur.textContent = fmt(audio.duration);
-    seekFromAudio();
-  });
-
-  audio.addEventListener("timeupdate", seekFromAudio);
-
-  if (seek) {
-    seek.addEventListener("input", function () {
-      if (!audio.duration || !isFinite(audio.duration)) return;
-      var pct = parseFloat(seek.value);
-      audio.currentTime = (pct / 100) * audio.duration;
-      setSeekGradient(pct);
-      if (tCur) tCur.textContent = fmt(audio.currentTime);
-    });
-  }
-
-  if (vol) {
-    vol.addEventListener("input", function () {
-      audio.volume = parseFloat(vol.value) || 0;
-      setVolGradient(audio.volume);
-    });
-    setVolGradient(audio.volume);
-  }
-
-  audio.addEventListener("play", syncBtn);
-  audio.addEventListener("pause", syncBtn);
-  audio.addEventListener("error", function () {
-    var er = audio.error;
-    var msg = "Audio file missing or unreadable.";
-    if (er && er.code === 4) msg = "Format not supported by this browser.";
-    showHint(msg, true);
-    if (seek) seek.disabled = true;
-  });
-
-  audio.addEventListener("canplay", function () {
-    if (hint && hint.classList.contains("music-player-hint--error")) return;
-    clearHint();
-  });
-
-  setSeekGradient(0);
+  initMusicPlayers();
 })();
