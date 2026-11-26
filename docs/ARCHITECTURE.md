@@ -47,7 +47,7 @@ flowchart LR
 | Sécurité projet | [SECURITY.md](./SECURITY.md) |
 | Guide sécurité général (6 couches) | [securite_sites_internet.md](./securite_sites_internet.md) |
 | Roadmap | [ROADMAP.md](./ROADMAP.md) |
-| Stack / évolutions possibles (hors périmètre ici) | [STACK.md](./STACK.md), [ADMIN.md](./ADMIN.md) |
+| Évolutions possibles (hors périmètre ici) | [ADMIN.md](./ADMIN.md) |
 
 ---
 

@@ -49,4 +49,4 @@
 
 ---
 
-*Aligné avec [SITE.md](./SITE.md) et la stack [STACK.md](./STACK.md).*
+*Aligné avec [SITE.md](./SITE.md).*

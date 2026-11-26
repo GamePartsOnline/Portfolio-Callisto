@@ -16,6 +16,11 @@ build/
 .env
 .env.local
 
+# Notes et stacks internes (ne jamais pousser)
+*stack-*.md
+docs/STACK.md
+GEMINI.md
+
 # IDE
 .vscode/
 .idea/

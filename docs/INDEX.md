@@ -9,7 +9,6 @@
 | Document | Rôle |
 |---|---|
 | **[SITE.md](./SITE.md)** | **Analyse du site** — sections, technique, **meta / SEO / i18n** |
-| **[STACK.md](./STACK.md)** | Pourquoi **Rails 8 + SQLite + Hotwire + Tailwind** |
 | **[ARCHITECTURE.md](./ARCHITECTURE.md)** | **Site statique** — schéma, pages, données, tiers |
 | **[ADMIN.md](./ADMIN.md)** | Périmètre admin : **galerie + catégories + textes** (simple) |
 | **[ROADMAP.md](./ROADMAP.md)** | **Priorité statique**, sécurité continue, **option Rails** — **à mettre à jour** à chaque évolution notable (règle en tête du fichier) |
