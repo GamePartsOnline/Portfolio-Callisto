@@ -38,7 +38,7 @@ except ImportError:
     sys.exit(1)
 
 ROOT = Path(__file__).resolve().parents[1]
-IMAGES_DIR = ROOT / "assets" / "images"
+IMAGES_DIR = ROOT / "public" / "assets" / "images"
 JSON_PATH = IMAGES_DIR / "portfolio_images.json"
 THUMB_ROOT = IMAGES_DIR / "thumbs"
 WEBP_ROOT = IMAGES_DIR / "webp"

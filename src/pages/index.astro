@@ -1,0 +1,74 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HeroSection from "../components/organisms/HeroSection.astro";
+import AboutSection from "../components/organisms/AboutSection.astro";
+import PortfolioShowcase from "../components/organisms/PortfolioShowcase.astro";
+import JourneySection from "../components/organisms/JourneySection.astro";
+import TeachingSection from "../components/organisms/TeachingSection.astro";
+import ContactSection from "../components/organisms/ContactSection.astro";
+import LightboxModal from "../components/organisms/LightboxModal.astro";
+
+const jsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://callistoarts.com/#website",
+      "url": "https://callistoarts.com/",
+      "name": "Callisto Arts",
+      "inLanguage": ["fr", "en"],
+    },
+    {
+      "@type": "Person",
+      "@id": "https://callistoarts.com/#person",
+      "name": "Frédérique Charton",
+      "alternateName": "Callisto",
+      "url": "https://callistoarts.com/",
+      "jobTitle":
+        "Graphiste PAO, Artiste numérique, UI Designer et Développeuse Full-Stack & IA",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Châlons-en-Champagne",
+        "addressRegion": "Grand Est",
+        "addressCountry": "FR",
+      },
+      "sameAs": [
+        "https://www.behance.net/CallistoArtwork",
+        "https://demozoo.org/sceners/57855/",
+        "https://www.linkedin.com/in/frederique-charton",
+      ],
+    },
+  ],
+});
+---
+
+<BaseLayout
+  title="Callisto Arts | Portfolio Graphisme, UI & IA, Callisto"
+  description="Callisto Arts, Frédérique Charton : artiste numérique, graphiste PAO, UI designer et développeuse full-stack & IA à Châlons-en-Champagne."
+  keywords="Callisto Arts, Frédérique Charton, demoscene, art numérique, graphisme, PAO, UI design, portfolio, développeuse full-stack, IA, Châlons-en-Champagne"
+  canonical="https://callistoarts.com/"
+  ogUrl="https://callistoarts.com/"
+  ogTitle="Callisto Arts | Portfolio Frédérique Charton"
+  ogDescription="Artiste créative, développeuse full-stack et créatrice IA. Portfolio : graphismes demoscene, art numérique et travaux clients. Châlons-en-Champagne, France."
+  ogImage="https://callistoarts.com/assets/images/graphics/Chromatic.jpg"
+  ogImageAlt="Chromatic resonance, œuvre graphique du portfolio Callisto Arts"
+  twitterDescription="Artiste créative, développeuse full-stack et créatrice IA. Graphismes demoscene, art numérique et travaux professionnels."
+  isHome={true}
+  activeRoute="home"
+  showSocialRail={true}
+  showMusicPlayer={true}
+  showNightOverlays={true}
+  showCookieBanner={true}
+  preloadPortfolioJson={true}
+>
+  <script slot="head-extra" type="application/ld+json" set:html={jsonLd} />
+
+  <HeroSection />
+  <AboutSection />
+  <PortfolioShowcase mode="preview" />
+  <JourneySection />
+  <TeachingSection />
+  <ContactSection />
+
+  <LightboxModal slot="modals" />
+</BaseLayout>

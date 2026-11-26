@@ -3,10 +3,10 @@
 
 # Dependencies
 node_modules/
-package-lock.json
 yarn.lock
 
 # Build outputs
+.astro/
 dist/
 build/
 *.min.js

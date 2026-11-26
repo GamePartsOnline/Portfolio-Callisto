@@ -1,0 +1,24 @@
+---
+import "../styles/subpages.css";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PortfolioShowcase from "../components/organisms/PortfolioShowcase.astro";
+import LightboxModal from "../components/organisms/LightboxModal.astro";
+---
+
+<BaseLayout
+  title="Portfolio | Callisto Arts"
+  description="Portfolio complet de Callisto Arts (Frédérique Charton) : graphismes demoscene, logos et identité visuelle, restaurations GPO SARL, peinture, photo et animation."
+  canonical="https://callistoarts.com/portfolio.html"
+  ogUrl="https://callistoarts.com/portfolio.html"
+  ogTitle="Portfolio | Callisto Arts"
+  ogDescription="Explorez les 138 créations de Callisto Arts par catégorie : graphismes, logos, jeux & arcade, aquarelle, acrylique, pastel sec, photo et animation."
+  ogImage="https://callistoarts.com/assets/images/graphics/Chromatic.jpg"
+  twitterDescription="Explorez les créations de Callisto Arts par catégorie, avec visionneuse grand format et zoom."
+  bodyClass="legal-page-body portfolio-page-body"
+  mainClass="legal-page-main"
+  activeRoute="portfolio"
+  preloadPortfolioJson={true}
+>
+  <PortfolioShowcase mode="full" />
+  <LightboxModal slot="modals" />
+</BaseLayout>

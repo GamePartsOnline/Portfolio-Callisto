@@ -1,0 +1,111 @@
+---
+import "../../styles/lightbox.css";
+---
+
+<div
+  class="lightbox"
+  id="lightbox"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="lightbox-title"
+  aria-hidden="true"
+  inert
+>
+  <div
+    class="lightbox-toolbar"
+    id="lightbox-toolbar"
+    aria-label="Outils de zoom"
+    data-i18n-aria="lightbox.zoomToolbarAria"
+  >
+    <button
+      type="button"
+      class="lightbox-tool-btn"
+      id="lightbox-zoom-out"
+      aria-label="Dézoomer"
+      data-i18n-aria="lightbox.zoomOut"
+    >
+      −
+    </button>
+    <button
+      type="button"
+      class="lightbox-tool-btn lightbox-tool-btn--reset"
+      id="lightbox-zoom-reset"
+      aria-label="Réinitialiser le zoom"
+      data-i18n-aria="lightbox.zoomReset"
+    >
+      100%
+    </button>
+    <button
+      type="button"
+      class="lightbox-tool-btn"
+      id="lightbox-zoom-in"
+      aria-label="Zoomer"
+      data-i18n-aria="lightbox.zoomIn"
+    >
+      +
+    </button>
+  </div>
+  <button
+    type="button"
+    class="lightbox-nav lightbox-nav--prev"
+    id="lightbox-prev"
+    aria-label="Œuvre précédente"
+    data-i18n-aria="lightbox.prev"
+  >
+    ‹
+  </button>
+  <button
+    type="button"
+    class="lightbox-nav lightbox-nav--next"
+    id="lightbox-next"
+    aria-label="Œuvre suivante"
+    data-i18n-aria="lightbox.next"
+  >
+    ›
+  </button>
+  <button
+    type="button"
+    class="lightbox-close"
+    aria-label="Fermer"
+    data-i18n-aria="lightbox.close"
+  >
+    ×
+  </button>
+  <p class="lightbox-kicker" id="lightbox-kicker"></p>
+  <div class="lightbox-content">
+    <div class="lightbox-stage" id="lightbox-stage">
+      <img
+        id="lightbox-image"
+        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+        alt=""
+        decoding="async"
+      />
+    </div>
+    <div
+      class="lightbox-gallery-strip"
+      id="lightbox-gallery-strip"
+      hidden
+      aria-label="Images du projet"
+    ></div>
+    <video
+      id="lightbox-video-native"
+      class="lightbox-video-native"
+      controls
+      playsinline
+      preload="metadata"
+      title=""
+    ></video>
+    <iframe
+      id="lightbox-video"
+      class="lightbox-video"
+      title="YouTube"
+      src="about:blank"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+    ></iframe>
+    <div class="lightbox-info">
+      <h3 id="lightbox-title"></h3>
+      <p id="lightbox-description"></p>
+    </div>
+  </div>
+</div>

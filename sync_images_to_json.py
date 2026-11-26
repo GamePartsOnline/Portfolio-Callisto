@@ -4,7 +4,7 @@ import json
 import os
 import shutil
 
-IMAGES_DIR = os.path.join(os.path.dirname(__file__), "assets", "images")
+IMAGES_DIR = os.path.join(os.path.dirname(__file__), "public", "assets", "images")
 JSON_PATH = os.path.join(IMAGES_DIR, "portfolio_images.json")
 
 

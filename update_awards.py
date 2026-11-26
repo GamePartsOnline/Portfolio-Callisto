@@ -46,7 +46,7 @@ awards_mapping = {
 }
 
 # Charger le JSON actuel
-json_path = Path("assets/images/portfolio_images.json")
+json_path = Path("public/assets/images/portfolio_images.json")
 
 with open(json_path, 'r', encoding='utf-8') as f:
     data = json.load(f)

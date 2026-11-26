@@ -1,0 +1,49 @@
+---
+import "../styles/subpages.css";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Page introuvable | Callisto Arts"
+  description="Page introuvable, Callisto Arts, portfolio de Frédérique Charton."
+  robots="noindex, follow"
+  bodyClass="legal-page-body"
+  mainClass="legal-page-main"
+  activeRoute="404"
+  showHeader={false}
+  liteBackground={true}
+  i18n={false}
+>
+  <div class="container">
+    <header class="legal-page-header">
+      <a href="/index.html#welcome" aria-label="Callisto Arts : accueil">
+        <img src="/assets/images/logo/logo-cllisto.png" alt="" width="72" height="72" />
+      </a>
+      <h1 class="section-title">404</h1>
+      <p class="legal-page-updated">
+        Cette page n’existe pas (ou plus).
+        <span lang="en">This page does not exist (anymore).</span>
+      </p>
+    </header>
+
+    <article class="legal-page-article glass-card">
+      <p>
+        Le site a été refondu : les anciennes adresses de la boutique et du blog WordPress ne sont plus en service. Tout le portfolio est désormais réuni sur une seule page.
+      </p>
+      <p lang="en">
+        The site has been rebuilt: the old WordPress shop and blog URLs are no longer in service. The whole portfolio now lives on a single page.
+      </p>
+
+      <h2>Où aller / Where to go</h2>
+      <p>
+        <a class="cta-link cta-link--primary" href="/index.html#welcome">Accueil / Home</a>
+        <span aria-hidden="true"> · </span>
+        <a class="cta-link" href="/index.html#portfolio">Portfolio</a>
+        <span aria-hidden="true"> · </span>
+        <a class="cta-link" href="/services.html">Services</a>
+        <span aria-hidden="true"> · </span>
+        <a class="cta-link" href="/index.html#contact">Contact</a>
+      </p>
+    </article>
+  </div>
+</BaseLayout>

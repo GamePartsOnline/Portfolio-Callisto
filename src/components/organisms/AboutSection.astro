@@ -1,0 +1,120 @@
+---
+import "../../styles/about-teaching.css";
+import SectionTitle from "../atoms/SectionTitle.astro";
+import SocialIcon from "../atoms/SocialIcon.astro";
+import AboutToolsMarquee from "../molecules/AboutToolsMarquee.astro";
+---
+
+<section id="about" class="about section" aria-labelledby="about-title">
+  <div class="container">
+    <SectionTitle id="about-title" title="À propos" i18nKey="about.title" />
+    <div class="about-content">
+      <div class="card glass-card">
+        <div class="card-content">
+          <h3>Frédérique Charton (Callisto)</h3>
+          <p class="about-text" id="about-intro" data-i18n="about.intro">
+            Basée à Châlons-en-Champagne, je dirige la création graphique chez GPO SARL depuis 2012 : identité visuelle, PAO et impression numérique (Roland VersaWorks), restauration esthétique de flippers, design d'interfaces (UI) et développement full-stack &amp; IA.
+          </p>
+          <p class="about-text" data-i18n="about.demoscenePara">
+            Demoscene :
+            <a
+              href="https://demozoo.org/sceners/57855/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <strong>Fiche Demozoo (Callisto)</strong>
+            </a>
+            : graphismes, photos, vidéos (66+ productions). Groupes notamment <strong>Flush</strong>, <strong>GPO</strong>, <strong>Vital-Motion!</strong>, Syn[Rj], Silicium, New C-Rex, RBBS…
+          </p>
+          <p class="about-text" data-i18n="about.behancePara">
+            <a
+              href="https://www.behance.net/CallistoArtwork"
+              class="about-behance-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <SocialIcon network="behance" class="about-behance-icon" />
+              <strong>Behance : Callisto Artwork</strong>
+            </a>
+            (portfolio Adobe : démos, paintover, pixel art, GPO et flippers, Inktober…). Outils : Photoshop, Illustrator, InDesign, Fresco. Disponible pour des missions, collaborations et interventions.
+          </p>
+          <AboutToolsMarquee />
+        </div>
+      </div>
+
+      <div class="about-cards" aria-label="Domaines d'activité">
+        <a class="about-card glass-card" href="#portfolio">
+          <h3 data-i18n="about.card.drawingTitle">Dessin numérique</h3>
+          <p data-i18n="about.card.drawingDesc">
+            Artiste numérique depuis 2011, concours internationaux, et passionnée par la pratique !
+          </p>
+          <span class="about-card-tag" data-i18n="about.card.drawingTag">Portfolio</span>
+        </a>
+        <a
+          class="about-card glass-card"
+          href="https://gposarl.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <h3 data-i18n="about.card.gpoTitle">GPO SARL</h3>
+          <p data-i18n="about.card.gpoDesc">
+            Réparation, vente, location et restauration esthétique sur mesure de flippers et machines de loisirs (COMET 1934/1935, Shaq Attaq, Firepower, Nineball, Blackout…).
+          </p>
+          <span class="about-card-tag" data-i18n="about.card.gpoTag">GPO SARL</span>
+        </a>
+        <a
+          class="about-card glass-card"
+          href="https://demozoo.org/sceners/57855/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <h3 data-i18n="about.card.demoTitle">Demoscene</h3>
+          <p data-i18n="about.card.demoDesc">
+            Membre active depuis 2015 : Shadow Party, Revision, Rsync, Inercia, Assembly, Tokyo Demo Fest…
+          </p>
+          <span class="about-card-tag" data-i18n="about.card.demoTag">Scener</span>
+        </a>
+      </div>
+
+      <blockquote class="about-quote" cite="https://callistoarts.com">
+        <p data-i18n="footer.quote">Mon plaisir, c’est DESSINER. TOUJOURS. Et pour toujours.</p>
+        <cite>CALLISTO, Frédérique Charton</cite>
+      </blockquote>
+
+      <div class="about-cards" aria-label="Autres domaines d'activité">
+        <a class="about-card glass-card" href="/build-log.html#llm-latency">
+          <h3 data-i18n="about.card.aiTitle">Prompt IA</h3>
+          <p data-i18n="about.card.aiDesc">
+            ChatGPT, Perplexity, Gemini, Claude. Maîtrise de l’IA (Anthropic Academy, modèle 4D) et intégration d’outils IA dans le flux créatif.
+          </p>
+          <span class="about-card-tag" data-i18n="about.card.aiTag">Création IA</span>
+        </a>
+        <a
+          class="about-card glass-card"
+          href="https://www.thehackingproject.org/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <h3 data-i18n="about.card.devTitle">Full-stack &amp; IA générative</h3>
+          <p data-i18n="about.card.devDesc">
+            Spécialisation architecture full-stack et intégration d’IA générative.<br />
+            The Hacking Project (2026) : HTML, CSS, JavaScript, Ruby, Rust, développement assisté par IA…
+          </p>
+          <span class="about-card-tag" data-i18n="about.card.devTag">THP 2026</span>
+        </a>
+        <a
+          class="about-card glass-card"
+          href="https://www.behance.net/CallistoArtwork"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <h3 data-i18n="about.card.uxTitle">UI design / Design graphique</h3>
+          <p data-i18n="about.card.uxDesc">
+            Interfaces et ergonomie, accessibilité, sites et jeux vidéo.<br />Illustrator, Photoshop, InDesign, Fresco, Procreate …
+          </p>
+          <span class="about-card-tag" data-i18n="about.card.uxTag">UX/UI</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

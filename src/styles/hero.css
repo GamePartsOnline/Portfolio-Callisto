@@ -1,0 +1,419 @@
+/* ============================================
+   HERO SECTION
+   ============================================ */
+.hero {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Clears fixed nav — content must start below bar (padding was ~68px < nav ~78px). */
+  padding: var(--spacing-lg) var(--spacing-md);
+  padding-top: max(
+    var(--spacing-lg),
+    calc(var(--nav-height) + 0.75rem + env(safe-area-inset-top, 0px))
+  );
+  box-sizing: border-box;
+  scroll-margin-top: calc(
+    var(--nav-height) + 0.5rem + env(safe-area-inset-top, 0px)
+  );
+  position: relative;
+  /* Background removed to show particles */
+}
+
+.hero-content {
+  text-align: center;
+  max-width: 800px;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: visible;
+  /* Extra horizontal padding for long lines (avoids clipping with overflow-x on body) */
+  padding-left: max(var(--spacing-sm), env(safe-area-inset-left, 0px));
+  padding-right: max(var(--spacing-sm), env(safe-area-inset-right, 0px));
+}
+
+.hero-title {
+  overflow: visible;
+}
+
+.hero-greeting {
+  display: block;
+  font-size: var(--font-size-lg);
+  font-weight: 300;
+  color: var(--color-text-tertiary);
+  margin-bottom: var(--spacing-sm);
+  /* letter-spacing widens glyphs; without word-spacing, gaps between words look too tight */
+  letter-spacing: 0.1em;
+  word-spacing: 0.22em;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.hero-name {
+  display: block;
+  font-weight: 700;
+  margin-bottom: var(--spacing-md);
+  color: var(--color-brand-rose);
+  letter-spacing: 0.02em;
+  line-height: 1.12;
+  /* Fluid size + margin for halo (body has overflow-x: hidden) */
+  font-size: clamp(1.85rem, 8.5vw, var(--font-size-4xl));
+  padding-inline: 0.4em;
+  box-sizing: border-box;
+  text-shadow: none;
+  transition: color var(--transition-base);
+}
+.hero-name:hover {
+  color: var(--color-brand-neon);
+}
+
+
+
+
+
+
+.hero-subtitle {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  column-gap: 0.45rem;
+  row-gap: 0.4rem;
+  width: 100%;
+  max-width: min(38rem, 100%);
+  margin: 0 auto var(--spacing-sm);
+  padding-inline: max(0.75rem, env(safe-area-inset-left, 0px))
+    max(0.75rem, env(safe-area-inset-right, 0px));
+  box-sizing: border-box;
+  font-size: clamp(0.8rem, 3.4vw, var(--font-size-xl));
+  line-height: 1.55;
+  color: var(--color-text-secondary);
+  text-align: center;
+  overflow-wrap: anywhere;
+  word-wrap: break-word;
+  hyphens: manual;
+}
+
+.hero-subtitle__item {
+  min-width: 0;
+  text-wrap: balance;
+}
+
+.hero-subtitle__sep {
+  color: rgba(0, 255, 224, 0.4);
+  font-weight: 300;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.hero-tagline {
+  max-width: min(36rem, 100%);
+  margin: 0 auto var(--spacing-sm);
+  padding-inline: max(0.75rem, env(safe-area-inset-left, 0px))
+    max(0.75rem, env(safe-area-inset-right, 0px));
+  box-sizing: border-box;
+  font-size: clamp(0.82rem, 2.6vw, 1.05rem);
+  font-weight: 400;
+  line-height: 1.55;
+  letter-spacing: 0.02em;
+  color: var(--color-text-tertiary);
+  text-align: center;
+  text-wrap: balance;
+}
+
+/* Single readable column on very small screens — no text clipped at edges */
+@media (max-width: 520px) {
+  .hero-subtitle {
+    flex-direction: column;
+    gap: 0.35rem;
+    font-size: clamp(0.78rem, 3.2vw, 1rem);
+    padding-inline: max(1rem, env(safe-area-inset-left, 0px))
+      max(1rem, env(safe-area-inset-right, 0px));
+  }
+
+  .hero-subtitle__sep {
+    display: none;
+  }
+}
+
+/* Decorative line under hero subtitle */
+.hero-subtitle-line {
+  width: min(280px, 70vw);
+  height: 2px;
+  margin: 0 auto var(--spacing-lg);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-brand-neon, #00ffe0),
+    var(--color-brand-rose, #f472b6),
+    transparent
+  );
+  border-radius: 2px;
+  opacity: 0.9;
+  box-shadow: none;
+}
+
+/* 3D glass effect — shifted down so hover scale does not hit the text */
+.hero-3d-container {
+  perspective: 1000px;
+  margin: var(--spacing-md) auto;
+  margin-top: var(--spacing-lg);
+  width: 500px;
+  max-width: 100%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.glass-3d-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: none;
+  border-radius: 20px;
+  transform-style: preserve-3d;
+  /* translateZ(0) : couche composée — aide Lighthouse « non-composited animations » sur le hover scale */
+  transform: rotateX(10deg) translateZ(0);
+  transition: transform 0.5s ease;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Hero slide (Sky code, tiger eye, spider) — same frame */
+.hero-slide-wrapper {
+  padding: 0;
+}
+
+.hero-slides {
+  position: relative;
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.5s ease,
+    visibility 0.5s ease;
+}
+
+.hero-slide.active {
+  position: relative;
+  opacity: 1;
+  visibility: visible;
+}
+
+.hero-slide .hero-image-3d {
+  flex: 1;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: center center;
+  /* Aligne le média sur le border-radius du cadre glass (overflow peut laisser des coins durs sur certains navigateurs) */
+  border-radius: 20px 20px 0 0;
+}
+
+.hero-slide-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 2;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+
+.hero-slide-btn:hover {
+  background: rgba(0, 255, 224, 0.3);
+  color: #00ffe0;
+}
+
+.hero-slide-prev {
+  left: 8px;
+}
+.hero-slide-next {
+  right: 8px;
+}
+
+.hero-slide-dots {
+  position: absolute;
+  bottom: 48px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  /* Dans le hero (~500px max), 5 pastilles × 44px + gaps dépassaient la largeur → le 5e point passait à la ligne */
+  gap: clamp(3px, 1vw, 8px);
+  max-width: calc(100% - 0.75rem);
+  padding: 0 2px;
+  box-sizing: border-box;
+  z-index: 2;
+}
+
+/*
+ * Pastille visuelle via ::after ; la boîte peut rétrécir un peu sur étroits pour tenir 5 points sur une ligne.
+ * Cible tactile : clamp entre ~32px et 44px (le carrousel est une zone déjà large).
+ */
+.hero-slide-dot {
+  position: relative;
+  box-sizing: border-box;
+  width: clamp(32px, 9vw, var(--touch-target-min, 44px));
+  height: clamp(32px, 9vw, var(--touch-target-min, 44px));
+  min-width: clamp(32px, 9vw, var(--touch-target-min, 44px));
+  min-height: clamp(32px, 9vw, var(--touch-target-min, 44px));
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  touch-action: manipulation;
+  flex-shrink: 0;
+}
+
+.hero-slide-dot::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: transparent;
+  pointer-events: none;
+  transition:
+    background 0.2s,
+    border-color 0.2s;
+}
+
+.hero-slide-dot:hover::after {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.hero-slide-dot.active::after {
+  background: #00ffe0;
+  border-color: #00ffe0;
+}
+
+.hero-slide-dot.active:hover::after {
+  background: #00ffe0;
+}
+
+.hero-slide-dot:focus-visible {
+  outline: 2px solid var(--color-brand-neon, #00ffe0);
+  outline-offset: 2px;
+}
+
+.glass-3d-card:hover {
+  transform: rotateX(0deg) scale(1.5) translateZ(0);
+  box-shadow: 0 40px 70px rgba(0, 0, 0, 0.6);
+  z-index: 10;
+}
+
+.hero-image-3d {
+  width: 100%;
+  flex: 1;
+  height: auto;
+  object-fit: cover;
+  object-position: center 20%;
+  /* Focus on eyes */
+  opacity: 0.8;
+  transition: opacity 0.5s ease;
+}
+
+.hero-image-caption {
+  padding: var(--spacing-sm);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  text-align: center;
+  background: rgba(0, 0, 0, 0.6);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  letter-spacing: 0.05em;
+  line-height: 1.4;
+}
+
+.glass-3d-card:hover .hero-image-3d {
+  opacity: 1;
+}
+
+.glass-shine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.1) 40%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  pointer-events: none;
+  transform: translateX(-100%);
+  transition: transform 0.8s;
+}
+
+.glass-3d-card:hover .glass-shine {
+  transform: translateX(100%);
+  transition: transform 0.8s;
+}
+
+.hero-scroll {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xs);
+  color: var(--color-text-tertiary);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(10px);
+  }
+}
+
+@media (min-width: 768px) {
+  .hero-name {
+    font-size: 5rem;
+    padding-inline: 0.2em;
+  }
+
+
+  .hero-greeting {
+    font-size: var(--font-size-xl);
+  }
+}
+

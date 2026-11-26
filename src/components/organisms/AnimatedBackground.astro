@@ -1,0 +1,26 @@
+---
+import "../../styles/background.css";
+
+export interface Props {
+  lite?: boolean;
+  hasParticlesId?: boolean;
+}
+
+const { lite = false, hasParticlesId = false } = Astro.props;
+---
+
+<div class="animated-background" aria-hidden="true">
+  <div class="bg-gradient"></div>
+  <div class="bg-mesh"></div>
+  {!lite && <div class="bg-particles" id={hasParticlesId ? "bgParticles" : undefined} />}
+  {
+    !lite && (
+      <div class="bg-orbs">
+        <div class="orb orb-1" />
+        <div class="orb orb-2" />
+        <div class="orb orb-3" />
+      </div>
+    )
+  }
+  <div class="bg-grid"></div>
+</div>

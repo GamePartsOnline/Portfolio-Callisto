@@ -1,0 +1,382 @@
+/* Audio player (ported from MusicPlayer.astro) — above everything (lightbox, canvas) */
+.music-player {
+  --mp-accent: #00ffe0;
+  --mp-accent-soft: color-mix(in srgb, var(--mp-accent) 18%, transparent);
+  --mp-accent-border: color-mix(in srgb, var(--mp-accent) 42%, transparent);
+  --mp-rose: var(--color-brand-rose, #f472b6);
+  --mp-track: rgba(255, 255, 255, 0.12);
+  --mp-glass-bg: var(--glass-bg, rgba(24, 26, 30, 0.72));
+  --mp-glass-border: var(--glass-border, rgba(255, 255, 255, 0.12));
+
+  position: fixed;
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  left: max(1rem, env(safe-area-inset-left));
+  z-index: 2147483647;
+  width: min(330px, calc(100vw - 2rem));
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding: 0.75rem 0.9rem;
+  border-radius: 16px;
+  background: var(--mp-glass-bg);
+  border: 1px solid var(--mp-glass-border);
+  backdrop-filter: var(--glass-blur, blur(20px));
+  -webkit-backdrop-filter: var(--glass-blur, blur(20px));
+  box-shadow:
+    0 12px 36px rgba(0, 0, 0, 0.38),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  font-family: var(--font-family, "Inter", system-ui, sans-serif);
+  color: #fff;
+  pointer-events: auto !important;
+  touch-action: manipulation;
+  transform: translateZ(0);
+  will-change: transform;
+  transition: opacity 0.22s ease, transform 0.22s ease, border-color 0.22s ease;
+}
+
+.music-player * {
+  pointer-events: auto !important;
+}
+
+.mp-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding-bottom: 0.45rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--mp-accent) 20%, transparent);
+}
+
+.mp-byline {
+  font-family: "Cinzel", "Times New Roman", serif;
+  font-size: 0.64rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.78);
+  white-space: nowrap;
+}
+
+.mp-title {
+  font-family: "Share Tech Mono", ui-monospace, monospace;
+  font-size: 0.64rem;
+  letter-spacing: 0.06em;
+  color: var(--mp-accent);
+  opacity: 0.85;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mp-main {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  min-width: 0;
+}
+
+.mp-play-btn {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid var(--mp-accent-border);
+  background: linear-gradient(
+    160deg,
+    var(--mp-accent-soft) 0%,
+    rgba(255, 255, 255, 0.04) 100%
+  );
+  color: var(--mp-accent);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.15s ease;
+}
+
+.mp-play-btn:hover {
+  border-color: var(--mp-accent);
+  background: linear-gradient(
+    160deg,
+    color-mix(in srgb, var(--mp-accent) 28%, transparent) 0%,
+    rgba(255, 255, 255, 0.08) 100%
+  );
+}
+
+.mp-play-btn:active {
+  transform: scale(0.95);
+}
+
+.mp-play-btn[aria-pressed="true"] {
+  border-color: var(--mp-accent);
+  box-shadow: 0 0 14px color-mix(in srgb, var(--mp-accent) 24%, transparent);
+}
+
+.mp-play-btn:focus-visible,
+.mp-mute-btn:focus-visible {
+  outline: 2px solid var(--mp-accent);
+  outline-offset: 2px;
+}
+
+.mp-icon-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mp-icon-wrap[hidden],
+.mp-icon[hidden] {
+  display: none;
+}
+
+.mp-seek-col {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.mp-time {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  gap: 0.2rem;
+  font-family: "Share Tech Mono", ui-monospace, monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+}
+
+.mp-time-val {
+  color: var(--mp-accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.mp-time-dur {
+  opacity: 0.78;
+}
+
+.mp-time-sep {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* Cross-browser custom slider: visual track + transparent full-hit range input */
+.mp-slider-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 26px;
+}
+
+.mp-slider-wrap--vol {
+  flex: 1;
+  min-width: 0;
+  height: 24px;
+}
+
+.mp-track {
+  position: relative;
+  width: 100%;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--mp-track);
+  overflow: hidden;
+  pointer-events: none;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+.mp-track--vol {
+  height: 4px;
+}
+
+.mp-track-fill {
+  height: 100%;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.mp-track-fill--seek {
+  width: var(--mp-seek-pct, 0%);
+  background: var(--mp-accent);
+}
+
+.mp-track-fill--vol {
+  width: var(--mp-vol-pct, 45%);
+  background: var(--mp-accent);
+  opacity: 0.78;
+}
+
+.mp-range {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  background: transparent;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+.mp-range:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.mp-range:focus-visible {
+  outline: none;
+}
+
+.mp-range:focus-visible::-webkit-slider-thumb {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--mp-accent) 38%, transparent);
+}
+
+.mp-range:focus-visible::-moz-range-thumb {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--mp-accent) 38%, transparent);
+}
+
+.mp-range::-webkit-slider-runnable-track {
+  background: transparent;
+  border: none;
+}
+
+.mp-range::-moz-range-track {
+  background: transparent;
+  border: none;
+}
+
+.mp-range--seek::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid var(--mp-accent);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.45);
+  cursor: grab;
+  transition: transform 0.12s ease;
+}
+
+.mp-range--seek::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid var(--mp-accent);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.45);
+  cursor: grab;
+}
+
+.mp-range--seek:active::-webkit-slider-thumb {
+  cursor: grabbing;
+  transform: scale(1.1);
+}
+
+.mp-range--vol::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid var(--mp-accent);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+.mp-range--vol::-moz-range-thumb {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid var(--mp-accent);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+.mp-vol-row {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-width: 0;
+}
+
+.mp-mute-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.2rem 0.3rem;
+  margin-left: -0.3rem;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.62);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: color 0.15s ease;
+}
+
+.mp-mute-btn:hover,
+.mp-mute-btn[aria-pressed="true"] {
+  color: var(--mp-accent);
+}
+
+.mp-vol-label {
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.mp-hint {
+  margin: 0;
+  font-size: 0.66rem;
+  line-height: 1.4;
+  color: #fb923c;
+}
+
+/* Workshop night mode ("Nuit d'Atelier") — uniform candle accent */
+body.night .music-player {
+  --mp-accent: var(--candle, #ff9d3a);
+  --mp-track: rgba(255, 200, 120, 0.14);
+  border-color: rgba(255, 157, 58, 0.25);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.52);
+}
+
+body.night .mp-byline {
+  color: rgba(255, 224, 200, 0.62);
+}
+
+@media (max-width: 480px) {
+  .music-player {
+    width: calc(100vw - 1.25rem);
+    left: 0.625rem;
+    bottom: max(0.75rem, env(safe-area-inset-bottom));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .music-player,
+  .mp-play-btn,
+  .mp-range--seek::-webkit-slider-thumb,
+  .mp-mute-btn {
+    transition: none !important;
+  }
+}
+
+
+@media (max-width: 768px) {
+  body.is-scrolling-mobile .music-player {
+    opacity: 0.18;
+    transform: translateZ(0) translateY(12px) scale(0.96);
+    pointer-events: none !important;
+  }
+
+  body.is-scrolling-mobile .music-player * {
+    pointer-events: none !important;
+  }
+}

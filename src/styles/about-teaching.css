@@ -1,0 +1,461 @@
+/* ============================================
+   ABOUT SECTION — same neon title treatment
+   ============================================ */
+.about .section-title,
+.teaching .section-title {
+  color: var(--color-brand-neon);
+  text-shadow: none;
+}
+
+.about .section-title::after {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-brand-neon),
+    transparent
+  );
+  box-shadow: none;
+}
+
+.about-content,
+.teaching-content {
+  display: grid;
+  gap: var(--spacing-md);
+}
+
+.teaching-cta-wrap {
+  margin-top: var(--spacing-sm);
+}
+
+
+
+
+
+
+
+
+
+/* Citation About (style nuit-atelier) */
+.about-quote {
+  border-left: 2px solid rgba(0, 255, 224, 0.3);
+  padding: 20px 28px;
+  margin: 0 0 var(--spacing-lg);
+  transition: border-color 1.5s;
+}
+.about-quote p {
+  font-family: "Lora", serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: rgba(200, 216, 232, 0.9);
+  margin: 0 0 0.5rem;
+}
+.about-quote cite {
+  display: block;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: rgba(200, 216, 232, 0.5);
+}
+body.night .about-quote {
+  border-left-color: rgba(255, 157, 58, 0.3);
+}
+body.night .about-quote p {
+  color: rgba(255, 210, 160, 0.8);
+}
+body.night .about-quote cite {
+  color: rgba(255, 157, 58, 0.5);
+}
+
+/* Grille de cartes About — 3 par ligne max (style nuit-atelier) */
+.about-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+@media (max-width: 900px) {
+  .about-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 560px) {
+  .about-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+.about-card {
+  padding: 28px;
+  transition:
+    background 1.5s,
+    border-color 1.5s,
+    box-shadow 1.5s;
+}
+a.about-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+a.about-card:focus-visible {
+  outline: 2px solid var(--color-brand-neon, #00ffe0);
+  outline-offset: 3px;
+}
+body.night a.about-card:focus-visible {
+  outline-color: var(--candle, #ff9d3a);
+}
+.about-card:hover {
+  border-color: rgba(0, 255, 224, 0.2);
+  box-shadow: none;
+}
+.about-card-icon {
+  font-size: 1.8rem;
+  display: block;
+  margin-bottom: 14px;
+}
+.about-card h3 {
+  font-family: "Cinzel", serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.12em;
+  color: var(--color-text-primary);
+  margin: 0 0 8px;
+}
+.about-card p {
+  font-size: 0.8rem;
+  line-height: 1.8;
+  color: rgba(200, 216, 232, 0.7);
+  margin: 0;
+}
+.about-card-tag {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 2px;
+  background: rgba(0, 255, 224, 0.08);
+  border: 1px solid rgba(0, 255, 224, 0.2);
+  color: var(--color-brand-neon);
+}
+body.night .about-card:hover {
+  border-color: rgba(255, 157, 58, 0.2);
+  box-shadow: none;
+}
+body.night .about-card h3 {
+  color: #ffe0bb;
+}
+body.night .about-card p {
+  color: rgba(255, 210, 160, 0.6);
+}
+body.night .about-card-tag {
+  background: rgba(255, 157, 58, 0.08);
+  border-color: rgba(255, 157, 58, 0.2);
+  color: var(--candle);
+}
+
+.card-content {
+  padding: var(--spacing-md);
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Wide responsive text cards (About, Contact, etc.) */
+.about .glass-card,
+.contact .glass-card {
+  width: 100%;
+  max-width: min(1100px, calc(100% - 2 * var(--spacing-md)));
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.about-text {
+  margin-bottom: var(--spacing-md);
+  line-height: 1.8;
+}
+
+.about-behance-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  vertical-align: middle;
+  margin-right: 0.15em;
+  color: #6ea8ff;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(23, 105, 255, 0.4);
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.about-behance-link:hover,
+.about-behance-link:focus-visible {
+  color: #a8c8ff;
+  border-bottom-color: rgba(23, 105, 255, 0.85);
+  outline: none;
+}
+
+.about-behance-icon {
+  width: 1.2em;
+  height: 1.2em;
+  flex-shrink: 0;
+  color: #1769ff;
+}
+
+.about-behance-link:hover .about-behance-icon,
+.about-behance-link:focus-visible .about-behance-icon {
+  color: #4d94ff;
+}
+
+.about-tools {
+  margin-top: 1rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.about-tools-title {
+  margin: 0 0 0.65rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.about-tool-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.about-tool {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
+  padding: 0.28rem 0.5rem 0.28rem 0.34rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--color-text-secondary);
+  font-size: 0.72rem;
+  line-height: 1;
+}
+
+.about-tool-badge {
+  width: 1.12rem;
+  height: 1.12rem;
+  min-width: 1.12rem;
+  min-height: 1.12rem;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #0c111a;
+  background: linear-gradient(135deg, #00ffe0, #f472b6);
+  box-shadow: none;
+  overflow: hidden;
+}
+
+.about-tool-badge svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.about-tool-badge img {
+  display: block;
+  width: 0.7rem;
+  height: 0.7rem;
+  min-width: 0.7rem;
+  min-height: 0.7rem;
+  object-fit: contain;
+  filter: none;
+}
+
+/* Opera/extension-safe clamp: prevent oversized logos in tool chips */
+.about-tools .about-tool .about-tool-badge {
+  width: 1.12rem !important;
+  height: 1.12rem !important;
+  min-width: 1.12rem !important;
+  min-height: 1.12rem !important;
+}
+
+.about-tools .about-tool .about-tool-badge img {
+  width: 0.7rem !important;
+  height: 0.7rem !important;
+  max-width: 0.7rem !important;
+  max-height: 0.7rem !important;
+  min-width: 0.7rem !important;
+  min-height: 0.7rem !important;
+  flex: 0 0 0.7rem;
+}
+
+/* Extra-strong guard for Opera GX / extension overrides */
+.about-tools .about-tool-list {
+  list-style: none !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.about-tools .about-tool-list > li.about-tool {
+  list-style: none !important;
+  display: inline-flex !important;
+}
+
+.about-tool--illustrator .about-tool-badge {
+  background: #ff9a00;
+}
+.about-tool--fresco .about-tool-badge {
+  background: #0dbdff;
+}
+.about-tool--photoshop .about-tool-badge {
+  background: #31a8ff;
+}
+.about-tool--indesign .about-tool-badge {
+  background: #ff3366;
+}
+.about-tool--canva .about-tool-badge {
+  background: linear-gradient(135deg, #00c4cc, #6e5bff);
+}
+.about-tool--firefly .about-tool-badge {
+  background: linear-gradient(135deg, #ff2a5b, #ff9f1a 55%, #6b5cff);
+}
+.about-tool--figma .about-tool-badge {
+  background: linear-gradient(135deg, #f24e1e, #ff7262 30%, #a259ff 65%, #1abcfe);
+}
+.about-tool--premiere .about-tool-badge {
+  background: #9999ff;
+}
+.about-tool--davinci .about-tool-badge {
+  background: #233a51;
+}
+.about-tool--obsidian .about-tool-badge {
+  background: #7c3aed;
+}
+.about-tool--github .about-tool-badge {
+  background: #24292f;
+}
+.about-tool--trello .about-tool-badge {
+  background: #0079bf;
+}
+.about-tool--vscode .about-tool-badge {
+  background: #007acc;
+}
+.about-tool--cursor .about-tool-badge {
+  background: #111827;
+}
+.about-tool--ai .about-tool-badge {
+  background: linear-gradient(135deg, #7f5cff, #00bcd4);
+}
+.about-tool--versaworks .about-tool-badge {
+  background: #0066b2;
+  color: #fff;
+}
+.about-tool--procreate .about-tool-badge {
+  background: linear-gradient(135deg, #ff5e8e, #7b61ff);
+  color: #fff;
+}
+.about-tool--blender .about-tool-badge {
+  background: #ea7600;
+  color: #fff;
+}
+.about-tool--aftereffects .about-tool-badge {
+  background: #00005b;
+  color: #9999ff;
+}
+.about-tool--web .about-tool-badge {
+  background: #1f2937;
+  color: #00ffe0;
+  font-size: 0.52rem;
+}
+.about-tool--rust .about-tool-badge {
+  background: #b7410e;
+  color: #fff;
+}
+
+.about-tools-marquee {
+  overflow: hidden;
+  width: 100%;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+}
+
+.about-tools .about-tools-marquee .about-tool-list {
+  flex-wrap: nowrap !important;
+  width: max-content;
+  animation: aboutToolsMarquee 36s linear infinite;
+}
+
+.about-tools-marquee:hover .about-tool-list {
+  animation-play-state: paused;
+}
+
+.about-tools .about-tool {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+@keyframes aboutToolsMarquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-tools .about-tools-marquee .about-tool-list {
+    flex-wrap: wrap !important;
+    width: auto;
+    animation: none;
+  }
+}
+
+.about-timeline {
+  margin-top: var(--spacing-lg);
+}
+
+.timeline-item {
+  display: flex;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  padding-left: var(--spacing-md);
+  border-left: 2px solid var(--color-border);
+}
+
+.timeline-year {
+  font-weight: 700;
+  color: var(--color-accent);
+  min-width: 80px;
+  font-size: var(--font-size-lg);
+}
+
+.timeline-item p {
+  flex: 1;
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .about-content {
+    grid-template-columns: 1fr;
+    max-width: min(1100px, 100%);
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .card-content {
+    padding: var(--spacing-lg);
+  }
+  .about .glass-card,
+  .contact .glass-card {
+    max-width: min(1200px, calc(100% - 2 * var(--spacing-lg)));
+  }
+}
+

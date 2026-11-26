@@ -1,0 +1,214 @@
+/* ============================================
+   SECTIONS
+   ============================================ */
+.section {
+  padding: var(--spacing-xl) var(--spacing-md);
+  min-height: 50vh;
+}
+
+
+#about {
+  scroll-margin-top: calc(
+    var(--nav-height) + 0.5rem + env(safe-area-inset-top, 0px)
+  );
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+/* Section title block — one tall band with gradient (transparent top → subtle bottom), like My journey */
+.section-title-wrap {
+  position: relative;
+  text-align: center;
+  padding: 0 20px;
+  margin-bottom: var(--spacing-md);
+}
+
+.section-title-wrap::before {
+  content: none;
+  display: none;
+}
+
+.section-title {
+  font-size: var(--font-size-3xl);
+  text-align: center;
+  margin-bottom: 0;
+  position: relative;
+  padding-bottom: 0;
+}
+
+/* No ::after line under title: like My journey, only the ::before band frames it */
+.section-title::after {
+  content: none;
+  display: none;
+}
+
+
+/* ============================================
+   CTA LINK
+   ============================================ */
+.cta-link {
+  display: inline-block;
+  margin-top: var(--spacing-sm);
+  padding: 0.75rem 1.25rem;
+  border-radius: 999px;
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  color: var(--color-text-primary);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition:
+    transform var(--transition-fast),
+    border-color var(--transition-fast),
+    opacity var(--transition-fast);
+}
+
+.cta-link:hover,
+.cta-link:focus {
+  opacity: 1;
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+  outline: none;
+}
+
+.cta-link--primary {
+  border-color: rgba(0, 255, 224, 0.45);
+  background: rgba(0, 255, 224, 0.09);
+}
+
+.cta-link--primary:hover,
+.cta-link--primary:focus {
+  border-color: rgba(0, 255, 224, 0.65);
+  background: rgba(0, 255, 224, 0.14);
+}
+
+/* Hero — primary actions (portfolio / about / contact) */
+.hero-cta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.65rem;
+  margin: 0 auto var(--spacing-lg);
+  max-width: 42rem;
+  padding: 0 var(--spacing-sm);
+}
+
+.hero-cta .cta-link {
+  margin-top: 0;
+}
+
+/* Section intros + cross-links */
+.section-lead {
+  text-align: center;
+  color: var(--color-text-secondary);
+  font-size: clamp(0.88rem, 2.4vw, 1.05rem);
+  line-height: 1.55;
+  max-width: 38rem;
+  margin: 0 auto var(--spacing-lg);
+  padding: 0 var(--spacing-md);
+}
+
+.section-lead a {
+  color: var(--color-brand-neon, #00ffe0);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0, 255, 224, 0.35);
+  transition:
+    color var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.section-lead a:hover,
+.section-lead a:focus {
+  color: #7ffdf0;
+  border-bottom-color: rgba(0, 255, 224, 0.65);
+  outline: none;
+}
+
+.portfolio-lead {
+  margin-top: var(--spacing-md);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid rgba(0, 255, 224, 0.22);
+  font-style: italic;
+  letter-spacing: 0.02em;
+}
+
+.portfolio-footer-cta {
+  text-align: center;
+  margin-top: var(--spacing-xl);
+  padding-bottom: var(--spacing-sm);
+}
+
+.portfolio-footer-lead {
+  margin: 0 0 var(--spacing-sm);
+  font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.about-lead {
+  margin-bottom: var(--spacing-lg);
+}
+
+/* Journey — line under header */
+.journey-cta {
+  margin: var(--spacing-md) auto 0;
+  max-width: 34rem;
+  padding: 0 var(--spacing-md);
+  text-align: center;
+  font-size: clamp(0.85rem, 2.2vw, 0.98rem);
+  line-height: 1.55;
+  color: var(--journey-text);
+}
+
+.journey-cta a {
+  color: var(--journey-neon);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0, 255, 224, 0.35);
+}
+
+.journey-cta a:hover,
+.journey-cta a:focus {
+  color: #7ffdf0;
+  border-bottom-color: rgba(0, 255, 224, 0.65);
+  outline: none;
+}
+
+/* Contact — headline + primary email CTA */
+.contact-lead {
+  margin: 0 0 var(--spacing-md);
+  font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+  line-height: 1.55;
+  color: var(--color-text-secondary);
+}
+
+.contact-cta-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 0 0 var(--spacing-lg);
+}
+
+.contact-cta-wrap .cta-link {
+  margin-top: 0;
+}
+
+.contact-details-heading {
+  margin: 0 0 var(--spacing-sm);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+}
+
