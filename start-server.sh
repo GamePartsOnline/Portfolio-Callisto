@@ -3,8 +3,8 @@
 cd "$(dirname "$0")"
 PORT="${PORT:-8765}"
 if [ ! -d "dist" ]; then
-  echo "  Build Astro absent — exécution de npm run build..."
-  npm run build
+  echo "  Build Astro absent — exécution de pnpm run build..."
+  pnpm run build
 fi
 echo ""
 echo "  Portfolio Callisto Arts — serveur local (dist/)"

@@ -37,5 +37,5 @@ fi
 
 # Vérification Astro/TypeScript si le code ou la config change
 if printf '%s\n' "$staged_files" | grep -E '^(src/|astro\.config\.mjs|package\.json|tsconfig\.json)' >/dev/null 2>&1; then
-  npm run check
+  pnpm run check
 fi
