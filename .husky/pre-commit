@@ -1,0 +1,41 @@
+#!/usr/bin/env sh
+set -eu
+
+staged_files="$(git diff --cached --name-only --diff-filter=ACM)"
+[ -z "$staged_files" ] && exit 0
+
+# Séparer uniquement sur les retours à la ligne (préserve les noms avec espaces)
+OLD_IFS="$IFS"
+IFS='
+'
+for f in $staged_files; do
+  case "$f" in
+    .env|.env.*|*.pem|*.key|*.p12|*.pfx|id_rsa|id_ed25519)
+      echo "❌ Commit bloqué : fichier sensible détecté ($f)"
+      exit 1
+      ;;
+    assets/*)
+      echo "❌ Commit bloqué : place les nouveaux assets dans public/assets/ ($f)"
+      exit 1
+      ;;
+    *.json)
+      [ "$f" = "tsconfig.json" ] && continue
+      node -e "JSON.parse(require('fs').readFileSync(process.argv[1], 'utf8'))" "$f" || {
+        echo "❌ JSON invalide : $f"
+        exit 1
+      }
+      ;;
+  esac
+done
+IFS="$OLD_IFS"
+
+# Bloquer tout motif de clé API / secret dans les ajouts stagés
+if git diff --cached -U0 --diff-filter=ACM | grep -E '^\+.*(-----BEGIN [A-Z ]*PRIVATE KEY-----|AKIA[0-9A-Z]{16}|(ghp|gho|ghu|ghs|ghr)_[A-Za-z0-9_]{20,}|github_pat_[A-Za-z0-9_]{20,}|AIza[0-9A-Za-z\-_]{35}|sk-(proj-)?[A-Za-z0-9_-]{20,})' >/dev/null 2>&1; then
+  echo "❌ Commit bloqué : motif de clé API / secret détecté dans le diff stagé."
+  exit 1
+fi
+
+# Vérification Astro/TypeScript si le code ou la config change
+if printf '%s\n' "$staged_files" | grep -E '^(src/|astro\.config\.mjs|package\.json|tsconfig\.json)' >/dev/null 2>&1; then
+  npm run check
+fi
