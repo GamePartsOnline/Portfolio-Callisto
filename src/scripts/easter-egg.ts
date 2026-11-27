@@ -67,7 +67,7 @@ export function initDemosceneEasterEgg(): void {
       "<div>" +
       '  <div class="demo-ee-copper" aria-hidden="true"></div>' +
       '  <div class="demo-ee-scroller-wrap">' +
-      '    <span class="demo-ee-scroller">*** GREETINGS TO ALL SCENERS &amp; CREATORS *** CALLISTO / FLUSH ^ VITAL-MOTION! *** 66+ PRODUCTIONS ON DEMOZOO *** KEEP DRAWING, KEEP CODING, KEEP CREATING ***</span>' +
+      '    <span class="demo-ee-scroller">*** GREETINGS TO ALL SCENERS &amp; CREATORS *** THANKS TO : ALL SCENERS * ALL GROUP *** CALLISTO / FLUSH ^ VITAL-MOTION! *** 66+ PRODUCTIONS ON DEMOZOO *** KEEP DRAWING, KEEP CODING, KEEP CREATING ***</span>' +
       "  </div>" +
       "</div>";
 
