@@ -448,7 +448,6 @@
     margin-right: 0;
     padding-left: var(--spacing-sm);
     padding-right: var(--spacing-sm);
-    scrollbar-width: thin;
   }
 
   #portfolio.section {
