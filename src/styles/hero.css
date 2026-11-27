@@ -384,14 +384,67 @@
 }
 
 .hero-scroll {
-  display: flex;
-  flex-direction: column;
+  display: inline-flex;
   align-items: center;
-  gap: var(--spacing-xs);
-  color: var(--color-text-tertiary);
-  font-size: var(--font-size-sm);
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: var(--touch-target-min, 44px);
+  margin: var(--spacing-md) auto 0;
+  padding: 0.55rem 1.2rem;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 255, 224, 0.35);
+  background: var(--glass-bg, rgba(255, 255, 255, 0.06));
+  backdrop-filter: var(--glass-blur, blur(20px));
+  -webkit-backdrop-filter: var(--glass-blur, blur(20px));
+  color: var(--color-text-secondary, #e0e0e0);
+  font-family: var(--font-family);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
   cursor: pointer;
+  transition:
+    transform var(--transition-fast),
+    border-color var(--transition-fast),
+    background var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.hero-scroll svg {
+  width: 18px;
+  height: 18px;
+  color: var(--color-brand-neon, #00ffe0);
+  flex-shrink: 0;
   animation: bounce 2s infinite;
+}
+
+.hero-scroll:hover,
+.hero-scroll:focus-visible {
+  color: var(--color-text-primary, #ffffff);
+  border-color: rgba(0, 255, 224, 0.7);
+  background: rgba(0, 255, 224, 0.12);
+  transform: translateY(-1px);
+  outline: none;
+}
+
+body.night .hero-scroll {
+  border-color: rgba(255, 157, 58, 0.35);
+}
+
+body.night .hero-scroll svg {
+  color: var(--candle, #ff9d3a);
+}
+
+body.night .hero-scroll:hover,
+body.night .hero-scroll:focus-visible {
+  border-color: rgba(255, 157, 58, 0.7);
+  background: rgba(255, 157, 58, 0.12);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-scroll svg {
+    animation: none;
+  }
 }
 
 @keyframes bounce {
@@ -401,7 +454,7 @@
   }
 
   50% {
-    transform: translateY(10px);
+    transform: translateY(3px);
   }
 }
 
