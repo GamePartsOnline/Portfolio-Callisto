@@ -61,13 +61,13 @@ export function initDemosceneEasterEgg(): void {
       "</div>" +
       '<div class="demo-ee-center">' +
       '  <h2 class="demo-ee-title">CALLISTO ARTS</h2>' +
-      '  <p class="demo-ee-sub">FLUSH ^ VITAL-MOTION! ^ GPO ^ SYN[RJ]</p>' +
+      '  <p class="demo-ee-sub">FLUSH ^ GPO ^ VITAL-MOTION! ^ SYN[RJ] ^ SILICIUM ^ NEW C-REX ^ RBBS ^ CALODOX</p>' +
       '  <p class="demo-ee-msg">Bienvenue dans les coulisses demoscene. Des pixels Atari/Amiga aux rendus numériques actuels : <em>&laquo; My fun is DRAWING. ALWAYS. And forever. &raquo;</em></p>' +
       "</div>" +
       "<div>" +
       '  <div class="demo-ee-copper" aria-hidden="true"></div>' +
       '  <div class="demo-ee-scroller-wrap">' +
-      '    <span class="demo-ee-scroller">*** GREETINGS TO ALL SCENERS &amp; CREATORS *** THANKS TO : ALL SCENERS * ALL GROUP *** CALLISTO / FLUSH ^ VITAL-MOTION! *** 66+ PRODUCTIONS ON DEMOZOO *** KEEP DRAWING, KEEP CODING, KEEP CREATING ***</span>' +
+      '    <span class="demo-ee-scroller">*** GREETINGS TO ALL SCENERS &amp; CREATORS *** THANKS TO : ALL SCENERS * ALL GROUPS : FLUSH ^ GPO ^ VITAL-MOTION! ^ SYN[RJ] ^ SILICIUM ^ NEW C-REX ^ RBBS ^ CALODOX *** 66+ PRODUCTIONS ON DEMOZOO *** KEEP DRAWING, KEEP CODING, KEEP CREATING ***</span>' +
       "  </div>" +
       "</div>";
 
